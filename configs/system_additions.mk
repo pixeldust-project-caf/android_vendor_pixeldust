@@ -63,3 +63,9 @@ PRODUCT_PACKAGES += \
     Launcher3QuickStep \
     NoCutoutOverlay
 
+# Backup Tool
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/pixeldust/prebuilt/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/pixeldust/prebuilt/bin/50-base.sh:system/addon.d/50-base.sh \
+
