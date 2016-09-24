@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The Pixel Dust Project
+# Copyright (C) 2016 ParanoidAndroid Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# include definitions for SDCLANG
-include vendor/pixeldust/sdclang/sdclang.mk
+SDCLANG ?= false
+SDCLANG_FORCED ?= false
 
+SDCLANG_PATH := vendor/qcom/sdclang-3.8/linux-x86/bin
+
+SDCLANG_LTO_DEFS := vendor/pixeldust/sdclang/sdllvm-lto-defs.mk
+
+SDCLANG_COMMON_FLAGS := -O3
