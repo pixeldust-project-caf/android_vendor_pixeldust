@@ -27,5 +27,6 @@ endif
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     ro.com.android.dataroaming=false \
-    ro.carrier=unknown
+    ro.carrier=unknown \
+    ro.opa.eligible_device=true
 
