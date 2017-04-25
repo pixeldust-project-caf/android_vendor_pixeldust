@@ -18,8 +18,11 @@ ifeq ($(HOST_OS),linux)
         include vendor/pixeldust/sdclang/sdclang.mk
     endif
 else
-$(warning ****************************************************************)
-$(warning * SDCLANG is not supported on non-linux hosts. Disabling...)
-$(warning ****************************************************************)
+ifneq ($(sdclang_already_warned),true)
+$(warning **********************************************)
+$(warning * SDCLANG is not supported on non-linux hosts.)
+$(warning **********************************************)
+sdclang_already_warned := true
+endif
 endif
 
