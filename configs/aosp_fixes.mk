@@ -24,9 +24,13 @@ PRODUCT_COPY_FILES += \
 endif
 
 # Google property overides
+ifeq ($(filter marlin sailfish,$(TARGET_PRODUCT)),)
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
-    ro.com.android.dataroaming=false \
+    ro.com.android.dataroaming=false
+endif
+
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=unknown \
     ro.opa.eligible_device=true
 
