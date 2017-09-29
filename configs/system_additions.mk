@@ -14,7 +14,7 @@
 
 # Include SDCLANG definitions if it is requested and available
 ifeq ($(HOST_OS),linux)
-    ifneq ($(wildcard vendor/qcom/sdclang-3.8/),)
+    ifneq ($(wildcard vendor/qcom/sdclang-4.0/),)
         include vendor/pixeldust/sdclang/sdclang.mk
     endif
 endif
