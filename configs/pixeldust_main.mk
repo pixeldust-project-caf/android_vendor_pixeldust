@@ -16,6 +16,10 @@
 DEVICE_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay
 
+# Packages/Overlays
+PRODUCT_PACKAGES += \
+    BuiltInPrintServiceOverlay
+
 # Include needed privapp permissions whitelist
 PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:system/etc/permissions/pixeldust-permissions.xml
 PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/pixeldust-permissions.xml
