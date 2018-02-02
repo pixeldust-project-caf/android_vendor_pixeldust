@@ -40,3 +40,7 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 # SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
 
+# Dex preopt
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUIGoogle
+
