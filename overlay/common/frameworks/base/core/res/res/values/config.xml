@@ -81,4 +81,11 @@
         <item>com.google.android.inputmethod.latin</item>
         <item>com.android.inputmethod.latin</item>
     </string-array>
+
+    <!-- Component name of the default wallpaper. This will be ImageWallpaper if not specified -->
+    <string name="default_wallpaper_component" translatable="false">com.ustwo.lwp/com.ustwo.lwp.wallpapers.timelapse.TimelapseWallpaperService</string>
+    <!-- Wallpaper cropper package. Used as the default cropper if the active launcher doesn't
+         handle wallpaper cropping.
+    -->
+    <string name="config_wallpaperCropperPackage" translatable="false">com.google.android.apps.wallpaper</string>
 </resources>
