@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifneq ($(IS_GENERIC_SYSTEM_IMAGE), true)
 ifeq ($(SIGN_KEY), RELEASE)
 PRODUCT_PACKAGES += \
     Updates
@@ -19,4 +20,5 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/privapp-permissions/com.pixeldust.updater.xml:system/etc/permissions/com.pixeldust.updater.xml
 
+endif
 endif
