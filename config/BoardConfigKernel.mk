@@ -129,6 +129,10 @@ else
   KERNEL_MAKE_FLAGS += HOSTLDFLAGS="-L $(BUILD_TOP)/prebuilts/openssl/$(HOST_OS)-x86/1.1.1/lib/x86_64-linux-gnu"
 endif
 
+ifneq ($(TARGET_KERNEL_ADDITIONAL_FLAGS),)
+  KERNEL_MAKE_FLAGS += $(TARGET_KERNEL_ADDITIONAL_FLAGS)
+endif
+
 TOOLS_PATH_OVERRIDE := \
     PATH=$(BUILD_TOP)/prebuilts/tools-custom/$(HOST_OS)-x86/bin:$$PATH \
     LD_LIBRARY_PATH=$(BUILD_TOP)/prebuilts/tools-custom/$(HOST_OS)-x86/lib:$$LD_LIBRARY_PATH \
