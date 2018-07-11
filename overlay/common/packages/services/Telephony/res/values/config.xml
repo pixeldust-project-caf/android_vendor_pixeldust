@@ -151,7 +151,7 @@
     <string name="ui_default_package" translatable="false">com.android.dialer</string>
 
     <!-- Class name for the default main Dialer activity [DO NOT TRANSLATE] -->
-    <string name="dialer_default_class" translatable="false">com.android.dialer.DialtactsActivity</string>
+    <string name="dialer_default_class" translatable="false">com.google.android.apps.dialer.main.GoogleMainActivity</string>
 
     <!-- Package name for the network operator settings [DO NOT TRANSLATE] -->
     <string name="network_operator_settings_package" translatable="false">com.android.phone</string>

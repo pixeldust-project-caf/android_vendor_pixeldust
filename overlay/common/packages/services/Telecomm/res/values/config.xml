@@ -18,5 +18,5 @@
     <!-- Package name for the default in-call UI and dialer [DO NOT TRANSLATE] -->
     <string name="ui_default_package" translatable="false">com.google.android.dialer</string>
     <!-- Class name for the default main dialer activity [DO NOT TRANSLATE] -->
-    <string name="dialer_default_class" translatable="false">com.google.android.dialer.extensions.GoogleDialtactsActivity</string>
+    <string name="dialer_default_class" translatable="false">com.google.android.apps.dialer.main.GoogleMainActivity</string>
 </resources>
