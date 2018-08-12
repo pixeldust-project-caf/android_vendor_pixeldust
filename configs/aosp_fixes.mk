@@ -26,5 +26,6 @@ endif
 # Google property overides
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
-    ro.com.android.dataroaming=false
+    ro.com.android.dataroaming=false \
+    ro.carrier=unknown
 
