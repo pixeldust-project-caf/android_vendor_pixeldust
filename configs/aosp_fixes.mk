@@ -23,3 +23,7 @@ PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
 endif
 
+# Google property overides
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.android.dataroaming=false
+
