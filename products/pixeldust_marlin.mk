@@ -46,3 +46,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
 
+# Use SDCLANG
+TARGET_USE_SDCLANG := true
+
