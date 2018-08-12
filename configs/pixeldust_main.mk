@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Include overlays
+PRODUCT_PACKAGE_OVERLAYS += \
+    vendor/pixeldust/overlay
+
 # Include PixelDust device specific sepolicies
 -include device/pixeldust/sepolicy/common/sepolicy.mk
 
