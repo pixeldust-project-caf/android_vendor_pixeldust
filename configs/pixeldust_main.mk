@@ -15,6 +15,9 @@
 # Use the default language for output
 export LC_ALL=C
 
+# Set default Java File Encoding to UTF-8
+export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
+
 # Include overlays
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay/common
