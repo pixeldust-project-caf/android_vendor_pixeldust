@@ -2,6 +2,7 @@ bootstrap_go_package {
     name: "soong-pixeldust",
     pkgPath: "pixeldust/soong/android",
     srcs: [
+        "android/config.go",
         "android/variable.go",
     ],
 }
