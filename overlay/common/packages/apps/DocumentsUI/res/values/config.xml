@@ -17,4 +17,10 @@
 <resources>
     <!-- Intentionally unset. Vendors should set this in an overlay. -->
     <bool name="show_documents_root">true</bool>
+
+    <!-- Indicates if internal storage is shown as default or not. -->
+    <bool name="config_default_show_device_root">true</bool>
+
+    <!-- Intentionally unset. Vendors should set this in an overlay. -->
+    <string name="default_root_uri" translatable="false">content://com.android.externalstorage.documents/root/primary</string>
 </resources>
