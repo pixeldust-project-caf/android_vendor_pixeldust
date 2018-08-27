@@ -24,3 +24,7 @@ PRODUCT_PACKAGE_OVERLAYS += \
 
 # Include needed privapp permissions whitelist
 PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:system/etc/sysconfig/pixeldust-permissions.xml
+
+# Copy all init rc files
+$(foreach f,$(wildcard vendor/pixeldust/prebuilt/etc/init/*.rc),\
+	$(eval PRODUCT_COPY_FILES += $(f):system/etc/init/$(notdir $f)))
