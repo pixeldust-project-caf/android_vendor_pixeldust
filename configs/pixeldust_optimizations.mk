@@ -15,6 +15,9 @@
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG := false
 
+# SystemUITests
+EXCLUDE_SYSTEMUI_TESTS := true
+
 ifneq ($(HOST_OS),linux)
 ifneq ($(sdclang_already_warned),true)
 $(warning **********************************************)
