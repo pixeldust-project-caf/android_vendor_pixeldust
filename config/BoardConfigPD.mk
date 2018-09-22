@@ -5,3 +5,5 @@ include vendor/pixeldust/config/BoardConfigQcom.mk
 endif
 
 include vendor/pixeldust/config/BoardConfigSoong.mk
+
+PRODUCT_SOONG_NAMESPACES += $(PATHMAP_SOONG_NAMESPACES)
