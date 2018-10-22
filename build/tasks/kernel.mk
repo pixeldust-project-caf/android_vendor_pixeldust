@@ -184,8 +184,9 @@ ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
     else ifeq ($(KERNEL_ARCH),x86)
         KERNEL_CLANG_TRIPLE ?= CLANG_TRIPLE=x86_64-linux-gnu-
     endif
+    PATH_OVERRIDE := PATH=$(TARGET_KERNEL_CLANG_PATH):$$PATH LD_LIBRARY_PATH=$(BUILD_TOP)/prebuilts/clang/host/$(HOST_OS)-x86/$(KERNEL_CLANG_VERSION)/lib64:$$LD_LIBRARY_PATH
     ifeq ($(KERNEL_CC),)
-        KERNEL_CC := CC="$(CCACHE_BIN) $(TARGET_KERNEL_CLANG_PATH)/clang"
+        KERNEL_CC := CC="$(CCACHE_BIN) clang"
     endif
 endif
 
