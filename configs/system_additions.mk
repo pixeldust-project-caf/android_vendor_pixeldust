@@ -47,3 +47,9 @@ PRODUCT_PACKAGES += libbthost_if
 # MSIM manual provisioning
 PRODUCT_PACKAGES += telephony-ext
 PRODUCT_BOOT_JARS += telephony-ext
+
+# WeatherClient
+PRODUCT_PACKAGES += WeatherClient
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/etc/permissions/org.pixelexperience.weather.client.xml:system/etc/permissions/org.pixelexperience.weather.client.xml \
+    vendor/pixeldust/prebuilt/etc/default-permissions/org.pixelexperience.weather.client.xml:system/etc/default-permissions/org.pixelexperience.weather.client.xml
