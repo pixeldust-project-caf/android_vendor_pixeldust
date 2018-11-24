@@ -19,7 +19,7 @@ PRODUCT_BUILD_PROP_OVERRIDES := BUILD_DISPLAY_ID=$(BUILD_VERSION)
 PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_TYPE=user
 
 # Pixel Dust ROM package name 
-PIXELDUST_VERSION := $(TARGET_PRODUCT)-pie-caf-alpha-$(shell date -u +%Y%m%d-%H%M)
+PIXELDUST_VERSION := $(TARGET_PRODUCT)-pie-caf-alpha-$(shell date +%Y%m%d-%H%M)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.version=$(BUILD_VERSION)-$(PD_BUILDTYPE) \
