@@ -3,10 +3,13 @@
 # Functions for backuptool.sh
 #
 
-export C=/tmp/backupdir
-export S=/system
 
-
+copy_file() {
+  cp -dp "$1" "$2"
+  # symlinks don't have a context
+  if [ ! -L "$1" ]; then
+ 
+ 
 backup_file() {
   if [ -e "$1" ]; then
     local F=`basename "$1"`
