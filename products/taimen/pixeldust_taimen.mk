@@ -37,6 +37,9 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 # Include optional stuff (e.g. prebuilt apps)
 include vendor/pixeldust/configs/system_optional.mk
 
+# Include pixel ambient sense (Now playing)
+include vendor/pixeldust/configs/ambientsense.mk
+
 # Google Apps
 $(call inherit-product, vendor/googleapps/googleapps.mk)
 
