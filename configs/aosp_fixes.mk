@@ -17,5 +17,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     keyguard.no_require_sim=true \
     ro.com.android.dataroaming=false \
     ro.carrier=unknown \
-    ro.opa.eligible_device=true
+    ro.opa.eligible_device=true \
+    net.tethering.noprovisioning=true
 
