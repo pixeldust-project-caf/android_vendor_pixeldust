@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifeq (pixeldust_blueline,$(TARGET_PRODUCT))
+    PRODUCT_MAKEFILES += $(LOCAL_DIR)/blueline/pixeldust_blueline.mk
+endif
+
 ifeq (pixeldust_marlin,$(TARGET_PRODUCT))
     PRODUCT_MAKEFILES += $(LOCAL_DIR)/marlin/pixeldust_marlin.mk
 endif

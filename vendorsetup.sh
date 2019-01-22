@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+add_lunch_combo pixeldust_blueline-userdebug
+add_lunch_combo pixeldust_blueline-user
 add_lunch_combo pixeldust_marlin-userdebug
 add_lunch_combo pixeldust_marlin-user
 add_lunch_combo pixeldust_taimen-userdebug
