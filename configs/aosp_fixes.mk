@@ -13,14 +13,14 @@
 # limitations under the License.
 
 # Proprietary latinime libs needed for Keyboard swyping
-ifneq ($(filter pixeldust_mako,$(TARGET_PRODUCT)),)
+ifeq ($(TARGET_ARCH), $(filter $(TARGET_ARCH), arm64))
 PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/lib/libjni_latinime.so:system/lib/libjni_latinime.so
-    vendor/pixeldust/prebuilt/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+    vendor/pixeldust/prebuilt/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so \
+    vendor/pixeldust/prebuilt/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
 else
 PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so
-    vendor/pixeldust/prebuilt/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
+    vendor/pixeldust/prebuilt/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
+    vendor/pixeldust/prebuilt/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
 endif
 
 # Google property overides
