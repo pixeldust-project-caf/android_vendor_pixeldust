@@ -104,12 +104,6 @@ KERNEL_DEFCONFIG_SRC := $(KERNEL_SRC)/arch/$(KERNEL_DEFCONFIG_ARCH)/configs/$(KE
 ifeq ($(BOARD_KERNEL_IMAGE_NAME),)
 $(error BOARD_KERNEL_IMAGE_NAME not defined.)
 endif
-ifneq ($(TARGET_USES_UNCOMPRESSED_KERNEL),)
-$(error TARGET_USES_UNCOMPRESSED_KERNEL is deprecated.)
-endif
-ifneq ($(TARGET_KERNEL_APPEND_DTB),)
-$(error TARGET_KERNEL_APPEND_DTB is deprecated.)
-endif
 TARGET_PREBUILT_INT_KERNEL := $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
 
 # Clear this first to prevent accidental poisoning from env
@@ -149,13 +143,6 @@ ifeq "$(wildcard $(KERNEL_SRC) )" ""
     endif
 
     ifneq ($(HAS_PREBUILT_KERNEL),)
-        $(warning ***************************************************************)
-        $(warning * Using prebuilt kernel binary instead of source              *)
-        $(warning * THIS IS DEPRECATED, AND WILL BE DISCONTINUED                *)
-        $(warning * Please configure your device to download the kernel         *)
-        $(warning * source repository to $(KERNEL_SRC))
-        $(warning * for more information                                        *)
-        $(warning ***************************************************************)
         FULL_KERNEL_BUILD := false
         KERNEL_BIN := $(TARGET_PREBUILT_KERNEL)
     else
@@ -288,6 +275,25 @@ endif
 
 KERNEL_ADDITIONAL_CONFIG_OUT := $(KERNEL_OUT)/.additional_config
 
+# Internal implementation of make-kernel-target
+# $(1): output path (The value passed to O=)
+# $(2): target to build (eg. defconfig, modules, dtbo.img)
+define internal-make-kernel-target
+$(PATH_OVERRIDE) $(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(1) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(2)
+endef
+
+# Make a kernel target
+# $(1): The kernel target to build (eg. defconfig, modules, modules_install)
+define make-kernel-target
+$(call internal-make-kernel-target,$(KERNEL_OUT),$(1))
+endef
+
+# Make a DTBO target
+# $(1): The DTBO target to build (eg. dtbo.img, defconfig)
+define make-dtbo-target
+$(call internal-make-kernel-target,$(PRODUCT_OUT)/dtbo,$(1))
+endef
+
 .PHONY: force_additional_config
 $(KERNEL_ADDITIONAL_CONFIG_OUT): force_additional_config
 	$(hide) cmp -s $(KERNEL_ADDITIONAL_CONFIG_SRC) $@ || cp $(KERNEL_ADDITIONAL_CONFIG_SRC) $@;
@@ -295,17 +301,22 @@ $(KERNEL_ADDITIONAL_CONFIG_OUT): force_additional_config
 $(KERNEL_CONFIG): $(KERNEL_DEFCONFIG_SRC) $(KERNEL_ADDITIONAL_CONFIG_OUT)
 	@echo "Building Kernel Config"
 	$(hide) mkdir -p $(KERNEL_OUT)
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) VARIANT_DEFCONFIG=$(VARIANT_DEFCONFIG) SELINUX_DEFCONFIG=$(SELINUX_DEFCONFIG) $(KERNEL_DEFCONFIG)
+	$(call make-kernel-target,VARIANT_DEFCONFIG=$(VARIANT_DEFCONFIG) SELINUX_DEFCONFIG=$(SELINUX_DEFCONFIG) $(KERNEL_DEFCONFIG))
 	$(hide) if [ ! -z "$(KERNEL_CONFIG_OVERRIDE)" ]; then \
 			echo "Overriding kernel config with '$(KERNEL_CONFIG_OVERRIDE)'"; \
 			echo $(KERNEL_CONFIG_OVERRIDE) >> $(KERNEL_OUT)/.config; \
-			$(MAKE) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) oldconfig; fi
+			$(call make-kernel-target,oldconfig); \
+		fi
 	# Create defconfig build artifact
-	$(hide) $(MAKE) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) savedefconfig
+	$(call make-kernel-target,savedefconfig)
 	$(hide) if [ ! -z "$(KERNEL_ADDITIONAL_CONFIG)" ]; then \
 			echo "Using additional config '$(KERNEL_ADDITIONAL_CONFIG)'"; \
 			$(KERNEL_SRC)/scripts/kconfig/merge_config.sh -m -O $(KERNEL_OUT) $(KERNEL_OUT)/.config $(KERNEL_SRC)/arch/$(KERNEL_ARCH)/configs/$(KERNEL_ADDITIONAL_CONFIG); \
-			$(MAKE) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) KCONFIG_ALLCONFIG=$(KERNEL_OUT)/.config alldefconfig; fi
+			$(call make-kernel-target,KCONFIG_ALLCONFIG=$(KERNEL_OUT)/.config alldefconfig); \
+		fi
+
+.PHONY: $(KERNEL_DEFCONFIG)
+$(KERNEL_DEFCONFIG): $(KERNEL_CONFIG)
 
 .PHONY: TARGET_KERNEL_BINARIES
 TARGET_KERNEL_BINARIES: $(KERNEL_CONFIG)
@@ -313,21 +324,21 @@ TARGET_KERNEL_BINARIES: $(KERNEL_CONFIG)
 	$(hide) rm -rf $(KERNEL_MODULES_OUT)
 	$(hide) mkdir -p $(KERNEL_MODULES_OUT)
 	$(hide) rm -rf $(KERNEL_DEPMOD_STAGING_DIR)
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(BOARD_KERNEL_IMAGE_NAME)
+	$(call make-kernel-target,$(BOARD_KERNEL_IMAGE_NAME))
 	$(hide) if grep -q '^CONFIG_OF=y' $(KERNEL_CONFIG); then \
 			echo "Building DTBs"; \
-			$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) dtbs; \
+			$(call make-kernel-target,dtbs); \
 		fi
-	$(hide) if grep -q '^CONFIG_MODULES=y' $(KERNEL_CONFIG); then \
+	$(hide) if grep -q '=m' $(KERNEL_CONFIG); then \
 			echo "Building Kernel Modules"; \
-			$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) modules; \
+			$(call make-kernel-target,modules); \
 		fi
 
 .PHONY: INSTALLED_KERNEL_MODULES
 INSTALLED_KERNEL_MODULES: depmod-host
-	$(hide) if grep -q '^CONFIG_MODULES=y' $(KERNEL_CONFIG); then \
+	$(hide) if grep -q '=m' $(KERNEL_CONFIG); then \
 			echo "Installing Kernel Modules"; \
-			$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) INSTALL_MOD_PATH=../../$(KERNEL_MODULES_INSTALL) modules_install && \
+			$(call make-kernel-target,INSTALL_MOD_PATH=../../$(KERNEL_MODULES_INSTALL) modules_install) && \
 			mofile=$$(find $(KERNEL_MODULES_OUT) -type f -name modules.order) && \
 			mpath=$$(dirname $$mofile) && \
 			for f in $$(find $$mpath/kernel -type f -name '*.ko'); do \
@@ -364,7 +375,7 @@ $(KERNEL_HEADERS_INSTALL_DEPS):
 	@echo "Building Kernel Headers"
 	$(hide) mkdir -p $(KERNEL_OUT)
 	$(hide) rm -f $@
-	$(hide) $(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) headers_install
+	$(call make-kernel-target,headers_install)
 	$(hide) echo "$@: \\" > $@
 	$(hide) ( cd $(KERNEL_SRC); \
 		if grep -q '^version_h' 'Makefile'; then \
@@ -386,50 +397,42 @@ $(KERNEL_HEADERS_INSTALL_DEPS):
 .PHONY: INSTALLED_KERNEL_HEADERS
 INSTALLED_KERNEL_HEADERS: $(KERNEL_HEADERS_INSTALL_DEPS)
 
+# Dependencies on $(KERNEL_OUT)/usr are deprecated
 $(KERNEL_HEADERS_INSTALL_DIR): $(KERNEL_HEADERS_INSTALL_DEPS)
+	@echo "Depending on $(KERNEL_HEADERS_INSTALL_DIR) is deprecated." 1>&2
+	@echo "Use INSTALLED_KERNEL_HEADERS instead." 1>&2
+	@exit 1
 
 .PHONY: kerneltags
 kerneltags: $(KERNEL_CONFIG)
 	$(hide) mkdir -p $(KERNEL_OUT)
-	$(MAKE) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) tags
+	$(call make-kernel-target,tags)
 
-.PHONY: kernelconfig kernelxconfig kernelsavedefconfig alldefconfig
-
-kernelconfig:  KERNELCONFIG_MODE := menuconfig
-kernelxconfig: KERNELCONFIG_MODE := xconfig
-kernelxconfig kernelconfig:
-	$(hide) mkdir -p $(KERNEL_OUT)
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(KERNEL_DEFCONFIG)
-	env KCONFIG_NOTIMESTAMP=true \
-		 $(MAKE) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(KERNELCONFIG_MODE)
-	env KCONFIG_NOTIMESTAMP=true \
-		 $(MAKE) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) savedefconfig
-	cp $(KERNEL_OUT)/defconfig $(KERNEL_DEFCONFIG_SRC)
-
+.PHONY: kernelsavedefconfig alldefconfig
 kernelsavedefconfig:
 	$(hide) mkdir -p $(KERNEL_OUT)
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(KERNEL_DEFCONFIG)
+	$(call make-kernel-target,$(KERNEL_DEFCONFIG))
 	env KCONFIG_NOTIMESTAMP=true \
-		 $(MAKE) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) savedefconfig
+		 $(call make-kernel-target,savedefconfig)
 	cp $(KERNEL_OUT)/defconfig $(KERNEL_DEFCONFIG_SRC)
 
 alldefconfig:
 	$(hide) mkdir -p $(KERNEL_OUT)
 	env KCONFIG_NOTIMESTAMP=true \
-		 $(MAKE) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) alldefconfig
-
-endif # FULL_KERNEL_BUILD
+		 $(call make-kernel-target,alldefconfig)
 
 TARGET_PREBUILT_DTBO = $(PRODUCT_OUT)/dtbo/arch/$(KERNEL_ARCH)/boot/dtbo.img
 $(TARGET_PREBUILT_DTBO): $(AVBTOOL)
 	echo -e ${CL_GRN}"Building DTBO.img"${CL_RST}
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(PRODUCT_OUT)/dtbo ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(KERNEL_DEFCONFIG)
-	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(PRODUCT_OUT)/dtbo ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) dtbo.img
+	$(call make-dtbo-target,$(KERNEL_DEFCONFIG))
+	$(call make-dtbo-target,dtbo.img)
 	$(AVBTOOL) add_hash_footer \
 		--image $@ \
 		--partition_size $(BOARD_DTBOIMG_PARTITION_SIZE) \
 		--partition_name dtbo $(INTERNAL_AVB_DTBO_SIGNING_ARGS) \
 		$(BOARD_AVB_DTBO_ADD_HASH_FOOTER_ARGS)
+
+endif # FULL_KERNEL_BUILD
 
 ## Install it
 
