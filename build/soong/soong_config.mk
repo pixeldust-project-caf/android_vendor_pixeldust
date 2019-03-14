@@ -1,7 +1,4 @@
-add_json_str_omitempty = $(if $(strip $(2)),$(call add_json_str, $(1), $(2)))
-add_json_val_default = $(call add_json_val, $(1), $(if $(strip $(2)), $(2), $(3)))
-
-_json_contents := $(_json_contents)    "Pixeldust":{$(newline)
+$(call add_json_map, Pixeldust)
 
 $(call add_json_str_omitempty, Additional_gralloc_10_usage_bits, $(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS))
 $(call add_json_val_default, Bootloader_message_offset, $(BOOTLOADER_MESSAGE_OFFSET), 0)
@@ -23,7 +20,4 @@ $(call add_json_bool, Uses_generic_camera_parameter_library, $(if $(TARGET_SPECI
 $(call add_json_bool, Target_ignores_ftp_pptp_conntrack_failure, $(filter true,$(TARGET_IGNORES_FTP_PPTP_CONNTRACK_FAILURE)))
 $(call add_json_bool, Uses_qcom_bsp_legacy, $(filter true,$(TARGET_USES_QCOM_BSP_LEGACY)))
 
-# This causes the build system to strip out the last comma in our nested struct, to keep the JSON valid.
-_json_contents := $(_json_contents)__SV_END
-
-_json_contents := $(_json_contents)    },$(newline)
+$(call end_json_map)
