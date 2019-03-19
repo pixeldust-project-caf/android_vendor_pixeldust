@@ -24,3 +24,6 @@ PRODUCT_PACKAGE_OVERLAYS += \
 
 # Include vendor SEPolicy changes
 include vendor/pixeldust/sepolicy/sepolicy.mk
+
+# Include needed privapp permissions whitelist
+PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:system/etc/sysconfig/pixeldust-permissions.xml
