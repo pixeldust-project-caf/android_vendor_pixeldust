@@ -16,8 +16,17 @@
 PRODUCT_RELEASE_NAME := PixelXL
 export TARGET_DEVICE := marlin
 
+# We have our own power HAL
+TARGET_USES_DEVICE_SPECIFIC_POWERHAL := true
+
+# Use the AOSP stack
+TARGET_USES_AOSP := true
+
 # Inherit AOSP device configuration for marlin.
 $(call inherit-product, device/google/marlin/aosp_marlin.mk)
+
+# Generic CAF packages
+include device/qcom/common/common.mk
 
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
