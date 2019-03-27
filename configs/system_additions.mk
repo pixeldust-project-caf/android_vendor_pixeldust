@@ -12,17 +12,3 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Include SDCLANG definitions if it is requested and available
-ifeq ($(HOST_OS),linux)
-    ifneq ($(wildcard vendor/qcom/sdclang-6.0/),)
-        include vendor/pixeldust/sdclang/sdclang.mk
-    endif
-else
-ifneq ($(sdclang_already_warned),true)
-$(warning **********************************************)
-$(warning * SDCLANG is not supported on non-linux hosts.)
-$(warning **********************************************)
-sdclang_already_warned := true
-endif
-endif
-
