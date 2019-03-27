@@ -19,3 +19,5 @@ export LC_ALL=C
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay/common
 
+# Include vendor SEPolicy changes
+include vendor/pixeldust/sepolicy/sepolicy.mk
