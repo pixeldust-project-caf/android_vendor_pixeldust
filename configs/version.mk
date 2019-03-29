@@ -13,15 +13,19 @@
 # limitations under the License.
 
 # Pixel Dust ROM versioning
-BUILD_VERSION := PixelDustROM-$(PLATFORM_VERSION)-$(shell date +%Y%m%d)
+ROM_VERSION := PixelDustROM-$(PLATFORM_VERSION)
+BUILD_VERSION := caf-dev
 
-PRODUCT_BUILD_PROP_OVERRIDES := BUILD_DISPLAY_ID=$(BUILD_VERSION)
+ifndef SIGN_KEY
+  SIGN_KEY := UNOFFICIAL
+endif
+PRODUCT_BUILD_PROP_OVERRIDES := BUILD_DISPLAY_ID=$(ROM_VERSION)-$(BUILD_VERSION)-$(SIGN_KEY)
 PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BUILD_TYPE=user
 
 # Pixel Dust ROM package name 
-PIXELDUST_VERSION := $(TARGET_PRODUCT)-pie-caf-alpha-$(shell date +%Y%m%d-%H%M)
+PIXELDUST_VERSION := $(TARGET_PRODUCT)-pie-$(BUILD_VERSION)-$(shell date +%Y%m%d-%H%M)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.pixeldust.version=$(BUILD_VERSION)-$(PD_BUILDTYPE) \
+    ro.pixeldust.version=$(ROM_VERSION)-$(BUILD_VERSION)-$(SIGN_KEY) \
     ro.pixeldust.ota.version=$(TARGET_PRODUCT)-$(PIXELDUST_VERSION)
 
