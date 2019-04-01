@@ -22,6 +22,9 @@ TARGET_USES_DEVICE_SPECIFIC_POWERHAL := true
 # Use the AOSP stack
 TARGET_USES_AOSP := true
 
+# Use the sepolicies which are being shipped with our device
+TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
+
 # Inherit AOSP device configuration for marlin.
 $(call inherit-product, device/google/marlin/aosp_marlin.mk)
 
