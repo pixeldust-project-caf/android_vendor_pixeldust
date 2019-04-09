@@ -60,4 +60,8 @@
         <permission name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
     </privapp-permissions>
 
+    <privapp-permissions package="com.android.systemui">
+        <permission name="org.pixelexperience.weather.client.READ_WEATHER"/>
+    </privapp-permissions>
+
 </permissions>
