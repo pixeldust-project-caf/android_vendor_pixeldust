@@ -68,4 +68,8 @@
         <permission name="org.pixelexperience.weather.client.READ_WEATHER"/>
     </privapp-permissions>
 
+    <privapp-permissions package="com.android.settings">
+        <permission name="android.permission.NAVIGATION_EDITOR"/>
+    </privapp-permissions>
+
 </permissions>
