@@ -25,6 +25,7 @@ PRODUCT_BUILD_PROP_OVERRIDES := TARGET_BUILD_TYPE=user
 PIXELDUST_VERSION := $(TARGET_PRODUCT)-pie-$(BUILD_VERSION)-$(shell date +%Y%m%d-%H%M)
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    com.pixeldust.fingerprint=$(PIXELDUST_VERSION) \
     ro.pixeldust.version=$(ROM_VERSION)-$(BUILD_VERSION)-$(SIGN_KEY) \
     ro.pixeldust.ota.version=$(TARGET_PRODUCT)-$(PIXELDUST_VERSION)
 
