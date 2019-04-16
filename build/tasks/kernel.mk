@@ -251,6 +251,8 @@ ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
     ifeq ($(KERNEL_CC),)
         KERNEL_CC := CC="$(ccache) $(TARGET_KERNEL_CLANG_PATH)/clang"
     endif
+    # Pass kernel ThinLTO cache path
+    KERNEL_CC += KERNEL_THINLTO_CACHE="$(TARGET_OUT_INTERMEDIATES)/KERNEL_THINLTO-CACHE"
 else
     KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(ccache) $(KERNEL_TOOLCHAIN_PATH)"
 endif
