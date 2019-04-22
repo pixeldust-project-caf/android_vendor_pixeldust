@@ -13,9 +13,9 @@
     },
     {
         "target_path":  "vendor/google_devices",
-        "repository":   "pixeldustproject-p/android_vendor_google_pixels",
-        "remote":       "github",
-        "revision":     "ppr2.181005.003"
+        "repository":   "android_vendor_google_pixels",
+        "remote":       "pdcaf",
+        "revision":     "pie"
     },
     {
         "target_path":  "vendor/googleapps",
