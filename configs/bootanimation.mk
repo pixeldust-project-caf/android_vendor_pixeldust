@@ -12,13 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+scr_resolution := 1080
+
 # Add Pixel Dust ROM bootanimation based on device
 ifneq ($(filter pixeldust_angler pixeldust_blueline pixeldust_crosshatch pixeldust_marlin pixeldust_sailfish pixeldust_taimen,$(TARGET_PRODUCT)),)
     PRODUCT_COPY_FILES += \
         vendor/pixeldust/prebuilt/bootanimation/1440.zip:system/media/bootanimation.zip
 endif
-ifneq ($(filter pixeldust_bullhead pixeldust_mako pixeldust_Z00L pixeldust_mido,$(TARGET_PRODUCT)),)
-    PRODUCT_COPY_FILES += \
-        vendor/pixeldust/prebuilt/bootanimation/1080.zip:system/media/bootanimation.zip
+
+ifneq ($(wildcard vendor/themes/bootanimation/$(scr_resolution).zip),)
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/bootanimation/$(scr_resolution).zip:system/media/bootanimation.zip
 endif
 
