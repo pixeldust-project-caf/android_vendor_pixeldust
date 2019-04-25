@@ -160,7 +160,7 @@ echo -e ""
 if [ "$FLAG_USER_BUILD" = 'y' ]; then
         mka dist
 else
-        mka otapackage
+        mka pixeldust
 fi
 RETVAL=$?
 echo -e ""
