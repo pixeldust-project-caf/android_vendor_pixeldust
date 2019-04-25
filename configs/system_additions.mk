@@ -56,3 +56,7 @@ PRODUCT_COPY_FILES += \
 
 # Themes
 include vendor/themes/common.mk
+
+# Extra Packages
+PRODUCT_PACKAGES += \
+    Launcher3QuickStep
