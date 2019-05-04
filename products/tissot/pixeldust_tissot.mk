@@ -26,9 +26,6 @@ $(call inherit-product, device/xiaomi/tissot/device.mk)
 # CAF includes
 include device/qcom/common/common.mk
 
-# PD decls
-DISABLE_EAP_PROXY := true
-
 # Google Apps
 # $(call inherit-product, vendor/googleapps/googleapps.mk)
 
