@@ -20,6 +20,12 @@ PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/fonts/gobold/GoboldBold-Italic.ttf:system/fonts/GoboldBold-Italic.ttf \
     vendor/pixeldust/prebuilt/fonts/gobold/GoboldThinLight.ttf:system/fonts/GoboldThinLight.ttf \
     vendor/pixeldust/prebuilt/fonts/gobold/GoboldThinLight-Italic.ttf:system/fonts/GoboldThinLight-Italic.ttf \
+    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-Italic.ttf:system/fonts/ProductSans-Italic.ttf \
+    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-Light.ttf:system/fonts/ProductSans-Light.ttf \
+    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-LightItalic.ttf:system/fonts/ProductSans-LightItalic.ttf \
+    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-Regular.ttf:system/fonts/ProductSans-Regular.ttf \
+    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-Thin.ttf:system/fonts/ProductSans-Thin.ttf \
+    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-ThinItalic.ttf:system/fonts/ProductSans-ThinItalic.ttf \
     vendor/pixeldust/prebuilt/fonts/roadrage/road_rage.ttf:system/fonts/RoadRage-Regular.ttf \
     vendor/pixeldust/prebuilt/fonts/neoneon/neoneon.ttf:system/fonts/Neoneon-Regular.ttf \
     vendor/pixeldust/prebuilt/fonts/mexcellent/mexcellent.ttf:system/fonts/Mexcellent-Regular.ttf \
