@@ -20,6 +20,7 @@ ifndef SIGN_KEY
   SIGN_KEY := UNOFFICIAL
 endif
 PRODUCT_BUILD_PROP_OVERRIDES := TARGET_BUILD_TYPE=user
+BUILD_DATETIME := $(shell date -u +%s)
 
 # Pixel Dust ROM package name 
 PIXELDUST_VERSION := $(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(shell date +%Y%m%d-%H%M)
