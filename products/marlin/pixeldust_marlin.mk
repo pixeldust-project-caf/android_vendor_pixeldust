@@ -55,7 +55,8 @@ BUILD_FINGERPRINT="google/marlin/marlin:9/PPR1.180610.009/4898911:user/release-k
 BUILD_THUMBPRINT="9/PPR1.180610.009/4898911:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.pixeldust.maintainer="spezi77"
+    ro.pixeldust.maintainer="spezi77" \
+    ro.pixeldust.device="marlin"
 
 # Copy device specific prebuilt files.
 PRODUCT_COPY_FILES += \

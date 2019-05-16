@@ -13,8 +13,8 @@
 # limitations under the License.
 
 # Pixel Dust ROM versioning
-ROM_VERSION := PixelDustROM-$(PLATFORM_VERSION)
-BUILD_VERSION := caf-dev
+ROM_VERSION := PixelDustROM
+BUILD_VERSION := pie-caf
 
 ifndef SIGN_KEY
   SIGN_KEY := UNOFFICIAL
@@ -22,10 +22,13 @@ endif
 PRODUCT_BUILD_PROP_OVERRIDES := TARGET_BUILD_TYPE=user
 
 # Pixel Dust ROM package name 
-PIXELDUST_VERSION := $(TARGET_PRODUCT)-pie-$(BUILD_VERSION)-$(shell date +%Y%m%d-%H%M)
+PIXELDUST_VERSION := $(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(shell date +%Y%m%d-%H%M)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     com.pixeldust.fingerprint=$(PIXELDUST_VERSION) \
-    ro.pixeldust.version=$(ROM_VERSION)-$(BUILD_VERSION)-$(SIGN_KEY) \
-    ro.pixeldust.ota.version=$(TARGET_PRODUCT)-$(PIXELDUST_VERSION)
+    ro.pixeldust.version=$(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(SIGN_KEY) \
+    ro.pixeldust.ota.version=$(PIXELDUST_VERSION) \
+    ro.pixeldust.ota.version_code=$(BUILD_VERSION) \
+    ro.pixeldust.ota.build_type=$(SIGN_KEY) \
+    ro.pixeldust.ota.build_date_utc=$(shell date -u +%Y%m%d-%H%M)
 

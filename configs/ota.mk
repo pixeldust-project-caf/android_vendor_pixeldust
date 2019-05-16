@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The Pixel Dust Project
+# Copyright (C) 2019 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,21 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include vendor/pixeldust/configs/aosp_fixes.mk
-include vendor/pixeldust/configs/bootanimation.mk
-include vendor/pixeldust/configs/fonts.mk
-include vendor/pixeldust/configs/pixeldust_main.mk
-include vendor/pixeldust/configs/pixeldust_optimizations.mk
-include vendor/pixeldust/configs/system_additions.mk
-include vendor/pixeldust/configs/version.mk
-include vendor/pixeldust/configs/ota.mk
-
-# Telephony packages
+ifeq ($(SIGN_KEY), RELEASE)
 PRODUCT_PACKAGES += \
-    Stk \
-    CellBroadcastReceiver
+    Updates
 
-# Enable tethering
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.dun.override=0
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/etc/privapp-permissions/com.pixeldust.updater.xml:system/etc/permissions/com.pixeldust.updater.xml
 
+endif
