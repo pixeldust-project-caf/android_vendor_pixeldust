@@ -77,6 +77,10 @@
         <permission name="android.permission.NAVIGATION_EDITOR"/>
     </privapp-permissions>
 
+    <privapp-permissions package="com.android.phone">
+        <permission name="android.permission.OVERRIDE_WIFI_CONFIG"/>
+    </privapp-permissions>
+
     <privapp-permissions package="org.lineageos.eleven">
         <permission name="android.permission.ACCESS_NETWORK_STATE" />
         <permission name="android.permission.BROADCAST_STICKY" />
