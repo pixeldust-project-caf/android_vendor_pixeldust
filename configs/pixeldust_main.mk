@@ -22,8 +22,8 @@ export JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay/common
 
-# Include vendor SEPolicy changes
-include vendor/pixeldust/sepolicy/sepolicy.mk
+# Include PixelDust device specific sepolicies
+include device/pixeldust/sepolicy/common/sepolicy.mk
 
 # Include needed privapp permissions whitelist
 PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:system/etc/sysconfig/pixeldust-permissions.xml
