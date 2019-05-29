@@ -1,0 +1,92 @@
+[
+    {
+        "target_path":  "kernel/google/wahoo",
+        "repository":   "android_kernel_google_wahoo",
+        "remote":       "carbon",
+        "revision":     "cr-7.0"
+    },
+    {
+        "target_path":  "vendor/google_devices",
+        "repository":   "android_vendor_google_pixels",
+        "remote":       "pdcaf",
+        "revision":     "pie"
+    },
+    {
+        "target_path":  "vendor/googleapps",
+        "repository":   "vendor_googleapps",
+        "remote":       "glab",
+        "revision":     "p"
+    },
+    {
+        "target_path":  "hardware/interfaces",
+        "repository":   "android_hardware_interfaces",
+        "remote":       "pdcaf",
+        "revision":     "pie"
+    },
+    {
+        "target_path":  "hardware/qcom/audio-caf/msm8998",
+        "repository":   "android_hardware_qcom_audio",
+        "remote":       "lineage",
+        "revision":     "lineage-16.0-caf-8998"
+    },
+    {
+        "target_path":  "hardware/qcom/display-caf/msm8998",
+        "repository":   "android_hardware_qcom_display",
+        "remote":       "lineage",
+        "revision":     "lineage-16.0-caf-8998"
+    },
+    {
+        "target_path":  "hardware/qcom/media-caf/msm8998",
+        "repository":   "android_hardware_qcom_media",
+        "remote":       "lineage",
+        "revision":     "lineage-16.0-caf-8998"
+    },
+    {
+        "target_path":  "hardware/qcom/camera",
+        "repository":   "android_hardware_qcom_camera",
+        "remote":       "pdcaf",
+        "revision":     "pie"
+    },
+    {
+        "target_path":  "hardware/qcom/gps",
+        "repository":   "platform/hardware/qcom/gps",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-9.0.0_r1"
+    },
+    {
+        "target_path":  "hardware/qcom/keymaster",
+        "repository":   "platform/hardware/qcom/keymaster",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-9.0.0_r1"
+    },
+    {
+        "target_path":  "hardware/qcom/msm8960",
+        "repository":   "platform/hardware/qcom/msm8960",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-9.0.0_r1"
+    },
+    {
+        "target_path":  "hardware/qcom/msm8998",
+        "repository":   "platform/hardware/qcom/msm8998",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-9.0.0_r1"
+    },
+    {
+        "target_path":  "hardware/qcom/msm8x09",
+        "repository":   "platform/hardware/qcom/msm8x09",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-9.0.0_r1"
+    },
+    {
+        "target_path":  "hardware/qcom/power",
+        "repository":   "platform/hardware/qcom/power",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-9.0.0_r1"
+    },
+    {
+        "target_path":  "external/wpa_supplicant_8",
+        "repository":   "platform/external/wpa_supplicant_8",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-9.0.0_r1"
+   }
+]
