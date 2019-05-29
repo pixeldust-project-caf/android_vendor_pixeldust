@@ -16,6 +16,10 @@ ifeq (pixeldust_marlin,$(TARGET_PRODUCT))
     PRODUCT_MAKEFILES += $(LOCAL_DIR)/marlin/pixeldust_marlin.mk
 endif
 
+ifeq (pixeldust_taimen,$(TARGET_PRODUCT))
+    PRODUCT_MAKEFILES += $(LOCAL_DIR)/taimen/pixeldust_taimen.mk
+endif
+
 ifeq (pixeldust_tissot,$(TARGET_PRODUCT))
     PRODUCT_MAKEFILES += $(LOCAL_DIR)/tissot/pixeldust_tissot.mk
 endif
