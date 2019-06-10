@@ -23,3 +23,7 @@ endif
 ifeq (pixeldust_tissot,$(TARGET_PRODUCT))
     PRODUCT_MAKEFILES += $(LOCAL_DIR)/tissot/pixeldust_tissot.mk
 endif
+
+ifeq (pixeldust_X01BD,$(TARGET_PRODUCT))
+    PRODUCT_MAKEFILES += $(LOCAL_DIR)/tissot/pixeldust_X01BD.mk
+endif
