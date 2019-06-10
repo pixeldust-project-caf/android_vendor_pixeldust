@@ -16,6 +16,12 @@
 
 add_lunch_combo pixeldust_marlin-userdebug
 add_lunch_combo pixeldust_marlin-user
+add_lunch_combo pixeldust_taimen-userdebug
+add_lunch_combo pixeldust_taimen-user
+add_lunch_combo pixeldust_tissot-userdebug
+add_lunch_combo pixeldust_tissot-user
+add_lunch_combo pixeldust_X01BD-userdebug
+add_lunch_combo pixeldust_X01BD-user
 
 # SDClang Environment Variables
 export SDCLANG_AE_CONFIG=vendor/pixeldust/sdclang/sdclangAE.json
