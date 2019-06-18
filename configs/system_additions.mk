@@ -60,7 +60,9 @@ include vendor/themes/common.mk
 
 # Extra Packages
 PRODUCT_PACKAGES += \
-    Launcher3QuickStep
+    Launcher3QuickStep \
+    LiveWallpapers \
+    LiveWallpapersPicker
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
