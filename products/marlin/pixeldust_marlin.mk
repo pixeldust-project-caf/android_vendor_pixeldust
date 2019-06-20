@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Bootanimation
+BOOTANIMATION := 1440
+
 # Release name
 PRODUCT_RELEASE_NAME := PixelXL
 export TARGET_DEVICE := marlin

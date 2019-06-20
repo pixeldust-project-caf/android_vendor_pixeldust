@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The Pixel Dust Project
+# Copyright (C) 2019 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-scr_resolution := 1080
+ifneq ($(filter 1080,$(BOOTANIMATION)),)
+    PRODUCT_COPY_FILES += \
+        vendor/pixeldust/prebuilt/bootanimation/1080.zip:system/media/bootanimation.zip
+endif
 
-# Add Pixel Dust ROM bootanimation based on device
-ifneq ($(filter pixeldust_crosshatch pixeldust_taimen pixeldust_tissot pixeldust_X01BD,$(TARGET_PRODUCT)),)
+ifneq ($(filter 1440,$(BOOTANIMATION)),)
     PRODUCT_COPY_FILES += \
         vendor/pixeldust/prebuilt/bootanimation/1440.zip:system/media/bootanimation.zip
 endif
 
-ifneq ($(wildcard vendor/pixeldust/prebuilt/bootanimation/$(scr_resolution).zip),)
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/bootanimation/$(scr_resolution).zip:system/media/bootanimation.zip
+ifneq ($(filter 1080_black,$(BOOTANIMATION)),)
+    PRODUCT_COPY_FILES += \
+        vendor/pixeldust/prebuilt/bootanimation/1080_black.zip:system/media/bootanimation.zip
+endif
+
+ifneq ($(filter 1440_black,$(BOOTANIMATION)),)
+    PRODUCT_COPY_FILES += \
+        vendor/pixeldust/prebuilt/bootanimation/1440_black.zip:system/media/bootanimation.zip
 endif
 

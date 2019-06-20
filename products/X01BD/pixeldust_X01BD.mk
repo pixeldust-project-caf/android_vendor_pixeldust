@@ -13,8 +13,7 @@
 #  limitations under the License.
 
 # Bootanimation
-TARGET_SCREEN_WIDTH := 1080
-TARGET_SCREEN_HEIGHT := 2280
+BOOTANIMATION := 1080_black
 
 # Release name
 PRODUCT_RELEASE_NAME := Zenfone Max Pro M2
