@@ -63,6 +63,7 @@
     <privapp-permissions package="com.android.systemui">
         <permission name="android.permission.ACCESS_FINE_LOCATION"/>
         <permission name="android.permission.ACCESS_COARSE_LOCATION"/>
+        <permission name="android.permission.CHANGE_CONFIGURATION"/>
         <permission name="android.permission.MODIFY_AUDIO_SETTINGS"/>
         <permission name="android.permission.MODIFY_DAY_NIGHT_MODE"/>
         <permission name="android.permission.NAVIGATION_EDITOR"/>
