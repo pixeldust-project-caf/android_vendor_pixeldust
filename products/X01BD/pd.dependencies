@@ -39,6 +39,6 @@
     "remote": "glab",
     "repository": "vendor_googleapps",
     "target_path": "vendor/googleapps",
-    "revision": "p"
+    "revision": "pie"
   }
 ]

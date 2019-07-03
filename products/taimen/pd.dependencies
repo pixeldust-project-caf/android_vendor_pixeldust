@@ -15,7 +15,7 @@
         "target_path":  "vendor/googleapps",
         "repository":   "vendor_googleapps",
         "remote":       "glab",
-        "revision":     "p"
+        "revision":     "pie"
     },
     {
         "target_path":  "hardware/interfaces",
