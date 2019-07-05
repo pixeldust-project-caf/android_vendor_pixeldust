@@ -52,10 +52,10 @@ PRODUCT_MANUFACTURER := Google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=marlin \
-    PRIVATE_BUILD_DESC="marlin-user 9 PQ2A.190305.002 5240760 release-keys"
+    PRIVATE_BUILD_DESC="marlin-user 9 PQ3A.190605.003 5524043 release-keys"
 
-BUILD_FINGERPRINT="google/marlin/marlin:9/PQ2A.190305.002/5240760:user/release-keys"
-BUILD_THUMBPRINT="9/PQ2A.190305.002/5240760:user/release-keys"
+BUILD_FINGERPRINT="google/marlin/marlin:9/PQ3A.190605.003/5524043:user/release-keys"
+BUILD_THUMBPRINT="9/PQ3A.190605.003/5524043:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
