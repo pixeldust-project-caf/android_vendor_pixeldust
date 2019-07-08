@@ -1,8 +1,8 @@
 [
     {
-        "target_path":  "kernel/google/wahoo",
-        "repository":   "android_kernel_google_wahoo",
-        "remote":       "carbon",
+        "remote":       "github",
+        "repository":   "CarbonROM/android_hardware_qcom_data_ipacfg-mgr",
+        "target_path":  "hardware/qcom/data/ipacfg-mgr",
         "revision":     "cr-7.0"
     },
     {

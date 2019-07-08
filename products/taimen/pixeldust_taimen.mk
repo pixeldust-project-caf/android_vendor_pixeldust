@@ -25,7 +25,7 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 include vendor/pixeldust/configs/system_optional.mk
 
 # Google Apps
-#$(call inherit-product, vendor/googleapps/googleapps.mk)
+$(call inherit-product, vendor/googleapps/googleapps.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/google/taimen/aosp_taimen.mk)
