@@ -21,6 +21,9 @@ include vendor/pixeldust/configs/pixeldust_optimizations.mk
 include vendor/pixeldust/configs/system_additions.mk
 include vendor/pixeldust/configs/version.mk
 include vendor/pixeldust/configs/ota.mk
+include vendor/pixeldust/config/ProductConfigQcom.mk
+
+PRODUCT_SOONG_NAMESPACES += $(PATHMAP_SOONG_NAMESPACES)
 
 # Telephony packages
 PRODUCT_PACKAGES += \
