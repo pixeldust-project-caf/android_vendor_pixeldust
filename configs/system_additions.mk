@@ -62,7 +62,8 @@ include vendor/themes/common.mk
 PRODUCT_PACKAGES += \
     Launcher3QuickStep \
     LiveWallpapers \
-    LiveWallpapersPicker
+    LiveWallpapersPicker \
+    Longshot
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
