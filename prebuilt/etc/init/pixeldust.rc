@@ -8,6 +8,14 @@ on post-fs-data
     # Run sysinit
     start sysinit
 
+    #Smart charging
+    chown system system /sys/class/power_supply/battery/battery_charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/battery_charging_enabled
+    chown system system /sys/class/power_supply/battery/charging_enabled
+    chmod 0666 /sys/class/power_supply/battery/charging_enabled
+    chown system system /sys/class/power_supply/battery/input_suspend
+    chmod 0666  /sys/class/power_supply/battery/input_suspend
+
 # sysinit (/system/etc/init.d)
 service sysinit /system/bin/sysinit
     user root
