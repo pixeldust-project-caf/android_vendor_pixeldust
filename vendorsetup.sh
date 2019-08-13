@@ -22,6 +22,8 @@ add_lunch_combo pixeldust_taimen-userdebug
 add_lunch_combo pixeldust_taimen-user
 add_lunch_combo pixeldust_tissot-userdebug
 add_lunch_combo pixeldust_tissot-user
+add_lunch_combo pixeldust_sailfish-userdebug
+add_lunch_combo pixeldust_sailfish-user
 add_lunch_combo pixeldust_X01BD-userdebug
 add_lunch_combo pixeldust_X01BD-user
 

@@ -12,22 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq (pixeldust_blueline,$(TARGET_PRODUCT))
-    PRODUCT_MAKEFILES += $(LOCAL_DIR)/blueline/pixeldust_blueline.mk
-endif
+    PRODUCT_MAKEFILES += \
+    $(LOCAL_DIR)/blueline/pixeldust_blueline.mk \
+    $(LOCAL_DIR)/marlin/pixeldust_marlin.mk \
+    $(LOCAL_DIR)/taimen/pixeldust_taimen.mk \
+    $(LOCAL_DIR)/tissot/pixeldust_tissot.mk \
+    $(LOCAL_DIR)/sailfish/pixeldust_sailfish.mk \
+    $(LOCAL_DIR)/X01BD/pixeldust_X01BD.mk
 
-ifeq (pixeldust_marlin,$(TARGET_PRODUCT))
-    PRODUCT_MAKEFILES += $(LOCAL_DIR)/marlin/pixeldust_marlin.mk
-endif
-
-ifeq (pixeldust_taimen,$(TARGET_PRODUCT))
-    PRODUCT_MAKEFILES += $(LOCAL_DIR)/taimen/pixeldust_taimen.mk
-endif
-
-ifeq (pixeldust_tissot,$(TARGET_PRODUCT))
-    PRODUCT_MAKEFILES += $(LOCAL_DIR)/tissot/pixeldust_tissot.mk
-endif
-
-ifeq (pixeldust_X01BD,$(TARGET_PRODUCT))
-    PRODUCT_MAKEFILES += $(LOCAL_DIR)/X01BD/pixeldust_X01BD.mk
-endif
