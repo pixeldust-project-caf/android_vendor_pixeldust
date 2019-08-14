@@ -24,14 +24,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# Inherit from X01BD device
-$(call inherit-product, device/asus/X01BD/device.mk)
+# Include common PixelDust stuff
+include vendor/pixeldust/configs/pixeldust_phone.mk
 
 # Generic CAF packages
 include device/qcom/common/common.mk
-
-# Include common PixelDust stuff
-include vendor/pixeldust/configs/pixeldust_phone.mk
 
 # Include optional stuff (e.g. prebuilt apps)
 include vendor/pixeldust/configs/system_optional.mk
@@ -39,24 +36,24 @@ include vendor/pixeldust/configs/system_optional.mk
 # Google Apps
 $(call inherit-product, vendor/googleapps/googleapps.mk)
 
-# Setup device specific product configuration.
+# Inherit from X01BD device
+$(call inherit-product, device/asus/X01BD/device.mk)
+
+# Device identifier. This must come after all inclusions.
 PRODUCT_NAME := pixeldust_X01BD
 PRODUCT_DEVICE := X01BD
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Zenfone Max Pro M2
 PRODUCT_MANUFACTURER := asus
-
-PRODUCT_GMS_CLIENTID_BASE := android-asus
-
 TARGET_VENDOR := asus
 TARGET_VENDOR_PRODUCT_NAME := X01BD
 TARGET_VENDOR_DEVICE_NAME := X01BD
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="crosshatch-user 9 PQ3A.190505.002 5450365 release-keys"
+    PRIVATE_BUILD_DESC="sdm660_64-user 9 PKQ1 1162 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := "google/crosshatch/crosshatch:9/PQ3A.190505.002/5450365:user/release-keys"
+BUILD_FINGERPRINT := "Android/sdm660_64/sdm660_64:9/PKQ1/16.2017.1905.065-20190507:user/release-keys"
 
 # Copy device specific prebuilt files.
 PRODUCT_COPY_FILES += \
