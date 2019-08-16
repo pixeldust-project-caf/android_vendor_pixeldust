@@ -58,11 +58,12 @@ PRODUCT_MANUFACTURER := Google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=blueline \
-    BUILD_FINGERPRINT=google/blueline/blueline:9/PQ3A.190605.003/5524043:user/release-keys \
-    PRIVATE_BUILD_DESC="blueline-user 9 PQ3A.190605.003 5524043 release-keys"
+    BUILD_FINGERPRINT=google/blueline/blueline:9/PQ3A.190705.001/5565753:user/release-keys \
+    PRIVATE_BUILD_DESC="blueline-user 9 PQ3A.190705.001 5565753 release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.pixeldust.maintainer="spezi77"
+    ro.pixeldust.maintainer="spezi77" \
+    ro.pixeldust.device="blueline"
 
 # Copy device specific prebuilt files.
 PRODUCT_COPY_FILES += \
