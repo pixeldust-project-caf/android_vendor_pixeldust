@@ -60,10 +60,8 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT=google/taimen/taimen:9/PQ3A.190705.001/5565753:user/release-keys
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.pixeldust.device="taimen" \
-    ro.config.ringtone=The_big_adventure.ogg \
-    ro.config.notification_sound=Popcorn.ogg \
-    ro.config.alarm_alert=Bright_morning.ogg    
+    ro.carbon.maintainer="nitin1438"
+	ro.pixeldust.device="taimen"
 
 $(call inherit-product-if-exists, vendor/google/taimen/taimen-vendor.mk)
 
