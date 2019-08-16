@@ -28,6 +28,9 @@ TARGET_USES_AOSP := true
 # Use the sepolicies which are being shipped with our device
 TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 
+# Inherit device configuration
+$(call inherit-product, device/google/taimen/aosp_taimen.mk)
+
 # Generic CAF packages
 include device/qcom/common/common.mk
 
@@ -43,9 +46,6 @@ include vendor/pixeldust/configs/ambientsense.mk
 # Google Apps
 $(call inherit-product, vendor/googleapps/googleapps.mk)
 
-# Inherit device configuration
-$(call inherit-product, device/google/taimen/aosp_taimen.mk)
-
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_taimen
 PRODUCT_BRAND := google
@@ -60,8 +60,8 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT=google/taimen/taimen:9/PQ3A.190705.001/5565753:user/release-keys
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carbon.maintainer="nitin1438"
-	ro.pixeldust.device="taimen"
+    ro.pixeldust.maintainer="nitin1438" \
+    ro.pixeldust.device="taimen"
 
 $(call inherit-product-if-exists, vendor/google/taimen/taimen-vendor.mk)
 
