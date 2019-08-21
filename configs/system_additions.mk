@@ -63,7 +63,12 @@ PRODUCT_PACKAGES += \
     Launcher3QuickStep \
     LiveWallpapers \
     LiveWallpapersPicker \
-    Longshot
+    Longshot \
+    Recorder
+
+# Some permissions
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/etc/privapp-permissions/privapp-permissions-recorder.xml:system/etc/permissions/privapp-permissions-recorder.xml
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
