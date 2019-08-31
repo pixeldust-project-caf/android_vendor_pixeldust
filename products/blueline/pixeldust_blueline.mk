@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Bootanimation
-BOOTANIMATION := 1440
+BOOTANIMATION := 1080_black
 
 # Release name
 PRODUCT_RELEASE_NAME := Pixel 3
