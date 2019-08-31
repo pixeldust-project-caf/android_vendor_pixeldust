@@ -30,9 +30,9 @@
         "revision":     "pie"
     },
     {
-        "target_path":  "hardware/interfaces",
-        "repository":   "android_hardware_interfaces",
-        "remote":       "pdcaf",
+        "remote":       "blobs",
+        "repository":   "proprietary_vendor_qcom_common",
+        "target_path":  "vendor/qcom/common",
         "revision":     "pie"
     },
     {
@@ -72,33 +72,9 @@
         "revision":     "refs/tags/android-9.0.0_r1"
     },
     {
-        "target_path":  "hardware/qcom/msm8960",
-        "repository":   "platform/hardware/qcom/msm8960",
-        "remote":       "aosp",
-        "revision":     "refs/tags/android-9.0.0_r1"
-    },
-    {
-        "target_path":  "hardware/qcom/msm8996",
-        "repository":   "platform/hardware/qcom/msm8996",
-        "remote":       "aosp",
-        "revision":     "refs/tags/android-9.0.0_r1"
-    },
-    {
-        "target_path":  "hardware/qcom/msm8x09",
-        "repository":   "platform/hardware/qcom/msm8x09",
-        "remote":       "aosp",
-        "revision":     "refs/tags/android-9.0.0_r1"
-    },
-    {
-        "target_path":  "hardware/qcom/power",
-        "repository":   "platform/hardware/qcom/power",
-        "remote":       "aosp",
-        "revision":     "refs/tags/android-9.0.0_r1"
-    },
-    {
         "target_path":  "external/wpa_supplicant_8",
         "repository":   "platform/external/wpa_supplicant_8",
         "remote":       "aosp",
         "revision":     "refs/tags/android-9.0.0_r1"
-   }
+    }
 ]
