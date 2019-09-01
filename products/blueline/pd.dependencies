@@ -72,6 +72,12 @@
         "revision":     "refs/tags/android-9.0.0_r1"
     },
     {
+        "target_path":  "hardware/google/pixel",
+        "repository":   "platform/hardware/google/pixel",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-9.0.0_r45"
+    },
+    {
         "target_path":  "external/wpa_supplicant_8",
         "repository":   "platform/external/wpa_supplicant_8",
         "remote":       "aosp",
