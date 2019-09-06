@@ -213,8 +213,7 @@ define make-dtbo-target
 $(call internal-make-kernel-target,$(PRODUCT_OUT)/dtbo,$(1))
 endef
 
-.PHONY: force_additional_config
-$(KERNEL_ADDITIONAL_CONFIG_OUT): force_additional_config
+$(KERNEL_ADDITIONAL_CONFIG_OUT):
 	$(hide) cmp -s $(KERNEL_ADDITIONAL_CONFIG_SRC) $@ || cp $(KERNEL_ADDITIONAL_CONFIG_SRC) $@;
 
 $(KERNEL_CONFIG): $(KERNEL_DEFCONFIG_SRC) $(KERNEL_ADDITIONAL_CONFIG_OUT)
@@ -234,8 +233,7 @@ $(KERNEL_CONFIG): $(KERNEL_DEFCONFIG_SRC) $(KERNEL_ADDITIONAL_CONFIG_OUT)
 			$(call make-kernel-target,KCONFIG_ALLCONFIG=$(KERNEL_OUT)/.config alldefconfig); \
 		fi
 
-.PHONY: TARGET_KERNEL_BINARIES
-TARGET_KERNEL_BINARIES: $(KERNEL_CONFIG)
+$(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG)
 	@echo "Building Kernel"
 	$(call make-kernel-target,$(BOARD_KERNEL_IMAGE_NAME))
 	$(hide) if grep -q '^CONFIG_OF=y' $(KERNEL_CONFIG); then \
@@ -259,9 +257,7 @@ INSTALLED_KERNEL_MODULES: depmod-host
 			($(call build-image-kernel-modules,$$modules,$(KERNEL_MODULES_OUT),$(KERNEL_MODULE_MOUNTPOINT)/,$(KERNEL_DEPMOD_STAGING_DIR))); \
 		fi
 
-$(TARGET_KERNEL_MODULES): TARGET_KERNEL_BINARIES
-
-$(TARGET_PREBUILT_INT_KERNEL): $(TARGET_KERNEL_MODULES)
+$(TARGET_KERNEL_MODULES): $(TARGET_PREBUILT_INT_KERNEL)
 
 # Install kernel (uapi) headers.
 #
@@ -369,7 +365,7 @@ ALL_PREBUILT += $(INSTALLED_DTBOIMAGE_TARGET)
 endif
 
 .PHONY: kernel
-kernel: $(INSTALLED_KERNEL_TARGET)
+kernel: $(INSTALLED_KERNEL_TARGET) $(TARGET_KERNEL_MODULES)
 
 .PHONY: dtbo
 dtbo: $(INSTALLED_DTBOIMAGE_TARGET)
