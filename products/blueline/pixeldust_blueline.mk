@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Bootanimation
-BOOTANIMATION := 1080_black
+BOOTANIMATION := 1080
 
 # Release name
 PRODUCT_RELEASE_NAME := Pixel 3
@@ -35,9 +35,6 @@ $(call inherit-product, device/google/crosshatch/aosp_blueline.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
-# Generic CAF packages
-include device/qcom/common/common.mk
-
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
 
@@ -45,7 +42,7 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 include vendor/pixeldust/configs/system_optional.mk
 
 # Google Apps
-$(call inherit-product, vendor/googleapps/googleapps.mk)
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
 
 # Vendor
 $(call inherit-product-if-exists, vendor/google/blueline/blueline-vendor.mk)
@@ -58,8 +55,8 @@ PRODUCT_MANUFACTURER := Google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=blueline \
-    BUILD_FINGERPRINT=google/blueline/blueline:9/PQ3A.190705.001/5565753:user/release-keys \
-    PRIVATE_BUILD_DESC="blueline-user 9 PQ3A.190705.001 5565753 release-keys"
+    BUILD_FINGERPRINT=google/blueline/blueline:10/QP1A.190711.020/5800535:user/release-keys \
+    PRIVATE_BUILD_DESC="blueline-user 10 QP1A.190711.020 5800535 release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
