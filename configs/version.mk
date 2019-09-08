@@ -20,7 +20,9 @@ ifndef SIGN_KEY
   SIGN_KEY := UNOFFICIAL
 endif
 PRODUCT_BUILD_PROP_OVERRIDES := TARGET_BUILD_TYPE=user
-BUILD_DATETIME := $(shell date -u +%s)
+BUILD_DATE := $(shell date -u +%Y%m%d)
+BUILD_TIME := $(shell date -u +%H%M)
+BUILD_TIMESTAMP := $(shell date -u +%s)
 
 # Pixel Dust ROM package name 
 PIXELDUST_VERSION := $(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(shell date +%Y%m%d-%H%M)
@@ -31,5 +33,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.ota.version=$(PIXELDUST_VERSION) \
     ro.pixeldust.ota.version_code=$(BUILD_VERSION) \
     ro.pixeldust.ota.build_type=$(SIGN_KEY) \
-    ro.pixeldust.ota.build_date_utc=$(shell date -u +%Y%m%d-%H%M)
+    ro.pixeldust.ota.build_date_utc=$(BUILD_DATE)-$(BUILD_TIME)
 
