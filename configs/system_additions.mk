@@ -56,7 +56,7 @@ PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/default-permissions/org.pixelexperience.weather.client.xml:system/etc/default-permissions/org.pixelexperience.weather.client.xml
 
 # Themes
-include vendor/themes/common.mk
+-include vendor/themes/common.mk
 
 # Extra Packages
 PRODUCT_PACKAGES += \
