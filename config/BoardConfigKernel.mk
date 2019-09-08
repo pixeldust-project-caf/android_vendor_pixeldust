@@ -58,6 +58,14 @@ else ifeq ($(BOARD_KERNEL_SEPARATED_DTBO),true)
 BOARD_PREBUILT_DTBOIMAGE ?= $(PRODUCT_OUT)/dtbo-pre.img
 endif
 
+# Set the out dir for the kernel's O= arg
+# This needs to be an absolute path, so only set this if the standard out dir isn't used
+OUT_DIR_PREFIX := $(shell echo $(OUT_DIR) | sed -e 's|/target/.*$$||g')
+KERNEL_BUILD_OUT_PREFIX :=
+ifeq ($(OUT_DIR_PREFIX),out)
+KERNEL_BUILD_OUT_PREFIX := $(BUILD_TOP)/
+endif
+
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(strip $(TARGET_KERNEL_CROSS_COMPILE_PREFIX))
 ifneq ($(TARGET_KERNEL_CROSS_COMPILE_PREFIX),)
 KERNEL_TOOLCHAIN_PREFIX ?= $(TARGET_KERNEL_CROSS_COMPILE_PREFIX)
