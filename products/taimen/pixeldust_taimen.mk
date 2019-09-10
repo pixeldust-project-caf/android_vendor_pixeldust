@@ -32,7 +32,7 @@ TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 $(call inherit-product, device/google/taimen/aosp_taimen.mk)
 
 # Generic CAF packages
-include device/qcom/common/common.mk
+#include device/qcom/common/common.mk
 
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
@@ -41,10 +41,10 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 include vendor/pixeldust/configs/system_optional.mk
 
 # Include pixel ambient sense (Now playing)
-include vendor/pixeldust/configs/ambientsense.mk
+#include vendor/pixeldust/configs/ambientsense.mk
 
 # Google Apps
-$(call inherit-product, vendor/googleapps/googleapps.mk)
+$(call inherit-product, vendor/pixelgapps/pixel-gapps.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_taimen
@@ -55,9 +55,9 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=taimen \
-    PRIVATE_BUILD_DESC="taimen-user 9 PQ3A.190705.001 5565753 release-keys"
+    BUILD_FINGERPRINT="taimen-user 10 QP1A.190711.020 5800535 release-keys"
 
-BUILD_FINGERPRINT=google/taimen/taimen:9/PQ3A.190705.001/5565753:user/release-keys
+BUILD_FINGERPRINT=google/taimen/taimen:10/QP1A.190711.020/5800535:user/release-keys
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="nitin1438" \
