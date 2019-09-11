@@ -29,10 +29,7 @@ TARGET_USES_AOSP := true
 TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 
 # Inherit AOSP device configuration for sailfish.
-$(call inherit-product, device/google/marlin/aosp_sailfish.mk)
-
-# Generic CAF packages
-include device/qcom/common/common.mk
+$(call inherit-product-if-exists, device/google/marlin/aosp_sailfish.mk)
 
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
@@ -41,7 +38,10 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 include vendor/pixeldust/configs/system_optional.mk
 
 # Google Apps
-$(call inherit-product, vendor/googleapps/googleapps.mk)
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+
+# Include vendor blobs
+$(call inherit-product-if-exists, vendor/google/sailfish/sailfish-vendor.mk)
 
 # Setup device specific product configuration.
 PRODUCT_NAME := pixeldust_sailfish
@@ -64,7 +64,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Copy device specific prebuilt files.
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
-
-# Use SDCLANG
-TARGET_USE_SDCLANG := true
-

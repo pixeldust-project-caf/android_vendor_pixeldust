@@ -2,73 +2,19 @@
     {
         "target_path":  "device/google/marlin",
         "repository":   "android_device_google_marlin",
-        "remote":       "pdcaf",
-        "revision":     "pie"
+        "remote":       "pdx",
+        "revision":     "ten"
     },
     {
         "target_path":  "kernel/google/marlin",
         "repository":   "android_kernel_google_marlin",
-        "remote":       "pdcaf",
-        "revision":     "pie"
+        "remote":       "pdx",
+        "revision":     "ten"
     },
     {
-        "target_path":  "vendor/google_devices",
-        "repository":   "android_vendor_google_pixels",
-        "remote":       "pdcaf",
-        "revision":     "pie"
-    },
-    {
-        "target_path":  "vendor/googleapps",
-        "repository":   "vendor_googleapps",
-        "remote":       "glab",
-        "revision":     "pie"
-    },
-    {
-        "remote":       "blobs",
-        "repository":   "proprietary_vendor_qcom_common",
-        "target_path":  "vendor/qcom/common",
-        "revision":     "pie"
-    },
-    {
-        "target_path":  "hardware/qcom/audio",
-        "repository":   "android_hardware_qcom_audio",
-        "remote":       "pdcaf",
-        "revision":     "pie"
-    },
-    {
-        "target_path":  "hardware/qcom/camera",
-        "repository":   "android_hardware_qcom_camera",
-        "remote":       "pdcaf",
-        "revision":     "pie"
-    },
-    {
-        "target_path":  "hardware/qcom/display",
-        "repository":   "android_hardware_qcom_display",
-        "remote":       "pdcaf",
-        "revision":     "pie"
-    },
-    {
-        "target_path":  "hardware/qcom/gps",
-        "repository":   "platform/hardware/qcom/gps",
-        "remote":       "aosp",
-        "revision":     "refs/tags/android-9.0.0_r1"
-    },
-    {
-        "target_path":  "hardware/qcom/keymaster",
-        "repository":   "platform/hardware/qcom/keymaster",
-        "remote":       "aosp",
-        "revision":     "refs/tags/android-9.0.0_r1"
-    },
-    {
-        "target_path":  "hardware/qcom/media",
-        "repository":   "platform/hardware/qcom/media",
-        "remote":       "aosp",
-        "revision":     "refs/tags/android-9.0.0_r1"
-    },
-    {
-        "target_path":  "external/wpa_supplicant_8",
-        "repository":   "platform/external/wpa_supplicant_8",
-        "remote":       "aosp",
-        "revision":     "refs/tags/android-9.0.0_r1"
+        "target_path":  "vendor/google",
+        "repository":   "android_vendor_google",
+        "remote":       "pdx",
+        "revision":     "ten"
     }
 ]
