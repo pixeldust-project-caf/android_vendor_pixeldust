@@ -32,10 +32,10 @@
 #include "vndfwk-detect.h"
 
 #include "jni.h"
-#include "JNIHelp.h"
 #include <dlfcn.h>
 #include <string.h>
 #include <log/log.h>
+#include <utils/misc.h>
 
 #define VNDFWK_DETECT_LIB "libqti_vndfwk_detect.so"
 
