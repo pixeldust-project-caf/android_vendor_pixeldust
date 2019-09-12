@@ -69,6 +69,9 @@ type Product_variables struct {
 		Cflags []string
 		Whole_static_libs []string
 	}
+	Target_needs_netd_direct_connect_rule struct {
+		Cppflags []string
+	}
 }
 
 type ProductVariables struct {
@@ -91,4 +94,5 @@ type ProductVariables struct {
 	Uses_generic_camera_parameter_library   *bool `json:",omitempty"`
 	Specific_camera_parameter_library       *string `json:",omitempty"`
 	Target_surfaceflinger_fod_lib           *string `json:",omitempty"`
+	Target_needs_netd_direct_connect_rule   *bool `json:",omitempty"`
 }

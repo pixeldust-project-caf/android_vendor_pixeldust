@@ -21,5 +21,6 @@ $(call add_json_bool,           Has_legacy_camera_hal1,                 $(filter
 $(call add_json_bool,           Uses_generic_camera_parameter_library,  $(if $(TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY),,true))
 $(call add_json_str,            Specific_camera_parameter_library,      $(TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY))
 $(call add_json_str_omitempty,  Target_surfaceflinger_fod_lib,          $(TARGET_SURFACEFLINGER_FOD_LIB))
+$(call add_json_bool,           Target_needs_netd_direct_connect_rule,  $(filter true,$(TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE)))
 
 $(call end_json_map)
