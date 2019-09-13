@@ -12,6 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Themed bootanimation
+TARGET_MISC_BLOCK_OFFSET ?= 0
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.misc.block.offset=$(TARGET_MISC_BLOCK_OFFSET)
+PRODUCT_PACKAGES += \
+    misc_writer_system \
+    themed_bootanimation
+
 ifneq ($(filter 1080,$(BOOTANIMATION)),)
     PRODUCT_COPY_FILES += \
         vendor/pixeldust/prebuilt/bootanimation/1080.zip:system/media/bootanimation.zip
