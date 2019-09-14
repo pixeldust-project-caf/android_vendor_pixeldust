@@ -12,27 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Extended system fonts
+# Google fonts
 PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/fonts/gobold/Gobold.ttf:system/fonts/Gobold.ttf \
-    vendor/pixeldust/prebuilt/fonts/gobold/Gobold-Italic.ttf:system/fonts/Gobold-Italic.ttf \
-    vendor/pixeldust/prebuilt/fonts/gobold/GoboldBold.ttf:system/fonts/GoboldBold.ttf \
-    vendor/pixeldust/prebuilt/fonts/gobold/GoboldBold-Italic.ttf:system/fonts/GoboldBold-Italic.ttf \
-    vendor/pixeldust/prebuilt/fonts/gobold/GoboldThinLight.ttf:system/fonts/GoboldThinLight.ttf \
-    vendor/pixeldust/prebuilt/fonts/gobold/GoboldThinLight-Italic.ttf:system/fonts/GoboldThinLight-Italic.ttf \
-    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-Italic.ttf:system/fonts/ProductSans-Italic.ttf \
-    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-Light.ttf:system/fonts/ProductSans-Light.ttf \
-    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-LightItalic.ttf:system/fonts/ProductSans-LightItalic.ttf \
-    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-Regular.ttf:system/fonts/ProductSans-Regular.ttf \
-    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-Thin.ttf:system/fonts/ProductSans-Thin.ttf \
-    vendor/pixeldust/prebuilt/fonts/ProductSans/ProductSans-ThinItalic.ttf:system/fonts/ProductSans-ThinItalic.ttf \
-    vendor/pixeldust/prebuilt/fonts/roadrage/road_rage.ttf:system/fonts/RoadRage-Regular.ttf \
-    vendor/pixeldust/prebuilt/fonts/neoneon/neoneon.ttf:system/fonts/Neoneon-Regular.ttf \
-    vendor/pixeldust/prebuilt/fonts/mexcellent/mexcellent.ttf:system/fonts/Mexcellent-Regular.ttf \
-    vendor/pixeldust/prebuilt/fonts/burnstown/burnstown.ttf:system/fonts/Burnstown-Regular.ttf \
-    vendor/pixeldust/prebuilt/fonts/dumbledor/dumbledor.ttf:system/fonts/Dumbledor-Regular.ttf \
-    vendor/pixeldust/prebuilt/fonts/PhantomBold/PhantomBold.ttf:system/fonts/PhantomBold-Regular.ttf \
-    vendor/pixeldust/prebuilt/fonts/snowstorm/snowstorm.ttf:system/fonts/Snowstorm-Regular.ttf \
-    vendor/pixeldust/prebuilt/fonts/vcrosd/vcr_osd_mono.ttf:system/fonts/ThemeableFont-Regular.ttf \
-    vendor/pixeldust/prebuilt/fonts/Shamshung/Shamshung.ttf:system/fonts/Shamshung.ttf
-
+    vendor/pixeldust/prebuilt/etc/fonts_customization.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/fonts_customization.xml \
+    vendor/pixeldust/prebuilt/fonts/GoogleSans-BoldItalic.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-BoldItalic.ttf \
+    vendor/pixeldust/prebuilt/fonts/GoogleSans-Bold.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Bold.ttf \
+    vendor/pixeldust/prebuilt/fonts/GoogleSans-Italic.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Italic.ttf \
+    vendor/pixeldust/prebuilt/fonts/GoogleSans-MediumItalic.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-MediumItalic.ttf \
+    vendor/pixeldust/prebuilt/fonts/GoogleSans-Medium.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Medium.ttf \
+    vendor/pixeldust/prebuilt/fonts/GoogleSans-Regular.ttf:$(TARGET_COPY_OUT_PRODUCT)/fonts/GoogleSans-Regular.ttf
