@@ -1,0 +1,35 @@
+prebuilt_font {
+	name: "GoogleSans-BoldItalic.ttf",
+	src: "GoogleSans-BoldItalic.ttf",
+	product_specific: true,
+}
+
+prebuilt_font {
+	name: "GoogleSans-Bold.ttf",
+	src: "GoogleSans-Bold.ttf",
+	product_specific: true,
+}
+
+prebuilt_font {
+	name: "GoogleSans-Italic.ttf",
+	src: "GoogleSans-Italic.ttf",
+	product_specific: true,
+}
+
+prebuilt_font {
+	name: "GoogleSans-MediumItalic.ttf",
+	src: "GoogleSans-MediumItalic.ttf",
+	product_specific: true,
+}
+
+prebuilt_font {
+	name: "GoogleSans-Medium.ttf",
+	src: "GoogleSans-Medium.ttf",
+	product_specific: true,
+}
+
+prebuilt_font {
+	name: "GoogleSans-Regular.ttf",
+	src: "GoogleSans-Regular.ttf",
+	product_specific: true,
+}
