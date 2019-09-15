@@ -188,3 +188,19 @@ function repopick()
     T=$(gettop)
     $T/vendor/pixeldust/build/tools/repopick.py $@
 }
+
+# Enable SD-LLVM if available
+if [ -d $(gettop)/vendor/qcom/sdclang-8.0/linux-x86 ]; then
+    case `uname -s` in
+        Darwin)
+            # Darwin is not supported yet
+            ;;
+        *)
+            export SDCLANG=true
+            export SDCLANG_PATH=$(gettop)/vendor/qcom/sdclang-8.0/linux-x86/bin
+            export SDCLANG_PATH_2=$(gettop)/vendor/qcom/sdclang-8.0/linux-x86/bin
+            export SDCLANG_FLAGS=
+            export SDCLANG_FLAGS_2=
+            ;;
+    esac
+fi
