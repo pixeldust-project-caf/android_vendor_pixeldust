@@ -1,4 +1,4 @@
-# Copyright (C) 2018-2020 The Pixel Dust Project
+# Copyright (C) 2018 The Pixel Dust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,11 +19,13 @@ include vendor/pixeldust/configs/fonts.mk
 include vendor/pixeldust/configs/pixeldust_main.mk
 include vendor/pixeldust/configs/pixeldust_optimizations.mk
 include vendor/pixeldust/configs/system_additions.mk
+include vendor/pixeldust/configs/telephony.mk
 include vendor/pixeldust/configs/version.mk
 include vendor/pixeldust/configs/ota.mk
 
 # Themes
 -include vendor/themes/common.mk
+
 
 # Telephony packages
 PRODUCT_PACKAGES += \
