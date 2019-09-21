@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Turn off the error checks and allow PATH tool to be used
+export TEMPORARY_DISABLE_PATH_RESTRICTIONS=true 
+
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG := false
 
