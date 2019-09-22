@@ -15,6 +15,17 @@
 # Turn off the error checks and allow PATH tool to be used
 export TEMPORARY_DISABLE_PATH_RESTRICTIONS=true 
 
+# Don't build debug for host or device
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
+ART_BUILD_TARGET_NDEBUG := true
+ART_BUILD_TARGET_DEBUG := false
+ART_BUILD_HOST_NDEBUG := true
+ART_BUILD_HOST_DEBUG := false
+
+# Dex pre-opt
+WITH_DEXPREOPT := true
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
+
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG := false
 
