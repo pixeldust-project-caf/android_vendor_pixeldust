@@ -13,7 +13,10 @@
 # limitations under the License.
 
 # Turn off the error checks and allow PATH tool to be used
-export TEMPORARY_DISABLE_PATH_RESTRICTIONS=true 
+export TEMPORARY_DISABLE_PATH_RESTRICTIONS=true
+
+# Disable ADB authentication
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
 
 # Don't build debug for host or device
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
