@@ -59,6 +59,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="blueline-user 10 QQ1A.191205.008 5974827 release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.fingerprint=$(BUILD_FINGERPRINT) \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="blueline"
 

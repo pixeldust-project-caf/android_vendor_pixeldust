@@ -59,6 +59,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="taimen-user 10 QP1A.191105.004 5908170 release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.fingerprint=$(BUILD_FINGERPRINT) \
     ro.pixeldust.maintainer="nitin1438" \
     ro.pixeldust.device="taimen"
 
