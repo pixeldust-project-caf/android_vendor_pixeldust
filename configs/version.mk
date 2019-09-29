@@ -27,7 +27,7 @@ BUILD_TIMESTAMP := $(shell date -u +%s)
 # Pixel Dust ROM package name 
 PIXELDUST_VERSION := $(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(shell date +%Y%m%d-%H%M)
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     com.pixeldust.fingerprint=$(PIXELDUST_VERSION) \
     ro.pixeldust.version=$(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(SIGN_KEY) \
     ro.pixeldust.ota.version=$(PIXELDUST_VERSION) \

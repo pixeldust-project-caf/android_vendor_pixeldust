@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The Pixel Dust Project
+# Copyright (C) 2019 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,12 +25,12 @@ endif
 
 # Google property overides
 ifeq ($(filter marlin sailfish,$(TARGET_PRODUCT)),)
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     keyguard.no_require_sim=true \
     ro.com.android.dataroaming=false
 endif
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     ro.carrier=unknown \
     ro.opa.eligible_device=true
 

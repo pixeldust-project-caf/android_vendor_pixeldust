@@ -27,6 +27,6 @@ PRODUCT_PACKAGES += \
     CellBroadcastReceiver
 
 # Enable tethering
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.dun.override=0
 
