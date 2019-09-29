@@ -32,6 +32,11 @@ WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG := false
 
+# Strip the local variable table and the local variable type table to reduce
+# the size of the system image. This has no bearing on stack traces, but will
+# leave less information available via JDWP.
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+
 # SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
 
