@@ -283,7 +283,6 @@ alldefconfig:
 		 $(call make-kernel-target,alldefconfig)
 
 ifeq ($(TARGET_NEEDS_DTBOIMAGE),true)
-BOARD_PREBUILT_DTBOIMAGE = $(PRODUCT_OUT)/dtbo/arch/$(KERNEL_ARCH)/boot/dtbo.img
 $(BOARD_PREBUILT_DTBOIMAGE):
 	echo -e "Building DTBO.img"
 	$(call make-dtbo-target,$(KERNEL_DEFCONFIG))
