@@ -53,9 +53,9 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=marlin \
-    PRIVATE_BUILD_DESC="marlin-user 10 PQ3A.190801.002 5670241 release-keys"
+    PRIVATE_BUILD_DESC="marlin-user 10 QP1A.191005.007.A3 5908163 release-keys"
 
-BUILD_FINGERPRINT := google/marlin/marlin:10/PQ3A.190801.002/5670241:user/release-keys
+BUILD_FINGERPRINT := google/marlin/marlin:10/QP1A.191005.007.A3/5908163:user/release-keys
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
