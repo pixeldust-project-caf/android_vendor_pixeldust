@@ -3,7 +3,7 @@ type Product_variables struct {
 	Additional_gralloc_10_usage_bits struct {
 		Cppflags []string
 	}
-	Should_skip_waiting_for_qsee struct {
+	Should_wait_for_qsee struct {
 		Cflags []string
 	}
 	Supports_hw_fde struct {
@@ -79,7 +79,7 @@ type Product_variables struct {
 
 type ProductVariables struct {
 	Additional_gralloc_10_usage_bits        *string `json:",omitempty"`
-	Should_skip_waiting_for_qsee            *bool `json:",omitempty"`
+	Should_wait_for_qsee                    *bool `json:",omitempty"`
 	Supports_hw_fde                         *bool `json:",omitempty"`
 	Supports_hw_fde_perf                    *bool `json:",omitempty"`
  	Target_init_vendor_lib                  *string `json:",omitempty"`
