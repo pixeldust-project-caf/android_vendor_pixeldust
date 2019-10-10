@@ -13,7 +13,7 @@
 #  limitations under the License.
 
 # Bootanimation
-BOOTANIMATION := 1080_black
+BOOTANIMATION := 1080
 
 # Release name
 PRODUCT_RELEASE_NAME := Zenfone Max Pro M2
@@ -23,11 +23,9 @@ export TARGET_DEVICE := X01BD
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
+
 # Inherit from X01BD device
 $(call inherit-product, device/asus/X01BD/device.mk)
-
-# Generic CAF packages
-include device/qcom/common/common.mk
 
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
@@ -36,7 +34,7 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 include vendor/pixeldust/configs/system_optional.mk
 
 # Google Apps
-$(call inherit-product, vendor/googleapps/googleapps.mk)
+include vendor/pixelgapps/pixel-gapps.mk
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := pixeldust_X01BD
@@ -45,15 +43,23 @@ PRODUCT_BRAND := asus
 PRODUCT_MODEL := Zenfone Max Pro M2
 PRODUCT_MANUFACTURER := asus
 TARGET_VENDOR := asus
-TARGET_VENDOR_PRODUCT_NAME := X01BD
-TARGET_VENDOR_DEVICE_NAME := X01BD
+
+PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=X01BD PRODUCT_NAME=X01BD
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME=X01BD \
-    PRIVATE_BUILD_DESC="sdm660_64-user 9 PKQ1 1162 release-keys"
+    PRODUCT_DEVICE=ASUS_X01BD_1 \
+    PRODUCT_NAME=WW_X01BD \
+    PRIVATE_BUILD_DESC="sdm660_64-user 8.1.0 OPM1 3402 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := "Android/sdm660_64/sdm660_64:9/PKQ1/16.2017.1905.065-20190507:user/release-keys"
+BUILD_FINGERPRINT := "asus/WW_X01BD/ASUS_X01BD_1:8.1.0/OPM1/15.2016.1902.192-20190226:user/release-keys"
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.build.fingerprint=$(BUILD_FINGERPRINT)
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.pixeldust.maintainer="SonalSingh" \
+    ro.pixeldust.device="X01BD"
 
 # Copy device specific prebuilt files.
 PRODUCT_COPY_FILES += \
