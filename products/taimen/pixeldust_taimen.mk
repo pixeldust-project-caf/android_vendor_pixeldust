@@ -55,9 +55,8 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=taimen \
-    BUILD_FINGERPRINT="taimen-user 10 QP1A.190711.020 5800535 release-keys"
-
-BUILD_FINGERPRINT=google/taimen/taimen:10/QP1A.190711.020/5800535:user/release-keys
+    BUILD_FINGERPRINT=google/taimen/taimen:10/QP1A.191105.004/5908170:user/release-keys \
+    PRIVATE_BUILD_DESC="taimen-user 10 QP1A.191105.004 5908170 release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="nitin1438" \
