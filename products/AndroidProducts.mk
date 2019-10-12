@@ -14,6 +14,7 @@
 
 PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/blueline/pixeldust_blueline.mk \
+    $(LOCAL_DIR)/crosshatch/pixeldust_crosshatch.mk \
     $(LOCAL_DIR)/marlin/pixeldust_marlin.mk \
     $(LOCAL_DIR)/taimen/pixeldust_taimen.mk \
     $(LOCAL_DIR)/tissot/pixeldust_tissot.mk \
@@ -25,6 +26,8 @@ PRODUCT_MAKEFILES += \
 COMMON_LUNCH_CHOICES += \
     pixeldust_blueline-userdebug \
     pixeldust_blueline-user \
+    pixeldust_crosshatch-userdebug \
+    pixeldust_crosshatch-user \
     pixeldust_marlin-userdebug \
     pixeldust_marlin-user \
     pixeldust_taimen-userdebug \
