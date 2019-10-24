@@ -87,6 +87,10 @@ PRODUCT_PACKAGES += \
 
 endif
 
+# Android Beam
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
+
 # Qualcomm privileged app permissions
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/config/permissions/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
