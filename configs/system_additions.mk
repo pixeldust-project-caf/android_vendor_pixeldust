@@ -92,6 +92,10 @@ PRODUCT_PACKAGES += \
 
 endif
 
+# Android Beam
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
+
 # Backup Tool
 ifeq ($(AB_OTA_UPDATER),true)
 PRODUCT_COPY_FILES += \
