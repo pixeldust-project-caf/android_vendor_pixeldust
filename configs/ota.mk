@@ -15,8 +15,9 @@
 ifneq ($(IS_GENERIC_SYSTEM_IMAGE), true)
 ifeq ($(SIGN_KEY), RELEASE)
 
-PRODUCT_GENERIC_PROPERTIES += \
-    sys.ota.disable_uncrypt=1
+PRODUCT_PRODUCT_PROPERTIES += \
+    sys.ota.disable_uncrypt=1 \
+    pixeldust.updater.allow_downgrading=1
 
 PRODUCT_PACKAGES += \
     Updates

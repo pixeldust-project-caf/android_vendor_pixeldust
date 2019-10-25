@@ -32,6 +32,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.pixeldust.version=$(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(SIGN_KEY) \
     ro.pixeldust.ota.version=$(PIXELDUST_VERSION) \
     ro.pixeldust.ota.version_code=$(BUILD_VERSION) \
-    ro.pixeldust.ota.build_type=$(SIGN_KEY) \
+    ro.pixeldust.ota.timestamp=$(BUILD_TIMESTAMP) \
     ro.pixeldust.ota.build_date_utc=$(BUILD_DATE)-$(BUILD_TIME)
 
