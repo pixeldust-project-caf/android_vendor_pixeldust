@@ -64,6 +64,7 @@ VARIANT_DEFCONFIG := $(TARGET_KERNEL_VARIANT_CONFIG)
 SELINUX_DEFCONFIG := $(TARGET_KERNEL_SELINUX_CONFIG)
 
 ## Internal variables
+DTBS_OUT := $(PRODUCT_OUT)/dtbs
 KERNEL_OUT := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ
 KERNEL_CONFIG := $(KERNEL_OUT)/.config
 
@@ -213,14 +214,14 @@ endef
 # Make a DTB targets
 # $(1): The DTB target to build (eg. dtbs, defconfig)
 define make-dtb-target
-$(call internal-make-kernel-target,$(PRODUCT_OUT)/dtbs,$(1))
+$(call internal-make-kernel-target,$(DTBS_OUT),$(1))
 endef
 
 $(KERNEL_ADDITIONAL_CONFIG_OUT):
 	$(hide) cmp -s $(KERNEL_ADDITIONAL_CONFIG_SRC) $@ || cp $(KERNEL_ADDITIONAL_CONFIG_SRC) $@;
 
 $(KERNEL_CONFIG): $(KERNEL_DEFCONFIG_SRC) $(KERNEL_ADDITIONAL_CONFIG_OUT)
-	@echo "Building Kernel Config"
+	@echo -e ${CL_GRN}"Building Kernel Config"${CL_RST}
 	$(hide) mkdir -p $(KERNEL_OUT)
 	$(call make-kernel-target,VARIANT_DEFCONFIG=$(VARIANT_DEFCONFIG) SELINUX_DEFCONFIG=$(SELINUX_DEFCONFIG) $(KERNEL_DEFCONFIG))
 	$(hide) if [ ! -z "$(KERNEL_CONFIG_OVERRIDE)" ]; then \
@@ -306,10 +307,11 @@ INSTALLED_DTBOIMAGE_TARGET := $(PRODUCT_OUT)/dtbo.img
 ALL_PREBUILT += $(INSTALLED_DTBOIMAGE_TARGET)
 
 ifeq ($(BOARD_INCLUDE_DTB_IN_BOOTIMG),true)
-$(BOARD_PREBUILT_DTBIMAGE_DIR):
-	echo -e ${CL_GRN}"Building DTBs"${CL_RST}
+$(INSTALLED_DTBIMAGE_TARGET):
+	echo -e ${CL_GRN}"Building DTB Image"${CL_RST}
 	$(call make-dtb-target,$(KERNEL_DEFCONFIG))
 	$(call make-dtb-target,dtbs)
+	cat $(shell find $(DTBS_OUT)/arch/$(KERNEL_ARCH)/boot/dts/** -type f -name "*.dtb" | sort) > $@
 .PHONY: dtbimage
 dtbimage: $(INSTALLED_DTBIMAGE_TARGET)
 endif # BOARD_INCLUDE_DTB_IN_BOOTIMG
