@@ -65,7 +65,8 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     ThemePicker \
     DU-Themes \
-    StitchImage
+    StitchImage \
+    PixeldustThemesStub
 
 PRODUCT_PACKAGES += \
     Launcher3QuickStep
