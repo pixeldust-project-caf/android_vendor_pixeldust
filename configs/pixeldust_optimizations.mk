@@ -35,19 +35,3 @@ USE_DEX2OAT_DEBUG := false
 # SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
 
-# SDClang Environment Variables
-export SDCLANG_AE_CONFIG=vendor/pixeldust/sdclang/sdclangAE.json
-export SDCLANG_CONFIG=vendor/pixeldust/sdclang/sdclang.json
-export SDCLANG_SA_ENABLED=false
-
-ifneq ($(HOST_OS),linux)
-ifneq ($(sdclang_already_warned),true)
-$(warning **********************************************)
-$(warning * SDCLANG is not supported on non-linux hosts.)
-$(warning **********************************************)
-sdclang_already_warned := true
-endif
-else
-# include definitions for SDCLANG
-include vendor/pixeldust/sdclang/sdclang.mk
-endif
