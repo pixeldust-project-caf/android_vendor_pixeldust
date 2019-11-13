@@ -7,7 +7,7 @@ Additional PixelDust functions:
 - aospremote:      Add git remote for matching AOSP repository.
 - cafremote:       Add git remote for matching CodeAurora repository.
 - githubremote:    Add git remote for PixelDust Github.
-- mka:             Builds using SCHED_BATCH on all processors.
+- mka:             Builds using all CPUs.
 - repolastsync:    Prints date and time of last repo sync.
 EOF
 }
@@ -183,7 +183,7 @@ function githubremote()
 
 # Make using all available CPUs
 function mka() {
-    m -j "$@"
+    m -j$(nproc --all) "$@"
 }
 
 function repolastsync() {
