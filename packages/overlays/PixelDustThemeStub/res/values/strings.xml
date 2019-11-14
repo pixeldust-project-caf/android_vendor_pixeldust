@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="theme_name_default">Default</string>
+    <string name="theme_title_default">@string/theme_name_default</string>
+    <string name="theme_overlay_color_default">android.auto_generated_rro_vendor__</string>
+    <string name="theme_overlay_font_default">android.auto_generated_rro_vendor__</string>
+
+</resources>

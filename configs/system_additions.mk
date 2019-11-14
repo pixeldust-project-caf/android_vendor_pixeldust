@@ -67,8 +67,7 @@ PRODUCT_PACKAGES += \
     Recorder \
     ThemePicker \
     OmniRecord \
-    WallpaperPicker2 \
-    PixelThemes
+    PixelDustThemeStub
 
 # Some permissions
 PRODUCT_COPY_FILES += \
