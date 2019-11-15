@@ -55,8 +55,8 @@ PRODUCT_MANUFACTURER := Google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=blueline \
-    BUILD_FINGERPRINT=google/blueline/blueline:10/QP1A.190711.020/5800535:user/release-keys \
-    PRIVATE_BUILD_DESC="blueline-user 10 QP1A.190711.020 5800535 release-keys"
+    BUILD_FINGERPRINT=google/blueline/blueline:10/QQ1A.191205.008/5974827:user/release-keys \
+    PRIVATE_BUILD_DESC="blueline-user 10 QQ1A.191205.008 5974827 release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
