@@ -1,0 +1,20 @@
+[
+  {
+    "remote": "github",
+    "repository": "WhyProject/android_hardware_qcom-caf_msm8998_audio",
+    "target_path": "hardware/qcom-caf/msm8998/audio",
+    "revision": "lineage-17.0"
+  },
+  {
+    "remote": "github",
+    "repository": "WhyProject/android_hardware_qcom-caf_msm8998_display",
+    "target_path": "hardware/qcom-caf/msm8998/display",
+    "revision": "lineage-17.0"
+  },
+  {
+    "remote": "github",
+    "repository": "WhyProject/android_hardware_qcom-caf_msm8998_media",
+    "target_path": "hardware/qcom-caf/msm8998/media",
+    "revision": "lineage-17.0"
+  }
+]
