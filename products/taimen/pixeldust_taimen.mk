@@ -63,7 +63,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.device="taimen"
 
 $(call inherit-product-if-exists, vendor/google/taimen/taimen-vendor.mk)
-
-# Copy device specific prebuilt files.
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml

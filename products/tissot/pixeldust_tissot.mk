@@ -54,8 +54,3 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 
 # Include optional stuff (e.g. prebuilt apps)
 include vendor/pixeldust/configs/system_optional.mk
-
-# Copy device specific prebuilt files.
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
-

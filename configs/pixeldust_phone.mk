@@ -30,3 +30,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.dun.override=0
 
+# Copy APN list
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/etc/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml

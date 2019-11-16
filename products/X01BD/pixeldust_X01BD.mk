@@ -60,7 +60,3 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="SonalSingh" \
     ro.pixeldust.device="X01BD"
-
-# Copy device specific prebuilt files.
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml

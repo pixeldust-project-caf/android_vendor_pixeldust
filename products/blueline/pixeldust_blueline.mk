@@ -62,7 +62,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT) \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="blueline"
-
-# Copy device specific prebuilt files.
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
