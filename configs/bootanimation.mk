@@ -22,23 +22,23 @@ PRODUCT_PACKAGES += \
 
 ifneq ($(filter 1080,$(BOOTANIMATION)),)
     PRODUCT_COPY_FILES += \
-        vendor/pixeldust/prebuilt/bootanimation/1080.zip:system/media/bootanimation.zip \
-        vendor/pixeldust/prebuilt/bootanimation/1080_black.zip:system/media/bootanimation-dark.zip
+        vendor/pixeldust/prebuilt/bootanimation/1080.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip \
+        vendor/pixeldust/prebuilt/bootanimation/1080_black.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation-dark.zip
 endif
 
 ifneq ($(filter 1440,$(BOOTANIMATION)),)
     PRODUCT_COPY_FILES += \
-        vendor/pixeldust/prebuilt/bootanimation/1440.zip:system/media/bootanimation.zip \
-        vendor/pixeldust/prebuilt/bootanimation/1440_black.zip:system/media/bootanimation-dark.zip
+        vendor/pixeldust/prebuilt/bootanimation/1440.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip \
+        vendor/pixeldust/prebuilt/bootanimation/1440_black.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation-dark.zip
 endif
 
 ifneq ($(filter 1080_black,$(BOOTANIMATION)),)
     PRODUCT_COPY_FILES += \
-        vendor/pixeldust/prebuilt/bootanimation/1080_black.zip:system/media/bootanimation.zip
+        vendor/pixeldust/prebuilt/bootanimation/1080_black.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
 endif
 
 ifneq ($(filter 1440_black,$(BOOTANIMATION)),)
     PRODUCT_COPY_FILES += \
-        vendor/pixeldust/prebuilt/bootanimation/1440_black.zip:system/media/bootanimation.zip
+        vendor/pixeldust/prebuilt/bootanimation/1440_black.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
 endif
 
