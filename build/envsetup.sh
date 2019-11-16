@@ -26,16 +26,8 @@ function brunch()
 
 function breakfast()
 {
-    target=$1
+    local target=$1
     local variant=$2
-    unset LUNCH_MENU_CHOICES
-    add_lunch_combo full-eng
-    for f in `/bin/ls vendor/pixeldust/vendorsetup.sh 2> /dev/null`
-        do
-            echo "including $f"
-            . $f
-        done
-    unset f
 
     if [ $# -eq 0 ]; then
         # No arguments, so let's have the full menu
@@ -56,8 +48,6 @@ function breakfast()
     fi
     return $?
 }
-
-alias bib=breakfast
 
 function cout()
 {
