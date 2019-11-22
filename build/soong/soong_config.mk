@@ -1,3 +1,5 @@
+include vendor/pixeldust/config/BoardConfigQcomDefs.mk
+
 $(call add_json_map, Pixeldust)
 
 $(call add_json_str_omitempty,	Additional_gralloc_10_usage_bits,			$(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS))
