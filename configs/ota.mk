@@ -22,6 +22,7 @@ ifeq ($(SIGN_KEY), RELEASE)
 
 PRODUCT_PRODUCT_PROPERTIES += \
     sys.ota.disable_uncrypt=1 \
+    ro.pixeldust.ota.build_type=$(SIGN_KEY) \
     pixeldust.updater.allow_downgrading=1
 
 PRODUCT_PACKAGES += \
