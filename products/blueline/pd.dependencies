@@ -6,16 +6,10 @@
         "revision":     "ten"
     },
     {
-        "target_path":  "device/google/crosshatch-sepolicy",
-        "repository":   "android_device_google_crosshatch-sepolicy",
+        "target_path":  "kernel/google/bluecross",
+        "repository":   "android_kernel_google_bluecross",
         "remote":       "pdx",
         "revision":     "ten"
-    },
-    {
-        "target_path":  "kernel/google/bluecross",
-        "repository":   "DirtyUnicorns/android_kernel_google_bluecross",
-        "remote":       "github",
-        "revision":     "q10x"
     },
     {
         "target_path":  "vendor/images",
