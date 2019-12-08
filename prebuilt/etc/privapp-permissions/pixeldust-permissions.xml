@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Copyright (C) 2019 The Pixel Dust Project
+    Copyright (C) 2019 The PixelDust Project
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -59,6 +59,7 @@
         <permission name="com.google.android.launcher.permission.READ_SETTINGS"/>
         <permission name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
         <permission name="org.pixelexperience.weather.client.READ_WEATHER"/>
+        <permission name="android.permission.MANAGE_USERS"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.android.systemui">
@@ -75,6 +76,7 @@
         <permission name="org.pixelexperience.weather.client.READ_WEATHER"/>
         <permission name="lineageos.permission.HARDWARE_ABSTRACTION_ACCESS"/>
         <permission name="lineageos.permission.MANAGE_LIVEDISPLAY"/>
+        <permission name="android.permission.FORCE_STOP_PACKAGES"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.android.settings">
@@ -92,6 +94,10 @@
         <permission name="android.permission.CHANGE_OVERLAY_PACKAGES"/>
         <permission name="android.permission.READ_WALLPAPER_INTERNAL"/>
         <permission name="android.permission.SET_WALLPAPER_COMPONENT"/>
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.google.android.angle">
         <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
     </privapp-permissions>
 
