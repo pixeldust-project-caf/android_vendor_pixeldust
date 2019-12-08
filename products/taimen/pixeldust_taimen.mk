@@ -48,18 +48,25 @@ $(call inherit-product, vendor/pixelgapps/pixel-gapps.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_taimen
-PRODUCT_BRAND := google
+PRODUCT_DEVICE := taimen
+PRODUCT_BRAND := Google
 PRODUCT_MODEL := Pixel 2 XL
-TARGET_MANUFACTURER := LGE
+TARGET_MANUFACTURER := Google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME=taimen \
-    BUILD_FINGERPRINT=google/taimen/taimen:10/QP1A.191105.004/5908170:user/release-keys \
+    PRODUCT_NAME="taimen" \
+    TARGET_DEVICE="taimen" \
     PRIVATE_BUILD_DESC="taimen-user 10 QP1A.191105.004 5908170 release-keys"
+
+BUILD_FINGERPRINT := "google/taimen/taimen:10/QP1A.191105.004/5908170:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT) \
     ro.pixeldust.maintainer="nitin1438" \
     ro.pixeldust.device="taimen"
+
+# Copy device specific prebuilt files.
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
 
 $(call inherit-product-if-exists, vendor/google/taimen/taimen-vendor.mk)
