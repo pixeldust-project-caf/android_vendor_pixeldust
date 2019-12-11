@@ -21,6 +21,16 @@
     </family>
     <alias name="lato-bold" to="lato" weight="700" />
 
+    <family customizationType="new-named-family" name="nunito-sans">
+      <font weight="400" style="normal">NunitoSans-Regular.ttf</font>
+      <font weight="400" style="italic">NunitoSans-Italic.ttf</font>
+      <font weight="500" style="normal">NunitoSans-SemiBold.ttf</font>
+      <font weight="500" style="italic">NunitoSans-SemiBoldItalic.ttf</font>
+      <font weight="700" style="normal">NunitoSans-Bold.ttf</font>
+      <font weight="700" style="italic">NunitoSans-BoldItalic.ttf</font>
+    </family>
+    <alias name="nunito-sans-medium" to="nunito-sans" weight="500" />
+
     <family customizationType="new-named-family" name="rubik">
       <font weight="400" style="normal">Rubik-Regular.ttf</font>
       <font weight="400" style="italic">Rubik-Italic.ttf</font>
