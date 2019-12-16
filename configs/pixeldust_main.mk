@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Include overlays
-PRODUCT_PACKAGE_OVERLAYS += \
+DEVICE_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay \
     vendor/pixeldust/packages/overlays/Common
 
