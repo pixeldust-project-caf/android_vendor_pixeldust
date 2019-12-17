@@ -63,7 +63,6 @@ PRODUCT_COPY_FILES += \
 
 # Extra Packages
 PRODUCT_PACKAGES += \
-    Launcher3QuickStep \
     LiveWallpapers \
     LiveWallpapersPicker \
     Longshot \
@@ -71,6 +70,9 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     OmniRecord \
     PixelDustThemeStub
+
+# Don't build our custom launcher for now, nobody deserves it to see it already
+#    Launcher3QuickStep \
 
 # Some permissions
 PRODUCT_COPY_FILES += \
