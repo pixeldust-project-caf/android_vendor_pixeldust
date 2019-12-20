@@ -14,7 +14,8 @@
 
 # Include overlays
 PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/pixeldust/overlay
+    vendor/pixeldust/overlay \
+    vendor/pixeldust/packages/overlays/Common
 
 # Include PixelDust device specific sepolicies
 -include device/pixeldust/sepolicy/common/sepolicy.mk
