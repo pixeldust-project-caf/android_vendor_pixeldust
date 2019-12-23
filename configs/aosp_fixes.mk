@@ -13,13 +13,9 @@
 # limitations under the License.
 
 # Google property overides
-ifeq ($(filter marlin sailfish,$(TARGET_PRODUCT)),)
 PRODUCT_PRODUCT_PROPERTIES += \
     keyguard.no_require_sim=true \
-    ro.com.android.dataroaming=false
-endif
-
-PRODUCT_PRODUCT_PROPERTIES += \
+    ro.com.android.dataroaming=false \
     ro.carrier=unknown \
     ro.opa.eligible_device=true
 
