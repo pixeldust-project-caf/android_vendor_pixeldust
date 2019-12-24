@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include vendor/pixeldust/configs/accents.mk
 include vendor/pixeldust/configs/aosp_fixes.mk
 include vendor/pixeldust/configs/bootanimation.mk
 include vendor/pixeldust/configs/fonts.mk
