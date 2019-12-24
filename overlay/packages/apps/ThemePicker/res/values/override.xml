@@ -18,4 +18,17 @@
 
     <string name="themes_stub_package" translatable="false">com.pixeldust.themestub</string>
 
+    <!-- List of packages whose icons are used to preview the icon shape for a theme. -->
+    <array name="icon_shape_preview_packages">
+        <item>com.google.android.deskclock</item>
+        <item>com.google.android.dialer</item>
+        <item>com.google.android.gm</item>
+        <item>com.google.android.googlequicksearchbox</item>
+        <item>com.google.android.apps.photos</item>
+        <item>com.google.android.apps.docs</item>
+        <item>com.android.chrome</item>
+        <item>com.android.settings</item>
+        <item>com.android.vending</item>
+    </array>
+
 </resources>
