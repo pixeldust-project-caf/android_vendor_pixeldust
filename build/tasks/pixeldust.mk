@@ -79,6 +79,9 @@ pixeldust: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ${CL_CYN}"Package size:"${CL_MAG}" `ls -l $(PD_TARGET_PACKAGE) | cut -d ' ' -f 5`         "${CL_RST}
 	@echo -e ${CL_CYN}"Timestamp:   "${CL_MAG} $(BUILD_TIMESTAMP)                                       ${CL_RST}
 	@echo -e ${CL_CYN}"════════════════════════════════════════════════════════════════════════════════"${CL_RST}
+	@echo ""
+	@echo "Creating json OTA..." >&2
+	$(hide) ./vendor/pixeldust/build/tools/createjson.sh $(TARGET_DEVICE) $(PRODUCT_OUT) $(PIXELDUST_VERSION).zip
 
 ifneq ($(PREVIOUS_TARGET_FILES_PACKAGE),)
 
