@@ -62,3 +62,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT) \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="blueline"
+
+FORCE_BUILD_LAUNCHER3 := YES
