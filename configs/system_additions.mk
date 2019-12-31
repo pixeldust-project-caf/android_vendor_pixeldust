@@ -69,7 +69,8 @@ PRODUCT_PACKAGES += \
     Recorder \
     ThemePicker \
     OmniRecord \
-    PixelDustThemeStub
+    PixelDustThemeStub \
+    DU-Themes
 
 ifeq ($(FORCE_BUILD_LAUNCHER3), YES)
 PRODUCT_PACKAGES += \
