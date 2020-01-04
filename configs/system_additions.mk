@@ -62,7 +62,11 @@ PRODUCT_PACKAGES += \
 
 # Some permissions
 PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/privapp-permissions/privapp-permissions-recorder.xml:system/etc/permissions/privapp-permissions-recorder.xml
+    vendor/pixeldust/prebuilt/etc/privapp-permissions/privapp-permissions-recorder.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-recorder.xml
+
+# Whitelist
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/config/permissions/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml
 
 # Backup Tool
 ifeq ($(AB_OTA_UPDATER),true)
