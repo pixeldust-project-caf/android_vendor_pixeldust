@@ -13,6 +13,7 @@
 # limitations under the License.
 
 include vendor/pixeldust/configs/aosp_fixes.mk
+include vendor/pixeldust/configs/audio.mk
 include vendor/pixeldust/configs/bootanimation.mk
 include vendor/pixeldust/configs/fonts.mk
 include vendor/pixeldust/configs/pixeldust_main.mk
