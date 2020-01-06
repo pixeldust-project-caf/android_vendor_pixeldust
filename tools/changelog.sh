@@ -2,6 +2,9 @@
 # note: re-generating days is possible. Just delete the dates you want regenerated
 # from the top (!!) of the changelog file in $OUT/system/etc/Changelog.txt
 # 2nd line of the file must be the date to fetch from!!
+GREEN="\033[1;32m"
+YELLOW="\033[1;33m"
+NC="\033[0m"
 
 export Changelog=Changelog.txt
 export PassedDays=30 # change this to limit max changelog days
@@ -33,14 +36,14 @@ if [[ $PassedDays == 0 ]]; then
 	rm "${Changelog}.bak"
 	exit 0
 else
-	echo "Regenerating log of last ${PassedDays} days"
+	echo -e "${GREEN}Regenerating log of last ${YELLOW}${PassedDays}${GREEN} days${NC}"
 	if [ -f "${OUT}/system/etc/${Changelog}" ]; then
 		rm "${OUT}/system/etc/${Changelog}"
 		rm "${OUT}/${Changelog}"
 	fi
 fi
 
-echo "Generating changelog..."
+echo -e "${GREEN}Generating changelog...${NC}"
 
 for i in $(seq $PassedDays);
 do
