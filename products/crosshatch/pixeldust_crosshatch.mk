@@ -52,24 +52,20 @@ PRODUCT_DEVICE := crosshatch
 PRODUCT_BRAND := Google
 PRODUCT_MODEL := Pixel 3 XL
 PRODUCT_MANUFACTURER := Google
-BOARD_KERNEL_IMAGE_NAME := Image.lz4
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="crosshatch" \
     TARGET_DEVICE="crosshatch" \
-    PRIVATE_BUILD_DESC="crosshatch-user 10 QQ1A.191205.008 5974827 release-keys"
+    PRIVATE_BUILD_DESC="crosshatch-user 10 QQ1A.200105.002 6031801 release-keys"
 
-BUILD_FINGERPRINT := "google/crosshatch/crosshatch:10/QQ1A.191205.008/5974827:user/release-keys"
+BUILD_FINGERPRINT := "google/crosshatch/crosshatch:10/QQ1A.200105.002/6031801:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="slothdabski" \
     ro.pixeldust.device="crosshatch"
 
-BOARD_PREBUILT_VENDORIMAGE := vendor/images/crosshatch/vendor.img
-
 # Copy device specific prebuilt files.
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
 
-# Use SDCLANG
-TARGET_USE_SDCLANG := true
+FORCE_BUILD_LAUNCHER3 := YES

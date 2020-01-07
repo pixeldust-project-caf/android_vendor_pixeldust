@@ -17,7 +17,7 @@ BOOTANIMATION := 1080
 
 # Release name
 PRODUCT_RELEASE_NAME := Pixel 3
-export TARGET_DEVICE := blueline
+export TARGET_DEVICE=blueline
 
 # We have our own power HAL
 TARGET_USES_DEVICE_SPECIFIC_POWERHAL := true
@@ -54,9 +54,11 @@ PRODUCT_MODEL := Pixel 3
 PRODUCT_MANUFACTURER := Google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME=blueline \
-    BUILD_FINGERPRINT=google/blueline/blueline:10/QQ1A.191205.008/5974827:user/release-keys \
-    PRIVATE_BUILD_DESC="blueline-user 10 QQ1A.191205.008 5974827 release-keys"
+    PRODUCT_NAME="blueline" \
+    TARGET_DEVICE="blueline" \
+    PRIVATE_BUILD_DESC="blueline-user 10 QQ1A.200105.002 6031801 release-keys"
+
+BUILD_FINGERPRINT := "google/blueline/blueline:10/QQ1A.200105.002/6031801:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
