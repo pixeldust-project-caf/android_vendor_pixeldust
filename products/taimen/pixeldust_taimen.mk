@@ -61,7 +61,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT := "google/taimen/taimen:10/QQ1A.191205.008/5974827:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.fingerprint=$(BUILD_FINGERPRINT) \
     ro.pixeldust.maintainer="nitin1438" \
     ro.pixeldust.device="taimen"
 
