@@ -1,5 +1,5 @@
 #!/bin/bash
-# PixelDust CAF build helper script
+# PixelDust build helper script
 # original author: AOSPA
 
 # red = errors, cyan = warnings, green = confirmations, blue = informational
@@ -16,21 +16,54 @@ CLR_BLD_GRN=$CLR_RST$CLR_BLD$(tput setaf 2) #  green, bold
 CLR_BLD_BLU=$CLR_RST$CLR_BLD$(tput setaf 4) #  blue, bold
 CLR_BLD_CYA=$CLR_RST$CLR_BLD$(tput setaf 6) #  cyan, bold
 
-# Nuke scrollback
-echo -e '\0033\0143'
-clear
+# Set defaults
+BUILD_TYPE="userdebug"
 
 # Output usage help
 function showHelpAndExit {
-        echo -e "${CLR_BLD_BLU}usage: $0 <device> [options]${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}Usage: $0 <device> [options]${CLR_RST}"
         echo -e ""
-        echo -e "${CLR_BLD_BLU}options:${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -h, --help     display this help message${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -c, --clean    wipe the tree before building${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -u, --user     build a user build for distribution${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -s, --sync     sync before building${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}Options:${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -h, --help            Display this help message${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -c, --clean           Wipe the tree before building${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -i, --installclean    Dirty build - Use 'installclean'${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -r, --repo-sync       Sync before building${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -v, --variant         PD variant - Can be dev, alpha, beta or release${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -t, --build-type      Specify build type - Can be userdebug (default) or user${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -j, --jobs            Specify jobs/threads to use${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -m, --module          Build a specific module${CLR_RST}"
         exit 1
 }
+
+# Setup getopt.
+long_opts="help,clean,installclean,repo-sync,variant:,build-type:,jobs:,module:"
+getopt_cmd=$(getopt -o hcirv:t:j:m:s:p:b --long "$long_opts" \
+            -n $(basename $0) -- "$@") || \
+            { echo -e "${CLR_BLD_RED}\nError: Getopt failed. Extra args\n${CLR_RST}"; showHelpAndExit; exit 1;}
+
+eval set -- "$getopt_cmd"
+
+while true; do
+    case "$1" in
+        -h|--help|h|help) showHelpAndExit;;
+        -c|--clean|c|clean) FLAG_CLEAN_BUILD=y;;
+        -i|--installclean|i|installclean) FLAG_INSTALLCLEAN_BUILD=y;;
+        -r|--repo-sync|r|repo-sync) FLAG_SYNC=y;;
+        -v|--variant|v|variant) PD_VARIANT="$2"; shift;;
+        -t|--build-type|t|build-type) BUILD_TYPE="$2"; shift;;
+        -j|--jobs|j|jobs) JOBS="$2"; shift;;
+        -m|--module|m|module) MODULE="$2"; shift;;
+        --) shift; break;;
+    esac
+    shift
+done
+
+# Mandatory argument
+if [ $# -eq 0 ]; then
+    echo -e "${CLR_BLD_RED}Error: No device specified${CLR_RST}"
+    showHelpAndExit
+fi
+export DEVICE="$1"; shift
 
 # Make sure we are running on 64-bit before carrying on with anything
 ARCH=$(uname -m | sed 's/x86_//;s/i[3-6]86/32/')
@@ -42,8 +75,6 @@ fi
 # Set up paths
 cd $(dirname $0)
 DIR_ROOT=$(pwd)
-DIR_OUT=$(readlink $DIR_ROOT/out)
-[ -z "$DIR_OUT" ] && DIR_OUT="$DIR_ROOT/out"
 
 # Make sure everything looks sane so far
 if [ ! -d "$DIR_ROOT/vendor/pixeldust" ]; then
@@ -51,90 +82,22 @@ if [ ! -d "$DIR_ROOT/vendor/pixeldust" ]; then
         exit 1
 fi
 
-# Pick the default thread count (allow overrides from the environment)
-if [ -z "$THREADS" ]; then
-        if [ "$(uname -s)" = 'Darwin' ]; then
-                export THREADS=$(sysctl -n machdep.cpu.core_count)
-        else
-                export THREADS=$(cat /proc/cpuinfo | grep '^processor' | wc -l)
-        fi
+# Setup PD variant if specified
+if [ $PD_VARIANT ]; then
+    PD_VARIANT=`echo $PD_VARIANT |  tr "[:upper:]" "[:lower:]"`
+    if [ "${PD_VARIANT}" = "release" ]; then
+        export PD_BUILDTYPE=RELEASE
+    elif [ "${PD_VARIANT}" = "alpha" ]; then
+        export PD_BUILDTYPE=ALPHA
+    elif [ "${PD_VARIANT}" = "beta" ]; then
+        export PD_BUILDTYPE=BETA
+    elif [ "${PD_VARIANT}" = "dev" ]; then
+        export PD_BUILDTYPE=DEV
+    else
+        echo -e "${CLR_BLD_RED} Unknown PD variant - use alpha, beta or release${CLR_RST}"
+        exit 1
+    fi
 fi
-
-# Pick the best JDK 8, if more than one is installed
-if [ "$(update-alternatives --list javac | wc -l)" -gt 1 ]; then
-        JDK_PATH=$(dirname $(update-alternatives --list javac | grep '\-8\-') | tail -n1)
-        JRE_PATH=$(dirname $JDK_PATH/../jre/bin/java)
-        export PATH=$JDK_PATH:$JRE_PATH:$PATH
-fi
-
-# Grab the build version
-PIXELDUST_VERSION=$(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'BUILD_VERSION := *' | sed 's/.*= //')
-
-# Grab all the command-line parameters
-export DEVICE=$1
-shift
-
-if [ -z "$DEVICE" ]; then
-        echo -e "${CLR_BLD_RED}error: no device specified${CLR_RST}"
-        showHelpAndExit
-fi
-
-case $DEVICE in
--h|--help|h|help)
-        showHelpAndExit
-        ;;
-esac
-
-while [[ "$#" > 0 ]]; do
-        PARAM=$(echo ${1,,})
-        case $PARAM in
-        -h|--help|h|help)
-            showHelpAndExit
-            ;;
-        -c|--clean|c|clean)
-            FLAG_CLEAN_BUILD=y
-            ;;
-        -u|--user|u|user)
-            FLAG_USER_BUILD=y
-            ;;
-        -s|--sync|s|sync)
-            FLAG_SYNC=y
-            ;;
-        *)
-            echo -e "${CLR_CYA}warning: skipping unknown parameter: $1${CLR_RST}"
-            ;;
-        esac
-        shift
-done
-
-# Prep for a clean build, if requested so
-if [ "$FLAG_CLEAN_BUILD" = 'y' ]; then
-        echo -e "${CLR_BLD_BLU}Cleaning output files left from old builds${CLR_RST}"
-        echo -e ""
-        rm -rf ${DIR_ROOT}/out/target/product/$DEVICE
-fi
-
-# And sync up, if asked to
-if [ "$FLAG_SYNC" = 'y' ]; then
-        echo -e "${CLR_BLD_BLU}Downloading the latest source files${CLR_RST}"
-        echo -e ""
-        repo sync -j"$THREADS" -c --no-clone-bundle
-fi
-
-# Mask Java, if it seems to be faulty
-if [ ! -r "$DIR_ROOT/out/versions_checked.mk" ] && [ -n "$(java -version 2>&1 | grep -i openjdk)" ]; then
-        echo -e "${CLR_BLD_CYA}Your Java version has not been checked and is a candidate for failure. Masquerading.${CLR_RST}"
-        echo -e ""
-        JAVA_VERSION="java_version=$(javac -version 2>&1 | head -n1 | cut -f2 -d' ')"
-fi
-
-# Check the starting time (of the real build process)
-TIME_START=$(date +%s.%N)
-
-# Friendly logging to tell the user everything is working fine is always nice
-echo -e "${CLR_BLD_GRN}Building PixelDust $PIXELDUST_VERSION for $DEVICE${CLR_RST}"
-echo -e "${CLR_GRN}Start time: $(date)${CLR_RST}"
-echo -e ""
 
 # Initializationizing!
 echo -e "${CLR_BLD_BLU}Setting up the environment${CLR_RST}"
@@ -142,14 +105,66 @@ echo -e ""
 . build/envsetup.sh
 echo -e ""
 
+# Use the thread count specified by user
+CMD=""
+if [ $JOBS ]; then
+  CMD+=" -j$JOBS"
+fi
+
+# Pick the default thread count (allow overrides from the environment)
+if [ -z "$JOBS" ]; then
+        if [ "$(uname -s)" = 'Darwin' ]; then
+                JOBS=$(sysctl -n machdep.cpu.core_count)
+        else
+                JOBS=$(cat /proc/cpuinfo | grep '^processor' | wc -l)
+        fi
+fi
+
+# Use mka when available and jobs not specified
+if [ "$(command -v 'mka')" ]; then
+  if [ -z "${CMD}" ]; then
+    MAKE="mka"
+  else
+    MAKE="make"
+  fi
+else
+  MAKE="make"
+fi
+
+# Grab the build version
+PD_DISPLAY_VERSION="$(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'ROM_VERSION := *' | sed 's/.*= //') \
+$(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'BUILD_VERSION := *' | sed 's/.*= //')"
+
+# Prep for a clean build, if requested so
+if [ "$FLAG_CLEAN_BUILD" = 'y' ]; then
+        echo -e "${CLR_BLD_BLU}Cleaning output files left from old builds${CLR_RST}"
+        echo -e ""
+        ${MAKE} clobber"$CMD"
+fi
+
+# Prep for a installclean build, if requested so
+if [ "$FLAG_INSTALLCLEAN_BUILD" = 'y' ]; then
+        echo -e "${CLR_BLD_BLU}Cleaning compiled image files left from old builds${CLR_RST}"
+        echo -e ""
+        ${MAKE} installclean"$CMD"
+fi
+
+# Sync up, if asked to
+if [ "$FLAG_SYNC" = 'y' ]; then
+        echo -e "${CLR_BLD_BLU}Downloading the latest source files${CLR_RST}"
+        echo -e ""
+        repo sync -j"$JOBS" -c --no-clone-bundle --current-branch --no-tags
+fi
+
+# Friendly logging to tell the user everything is working fine is always nice
+echo -e "${CLR_BLD_GRN}Building $PD_DISPLAY_VERSION for $DEVICE${CLR_RST}"
+echo -e "${CLR_GRN}Start time: $(date)${CLR_RST}"
+echo -e ""
+
 # Lunch-time!
 echo -e "${CLR_BLD_BLU}Lunching $DEVICE${CLR_RST} ${CLR_CYA}(Including dependencies sync)${CLR_RST}"
 echo -e ""
-if [ "$FLAG_USER_BUILD" = 'y' ]; then
-        lunch "pixeldust_$DEVICE-user"
-else
-        lunch "pixeldust_$DEVICE-userdebug"
-fi
+lunch "pixeldust_$DEVICE-$BUILD_TYPE"
 echo -e ""
 
 # Build away!
@@ -157,25 +172,20 @@ RETVAL=0
 
 echo -e "${CLR_BLD_BLU}Starting compilation${CLR_RST}"
 echo -e ""
-if [ "$FLAG_USER_BUILD" = 'y' ]; then
-        mka dist
+# Build a specific module
+if [ "${MODULE}" ]; then
+    ${MAKE} $MODULE"$CMD"
+# Build rom package
 else
-        mka pixeldust
+    ${MAKE} pixeldust"$CMD"
 fi
 RETVAL=$?
 echo -e ""
 
 # Check if the build failed
 if [ $RETVAL -ne 0 ]; then
-        echo "${CLR_BLD_RED}Build failed!"
+        echo "${CLR_BLD_RED}Build failed!${CLR_RST}"
         echo -e ""
 fi
-
-# Check the finishing time
-TIME_END=$(date +%s.%N)
-
-# Log those times at the end as a fun fact of the day
-echo -e "${CLR_BLD_GRN}Total time elapsed:${CLR_RST} ${CLR_GRN}$(echo "($TIME_END - $TIME_START) / 60" | bc) minutes ($(echo "$TIME_END - $TIME_START" | bc) seconds)${CLR_RST}"
-echo -e ""
 
 exit $RETVAL
