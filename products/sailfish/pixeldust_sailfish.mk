@@ -59,3 +59,5 @@ BUILD_FINGERPRINT := google/sailfish/sailfish:10/QP1A.191005.007.A3/5972272:user
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="sailfish"
+
+FORCE_BUILD_LAUNCHER3 := YES
