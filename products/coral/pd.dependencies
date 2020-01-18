@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "target_path":  "device/google/coral",
+        "repository":   "android_device_google_coral",
+        "remote":       "pdd",
+        "revision":     "ten"
+    },
+    {
+        "target_path":  "kernel/google/floral",
+        "repository":   "android_kernel_google_floral",
+        "remote":       "pdd",
+        "revision":     "ten"
+    },
+    {
+        "target_path":  "vendor/google",
+        "repository":   "android_vendor_google",
+        "remote":       "pdx",
+        "revision":     "ten"
+    },
+    {
+        "target_path":  "vendor/images",
+        "repository":   "DirtyUnicorns/android_vendor_images",
+        "remote":       "gitlab",
+        "revision":     "q10x"
+    }
+]
