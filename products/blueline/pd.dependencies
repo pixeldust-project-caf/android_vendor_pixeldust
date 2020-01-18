@@ -12,6 +12,12 @@
         "revision":     "ten"
     },
     {
+        "target_path":  "vendor/google",
+        "repository":   "android_vendor_google",
+        "remote":       "pdx",
+        "revision":     "ten"
+    },
+    {
         "target_path":  "vendor/images",
         "repository":   "DirtyUnicorns/android_vendor_images",
         "remote":       "gitlab",
