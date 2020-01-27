@@ -36,6 +36,9 @@ include vendor/pixeldust/configs/system_optional.mk
 # Google Apps
 include vendor/pixelgapps/pixel-gapps.mk
 
+# Launcher3
+FORCE_BUILD_LAUNCHER3 := YES
+
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := pixeldust_X01BD
 PRODUCT_DEVICE := X01BD
@@ -49,10 +52,10 @@ PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=X01BD PRODUCT_NAME=X01BD
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_DEVICE=ASUS_X01BD_1 \
     PRODUCT_NAME=WW_X01BD \
-    PRIVATE_BUILD_DESC="sdm660_64-user 8.1.0 OPM1 3402 release-keys"
+    PRIVATE_BUILD_DESC="sdm660_64-user 9 PKQ1 1287 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := "asus/WW_X01BD/ASUS_X01BD_1:8.1.0/OPM1/15.2016.1902.192-20190226:user/release-keys"
+BUILD_FINGERPRINT := "google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys"
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT)

@@ -1,20 +1,26 @@
 [
   {
     "remote": "github",
-    "repository": "WhyProject/android_hardware_qcom-caf_msm8998_audio",
+    "repository": "LineageOS/android_hardware_qcom_audio",
     "target_path": "hardware/qcom-caf/msm8998/audio",
-    "revision": "lineage-17.0"
+    "revision": "lineage-17.1-caf-msm8998"
   },
   {
     "remote": "github",
-    "repository": "WhyProject/android_hardware_qcom-caf_msm8998_display",
+    "repository": "LineageOS/android_hardware_qcom_display",
     "target_path": "hardware/qcom-caf/msm8998/display",
-    "revision": "lineage-17.0"
+    "revision": "lineage-17.1-caf-msm8998"
   },
   {
     "remote": "github",
-    "repository": "WhyProject/android_hardware_qcom-caf_msm8998_media",
+    "repository": "LineageOS/android_hardware_qcom_media",
     "target_path": "hardware/qcom-caf/msm8998/media",
-    "revision": "lineage-17.0"
+    "revision": "lineage-17.1-caf-msm8998"
+  },
+  {
+    "remote": "github",
+    "repository": "LineageOS/android_external_ant-wireless_antradio-library",
+    "target_path": "external/ant-wireless/antradio-library",
+    "revision": "lineage-17.1"
   }
 ]
