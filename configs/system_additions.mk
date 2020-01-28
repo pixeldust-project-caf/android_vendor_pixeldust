@@ -43,6 +43,10 @@ PRODUCT_PACKAGES += \
 # Bluetooth Audio (A2DP)
 PRODUCT_PACKAGES += libbthost_if
 
+# Disable EAP Proxy because it depends on proprietary headers
+# and breaks WPA Supplicant compilation.
+DISABLE_EAP_PROXY := true
+
 # Extra Packages
 PRODUCT_PACKAGES += \
     LiveWallpapers \
