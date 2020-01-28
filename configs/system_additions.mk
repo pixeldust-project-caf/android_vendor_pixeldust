@@ -47,6 +47,9 @@ PRODUCT_PACKAGES += libbthost_if
 # and breaks WPA Supplicant compilation.
 DISABLE_EAP_PROXY := true
 
+# Skip boot jars check
+SKIP_BOOT_JARS_CHECK := true
+
 # Extra Packages
 PRODUCT_PACKAGES += \
     LiveWallpapers \
