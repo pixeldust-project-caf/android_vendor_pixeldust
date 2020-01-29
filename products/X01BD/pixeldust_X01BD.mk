@@ -36,9 +36,6 @@ include vendor/pixeldust/configs/system_optional.mk
 # Google Apps
 include vendor/pixelgapps/pixel-gapps.mk
 
-# Launcher3
-FORCE_BUILD_LAUNCHER3 := YES
-
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := pixeldust_X01BD
 PRODUCT_DEVICE := X01BD

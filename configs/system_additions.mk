@@ -66,10 +66,11 @@ PRODUCT_PACKAGES += \
     PixelDustThemeStub \
     DU-Themes
 
-ifeq ($(FORCE_BUILD_LAUNCHER3), YES)
+# Force Launcher3 (this is still needed to include the appropriate overlays)
+FORCE_BUILD_LAUNCHER3 := YES
+
 PRODUCT_PACKAGES += \
     Launcher3QuickStep
-endif
 
 # Some permissions
 PRODUCT_COPY_FILES += \

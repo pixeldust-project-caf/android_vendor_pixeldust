@@ -47,9 +47,6 @@ $(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
 # Vendor
 $(call inherit-product-if-exists, vendor/google/coral/coral-vendor.mk)
 
-# Launcher3
-FORCE_BUILD_LAUNCHER3 := YES
-
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_coral
 PRODUCT_BRAND := Google

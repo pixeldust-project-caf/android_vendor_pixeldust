@@ -63,5 +63,3 @@ BUILD_FINGERPRINT := "google/blueline/blueline:10/QQ1A.200105.002/6031801:user/r
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="blueline"
-
-FORCE_BUILD_LAUNCHER3 := YES

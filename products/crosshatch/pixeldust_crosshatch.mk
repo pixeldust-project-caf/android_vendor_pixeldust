@@ -67,5 +67,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Copy device specific prebuilt files.
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
-
-FORCE_BUILD_LAUNCHER3 := YES

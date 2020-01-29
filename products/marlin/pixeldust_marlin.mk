@@ -59,5 +59,3 @@ BUILD_FINGERPRINT := google/marlin/marlin:10/QP1A.191005.007.A3/5972272:user/rel
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="marlin"
-
-FORCE_BUILD_LAUNCHER3 := YES
