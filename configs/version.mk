@@ -1,4 +1,4 @@
-# Copyright (C) 2018-2019 The PixelDust Project
+# Copyright (C) 2018-2020 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 
 # Pixel Dust ROM versioning
 ROM_VERSION := PixelDust-X
-BUILD_VERSION := aosp
+BUILD_VERSION := caf
 
 ifndef SIGN_KEY
   SIGN_KEY := UNOFFICIAL
