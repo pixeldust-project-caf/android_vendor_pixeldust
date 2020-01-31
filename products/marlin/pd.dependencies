@@ -16,5 +16,41 @@
         "repository":   "android_vendor_google",
         "remote":       "pdd",
         "revision":     "quiche"
+    },
+    {
+        "target_path":  "hardware/qcom/audio",
+        "repository":   "android_hardware_qcom_audio",
+        "remote":       "pdcaf",
+        "revision":     "quiche"
+    },
+    {
+        "target_path":  "hardware/qcom/camera",
+        "repository":   "platform/hardware/qcom/camera",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-10.0.0_r25"
+    },
+    {
+        "target_path":  "hardware/qcom/display",
+        "repository":   "android_hardware_qcom_display",
+        "remote":       "pdcaf",
+        "revision":     "quiche"
+    },
+    {
+        "target_path":  "hardware/qcom/gps",
+        "repository":   "platform/hardware/qcom/gps",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-10.0.0_r25"
+    },
+    {
+        "target_path":  "hardware/qcom/keymaster",
+        "repository":   "platform/hardware/qcom/keymaster",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-10.0.0_r25"
+    },
+    {
+        "target_path":  "hardware/qcom/media",
+        "repository":   "android_hardware_qcom_media",
+        "remote":       "pdcaf",
+        "revision":     "quiche"
     }
 ]
