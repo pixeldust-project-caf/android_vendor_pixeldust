@@ -29,10 +29,6 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     ntfs-3g
 
-# TCP Connection Management
-PRODUCT_PACKAGES += tcmiface
-#PRODUCT_BOOT_JARS += tcmiface
-
 # RCS Service
 PRODUCT_PACKAGES += \
     rcscommon \
@@ -46,14 +42,6 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth Audio (A2DP)
 PRODUCT_PACKAGES += libbthost_if
-
-# MSIM manual provisioning
-PRODUCT_PACKAGES += ims-ext-common
-PRODUCT_PACKAGES += telephony-ext
-#PRODUCT_BOOT_JARS += telephony-ext
-
-# Themes
--include vendor/themes/common.mk
 
 # Extra Packages
 PRODUCT_PACKAGES += \
