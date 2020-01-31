@@ -75,6 +75,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/config/permissions/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml
 
+# Hidden API whitelist
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/config/permissions/pdx-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/pdx-hiddenapi-package-whitelist.xml
+
 # Backup Tool
 ifeq ($(AB_OTA_UPDATER),true)
 PRODUCT_COPY_FILES += \
