@@ -76,6 +76,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/privapp-permissions/privapp-permissions-recorder.xml:system/etc/permissions/privapp-permissions-recorder.xml
 
+# Hidden API whitelist
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/config/permissions/pdx-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/pdx-hiddenapi-package-whitelist.xml
+
 # Backup Tool
 ifeq ($(AB_OTA_UPDATER),true)
 PRODUCT_COPY_FILES += \
