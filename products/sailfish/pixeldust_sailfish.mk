@@ -31,6 +31,9 @@ TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 # Opt-out from dataservices as we have a copy of this in our DT already
 TARGET_PROVIDES_DATA_SERVICES := true
 
+# Indicate that we use AOSP surfaceflinger
+TARGET_USE_AOSP_SURFACEFLINGER := true
+
 # Inherit AOSP device configuration for sailfish.
 $(call inherit-product-if-exists, device/google/marlin/aosp_sailfish.mk)
 
