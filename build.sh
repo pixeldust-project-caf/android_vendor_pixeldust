@@ -29,7 +29,7 @@ function showHelpAndExit {
         echo -e "${CLR_BLD_BLU}  -i, --installclean    Dirty build - Use 'installclean'${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -r, --repo-sync       Sync before building${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -v, --variant         PD variant - Can be dev, alpha, beta or release${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -t, --build-type      Specify build type${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -t, --build-type      Specify build type - Can be userdebug (default) or user${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -j, --jobs            Specify jobs/threads to use${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -m, --module          Build a specific module${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -s, --sign-keys       Specify path to sign key mappings${CLR_RST}"
