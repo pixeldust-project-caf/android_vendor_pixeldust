@@ -98,7 +98,7 @@ if [ $PD_VARIANT ]; then
     elif [ "${PD_VARIANT}" = "beta" ]; then
         export PD_BUILDTYPE=BETA
     elif [ "${PD_VARIANT}" = "dev" ]; then
-        unset PD_BUILDTYPE
+        export PD_BUILDTYPE=DEV
     else
         echo -e "${CLR_BLD_RED} Unknown PD variant - use alpha, beta or release${CLR_RST}"
         exit 1

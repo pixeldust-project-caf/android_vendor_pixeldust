@@ -17,7 +17,7 @@ ROM_VERSION := PixelDust-X
 BUILD_VERSION := aosp
 
 ifndef SIGN_KEY
-  SIGN_KEY := UNOFFICIAL
+  PD_BUILDTYPE := UNOFFICIAL
 endif
 PRODUCT_BUILD_PROP_OVERRIDES := TARGET_BUILD_TYPE=user
 BUILD_DATE := $(shell date -u +%Y%m%d)
@@ -29,7 +29,7 @@ PIXELDUST_VERSION := $(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(shell da
 
 PRODUCT_PRODUCT_PROPERTIES += \
     com.pixeldust.fingerprint=$(PIXELDUST_VERSION) \
-    ro.pixeldust.version=$(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(SIGN_KEY) \
+    ro.pixeldust.version=$(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(PD_BUILDTYPE) \
     ro.pixeldust.ota.version=$(PIXELDUST_VERSION) \
     ro.pixeldust.ota.version_code=$(BUILD_VERSION) \
     ro.pixeldust.ota.timestamp=$(BUILD_TIMESTAMP) \
