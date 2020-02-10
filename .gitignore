@@ -1,1 +1,4 @@
 *.pyc
+build/target/product/security/*.pk8
+build/target/product/security/*.pem
+build/target/product/security/pixeldust
