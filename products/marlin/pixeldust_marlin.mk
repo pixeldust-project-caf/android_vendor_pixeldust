@@ -34,11 +34,6 @@ TARGET_PROVIDES_DATA_SERVICES := true
 # Inherit AOSP device configuration for marlin.
 $(call inherit-product-if-exists, device/google/marlin/aosp_marlin.mk)
 
-# Display packages required for CAF
-PRODUCT_PACKAGES += \
-    libdisplayconfig \
-    libqdMetaData.system
-
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
 
