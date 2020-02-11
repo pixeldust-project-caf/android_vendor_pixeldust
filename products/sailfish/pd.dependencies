@@ -25,9 +25,9 @@
     },
     {
         "target_path":  "hardware/qcom/camera",
-        "repository":   "platform/hardware/qcom/camera",
-        "remote":       "aosp",
-        "revision":     "refs/tags/android-10.0.0_r25"
+        "repository":   "android_hardware_qcom_camera",
+        "remote":       "pdcaf",
+        "revision":     "quiche"
     },
     {
         "target_path":  "hardware/qcom/display",
