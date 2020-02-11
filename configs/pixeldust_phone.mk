@@ -35,3 +35,10 @@ PRODUCT_PACKAGES += \
 # Copy APN list
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+
+# Enable Google Play system updates support
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/pixeldust/apex
+
+PRODUCT_PACKAGES += \
+    ModuleMetadataGooglePrebuilt
