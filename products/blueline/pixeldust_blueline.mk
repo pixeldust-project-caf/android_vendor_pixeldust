@@ -28,6 +28,9 @@ TARGET_USES_AOSP := true
 # Use the sepolicies which are being shipped with our device
 TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 
+# Indicate that we use AOSP surfaceflinger
+TARGET_USE_AOSP_SURFACEFLINGER := true
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/google/crosshatch/aosp_blueline.mk)
 
