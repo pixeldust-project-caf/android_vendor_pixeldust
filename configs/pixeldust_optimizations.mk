@@ -41,6 +41,9 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 EXCLUDE_SYSTEMUI_TESTS := true
 
 # Dex preopt
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    Launcher3QuickStep
+
 ifneq ($(filter blueline bonito coral crosshatch flame sargo taimen walleye,$(TARGET_DEVICE)),)
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUIGoogle
