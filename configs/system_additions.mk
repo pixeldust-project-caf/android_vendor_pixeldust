@@ -60,6 +60,7 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     Longshot \
+    OPScreenRecorder \
     ThemePicker \
     OmniRecord \
     PixelDustThemeStub \
