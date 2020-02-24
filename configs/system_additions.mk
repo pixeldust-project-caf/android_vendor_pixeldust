@@ -60,7 +60,6 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     Longshot \
-    Recorder \
     ThemePicker \
     OmniRecord \
     PixelDustThemeStub \
@@ -71,10 +70,6 @@ FORCE_BUILD_LAUNCHER3 := YES
 
 PRODUCT_PACKAGES += \
     Launcher3QuickStep
-
-# Some permissions
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/privapp-permissions/privapp-permissions-recorder.xml:system/etc/permissions/privapp-permissions-recorder.xml
 
 # Hidden API whitelist
 PRODUCT_COPY_FILES += \
