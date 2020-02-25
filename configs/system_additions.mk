@@ -72,6 +72,10 @@ FORCE_BUILD_LAUNCHER3 := YES
 PRODUCT_PACKAGES += \
     Launcher3QuickStep
 
+# Screenrecorder permissions
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/config/permissions/privapp-permissions-screenrecorder.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-screenrecorder.xml
+
 # Hidden API whitelist
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/config/permissions/pdx-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/pdx-hiddenapi-package-whitelist.xml
