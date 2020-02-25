@@ -71,6 +71,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/config/permissions/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml
 
+# Screenrecorder permissions
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/config/permissions/privapp-permissions-screenrecorder.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-screenrecorder.xml
+
 # Hidden API whitelist
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/config/permissions/pdx-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/pdx-hiddenapi-package-whitelist.xml
