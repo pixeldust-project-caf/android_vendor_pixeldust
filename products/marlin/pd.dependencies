@@ -2,19 +2,19 @@
     {
         "target_path":  "device/google/marlin",
         "repository":   "android_device_google_marlin",
-        "remote":       "pdx",
+        "remote":       "pdd",
         "revision":     "ten"
     },
     {
         "target_path":  "kernel/google/marlin",
         "repository":   "android_kernel_google_marlin",
-        "remote":       "pdx",
+        "remote":       "pdd",
         "revision":     "ten"
     },
     {
         "target_path":  "vendor/google",
         "repository":   "android_vendor_google",
-        "remote":       "pdx",
+        "remote":       "pdd",
         "revision":     "ten"
     }
 ]
