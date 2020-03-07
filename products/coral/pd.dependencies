@@ -7,14 +7,14 @@
     },
     {
         "target_path":  "kernel/google/floral",
-        "repository":   "android_kernel_google_floral",
-        "remote":       "pdd",
-        "revision":     "ten"
+        "repository":   "DirtyUnicorns/android_kernel_google_floral",
+        "remote":       "github",
+        "revision":     "q10x"
     },
     {
         "target_path":  "vendor/google",
         "repository":   "android_vendor_google",
-        "remote":       "pdx",
+        "remote":       "pdd",
         "revision":     "ten"
     },
     {
