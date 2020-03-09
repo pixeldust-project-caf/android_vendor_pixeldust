@@ -17,9 +17,6 @@ DEVICE_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay \
     vendor/pixeldust/packages/overlays/Common
 
-# Include PixelDust device specific sepolicies
--include device/pixeldust/sepolicy/common/sepolicy.mk
-
 # Include needed privapp permissions whitelist
 PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:system/etc/permissions/pixeldust-permissions.xml
 PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/pixeldust-permissions.xml
