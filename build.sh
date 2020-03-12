@@ -210,7 +210,7 @@ elif [ "${KEY_MAPPINGS}" ]; then
 # Build rom package
 else
     ${MAKE} pixeldust"$CMD"
-    cp $OUT/pixeldust-${PD_VERSION}.zip $DIR_ROOT
+    ln -sf $OUT/pixeldust-${PD_VERSION}.zip $DIR_ROOT
 fi
 RETVAL=$?
 echo -e ""
