@@ -1,0 +1,32 @@
+[
+    {
+        "target_path":  "device/google/coral",
+        "repository":   "android_device_google_coral",
+        "remote":       "pdd",
+        "revision":     "ten"
+    },
+    {
+        "target_path":  "device/google/flame",
+        "repository":   "android_device_google_flame",
+        "remote":       "pdd",
+        "revision":     "ten"
+    },
+    {
+        "target_path":  "kernel/google/floral",
+        "repository":   "DirtyUnicorns/android_kernel_google_floral",
+        "remote":       "github",
+        "revision":     "q10x"
+    },
+    {
+        "target_path":  "vendor/google",
+        "repository":   "android_vendor_google",
+        "remote":       "pdd",
+        "revision":     "ten"
+    },
+    {
+        "target_path":  "vendor/images/flame",
+        "repository":   "fKm/android_vendor_images_flame",
+        "remote":       "gitlab",
+        "revision":     "ten"
+    }
+]
