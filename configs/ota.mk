@@ -22,14 +22,13 @@ ifeq ($(SIGN_KEY), RELEASE)
 
 PRODUCT_PRODUCT_PROPERTIES += \
     sys.ota.disable_uncrypt=1 \
-    ro.pixeldust.ota.build_type=$(SIGN_KEY) \
-    pixeldust.updater.allow_downgrading=1
+    ro.pixeldust.ota.build_type=$(SIGN_KEY)
 
 PRODUCT_PACKAGES += \
     Updates
 
 PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/privapp-permissions/com.pixeldust.updater.xml:system/etc/permissions/com.pixeldust.updater.xml
+    vendor/pixeldust/prebuilt/etc/privapp-permissions/com.pixeldust.ota.xml:system/etc/permissions/com.pixeldust.ota.xml
 
 endif
 endif
