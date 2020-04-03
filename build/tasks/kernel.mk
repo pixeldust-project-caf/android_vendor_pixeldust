@@ -43,6 +43,8 @@
 #
 #   KERNEL_CC                          = The C Compiler used. This is automatically set based
 #                                          on whether the clang version is set, optional.
+#   KERNEL_LD                          = The Linker used. This is automatically set based
+#                                          on whether the clang/gcc version is set, optional.
 #
 #   KERNEL_CLANG_TRIPLE                = Target triple for clang (e.g. aarch64-linux-gnu-)
 #                                          defaults to arm-linux-gnu- for arm
