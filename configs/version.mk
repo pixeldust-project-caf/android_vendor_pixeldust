@@ -13,25 +13,23 @@
 # limitations under the License.
 
 # Pixel Dust ROM versioning
-ROM_VERSION := PixelDust-X
-BUILD_VERSION := caf
+PD_ROM_MAJ_VERSION := PixelDust-X
+ANDROID_OS_VERSION := 10.0.0
+BUILD_VERSION_CODE := caf
 
 ifndef SIGN_KEY
   PD_BUILDTYPE := UNOFFICIAL
 endif
 PRODUCT_BUILD_PROP_OVERRIDES := TARGET_BUILD_TYPE=user
-BUILD_DATE := $(shell date -u +%Y%m%d)
-BUILD_TIME := $(shell date -u +%H%M)
 BUILD_TIMESTAMP := $(shell date -u +%s)
 
 # Pixel Dust ROM package name 
-PIXELDUST_VERSION := $(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(shell date +%Y%m%d-%H%M)
+PIXELDUST_VERSION := $(PD_ROM_MAJ_VERSION)-$(BUILD_VERSION_CODE)-$(TARGET_DEVICE)-$(shell date +%Y%m%d-%H%M)
 
 PRODUCT_PRODUCT_PROPERTIES += \
     com.pixeldust.fingerprint=$(PIXELDUST_VERSION) \
-    ro.pixeldust.version=$(ROM_VERSION)-$(BUILD_VERSION)-$(TARGET_DEVICE)-$(PD_BUILDTYPE) \
-    ro.pixeldust.ota.version=$(PIXELDUST_VERSION) \
-    ro.pixeldust.ota.version_code=$(BUILD_VERSION) \
-    ro.pixeldust.ota.timestamp=$(BUILD_TIMESTAMP) \
-    ro.pixeldust.ota.build_date_utc=$(BUILD_DATE)-$(BUILD_TIME)
+    ro.pixeldust.version=$(PD_ROM_MAJ_VERSION)-$(BUILD_VERSION_CODE)-$(TARGET_DEVICE)-$(PD_BUILDTYPE) \
+    ro.pixeldust.ota.version=$(ANDROID_OS_VERSION) \
+    ro.pixeldust.ota.version_code=$(BUILD_VERSION_CODE) \
+    ro.pixeldust.ota.timestamp=$(BUILD_TIMESTAMP)
 
