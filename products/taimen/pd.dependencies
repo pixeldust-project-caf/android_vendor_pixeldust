@@ -1,2 +1,26 @@
 [
+    {
+        "target_path":  "device/google/taimen",
+        "repository":   "android_device_google_taimen",
+        "remote":       "pdd",
+        "revision":     "ten"
+    },
+    {
+        "target_path":  "device/google/wahoo",
+        "repository":   "android_device_google_wahoo",
+        "remote":       "pdd",
+        "revision":     "ten"
+    },
+    {
+        "target_path":  "kernel/google/wahoo",
+        "repository":   "android_kernel_google_wahoo",
+        "remote":       "pdd",
+        "revision":     "ten"
+    },
+    {
+        "target_path":  "vendor/google",
+        "repository":   "android_vendor_google",
+        "remote":       "pdd",
+        "revision":     "ten"
+    }
 ]
