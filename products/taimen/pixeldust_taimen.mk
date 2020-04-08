@@ -29,7 +29,7 @@ TARGET_USES_AOSP := true
 TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 
 # Inherit device configuration
-$(call inherit-product, device/google/taimen/aosp_taimen.mk)
+$(call inherit-product-if-exists, device/google/taimen/aosp_taimen.mk)
 
 # Generic CAF packages
 #include device/qcom/common/common.mk

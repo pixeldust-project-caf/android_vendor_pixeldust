@@ -25,7 +25,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
 # Inherit from X00T device
-$(call inherit-product, device/asus/X00T/device.mk)
+$(call inherit-product-if-exists, device/asus/X00T/device.mk)
 
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk

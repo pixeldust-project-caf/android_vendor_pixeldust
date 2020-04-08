@@ -29,7 +29,7 @@ TARGET_USES_AOSP := true
 TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, device/google/crosshatch/aosp_crosshatch.mk)
+$(call inherit-product-if-exists, device/google/crosshatch/aosp_crosshatch.mk)
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
