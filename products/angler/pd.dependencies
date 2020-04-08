@@ -1,5 +1,11 @@
 [
     {
+        "target_path":  "device/huawei/angler",
+        "repository":   "android_device_huawei_angler",
+        "remote":       "pdd",
+        "revision":     "ten"
+    },
+    {
         "target_path":  "kernel/huawei/angler",
         "repository":   "android_kernel_huawei_angler",
         "remote":       "pdd",
