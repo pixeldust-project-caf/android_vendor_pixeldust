@@ -18,9 +18,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import cprint
 import json
 import os
 import sys
+sys.dont_write_bytecode = True
 from xml.etree import ElementTree as ET
 
 extra_manifests_dir = '.repo/manifests/'
@@ -201,6 +203,6 @@ if __name__ == '__main__':
 
     # Sync the project that have changed and should be synced.
     if len(syncable_projects) > 0:
-        print('Syncing the dependencies.')
+        cprint.bold('\nSyncing the dependencies.')
         if os.system('repo sync --force-sync --quiet --no-clone-bundle --no-tags %s' % ' '.join(syncable_projects)) != 0:
             raise ValueError('Got an unexpected exit status from the sync process.')
