@@ -83,9 +83,9 @@ PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 else
 PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/bin/backuptool.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool.sh \
-    vendor/pixeldust/prebuilt/bin/backuptool.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool.functions \
-    vendor/pixeldust/prebuilt/bin/50-base.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-base.sh
+    vendor/pixeldust/prebuilt/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/pixeldust/prebuilt/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/pixeldust/prebuilt/bin/50-base.sh:system/addon.d/50-base.sh
 endif
 
 # Cutout control overlays
