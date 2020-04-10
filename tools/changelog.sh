@@ -8,6 +8,7 @@ NC="\033[0m"
 
 export Changelog=Changelog.txt
 export PassedDays=30 # change this to limit max changelog days
+export MANIFEST="${TOP}/.repo/manifests/manifests/pixeldust.xml"
 
 if [ -f "${OUT}/system/etc/${Changelog}" ] # if changelog already generated
 then
@@ -43,7 +44,13 @@ else
 	fi
 fi
 
+# Build a list of all repos
+PROJECTPATHS=$(grep "<project" "${MANIFEST}" | sed -n 's/.*path="\([^"]\+\)".*/\1/p')
+
 echo -e "${GREEN}Generating changelog...${NC}"
+
+# Save current dir
+pDIR=$(echo $PWD)
 
 for i in $(seq $PassedDays);
 do
@@ -58,7 +65,11 @@ k=$(expr $i - 1)
 	echo >> $Changelog;
 
 	# Cycle through every repo to find commits between 2 dates
-	repo forall -pc 'git log --oneline --after=$After_Date --until=$Until_Date' >> $Changelog
+	for PROJECTPATH in ${PROJECTPATHS}; do
+		cd "${TOP}/${PROJECTPATH}"
+		git log --oneline --after=$After_Date --until=$Until_Date >> $pDIR/$Changelog
+	done
+	cd $pDIR
 	echo >> $Changelog;
 done
 
