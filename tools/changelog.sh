@@ -67,7 +67,11 @@ k=$(expr $i - 1)
 	# Cycle through every repo to find commits between 2 dates
 	for PROJECTPATH in ${PROJECTPATHS}; do
 		cd "${TOP}/${PROJECTPATH}"
-		git log --oneline --after=$After_Date --until=$Until_Date >> $pDIR/$Changelog
+		if ! [[ -z $(git log --after=$After_Date --until=$Until_Date) ]]; then # only echo if there is a change
+			echo "[${PROJECTPATH}]" >> $pDIR/$Changelog
+			git log --format="%s <%ar> [%h]%nby: %an (%ae)" --after=$After_Date --until=$Until_Date >> $pDIR/$Changelog
+			echo >> $pDIR/$Changelog
+		fi
 	done
 	cd $pDIR
 	echo >> $Changelog;
