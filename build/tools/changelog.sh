@@ -33,9 +33,14 @@ k=$(expr $i - 1)
 	echo  "     "$Until_Date    >> $Changelog;
 	echo '====================' >> $Changelog;
 	# Cycle through every repo to find commits between 2 dates
-	CURRENT_PATH="$(realpath `pwd`)"
-
-    repo forall -i -c "GIT_LOG=\`git log --oneline --after=$After_Date --until=$Until_Date\` ; if [ ! -z \"\$GIT_LOG\" ]; then printf  '\n   * '; realpath \`pwd\` | sed 's|^$CURRENT_PATH/||' ; echo \"\$GIT_LOG\"; fi" >> $Changelog
+	while read path;
+		do
+		CLOG=$(git --git-dir ./${path}/.git log --oneline --after=$After_Date --until=$Until_Date);
+		if [ -n "$CLOG" ]; then
+			echo project $path >> $Changelog
+			git --git-dir ./${path}/.git log --oneline --after=$After_Date --until=$Until_Date >> $Changelog
+		fi
+	done < ./.repo/project.list;
 	echo "" >> $Changelog;
 done
 
