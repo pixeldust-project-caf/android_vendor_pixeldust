@@ -63,3 +63,8 @@ BUILD_FINGERPRINT := "google/blueline/blueline:10/QQ2A.200405.005/6254899:user/r
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="blueline"
+
+# Allow neverallows, to allow Smart Charging sepolicies
+ifneq ($(TARGET_BUILD_VARIANT),user)
+SELINUX_IGNORE_NEVERALLOWS := true
+endif

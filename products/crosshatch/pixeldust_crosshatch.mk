@@ -67,3 +67,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Copy device specific prebuilt files.
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
+
+# Allow neverallows, to allow Smart Charging sepolicies
+ifneq ($(TARGET_BUILD_VARIANT),user)
+SELINUX_IGNORE_NEVERALLOWS := true
+endif
