@@ -7,9 +7,9 @@
     },
     {
         "target_path":  "kernel/google/floral",
-        "repository":   "DirtyUnicorns/android_kernel_google_floral",
-        "remote":       "github",
-        "revision":     "q10x"
+        "repository":   "android_kernel_google_floral",
+        "remote":       "pdd",
+        "revision":     "ten"
     },
     {
         "target_path":  "vendor/google",
