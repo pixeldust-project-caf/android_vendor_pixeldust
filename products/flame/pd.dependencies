@@ -6,12 +6,6 @@
         "revision":     "ten"
     },
     {
-        "target_path":  "device/google/flame",
-        "repository":   "android_device_google_flame",
-        "remote":       "pdd",
-        "revision":     "ten"
-    },
-    {
         "target_path":  "kernel/google/floral",
         "repository":   "android_kernel_google_floral",
         "remote":       "pdd",
