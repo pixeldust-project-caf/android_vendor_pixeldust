@@ -220,7 +220,7 @@ elif [ "${KEY_MAPPINGS}" ]; then
         ./build/tools/releasetools/ota_from_target_files -k $KEY_MAPPINGS/releasekey \
             --block --backup=true --incremental_from $DELTA_TARGET_FILES \
             pixeldust-$PD_VERSION-signed-target_files.zip \
-            pixeldust-$PD_VERSION.zip
+            pixeldust-$PD_VERSION-delta.zip
     fi
     if [ "$FLAG_IMG_ZIP" = 'y' ]; then
         ./build/tools/releasetools/img_from_target_files \
