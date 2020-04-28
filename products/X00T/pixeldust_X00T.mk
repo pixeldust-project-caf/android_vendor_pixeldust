@@ -34,7 +34,10 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 include vendor/pixeldust/configs/system_optional.mk
 
 # Google Apps
-include vendor/pixelgapps/pixel-gapps.mk
+$(call inherit-product-if-exists, vendor/gapps/gapps.mk)
+REMOVE_GAPPS_PACKAGES += \
+    PrebuiltGmail \
+    NexusLauncherRelease
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := pixeldust_X00T

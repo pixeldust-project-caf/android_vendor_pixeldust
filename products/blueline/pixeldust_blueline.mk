@@ -42,7 +42,10 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 include vendor/pixeldust/configs/system_optional.mk
 
 # Google Apps
-$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+$(call inherit-product-if-exists, vendor/gapps/gapps.mk)
+REMOVE_GAPPS_PACKAGES += \
+    PrebuiltGmail \
+    NexusLauncherRelease
 
 # Vendor
 $(call inherit-product-if-exists, vendor/google/blueline/blueline-vendor.mk)

@@ -16,11 +16,5 @@
         "repository":   "android_vendor_google",
         "remote":       "pdd",
         "revision":     "ten"
-    },
-    {
-        "target_path":  "vendor/gapps",
-        "repository":   "shagbag913/vendor_gapps",
-        "remote":       "gitlab",
-        "revision":     "ten"
     }
 ]
