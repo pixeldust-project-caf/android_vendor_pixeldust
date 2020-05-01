@@ -12,6 +12,12 @@
         "revision":     "ten"
     },
     {
+        "target_path":  "prebuilts/clang/host/linux-x86/clang-latest",
+        "repository":   "Haseo97/Avalon-Clang-11.0.1",
+        "remote":       "github",
+        "revision":     "11.0.1"
+    },
+    {
         "target_path":  "vendor/google",
         "repository":   "android_vendor_google",
         "remote":       "pdd",
