@@ -59,9 +59,9 @@ TARGET_MANUFACTURER := Google
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="taimen" \
     TARGET_DEVICE="taimen" \
-    PRIVATE_BUILD_DESC="taimen-user 10 QQ2A.200405.005 6254899 release-keys"
+    PRIVATE_BUILD_DESC="taimen-user 10 QQ2A.200501.001.B2 6352890 release-keys"
 
-BUILD_FINGERPRINT := "google/taimen/taimen:10/QQ2A.200405.005/6254899:user/release-keys"
+BUILD_FINGERPRINT := "google/taimen/taimen:10/QQ2A.200501.001.B2/6352890:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="nitin1438" \
