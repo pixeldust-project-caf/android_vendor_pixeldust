@@ -32,16 +32,11 @@ function showHelpAndExit {
         echo -e "${CLR_BLD_BLU}  -t, --build-type      Specify build type - Can be userdebug (default) or user${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -j, --jobs            Specify jobs/threads to use${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -m, --module          Build a specific module${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -s, --sign-keys       Specify path to sign key mappings${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -p, --pwfile          Specify path to sign key password file${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -b, --backup-unsigned Store a copy of unsignied package along with signed${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -d, --delta           Generate a delta ota from the specified target_files zip${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -im, --image_zip      Generate fastboot flashable image zip from signed target_files${CLR_RST}"
         exit 1
 }
 
 # Setup getopt.
-long_opts="help,clean,installclean,repo-sync,variant:,build-type:,jobs:,module:,sign-keys:,pwfile:,backup-unsigned,delta:,image-zip"
+long_opts="help,clean,installclean,repo-sync,variant:,build-type:,jobs:,module:"
 getopt_cmd=$(getopt -o hcirv:t:j:m:s:p:b --long "$long_opts" \
             -n $(basename $0) -- "$@") || \
             { echo -e "${CLR_BLD_RED}\nError: Getopt failed. Extra args\n${CLR_RST}"; showHelpAndExit; exit 1;}
@@ -58,11 +53,6 @@ while true; do
         -t|--build-type|t|build-type) BUILD_TYPE="$2"; shift;;
         -j|--jobs|j|jobs) JOBS="$2"; shift;;
         -m|--module|m|module) MODULE="$2"; shift;;
-        -s|--sign-keys|s|sign-keys) KEY_MAPPINGS="$2"; shift;;
-        -p|--pwfile|p|pwfile) PWFILE="$2"; shift;;
-        -b|--backup-unsigned|b|backup-unsigned) FLAG_BACKUP_UNSIGNED=y;;
-        -d|--delta|d|delta) DELTA_TARGET_FILES="$2"; shift;;
-	-im|--image-zip|img|image-zip) FLAG_IMG_ZIP=y;;
         --) shift; break;;
     esac
     shift
@@ -166,9 +156,6 @@ if [ "$FLAG_SYNC" = 'y' ]; then
         repo sync -j"$JOBS" -c --no-clone-bundle --current-branch --no-tags
 fi
 
-# Check the starting time (of the real build process)
-TIME_START=$(date +%s.%N)
-
 # Friendly logging to tell the user everything is working fine is always nice
 echo -e "${CLR_BLD_GRN}Building $PD_DISPLAY_VERSION for $DEVICE${CLR_RST}"
 echo -e "${CLR_GRN}Start time: $(date)${CLR_RST}"
@@ -177,7 +164,6 @@ echo -e ""
 # Lunch-time!
 echo -e "${CLR_BLD_BLU}Lunching $DEVICE${CLR_RST} ${CLR_CYA}(Including dependencies sync)${CLR_RST}"
 echo -e ""
-PD_VERSION=$(lunch "pixeldust_$DEVICE-$BUILD_TYPE" | grep 'PD_VERSION=*' | sed 's/.*=//')
 lunch "pixeldust_$DEVICE-$BUILD_TYPE"
 echo -e ""
 
@@ -189,48 +175,9 @@ echo -e ""
 # Build a specific module
 if [ "${MODULE}" ]; then
     ${MAKE} $MODULE"$CMD"
-# Build signed rom package if specified
-elif [ "${KEY_MAPPINGS}" ]; then
-    # Set sign key password file if specified
-    if [ "${PWFILE}" ]; then
-        export ANDROID_PW_FILE=$PWFILE
-    fi
-    # Generate otapackage if in need of unsigned build
-    if [ "$FLAG_BACKUP_UNSIGNED" = 'y' ]; then
-        ${MAKE} bacon"$CMD"
-        mv $OUT/pixeldust-${PD_VERSION}.zip $DIR_ROOT/pixeldust-${PD_VERSION}-unsigned.zip
-    else
-        ${MAKE} dist"$CMD"
-    fi
-    echo -e "${CLR_BLD_BLU}Signing target files apks${CLR_RST}"
-    ./build/tools/releasetools/sign_target_files_apks -o -d $KEY_MAPPINGS \
-        out/dist/pixeldust_$DEVICE-target_files-*.zip \
-        pixeldust-$PD_VERSION-signed-target_files.zip
-    echo -e "${CLR_BLD_BLU}Generating signed install package${CLR_RST}"
-    ./build/tools/releasetools/ota_from_target_files -k $KEY_MAPPINGS/releasekey \
-        --block --backup=true ${INCREMENTAL} \
-        pixeldust-$PD_VERSION-signed-target_files.zip \
-        pixeldust-$PD_VERSION.zip
-    if [ "$DELTA_TARGET_FILES" ]; then
-        # die if base target doesn't exist
-        if [ ! -f "$DELTA_TARGET_FILES" ]; then
-                echo -e "${CLR_BLD_RED}Delta error: base target files don't exist ($DELTA_TARGET_FILES)${CLR_RST}"
-                exit 1
-        fi
-        ./build/tools/releasetools/ota_from_target_files -k $KEY_MAPPINGS/releasekey \
-            --block --backup=true --incremental_from $DELTA_TARGET_FILES \
-            pixeldust-$PD_VERSION-signed-target_files.zip \
-            pixeldust-$PD_VERSION-delta.zip
-    fi
-    if [ "$FLAG_IMG_ZIP" = 'y' ]; then
-        ./build/tools/releasetools/img_from_target_files \
-            pixeldust-$PD_VERSION-signed-target_files.zip \
-            pixeldust-$PD_VERSION-signed-image.zip
-    fi
 # Build rom package
 else
     ${MAKE} pixeldust"$CMD"
-    ln -sf $OUT/pixeldust-${PD_VERSION}.zip $DIR_ROOT
 fi
 RETVAL=$?
 echo -e ""
