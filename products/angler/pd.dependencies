@@ -16,5 +16,11 @@
         "repository":   "android_vendor_huawei",
         "remote":       "pdd",
         "revision":     "ten"
+    },
+    {
+        "target_path":  "packages/apps/GoogleCamera",
+        "repository":   "PixelBoot/packages_apps_GoogleCamera_angler ",
+        "remote":       "gitlab",
+        "revision":     "ten"
     }
 ]
