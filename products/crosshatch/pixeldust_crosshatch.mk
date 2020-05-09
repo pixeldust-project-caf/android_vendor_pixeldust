@@ -61,7 +61,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="crosshatch" \
     PRIVATE_BUILD_DESC="crosshatch-user 10 QQ2A.200501.001.B2 6352890 release-keys"
 
-BUILD_FINGERPRINT := "google/crosshatch/crosshatch:10/200501.001.B2/6352890:user/release-keys"
+BUILD_FINGERPRINT := "google/crosshatch/crosshatch:10/QQ2A.200501.001.B2/6352890:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="slothdabski" \
