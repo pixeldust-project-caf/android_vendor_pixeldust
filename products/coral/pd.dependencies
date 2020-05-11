@@ -9,7 +9,7 @@
         "target_path":  "kernel/google/floral",
         "repository":   "android_kernel_google_floral",
         "remote":       "pdd",
-        "revision":     "ten"
+        "revision":     "ten-new"
     },
     {
         "target_path":  "prebuilts/clang/host/linux-x86/clang-latest",
