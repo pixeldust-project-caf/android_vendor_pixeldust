@@ -52,5 +52,11 @@
         "repository":   "android_hardware_qcom_media",
         "remote":       "pdcaf",
         "revision":     "quiche"
+    },
+    {
+        "target_path":  "hardware/ril",
+        "repository":   "platform/hardware/ril",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-10.0.0_r25"
     }
 ]
