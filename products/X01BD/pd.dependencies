@@ -1,6 +1,30 @@
 [
   {
     "remote": "github",
+    "repository": "PixelDust-Devices/android_device_asus_X01BD",
+    "target_path": "device/asus/X01BD",
+    "revision": "ten"
+  },
+  { 
+    "remote": "github",
+    "repository": "PixelDust-Devices/android_vendor_asus_X01BD",
+    "target_path": "vendor/asus/X01BD",
+    "revision": "ten"
+  },
+  {
+    "remote": "github",
+    "repository": "PixelDust-Devices/android_kernel_asus_sdm660",
+    "target_path": "kernel/asus/sdm660",
+    "revision": "ten"
+  },
+  {
+    "remote": "github",
+    "repository": "LineageOS/android_external_ant-wireless_antradio-library",
+    "target_path": "external/ant-wireless/antradio-library",
+    "revision": "lineage-17.1"
+  },
+  {
+    "remote": "github",
     "repository": "LineageOS/android_hardware_qcom_audio",
     "target_path": "hardware/qcom-caf/msm8998/audio",
     "revision": "lineage-17.1-caf-msm8998"
@@ -16,11 +40,5 @@
     "repository": "LineageOS/android_hardware_qcom_media",
     "target_path": "hardware/qcom-caf/msm8998/media",
     "revision": "lineage-17.1-caf-msm8998"
-  },
-  {
-    "remote": "github",
-    "repository": "LineageOS/android_external_ant-wireless_antradio-library",
-    "target_path": "external/ant-wireless/antradio-library",
-    "revision": "lineage-17.1"
   }
 ]

@@ -36,14 +36,14 @@ include vendor/pixeldust/configs/system_optional.mk
 # Google Apps
 $(call inherit-product-if-exists, vendor/gapps/gapps.mk)
 REMOVE_GAPPS_PACKAGES += \
-    PrebuiltGmail \
+    GoogleCamera \
     NexusLauncherRelease
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := pixeldust_X01BD
 PRODUCT_DEVICE := X01BD
 PRODUCT_BRAND := asus
-PRODUCT_MODEL := Zenfone Max Pro M2
+PRODUCT_MODEL := ASUS_X01BDA
 PRODUCT_MANUFACTURER := asus
 TARGET_VENDOR := asus
 
