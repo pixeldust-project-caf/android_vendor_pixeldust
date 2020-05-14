@@ -25,7 +25,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
 # Inherit from X01BD device
-$(call inherit-product, device/asus/X01BD/device.mk)
+$(call inherit-product-if-exists, device/asus/X01BD/device.mk)
 
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
@@ -36,14 +36,14 @@ include vendor/pixeldust/configs/system_optional.mk
 # Google Apps
 $(call inherit-product-if-exists, vendor/gapps/gapps.mk)
 REMOVE_GAPPS_PACKAGES += \
-    PrebuiltGmail \
+    GoogleCamera \
     NexusLauncherRelease
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := pixeldust_X01BD
 PRODUCT_DEVICE := X01BD
 PRODUCT_BRAND := asus
-PRODUCT_MODEL := Zenfone Max Pro M2
+PRODUCT_MODEL := ASUS_X01BDA
 PRODUCT_MANUFACTURER := asus
 TARGET_VENDOR := asus
 
