@@ -7,7 +7,7 @@ $(call inherit-product, vendor/pixeldust/configs/pixeldust_phone.mk)
 # Inherit device configuration
 $(call inherit-product, device/google/walleye/aosp_walleye.mk)
 
-include device/google/wahoo/device-aosip.mk
+include device/google/wahoo/device-pixeldust.mk
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_walleye
