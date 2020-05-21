@@ -57,4 +57,4 @@ $(call inherit-product-if-exists, vendor/gapps/gapps.mk)
 REMOVE_GAPPS_PACKAGES += \
 	PrebuiltGmail \
 	MatchmakerPrebuiltPixel4 \
-	WellbeingPrebuilt
+	NexusLauncherRelease
