@@ -74,6 +74,7 @@
 
     <privapp-permissions package="com.android.phone">
         <permission name="android.permission.OVERRIDE_WIFI_CONFIG"/>
+        <permission name="android.permission.START_ACTIVITIES_FROM_BACKGROUND"/>
     </privapp-permissions>
 
     <privapp-permissions package="com.android.wallpaper">
