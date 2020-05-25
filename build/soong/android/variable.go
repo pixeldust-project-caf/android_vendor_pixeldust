@@ -65,6 +65,10 @@ type Product_variables struct {
 	Uses_generic_camera_parameter_library struct {
 		Srcs []string
 	}
+	Target_surfaceflinger_fod_lib struct {
+		Cflags []string
+		Whole_static_libs []string
+	}
 }
 
 type ProductVariables struct {
@@ -86,4 +90,5 @@ type ProductVariables struct {
 	Has_legacy_camera_hal1                  *bool `json:",omitempty"`
 	Uses_generic_camera_parameter_library   *bool `json:",omitempty"`
 	Specific_camera_parameter_library       *string `json:",omitempty"`
+	Target_surfaceflinger_fod_lib           *string `json:",omitempty"`
 }
