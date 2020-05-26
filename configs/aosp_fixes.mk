@@ -1,4 +1,4 @@
-# Copyright (C) 2019 The PixelDust Project
+# Copyright (C) 2019-2020 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,5 +18,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.android.dataroaming=false \
     ro.carrier=unknown \
     ro.opa.eligible_device=true \
-    net.tethering.noprovisioning=true
+    net.tethering.noprovisioning=true \
+    fw.max_users=69 \
+    fw.show_multiuserui=1
 
