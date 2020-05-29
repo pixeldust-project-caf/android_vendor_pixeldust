@@ -1,0 +1,65 @@
+[
+    {
+        "target_path":  "device/huawei/angler",
+        "repository":   "android_device_huawei_angler",
+        "remote":       "pdd",
+        "revision":     "quiche"
+    },
+    {
+        "target_path":  "kernel/huawei/angler",
+        "repository":   "android_kernel_huawei_angler",
+        "remote":       "pdd",
+        "revision":     "quiche"
+    },
+    {
+        "target_path":  "vendor/huawei",
+        "repository":   "android_vendor_huawei",
+        "remote":       "pdd",
+        "revision":     "quiche"
+    },
+    {
+        "target_path":  "packages/apps/GoogleCamera",
+        "repository":   "PixelBoot/packages_apps_GoogleCamera_angler ",
+        "remote":       "gitlab",
+        "revision":     "ten"
+    },
+    {
+        "target_path":  "device/qcom/common",
+        "repository":   "android_device_qcom_common",
+        "remote":       "pdcaf",
+        "revision":     "quiche"
+    },
+    {
+        "target_path":  "hardware/broadcom/wlan",
+        "repository":   "platform/hardware/broadcom/wlan",
+        "remote":       "aosp"
+    },
+    {
+        "target_path":  "hardware/broadcom/libbt",
+        "repository":   "platform/hardware/broadcom/libbt",
+        "remote":       "aosp"
+    },
+    {
+        "target_path":  "hardware/qcom/msm8994",
+        "repository":   "platform/hardware/qcom/msm8994",
+        "remote":	"aosp"
+    },
+    {
+        "target_path":  "hardware/qcom/display",
+        "repository":   "android_hardware_qcom_display",
+        "remote":       "pdcaf",
+        "revision":     "quiche-aosp-8994"
+    },
+    {
+        "target_path":  "hardware/qcom/gps",
+        "repository":   "android_hardware_qcom_gps",
+        "remote":	"pdcaf",
+        "revision":     "quiche"
+    },
+    {
+        "target_path":  "hardware/qcom/media",
+        "repository":   "android_hardware_qcom_media",
+        "remote":       "pdcaf",
+        "revision":     "quiche"
+    }
+]
