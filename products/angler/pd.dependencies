@@ -25,9 +25,9 @@
     },
     {
         "target_path":  "device/qcom/common",
-        "repository":   "android_device_qcom_common",
-        "remote":       "pdcaf",
-        "revision":     "quiche"
+        "repository":   "AOSPA/android_device_qcom_common",
+        "remote":       "github",
+        "revision":     "quartz"
     },
     {
         "target_path":  "hardware/broadcom/wlan",
