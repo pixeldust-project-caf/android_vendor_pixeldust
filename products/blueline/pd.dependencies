@@ -19,8 +19,8 @@
     },
     {
         "target_path":  "vendor/images",
-        "repository":   "DirtyUnicorns/android_vendor_images",
-        "remote":       "gitlab",
+        "repository":   "android_vendor_images",
+        "remote":       "alternate",
         "revision":     "q10x"
     },
     {
