@@ -67,6 +67,10 @@ FORCE_BUILD_LAUNCHER3 := YES
 PRODUCT_PACKAGES += \
     Launcher3QuickStep
 
+# Qualcomm privileged app permissions
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/config/permissions/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
+
 # Whitelist
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/config/permissions/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml
