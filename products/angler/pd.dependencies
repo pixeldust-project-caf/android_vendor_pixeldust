@@ -18,12 +18,6 @@
         "revision":     "quiche"
     },
     {
-        "target_path":  "packages/apps/GoogleCamera",
-        "repository":   "PixelBoot/packages_apps_GoogleCamera_angler ",
-        "remote":       "gitlab",
-        "revision":     "ten"
-    },
-    {
         "target_path":  "device/qcom/common",
         "repository":   "AOSPA/android_device_qcom_common",
         "remote":       "github",
