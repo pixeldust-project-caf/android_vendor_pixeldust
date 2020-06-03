@@ -7,9 +7,9 @@
     },
     {
         "target_path":  "kernel/google/floral",
-        "repository":   "android_kernel_google_floral",
-        "remote":       "pdd",
-        "revision":     "ten"
+        "repository":   "DirtyUnicorns/android_kernel_google_floral",
+        "remote":       "github",
+        "revision":     "q10x"
     },
     {
         "target_path":  "prebuilts/clang/host/linux-x86/clang-latest",
@@ -24,9 +24,9 @@
         "revision":     "ten"
     },
     {
-        "target_path":  "vendor/images/flame",
-        "repository":   "fKm/android_vendor_images_flame",
-        "remote":       "gitlab",
-        "revision":     "ten"
+        "target_path":  "vendor/images",
+        "repository":   "android_vendor_images",
+        "remote":       "alternate",
+        "revision":     "q10x"
     }
 ]
