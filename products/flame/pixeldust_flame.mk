@@ -60,8 +60,8 @@ PRODUCT_DEVICE := flame
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="flame" \
     TARGET_DEVICE="flame" \
-    PRIVATE_BUILD_DESC="flame-user 10 QQ2A.200501.001.B2 6352890 release-keys"
-BUILD_FINGERPRINT := "google/flame/flame:10/QQ2A.200501.001.B2/6352890:user/release-keys"
+    PRIVATE_BUILD_DESC="flame-user 10 QQ3A.200605.001 6392402 release-keys"
+BUILD_FINGERPRINT := "google/flame/flame:10/QQ3A.200605.001/6392402:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="fKm" \
