@@ -13,9 +13,9 @@
     },
     {
         "target_path":  "prebuilts/clang/host/linux-x86/clang-latest",
-        "repository":   "Haseo97/Avalon-Clang-11.0.1",
+        "repository":   "Bikram557/clang-11.0.1",
         "remote":       "github",
-        "revision":     "11.0.1"
+        "revision":     "10.0"
     },
     {
         "target_path":  "vendor/google",
@@ -24,9 +24,9 @@
         "revision":     "ten"
     },
     {
-        "target_path":  "vendor/images",
-        "repository":   "android_vendor_images",
-        "remote":       "alternate",
-        "revision":     "q10x"
+        "target_path":  "vendor/images/flame",
+        "repository":   "fKm/android_vendor_images_flame",
+        "remote":       "gitlab",
+        "revision":     "ten"
     }
 ]
