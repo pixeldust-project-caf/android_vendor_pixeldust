@@ -55,5 +55,11 @@
         "repository":   "android_hardware_qcom_media",
         "remote":       "pdcaf",
         "revision":     "quiche"
+    },
+    {
+        "target_path":  "hardware/sony/timekeep",
+        "repository":   "LineageOS/android_hardware_sony_timekeep",
+        "remote":       "github",
+        "revision":     "lineage-17.1"
     }
 ]
