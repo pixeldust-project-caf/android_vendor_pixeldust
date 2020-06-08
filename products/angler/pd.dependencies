@@ -19,8 +19,14 @@
     },
     {
         "target_path":  "packages/apps/GoogleCamera",
-        "repository":   "PixelBoot/packages_apps_GoogleCamera_angler ",
+        "repository":   "PixelBoot/packages_apps_GoogleCamera_angler",
         "remote":       "gitlab",
         "revision":     "ten"
+    },
+    {
+        "target_path":  "hardware/sony/timekeep",
+        "repository":   "LineageOS/android_hardware_sony_timekeep",
+        "remote":       "github",
+        "revision":     "lineage-17.1"
     }
 ]
