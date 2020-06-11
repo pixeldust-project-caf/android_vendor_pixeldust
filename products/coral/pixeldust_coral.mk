@@ -41,6 +41,9 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 # Include optional stuff (e.g. prebuilt apps)
 include vendor/pixeldust/configs/system_optional.mk
 
+#New Google Assistant
+TARGET_SUPPORTS_NGA := true
+
 # Google Apps
 $(call inherit-product-if-exists, vendor/gapps/gapps.mk)
 REMOVE_GAPPS_PACKAGES += \
