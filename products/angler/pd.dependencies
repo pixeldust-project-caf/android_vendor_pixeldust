@@ -36,7 +36,7 @@
     {
         "target_path":  "hardware/qcom/msm8994",
         "repository":   "platform/hardware/qcom/msm8994",
-        "remote":	"aosp"
+        "remote":   	"aosp"
     },
     {
         "target_path":  "hardware/qcom/display",
@@ -47,8 +47,8 @@
     {
         "target_path":  "hardware/qcom/gps",
         "repository":   "android_hardware_qcom_gps",
-        "remote":	"pdcaf",
-        "revision":     "quiche"
+        "remote":   	"pdcaf",
+        "revision":     "quiche-aosp"
     },
     {
         "target_path":  "hardware/qcom/media",
