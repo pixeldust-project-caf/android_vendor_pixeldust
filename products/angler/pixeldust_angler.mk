@@ -56,9 +56,6 @@ PRODUCT_PACKAGES += \
 # Exclude QCOM SEPolicy
 TARGET_EXCLUDE_QCOM_SEPOLICY := true
 
-# Generic CAF packages
-$(call inherit-product, device/qcom/common/common.mk)
-
 # Setup device specific product configuration.
 PRODUCT_NAME := pixeldust_angler
 PRODUCT_BRAND := google

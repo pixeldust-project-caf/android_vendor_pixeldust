@@ -18,12 +18,6 @@
         "revision":     "quiche"
     },
     {
-        "target_path":  "device/qcom/common",
-        "repository":   "AOSPA/android_device_qcom_common",
-        "remote":       "github",
-        "revision":     "quartz"
-    },
-    {
         "target_path":  "hardware/broadcom/wlan",
         "repository":   "platform/hardware/broadcom/wlan",
         "remote":       "aosp"
@@ -36,7 +30,7 @@
     {
         "target_path":  "hardware/qcom/msm8994",
         "repository":   "platform/hardware/qcom/msm8994",
-        "remote":   	"aosp"
+        "remote":       "aosp"
     },
     {
         "target_path":  "hardware/qcom/display",
@@ -47,7 +41,7 @@
     {
         "target_path":  "hardware/qcom/gps",
         "repository":   "android_hardware_qcom_gps",
-        "remote":   	"pdcaf",
+        "remote":       "pdcaf",
         "revision":     "quiche-aosp"
     },
     {
