@@ -71,6 +71,9 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     Themes \
 
+# Include Potato volume panels
+include packages/apps/PotatoPlugins/plugins.mk
+
 # Devices should opt-in to include Seedvault
 ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
