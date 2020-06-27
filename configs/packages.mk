@@ -18,6 +18,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     curl
 
+# Neural Network
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full-rtti
+
 # Telephony packages
 PRODUCT_PACKAGES += \
     Stk \
