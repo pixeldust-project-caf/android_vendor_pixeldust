@@ -72,6 +72,9 @@ type Product_variables struct {
 	Target_needs_netd_direct_connect_rule struct {
 		Cppflags []string
 	}
+	Target_uses_prebuilt_dynamic_partitions struct {
+		Cflags []string
+	}
 }
 
 type ProductVariables struct {
@@ -95,4 +98,5 @@ type ProductVariables struct {
 	Specific_camera_parameter_library       *string `json:",omitempty"`
 	Target_surfaceflinger_fod_lib           *string `json:",omitempty"`
 	Target_needs_netd_direct_connect_rule   *bool `json:",omitempty"`
+	Target_uses_prebuilt_dynamic_partitions  *bool `json:",omitempty"`
 }
