@@ -1,0 +1,27 @@
+[
+  {
+    "repository": "android_device_xiaomi_sdm845-common",
+    "target_path": "device/xiaomi/sdm845-common",
+    "remote": "pdd"
+  },
+  {
+    "repository": "android_kernel_xiaomi_sdm845",
+    "target_path": "kernel/xiaomi/sdm845",
+    "remote": "pdd"
+  },
+  {
+    "repository": "vendor_xiaomi_beryllium",
+    "target_path": "vendor/xiaomi/beryllium",
+    "remote": "pdd"
+  },
+  {
+    "repository": "vendor_xiaomi_sdm845-common",
+    "target_path": "vendor/xiaomi/sdm845-common",
+    "remote": "pdd"
+  },
+  {
+    "repository": "android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings",
+    "remote": "lineage"
+  }
+]
