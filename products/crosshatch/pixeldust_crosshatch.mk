@@ -50,26 +50,21 @@ REMOVE_GAPPS_PACKAGES += \
     PrebuiltGmail \
     NexusLauncherRelease
 
-# Vendor
-$(call inherit-product-if-exists, vendor/google/crosshatch/crosshatch-vendor.mk)
-
 PRODUCT_NAME := pixeldust_crosshatch
 PRODUCT_DEVICE := crosshatch
-PRODUCT_BRAND := Google
+PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel 3 XL
-PRODUCT_MANUFACTURER := Google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="crosshatch" \
-    TARGET_DEVICE="crosshatch" \
-    PRIVATE_BUILD_DESC="crosshatch-user 10 QQ3A.200605.002.A1 6392402 release-keys"
+    PRIVATE_BUILD_DESC="crosshatch-user 10 QQ3A.200705.002 6506677 release-keys"
 
-BUILD_FINGERPRINT := "google/crosshatch/crosshatch:10/QQ3A.200605.002.A1/6392402:user/release-keys"
+BUILD_FINGERPRINT := "google/crosshatch/crosshatch:10/QQ3A.200705.002/6506677:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.fingerprint=google/crosshatch/crosshatch:10/QQ3A.200705.002/6506677:user/release-keys \
     ro.pixeldust.maintainer="slothdabski" \
     ro.pixeldust.device="crosshatch"
 
-# Copy device specific prebuilt files.
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
+# Vendor
+$(call inherit-product-if-exists, vendor/google/crosshatch/crosshatch-vendor.mk)
