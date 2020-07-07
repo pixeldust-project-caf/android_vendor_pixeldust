@@ -39,9 +39,9 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	PRODUCT_NAME="taimen" \
-	PRIVATE_BUILD_DESC="taimen-user 10 QQ3A.200605.001 6392402 release-keys"
+	PRIVATE_BUILD_DESC="taimen-user 10 QQ3A.200705.002 6506677 release-keys"
 
-BUILD_FINGERPRINT := google/taimen/taimen:10/QQ3A.200605.001/6392402:user/release-keys
+BUILD_FINGERPRINT := google/taimen/taimen:10/QQ3A.200705.002/6506677:user/release-keys
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="nitin1438" \
