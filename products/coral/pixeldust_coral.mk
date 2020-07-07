@@ -50,28 +50,22 @@ REMOVE_GAPPS_PACKAGES += \
     PrebuiltGmail \
     NexusLauncherRelease
 
-# Vendor
-$(call inherit-product-if-exists, vendor/google/coral/coral-vendor.mk)
-
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_coral
-PRODUCT_BRAND := Google
+PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel 4 XL
-PRODUCT_MANUFACTURER := Google
 PRODUCT_DEVICE := coral
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="coral" \
-    TARGET_DEVICE="coral" \
-    PRIVATE_BUILD_DESC="coral-user 10 QQ3A.200605.001 6392402 release-keys"
-BUILD_FINGERPRINT := "google/coral/coral:10/QQ3A.200605.001/6392402:user/release-keys"
+    PRIVATE_BUILD_DESC="coral-user 10 QQ3A.200705.002 6506677 release-keys"
+BUILD_FINGERPRINT := "google/coral/coral:10/QQ3A.200705.002/6506677:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.fingerprint=google/coral/coral:10/QQ3A.200705.002/6506677:user/release-keys \
     ro.pixeldust.maintainer="fKm" \
     ro.pixeldust.device="coral"
 
-# Copy device specific prebuilt files.
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
-
+# Vendor
+$(call inherit-product-if-exists, vendor/google/coral/coral-vendor.mk)
 BOARD_PREBUILT_VENDORIMAGE := vendor/images/coral/vendor.img
