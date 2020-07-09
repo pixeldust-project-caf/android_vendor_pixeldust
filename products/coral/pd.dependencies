@@ -13,20 +13,26 @@
     },
     {
         "target_path":  "prebuilts/clang/host/linux-x86/clang-latest",
-        "repository":   "Bikram557/clang-11.0.1",
+        "repository":   "Bikram557/clang-11.0.3",
         "remote":       "github",
-        "revision":     "10.0"
+        "revision":     "ten"
     },
     {
         "target_path":  "vendor/google",
         "repository":   "android_vendor_google",
-        "remote":       "pdx",
-        "revision":     "ten"
+        "remote":       "pdd",
+        "revision":     "quiche"
     },
     {
         "target_path":  "vendor/images",
         "repository":   "android_vendor_images",
         "remote":       "alternate",
         "revision":     "q10x"
+    },
+    {
+        "target_path":  "hardware/knowles/athletico/sound_trigger_hal",
+        "repository":   "platform/hardware/knowles/athletico/sound_trigger_hal",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-10.0.0_r40"
     }
 ]
