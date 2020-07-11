@@ -12,12 +12,6 @@
         "revision":     "q10x"
     },
     {
-        "target_path":  "prebuilts/clang/host/linux-x86/clang-latest",
-        "repository":   "Bikram557/clang-11.0.1",
-        "remote":       "github",
-        "revision":     "10.0"
-    },
-    {
         "target_path":  "vendor/google",
         "repository":   "android_vendor_google",
         "remote":       "pdd",
