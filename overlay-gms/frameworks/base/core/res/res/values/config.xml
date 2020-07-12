@@ -18,6 +18,9 @@
 
     <!-- Disable stock OTA components if installed -->
     <string-array name="config_disabledComponents" translatable="false">
+        <item>com.android.vending/com.google.android.finsky.systemupdate.SystemUpdateSettingsContentProvider</item>
+        <item>com.android.vending/com.google.android.finsky.systemupdateactivity.SettingsSecurityEntryPoint</item>
+        <item>com.android.vending/com.google.android.finsky.systemupdateactivity.SystemUpdateActivity</item>
         <item>com.google.android.gms/com.google.android.gms.update.SystemUpdateActivity</item>
         <item>com.google.android.gms/com.google.android.gms.update.SystemUpdateServiceActiveReceiver</item>
         <item>com.android.wallpaper/com.android.wallpaper.picker.SetWallpaperAlias</item>
