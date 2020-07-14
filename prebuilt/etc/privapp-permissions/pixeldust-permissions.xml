@@ -113,8 +113,4 @@
         <permission name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME"/>
     </privapp-permissions>
 
-    <privapp-permissions package="org.mokee.screenshot">
-        <permission name="android.permission.READ_FRAME_BUFFER"/>
-    </privapp-permissions>
-
 </permissions>
