@@ -59,12 +59,12 @@ PRODUCT_PACKAGES += telephony-ext
 PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
-    Longshot \
     OPScreenRecorder \
     ThemePicker \
     OmniRecord \
     PixelDustThemeStub \
-    DU-Themes
+    DU-Themes \
+    StitchImage
 
 # Force Launcher3 (this is still needed to exclude the nexuslauncher overlays)
 FORCE_BUILD_LAUNCHER3 := YES
@@ -93,10 +93,6 @@ endif
 # Screenrecorder permissions
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/config/permissions/privapp-permissions-screenrecorder.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-screenrecorder.xml
-
-# Hidden API whitelist
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/config/permissions/pdx-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/pdx-hiddenapi-package-whitelist.xml
 
 # Backup Tool
 ifeq ($(AB_OTA_UPDATER),true)
