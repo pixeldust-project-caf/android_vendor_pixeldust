@@ -59,9 +59,7 @@ PRODUCT_PACKAGES += telephony-ext
 PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
-    OPScreenRecorder \
     ThemePicker \
-    OmniRecord \
     PixelDustThemeStub \
     DU-Themes \
     StitchImage
@@ -89,10 +87,6 @@ PRODUCT_PACKAGES += \
     Launcher3QuickStep
 
 endif
-
-# Screenrecorder permissions
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/config/permissions/privapp-permissions-screenrecorder.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-screenrecorder.xml
 
 # Backup Tool
 ifeq ($(AB_OTA_UPDATER),true)
