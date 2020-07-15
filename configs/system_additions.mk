@@ -54,9 +54,7 @@ SKIP_BOOT_JARS_CHECK := true
 PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
-    OPScreenRecorder \
     ThemePicker \
-    OmniRecord \
     PixelDustThemeStub \
     DU-Themes \
     StitchImage
@@ -92,10 +90,6 @@ PRODUCT_COPY_FILES += \
 # Whitelist
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/config/permissions/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/qti_whitelist.xml
-
-# Screenrecorder permissions
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/config/permissions/privapp-permissions-screenrecorder.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-screenrecorder.xml
 
 # Backup Tool
 ifeq ($(AB_OTA_UPDATER),true)
