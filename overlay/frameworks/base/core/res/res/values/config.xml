@@ -175,4 +175,7 @@
     <!-- Whether safe headphone volume is enabled or not (country specific). -->
     <bool name="config_safe_media_volume_enabled">false</bool>
 
+    <!-- Whether to use a separated user definable value of pulse notification screen brightness -->
+    <integer name="config_screenBrightnessPulse">42</integer>
+
 </resources>
