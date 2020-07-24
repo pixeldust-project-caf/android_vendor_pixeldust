@@ -19,8 +19,8 @@
     },
     {
         "target_path":  "vendor/images",
-        "repository":   "android_vendor_images",
-        "remote":       "alternate",
-        "revision":     "q10x"
+        "repository":   "Pixeldust-Project-X/android_vendor_images",
+        "remote":       "gitlab",
+        "revision":     "ten"
     }
 ]
