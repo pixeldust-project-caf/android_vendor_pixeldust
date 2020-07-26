@@ -14,11 +14,10 @@
 # limitations under the License.
 #
 
-ifeq ($(TARGET_FLATTEN_APEX),false)
 # Enable Google Play system updates support
 PRODUCT_SOONG_NAMESPACES += \
     vendor/pixeldust/apex
 
 PRODUCT_PACKAGES += \
-    ModuleMetadataGooglePrebuilt
-endif
+    ModuleMetadataGoogle
+
