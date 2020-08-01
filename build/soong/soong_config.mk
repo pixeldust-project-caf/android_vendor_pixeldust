@@ -23,5 +23,6 @@ $(call add_json_str,            Specific_camera_parameter_library,        $(TARG
 $(call add_json_str_omitempty,  Target_surfaceflinger_fod_lib,            $(TARGET_SURFACEFLINGER_FOD_LIB))
 $(call add_json_bool,           Target_needs_netd_direct_connect_rule,    $(filter true,$(TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE)))
 $(call add_json_bool,           Target_uses_prebuilt_dynamic_partitions,  $(filter true,$(TARGET_USES_PREBUILT_DYNAMIC_PARTITIONS)))
+$(call add_json_bool,           Supports_extended_compress_format,        $(filter true,$(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)))
 
 $(call end_json_map)

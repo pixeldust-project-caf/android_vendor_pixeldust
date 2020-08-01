@@ -17,6 +17,9 @@ type Product_variables struct {
 	Target_init_vendor_lib struct {
 		Whole_static_libs []string
 	}
+	Supports_extended_compress_format struct {
+		Cflags []string
+	}
 	Target_process_sdk_version_override struct {
 		Cppflags []string
 	}
@@ -98,5 +101,6 @@ type ProductVariables struct {
 	Specific_camera_parameter_library       *string `json:",omitempty"`
 	Target_surfaceflinger_fod_lib           *string `json:",omitempty"`
 	Target_needs_netd_direct_connect_rule   *bool `json:",omitempty"`
-	Target_uses_prebuilt_dynamic_partitions  *bool `json:",omitempty"`
+	Target_uses_prebuilt_dynamic_partitions *bool `json:",omitempty"`
+        Supports_extended_compress_format       *bool `json:",omitempty"`
 }
