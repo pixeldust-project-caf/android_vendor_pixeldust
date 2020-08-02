@@ -1,51 +1,57 @@
 [
   {
     "remote":       "github",
-    "repository":   "amarbajpai/device_xiaomi_tissot",
+    "repository":   "reharsh67/device_xiaomi_tissot-caf",
     "target_path":  "device/xiaomi/tissot",
-    "revision":     "pd-caf"
+    "revision":     "pixeldust-quiche"
   },
   {
     "remote":       "github",
-    "repository":   "amarbajpai/kernel_xiaomi_msm8953",
+    "repository":   "reharsh67/kernel_xiaomi_msm8953",
     "target_path":  "kernel/xiaomi/msm8953",
-    "revision":     "pd-caf"
+    "revision":     "stable"
   },
   {
     "remote":       "github",
-    "repository":   "amarbajpai/vendor_xiaomi",
+    "repository":   "reharsh67/msm8953-common_caf",
+    "target_path":  "device/xiaomi/msm8953-common",
+    "revision":     "pixeldust-quiche"
+  },
+  {
+    "remote":       "github",
+    "repository":   "reharsh67/vendor_xiaomi_tissot",
     "target_path":  "vendor/xiaomi",
-    "revision":     "pd-caf"
+    "revision":     "Stable"
   },
   {
     "remote":       "github",
     "repository":   "AOSPA/android_hardware_qcom_display",
-    "target_path":  "hardware/qcom/display",
-    "revision":     "pie-8996"
+    "target_path":  "hardware/qcom-caf/msm8996/display",
+    "revision":     "quartz-89xx"
   },
   {
     "remote":       "github",
-    "repository":   "AOSPA/android_hardware_qcom_media",
-    "target_path":  "hardware/qcom/media",
-    "revision":     "pie-8996"
+    "repository":   "LineageOS/android_hardware_qcom_media",
+    "target_path":  "hardware/qcom-caf/msm8996/media",
+    "revision":     "lineage-17.1-caf-msm8996"
   },
   {
     "remote":       "github",
-    "repository":   "AOSPA/android_hardware_qcom_audio",
+    "repository":   "LineageOS/android_hardware_qcom_audio",
     "target_path":  "hardware/qcom/audio",
-    "revision":     "pie-8996"
+    "revision":     "lineage-17.1-caf-msm8996"
   },
   {
     "remote":       "github",
-    "repository":   "amarbajpai/packages_resources_devicesettings",
-    "target_path":  "packages/resources/devicesettings",
-    "revision":     "pie"
+    "repository":   "KudProject/prebuilts_clang_host_linux-x86",
+    "target_path":  "prebuilts/clang/host/linux-x86/clang-r383902",
+    "revision":     "r383902"
   },
   {
     "remote":       "github",
     "repository":   "ThankYouMario/proprietary_vendor_qcom_common",
     "target_path":  "vendor/qcom/common",
-    "revision":     "pie"
+    "revision":     "quartz"
   }
 ]
 
