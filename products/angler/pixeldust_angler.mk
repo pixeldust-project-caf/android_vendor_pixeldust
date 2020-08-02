@@ -28,6 +28,9 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 # Include optional stuff (e.g. prebuilt apps)
 include vendor/pixeldust/configs/system_optional.mk
 
+# Exclude QCOM SEPolicy
+TARGET_EXCLUDE_QCOM_SEPOLICY := true
+
 # Google Apps
 $(call inherit-product-if-exists, vendor/gapps/gapps.mk)
 REMOVE_GAPPS_PACKAGES += \
