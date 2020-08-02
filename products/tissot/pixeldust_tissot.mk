@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Bootanimation
-BOOTANIMATION := 1440_black
+BOOTANIMATION := 1080
 
 # Release name
 PRODUCT_RELEASE_NAME := Mi A1
@@ -26,11 +26,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # inherit from device
 $(call inherit-product, device/xiaomi/tissot/device.mk)
 
-# CAF includes
-include device/qcom/common/common.mk
-
 # Google Apps
-# $(call inherit-product, vendor/googleapps/googleapps.mk)
+$(call inherit-product, vendor/gapps/gapps.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := tissot
@@ -54,3 +51,7 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 
 # Include optional stuff (e.g. prebuilt apps)
 include vendor/pixeldust/configs/system_optional.mk
+
+PRODUCT_PACKAGES += \
+    Mms \
+    Messaging
