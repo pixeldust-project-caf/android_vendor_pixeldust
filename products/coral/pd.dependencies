@@ -27,6 +27,6 @@
         "target_path":  "hardware/knowles/athletico/sound_trigger_hal",
         "repository":   "platform/hardware/knowles/athletico/sound_trigger_hal",
         "remote":       "aosp",
-        "revision":     "refs/tags/android-10.0.0_r40"
+        "revision":     "refs/tags/android-10.0.0_r41"
     }
 ]

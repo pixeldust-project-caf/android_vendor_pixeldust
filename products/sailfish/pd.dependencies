@@ -39,13 +39,13 @@
         "target_path":  "hardware/qcom/gps",
         "repository":   "platform/hardware/qcom/gps",
         "remote":       "aosp",
-        "revision":     "refs/tags/android-10.0.0_r40"
+        "revision":     "refs/tags/android-10.0.0_r41"
     },
     {
         "target_path":  "hardware/qcom/keymaster",
         "repository":   "platform/hardware/qcom/keymaster",
         "remote":       "aosp",
-        "revision":     "refs/tags/android-10.0.0_r40"
+        "revision":     "refs/tags/android-10.0.0_r41"
     },
     {
         "target_path":  "hardware/qcom/media",
@@ -57,6 +57,6 @@
         "target_path":  "hardware/ril",
         "repository":   "platform/hardware/ril",
         "remote":       "aosp",
-        "revision":     "refs/tags/android-10.0.0_r40"
+        "revision":     "refs/tags/android-10.0.0_r41"
     }
 ]

@@ -57,12 +57,12 @@ PRODUCT_MODEL := Pixel 3 XL
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="crosshatch" \
-    PRIVATE_BUILD_DESC="crosshatch-user 10 QQ3A.200705.002 6506677 release-keys"
+    PRIVATE_BUILD_DESC="crosshatch-user 10 QQ3A.200805.001 6578210 release-keys"
 
-BUILD_FINGERPRINT := "google/crosshatch/crosshatch:10/QQ3A.200705.002/6506677:user/release-keys"
+BUILD_FINGERPRINT := "google/crosshatch/crosshatch:10/QQ3A.200805.001/6578210:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.fingerprint=google/crosshatch/crosshatch:10/QQ3A.200705.002/6506677:user/release-keys \
+    ro.build.fingerprint=google/crosshatch/crosshatch:10/QQ3A.200805.001/6578210:user/release-keys \
     ro.pixeldust.maintainer="slothdabski" \
     ro.pixeldust.device="crosshatch"
 
