@@ -62,7 +62,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 BUILD_FINGERPRINT := "google/blueline/blueline:10/QQ3A.200805.001/6578210:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.fingerprint=google/crosshatch/crosshatch:10/QQ3A.200805.001/6578210:user/release-keys \
+    ro.build.fingerprint=google/blueline/blueline:10/QQ3A.200805.001/6578210:user/release-keys \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="blueline"
 
