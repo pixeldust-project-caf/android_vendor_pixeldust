@@ -1,27 +1,27 @@
 [
   {
     "remote":       "github",
-    "repository":   "reharsh67/device_xiaomi_tissot-caf",
+    "repository":   "PixelDust-Devices/device_xiaomi_tissot",
     "target_path":  "device/xiaomi/tissot",
-    "revision":     "pixeldust-quiche"
+    "revision":     "master"
   },
   {
     "remote":       "github",
-    "repository":   "reharsh67/kernel_xiaomi_msm8953",
+    "repository":   "PixelDust-Devices/kernel_xiaomi_msm8953",
     "target_path":  "kernel/xiaomi/msm8953",
-    "revision":     "stable"
+    "revision":     "master"
   },
   {
     "remote":       "github",
-    "repository":   "reharsh67/msm8953-common_caf",
+    "repository":   "PixelDust-Devices/msm8953-common_tissot",
     "target_path":  "device/xiaomi/msm8953-common",
-    "revision":     "pixeldust-quiche"
+    "revision":     "master"
   },
   {
     "remote":       "github",
-    "repository":   "reharsh67/vendor_xiaomi_tissot",
+    "repository":   "PixelDust-Devices/vendor_xiaomi_tissot",
     "target_path":  "vendor/xiaomi",
-    "revision":     "Stable"
+    "revision":     "master"
   },
   {
     "remote":       "github",
@@ -38,7 +38,7 @@
   {
     "remote":       "github",
     "repository":   "LineageOS/android_hardware_qcom_audio",
-    "target_path":  "hardware/qcom/audio",
+    "target_path":  "hardware/qcom-caf/msm8996/audio",
     "revision":     "lineage-17.1-caf-msm8996"
   },
   {
