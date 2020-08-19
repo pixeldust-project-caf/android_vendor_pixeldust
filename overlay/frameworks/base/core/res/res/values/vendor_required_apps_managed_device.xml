@@ -36,5 +36,7 @@
         <item>com.google.android.settings.intelligence</item>
         <item>com.android.settings.intelligence</item>
         <item>com.google.android.documentsui</item>
+        <item>com.google.android.apps.nbu.files</item>
+        <item>com.google.android.apps.tips</item>
     </string-array>
 </resources>
