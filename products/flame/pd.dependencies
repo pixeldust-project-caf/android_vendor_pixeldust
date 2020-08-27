@@ -15,12 +15,24 @@
         "target_path":  "vendor/google",
         "repository":   "android_vendor_google",
         "remote":       "pdd",
-        "revision":     "ten"
+        "revision":     "quiche"
     },
     {
         "target_path":  "vendor/images/flame",
         "repository":   "fKm/android_vendor_images_flame",
         "remote":       "gitlab",
         "revision":     "ten"
+    },
+    {
+        "target_path":  "hardware/knowles/athletico/sound_trigger_hal",
+        "repository":   "platform/hardware/knowles/athletico/sound_trigger_hal",
+        "remote":       "aosp",
+        "revision":     "refs/tags/android-10.0.0_r41"
+    },
+    {
+        "target_path":  "frameworks/opt/net/wifi",
+        "repository":   "android_frameworks_opt_net_wifi",
+        "remote":       "pdcaf",
+        "revision":     "quiche-dev"
     }
 ]
