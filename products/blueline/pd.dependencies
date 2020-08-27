@@ -64,5 +64,11 @@
         "repository":   "platform/hardware/ril",
         "remote":       "aosp",
         "revision":     "refs/tags/android-10.0.0_r41"
+    },
+    {
+        "target_path":  "frameworks/opt/net/wifi",
+        "repository":   "android_frameworks_opt_net_wifi",
+        "remote":       "pdcaf",
+        "revision":     "quiche-dev"
     }
 ]

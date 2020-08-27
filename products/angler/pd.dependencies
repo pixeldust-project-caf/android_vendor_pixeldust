@@ -55,5 +55,11 @@
         "repository":   "LineageOS/android_hardware_sony_timekeep",
         "remote":       "github",
         "revision":     "lineage-17.1"
+    },
+    {
+        "target_path":  "frameworks/opt/net/wifi",
+        "repository":   "android_frameworks_opt_net_wifi",
+        "remote":       "pdcaf",
+        "revision":     "quiche-dev"
     }
 ]
