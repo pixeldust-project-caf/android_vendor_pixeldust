@@ -184,4 +184,7 @@
     <!-- Whether to use a separated user definable value of pulse notification screen brightness -->
     <integer name="config_screenBrightnessPulse">42</integer>
 
+    <!-- Whether to show WiFi/Hotspot generation number -->
+    <bool name="config_show_network_generation">true</bool>
+
 </resources>
