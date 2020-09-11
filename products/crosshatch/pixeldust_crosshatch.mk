@@ -1,4 +1,4 @@
-# Copyright (C) 2019 The PixelDust Project
+# Copyright (C) 2019-2020 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -54,12 +54,12 @@ PRODUCT_MODEL := Pixel 3 XL
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="crosshatch" \
-    PRIVATE_BUILD_DESC="crosshatch-user 10 QQ3A.200705.002 6506677 release-keys"
+    PRIVATE_BUILD_DESC="crosshatch-user 11 RP1A.200720.009 6720564 release-keys"
 
-BUILD_FINGERPRINT := "google/crosshatch/crosshatch:10/QQ3A.200705.002/6506677:user/release-keys"
+BUILD_FINGERPRINT="google/crosshatch/crosshatch:11/RP1A.200720.009/6720564:user/release-keys"
+BUILD_THUMBPRINT="11/RP1A.200720.009/6720564:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.fingerprint=google/crosshatch/crosshatch:10/QQ3A.200705.002/6506677:user/release-keys \
     ro.pixeldust.maintainer="slothdabski" \
     ro.pixeldust.device="crosshatch"
 
