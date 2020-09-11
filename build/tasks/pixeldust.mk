@@ -50,10 +50,12 @@ else
 PD_TARGET_PACKAGE := $(PRODUCT_OUT)/$(PIXELDUST_VERSION).zip
 endif
 
+MD5 := prebuilts/build-tools/path/$(HOST_OS)-x86/md5sum
+
 .PHONY: pixeldust
 pixeldust: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(PD_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(PD_TARGET_PACKAGE) > $(PD_TARGET_PACKAGE).md5sum
+	$(hide) $(MD5) $(PD_TARGET_PACKAGE) > $(PD_TARGET_PACKAGE).md5sum
 	@echo ""
 	@echo -e ${CL_GRN}"  ██▓███  ██▒██   ██▓█████ ██▓   ▓█████▄ █    ██  ██████▄▄▄█████▓"${CL_RST}
 	@echo -e ${CL_GRN}" ▓██░  ██▓██▒▒ █ █ ▒▓█   ▀▓██▒   ▒██▀ ██▌██  ▓██▒██    ▒▓  ██▒ ▓▒"${CL_RST}
