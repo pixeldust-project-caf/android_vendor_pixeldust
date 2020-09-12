@@ -20,6 +20,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.opa.eligible_device=true \
     net.tethering.noprovisioning=true
 
-# Build signapk to prevent zip signing failure
+# Build brotli & signapk to prevent zip signing failure
 PRODUCT_HOST_PACKAGES += \
+    brotli \
     signapk
