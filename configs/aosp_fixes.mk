@@ -1,4 +1,4 @@
-# Copyright (C) 2019 The PixelDust Project
+# Copyright (C) 2019-2020 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,3 +20,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.opa.eligible_device=true \
     net.tethering.noprovisioning=true
 
+# Build signapk to prevent zip signing failure
+PRODUCT_HOST_PACKAGES += \
+    signapk
