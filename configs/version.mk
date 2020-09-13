@@ -13,8 +13,8 @@
 # limitations under the License.
 
 # Pixel Dust ROM versioning
-PD_ROM_MAJ_VERSION := PixelDust-X
-ANDROID_OS_VERSION := 10.0.0
+PD_ROM_MAJ_VERSION := PixelDust-Eleven
+ANDROID_OS_VERSION := 11.0.0
 BUILD_VERSION_CODE := aosp
 
 ifndef SIGN_KEY
