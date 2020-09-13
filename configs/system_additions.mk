@@ -72,25 +72,25 @@ PRODUCT_PACKAGES += \
 FORCE_BUILD_LAUNCHER3 := YES
 
 # Ship lawnchair instead of launcher3 with unofficial builds 
-ifndef PD_BUILDTYPE
+#ifndef PD_BUILDTYPE
 
-PRODUCT_PACKAGES += \
-    Lawnchair
+#PRODUCT_PACKAGES += \
+#    Lawnchair
 
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/config/permissions/privapp-permissions-lawnchair.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-lawnchair.xml \
-    vendor/pixeldust/config/permissions/lawnchair-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
+#PRODUCT_COPY_FILES += \
+#    vendor/pixeldust/config/permissions/privapp-permissions-lawnchair.xml:$#(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-lawnchair.xml \
+#    vendor/pixeldust/config/permissions/lawnchair-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
 
 # Overlays
-PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/pixeldust/lawnchairoverlay/
+#PRODUCT_PACKAGE_OVERLAYS += \
+#    vendor/pixeldust/lawnchairoverlay/
 
-else
+#else
 
 PRODUCT_PACKAGES += \
     Launcher3QuickStep
 
-endif
+#endif
 
 # Android Beam
 PRODUCT_COPY_FILES += \
