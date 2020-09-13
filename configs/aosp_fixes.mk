@@ -20,7 +20,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.opa.eligible_device=true \
     net.tethering.noprovisioning=true
 
-# Build brotli & signapk to prevent zip signing failure
+# Build missing packages to prevent zip signing failure
 PRODUCT_HOST_PACKAGES += \
+    aapt2 \
+    avbtool \
     brotli \
     signapk
