@@ -49,3 +49,11 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="GrettoRosella" \
     ro.pixeldust.device="Joyeuse"
+
+# Google Apps
+$(call inherit-product-if-exists, vendor/gapps/gapps.mk)
+TARGET_GAPPS_ARCH := arm64
+TARGET_INCLUDE_STOCK_ARCORE := true
+REMOVE_GAPPS_PACKAGES += \
+    PrebuiltGmail \
+    NexusLauncherRelease
