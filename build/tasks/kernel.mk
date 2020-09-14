@@ -1,5 +1,5 @@
 # Copyright (C) 2012 The CyanogenMod Project
-#           (C) 2017 The LineageOS Project
+#           (C) 2017-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -218,6 +218,23 @@ define make-dtb-target
 $(call internal-make-kernel-target,$(DTBS_OUT),$(1))
 endef
 
+# $(1): modules list
+# $(2): output dir
+# $(3): mount point
+# $(4): staging dir
+# Depmod requires a well-formed kernel version so 0.0 is used as a placeholder.
+define build-image-kernel-modules-lineage
+    rm -rf $(2)/lib/modules
+    mkdir -p $(2)/lib/modules
+    cp $(1) $(2)/lib/modules/
+    rm -rf $(4)
+    mkdir -p $(4)/lib/modules/0.0/$(3)lib/modules
+    cp $(1) $(4)/lib/modules/0.0/$(3)lib/modules
+    $(DEPMOD) -b $(4) 0.0
+    sed -e 's/\(.*modules.*\):/\/\1:/g' -e 's/ \([^ ]*modules[^ ]*\)/ \/\1/g' $(4)/lib/modules/0.0/modules.dep > $(2)/lib/modules/modules.dep
+    cp $(4)/lib/modules/0.0/modules.alias $(2)/lib/modules
+endef
+
 $(KERNEL_OUT):
 	mkdir -p $(KERNEL_OUT)
 
@@ -247,22 +264,18 @@ $(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG) $(DEPMOD)
 			echo "Building DTBs"; \
 			$(call make-kernel-target,dtbs); \
 		fi
-	$(hide) mkdir -p $(KERNEL_MODULES_OUT)/lib/modules
 	$(hide) if grep -q '=m' $(KERNEL_CONFIG); then \
 			echo "Building Kernel Modules"; \
 			$(call make-kernel-target,modules) || exit "$$?"; \
 			echo "Installing Kernel Modules"; \
 			$(call make-kernel-target,INSTALL_MOD_PATH=$(MODULES_INTERMEDIATES) INSTALL_MOD_STRIP=1 modules_install); \
 			kernel_release=$$(cat $(KERNEL_RELEASE)) \
-			modules=$$(find $(MODULES_INTERMEDIATES)/lib/modules/$$kernel_release -type f -name '*.ko'); \
-			for f in $$modules; do \
-				$(PATH_OVERRIDE) $(KERNEL_TOOLCHAIN_PATH)strip --strip-unneeded $$f; \
-				mv $$f $(KERNEL_MODULES_OUT)/lib/modules; \
-			done; \
-			mkdir -p $(KERNEL_DEPMOD_STAGING_DIR)/lib/modules/0.0/$(KERNEL_MODULE_MOUNTPOINT)/lib/modules && \
-			find $(KERNEL_MODULES_OUT)/lib/modules -name *.ko -exec cp {} $(KERNEL_DEPMOD_STAGING_DIR)/lib/modules/0.0/$(KERNEL_MODULE_MOUNTPOINT)/lib/modules \; && \
-			$(DEPMOD) -b $(KERNEL_DEPMOD_STAGING_DIR) 0.0 && \
-			sed -e 's/\(.*modules.*\):/\/\1:/g' -e 's/ \([^ ]*modules[^ ]*\)/ \/\1/g' $(KERNEL_DEPMOD_STAGING_DIR)/lib/modules/0.0/modules.dep > $(KERNEL_MODULES_OUT)/lib/modules/modules.dep; \
+			kernel_modules_dir=$(MODULES_INTERMEDIATES)/lib/modules/$$kernel_release \
+			$(foreach s, $(TARGET_MODULE_ALIASES),\
+				$(eval p := $(subst :,$(space),$(s))) \
+				; mv $$(find $$kernel_modules_dir -name $(word 1,$(p))) $$kernel_modules_dir/$(word 2,$(p))); \
+			modules=$$(find $$kernel_modules_dir -type f -name '*.ko'); \
+			($(call build-image-kernel-modules-lineage,$$modules,$(KERNEL_MODULES_OUT),$(KERNEL_MODULE_MOUNTPOINT)/,$(KERNEL_DEPMOD_STAGING_DIR))); \
 		fi
 
 .PHONY: kerneltags
