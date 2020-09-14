@@ -22,7 +22,11 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Build missing packages to prevent zip signing failure
 PRODUCT_HOST_PACKAGES += \
-    aapt2 \
+    signapk \
     avbtool \
     brotli \
-    signapk
+    aapt2 \
+    deapexer \
+    debugfs \
+    zipalign \
+    apexer
