@@ -67,6 +67,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ifneq ($(TARGET_BUILD_VARIANT),user)
 SELINUX_IGNORE_NEVERALLOWS := true
 endif
-
-# Vendor
-$(call inherit-product-if-exists, vendor/google_devices/crosshatch/crosshatch-vendor-blobs.mk)
