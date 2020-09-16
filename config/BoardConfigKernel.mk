@@ -101,9 +101,7 @@ endif
 KERNEL_MAKE_FLAGS :=
 
 # Add back threads, ninja cuts this to $(nproc)/2
-ifneq (,$(wildcard $(OUT_DIR)/.path_interposer_origpath))
-KERNEL_MAKE_FLAGS += -j$(shell PATH=$(shell cat $(OUT_DIR)/.path_interposer_origpath):$$PATH nproc --all)
-endif
+KERNEL_MAKE_FLAGS += -j$(shell prebuilts/tools-custom/$(HOST_PREBUILT_TAG)/bin/nproc --all)
 
 ifeq ($(KERNEL_ARCH),arm)
   # Avoid "Unknown symbol _GLOBAL_OFFSET_TABLE_" errors
