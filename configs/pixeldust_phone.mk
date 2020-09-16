@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The Pixel Dust Project
+# Copyright (C) 2018-2020 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,9 +21,11 @@ include vendor/pixeldust/configs/pixeldust_optimizations.mk
 include vendor/pixeldust/configs/system_additions.mk
 include vendor/pixeldust/configs/version.mk
 include vendor/pixeldust/configs/ota.mk
-include vendor/pixeldust/config/ProductConfigQcom.mk
 
+ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
+include vendor/pixeldust/config/ProductConfigQcom.mk
 PRODUCT_SOONG_NAMESPACES += $(PATHMAP_SOONG_NAMESPACES)
+endif
 
 # Telephony packages
 PRODUCT_PACKAGES += \
