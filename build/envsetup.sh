@@ -7,9 +7,6 @@ Additional PixeldustROM functions:
 - mmmp:            Builds all of the modules in the supplied directories and pushes them to the device.
 - aospremote:      Add git remote for matching AOSP repository.
 - cafremote:       Add git remote for matching CodeAurora repository.
-- mka:             Builds using SCHED_BATCH on all processors.
-- mkap:            Builds the module(s) using mka and pushes them to the device.
-- cmka:            Cleans and builds using mka.
 - repodiff:        Diff 2 different branches or tags within the same repo
 - repolastsync:    Prints date and time of last repo sync.
 - reposync:        Parallel repo sync using ionice and SCHED_BATCH.
@@ -51,7 +48,7 @@ function brunch()
 {
     breakfast $*
     if [ $? -eq 0 ]; then
-        mka pixeldust
+        m pixeldust
     else
         echo "No such item in brunch menu. Try 'breakfast'"
         return 1
@@ -411,30 +408,6 @@ function makerecipe() {
     '
 }
 
-function mka() {
-    m -j "$@"
-}
-
-function cmka() {
-    if [ ! -z "$1" ]; then
-        for i in "$@"; do
-            case $i in
-                pixeldust|otapackage|systemimage)
-                    mka installclean
-                    mka $i
-                    ;;
-                *)
-                    mka clean-$i
-                    mka $i
-                    ;;
-            esac
-        done
-    else
-        mka clean
-        mka
-    fi
-}
-
 function repolastsync() {
     RLSPATH="$ANDROID_BUILD_TOP/.repo/.repo_fetchtimes.json"
     RLSLOCAL=$(date -d "$(stat -c %z $RLSPATH)" +"%e %b %Y, %T %Z")
@@ -610,8 +583,6 @@ alias mmp='dopush mm'
 alias mmmp='dopush mmm'
 alias mmap='dopush mma'
 alias mmmap='dopush mmma'
-alias mkap='dopush mka'
-alias cmkap='dopush cmka'
 
 function fixup_common_out_dir() {
     common_out_dir=$(get_build_var OUT_DIR)/target/common

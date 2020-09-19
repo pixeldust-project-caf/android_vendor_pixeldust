@@ -120,17 +120,6 @@ if [ -z "$JOBS" ]; then
         fi
 fi
 
-# Use mka when available and jobs not specified
-if [ "$(command -v 'mka')" ]; then
-  if [ -z "${CMD}" ]; then
-    MAKE="mka"
-  else
-    MAKE="make"
-  fi
-else
-  MAKE="make"
-fi
-
 # Grab the build version
 PD_DISPLAY_VERSION="$(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'ROM_VERSION := *' | sed 's/.*= //') \
 $(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'BUILD_VERSION := *' | sed 's/.*= //')"
@@ -139,14 +128,14 @@ $(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'BUILD_VERSION := *' 
 if [ "$FLAG_CLEAN_BUILD" = 'y' ]; then
         echo -e "${CLR_BLD_BLU}Cleaning output files left from old builds${CLR_RST}"
         echo -e ""
-        ${MAKE} clobber"$CMD"
+        m clobber"$CMD"
 fi
 
 # Prep for a installclean build, if requested so
 if [ "$FLAG_INSTALLCLEAN_BUILD" = 'y' ]; then
         echo -e "${CLR_BLD_BLU}Cleaning compiled image files left from old builds${CLR_RST}"
         echo -e ""
-        ${MAKE} installclean"$CMD"
+        m installclean"$CMD"
 fi
 
 # Sync up, if asked to
@@ -174,10 +163,10 @@ echo -e "${CLR_BLD_BLU}Starting compilation${CLR_RST}"
 echo -e ""
 # Build a specific module
 if [ "${MODULE}" ]; then
-    ${MAKE} $MODULE"$CMD"
+    m $MODULE"$CMD"
 # Build rom package
 else
-    ${MAKE} pixeldust"$CMD"
+    m pixeldust"$CMD"
 fi
 RETVAL=$?
 echo -e ""
