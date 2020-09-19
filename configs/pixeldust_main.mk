@@ -14,8 +14,7 @@
 
 # Include overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    vendor/pixeldust/overlay \
-    vendor/pixeldust/packages/overlays/Common
+    vendor/pixeldust/overlay
 
 # Include needed privapp permissions whitelist
 PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:system/etc/permissions/pixeldust-permissions.xml
