@@ -38,12 +38,7 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 include vendor/pixeldust/configs/system_optional.mk
 
 # Google Apps
-$(call inherit-product-if-exists, vendor/gapps/gapps.mk)
-REMOVE_GAPPS_PACKAGES += \
-    LatinIMEGooglePrebuilt \
-    Photos \
-    PrebuiltGmail \
-    NexusLauncherRelease
+$(call inherit-product-if-exists, vendor/googleapps/googleapps.mk)
 
 # Include vendor blobs
 $(call inherit-product-if-exists, vendor/google/marlin/marlin-vendor.mk)
