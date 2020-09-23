@@ -2,6 +2,9 @@
 
 export Changelog=Changelog.txt
 
+DEVICE=$(echo $TARGET_PRODUCT | cut -d "_" -f2)
+OUT="./out/target/product/$DEVICE"
+
 if [ -f $Changelog ];
 then
     rm -f $Changelog
@@ -29,9 +32,18 @@ done < ./.repo/project.list;
 echo "" >> $Changelog;
 done
 
-#sed -i 's/project/ */g' $Changelog
 sed -i 's/[/]$//' $Changelog
 
-cp $Changelog $OUT/system/etc/
+if [ -e $OUT/$Changelog ]
+then
+    rm $OUT/$Changelog
+fi
+
+if [ -e $OUT/system/etc/$Changelog ]
+then
+    rm $OUT/system/etc/$Changelog
+fi
+
+cp $Changelog $OUT/system/etc/$Changelog
 cp $Changelog $OUT/
-rm -rf $Changelog
+rm $Changelog
