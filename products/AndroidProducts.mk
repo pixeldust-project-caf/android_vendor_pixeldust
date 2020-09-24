@@ -32,10 +32,12 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_angler-user \
     pixeldust_blueline-userdebug \
     pixeldust_blueline-user \
+    pixeldust_blueline-eng \
     pixeldust_coral-userdebug \
     pixeldust_coral-user \
     pixeldust_crosshatch-userdebug \
     pixeldust_crosshatch-user \
+    pixeldust_crosshatch-eng \
     pixeldust_flame-userdebug \
     pixeldust_flame-user \
     pixeldust_marlin-userdebug \
