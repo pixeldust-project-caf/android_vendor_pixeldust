@@ -22,8 +22,10 @@ PRODUCT_PACKAGES += \
     PixelDocumentsUIGoogleOverlay
 
 # Include needed privapp permissions whitelist
-PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:system/etc/permissions/pixeldust-permissions.xml
-PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/pixeldust-permissions.xml
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:system/etc/permissions/pixeldust-permissions.xml \
+    vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:system_ext/etc/permissions/pixeldust-permissions.xml \
+    vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/pixeldust-permissions.xml
 
 # Copy all init rc files
 $(foreach f,$(wildcard vendor/pixeldust/prebuilt/etc/init/*.rc),\
