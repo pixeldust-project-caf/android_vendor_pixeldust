@@ -15,6 +15,7 @@
 # limitations under the License.
 #
 
+ifdef SIGN_KEY
 SIGNED_TARGET_FILES_PACKAGE := $(PRODUCT_OUT)/$(TARGET_DEVICE)-target_files-$(BUILD_ID_LC).zip
 
 $(SIGNED_TARGET_FILES_PACKAGE): $(BUILT_TARGET_FILES_PACKAGE) \
@@ -45,9 +46,13 @@ $(PD_TARGET_PACKAGE): $(SIGNED_TARGET_FILES_PACKAGE) \
 	    -p $(OUT_DIR)/host/linux-x86 \
 	    -k $(KEY_CERT_PAIR) \
 	    $(SIGNED_TARGET_FILES_PACKAGE) $@
+else
+PD_TARGET_PACKAGE := $(PRODUCT_OUT)/$(PIXELDUST_VERSION).zip
+endif
 
 .PHONY: pixeldust
-pixeldust: $(PD_TARGET_PACKAGE)
+pixeldust: $(INTERNAL_OTA_PACKAGE_TARGET)
+	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(PD_TARGET_PACKAGE)
 	@echo ""
 	@echo -e ${CL_GRN}"  ██▓███  ██▒██   ██▓█████ ██▓   ▓█████▄ █    ██  ██████▄▄▄█████▓"${CL_RST}
 	@echo -e ${CL_GRN}" ▓██░  ██▓██▒▒ █ █ ▒▓█   ▀▓██▒   ▒██▀ ██▌██  ▓██▒██    ▒▓  ██▒ ▓▒"${CL_RST}
