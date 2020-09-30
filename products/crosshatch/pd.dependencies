@@ -3,24 +3,24 @@
         "target_path":  "device/google/crosshatch",
         "repository":   "android_device_google_crosshatch",
         "remote":       "pdd",
-        "revision":     "ten"
+        "revision":     "11"
     },
     {
         "target_path":  "kernel/google/bluecross",
         "repository":   "android_kernel_google_bluecross",
         "remote":       "pdd",
-        "revision":     "ten"
+        "revision":     "11"
     },
     {
         "target_path":  "vendor/google",
         "repository":   "android_vendor_google",
         "remote":       "pdd",
-        "revision":     "ten"
+        "revision":     "11"
     },
     {
-        "target_path":  "vendor/images",
-        "repository":   "Pixeldust-Project-X/android_vendor_images",
+        "target_path":  "vendor/pixelgapps",
+        "repository":   "pixeldust-eleven/android_vendor_pixelgapps",
         "remote":       "gitlab",
-        "revision":     "ten"
+        "branch":       "11"
     }
 ]
