@@ -16,8 +16,8 @@
 BOOTANIMATION := 1080
 
 # Release name
-PRODUCT_RELEASE_NAME := Xiaomi Redmi Note 9 Pro
-export TARGET_DEVICE := Joyeuse
+PRODUCT_RELEASE_NAME := Miatoll
+export TARGET_DEVICE := Miatoll
 
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
@@ -32,23 +32,23 @@ $(call inherit-product, vendor/pixeldust/configs/phone-xhdpi-4096-dalvik-heap.mk
 TARGET_USE_AOSP_SURFACEFLINGER := true
 
 # Inherit from miatoll  device
-$(call inherit-product, device/xiaomi/joyeuse/device.mk)
+$(call inherit-product, device/xiaomi/miatoll/device.mk)
 
 # faceunlck
 $(call inherit-product-if-exists, external/motorola/faceunlock/config.mk)
 
 # Device identifier
-PRODUCT_NAME := pixeldust_joyeuse
-PRODUCT_DEVICE := joyeuse
+PRODUCT_NAME := pixeldust_miatoll
+PRODUCT_DEVICE := miatoll
 PRODUCT_BRAND := Xiaomi
-PRODUCT_MODEL := Xiaomi Redmi Note 9 Pro
+PRODUCT_MODEL := SM6250
 PRODUCT_MANUFACTURER := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="GrettoRosella" \
-    ro.pixeldust.device="Joyeuse"
+    ro.pixeldust.device="Miatoll"
 
 # Google Apps
 $(call inherit-product-if-exists, vendor/gapps/gapps.mk)
