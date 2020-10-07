@@ -35,3 +35,24 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.pixeldust.ota.version_code=$(BUILD_VERSION_CODE) \
     ro.pixeldust.ota.timestamp=$(BUILD_TIMESTAMP)
 
+# Override product info for Google Play Services and SafetyNet
+ifeq ($(PRODUCT_OVERRIDE_INFO),true)
+ADDITIONAL_BUILD_PROPERTIES += \
+    ro.product.system.name=$(PRODUCT_OVERRIDE_NAME) \
+    ro.product.product.name=$(PRODUCT_OVERRIDE_NAME) \
+    ro.product.system_ext.name=$(PRODUCT_OVERRIDE_NAME) \
+    ro.product.odm.name=$(PRODUCT_OVERRIDE_NAME) \
+    ro.product.vendor.name=$(PRODUCT_OVERRIDE_NAME) \
+    ro.build.flavor=$(PRODUCT_OVERRIDE_NAME)-user \
+    ro.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
+    ro.system.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
+    ro.product.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
+    ro.system_ext.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
+    ro.bootimage.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
+    ro.odm.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
+    ro.vendor.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT)
+
+# Description needs special treatment because it contains spaces
+PRIVATE_BUILD_DESC := $(PRODUCT_OVERRIDE_DESC)
+endif
+
