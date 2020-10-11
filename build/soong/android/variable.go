@@ -13,8 +13,8 @@ type Product_variables struct {
 	}
 	Needs_text_relocations struct {
 		Cppflags []string
-        }
-        Qcom_um_soong_namespace struct {
+	}
+	Qcom_um_soong_namespace struct {
 		Cflags []string
 		Header_libs []string
 	}
