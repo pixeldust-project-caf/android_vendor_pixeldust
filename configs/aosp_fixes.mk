@@ -32,4 +32,5 @@ PRODUCT_HOST_PACKAGES += \
     deapexer \
     debugfs \
     zipalign \
-    apexer
+    apexer \
+    brillo_update_payload
