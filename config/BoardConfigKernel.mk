@@ -75,9 +75,7 @@ KERNEL_TOOLCHAIN_PATH_gcc := $(KERNEL_TOOLCHAIN_$(KERNEL_ARCH))/$(KERNEL_TOOLCHA
 
 ifneq ($(USE_CCACHE),)
     # Detect if the system already has ccache installed to use instead of the prebuilt
-        ifneq (,$(wildcard $(OUT_DIR)/.path_interposer_origpath))
 	CCACHE_BIN := $(shell PATH=$(shell cat $(OUT_DIR)/.path_interposer_origpath):$$PATH which ccache)
-        endif
 
     ifeq ($(CCACHE_BIN),)
         CCACHE_BIN := $(BUILD_TOP)/prebuilts/misc/$(HOST_PREBUILT_TAG)/ccache/ccache
