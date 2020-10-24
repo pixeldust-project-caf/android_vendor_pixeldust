@@ -27,7 +27,6 @@
         <item>com.google.android.gms/com.google.android.gms.update.SystemUpdateService</item>
     </string-array>
 
-
     <!-- An array of packages that need to be treated as type service in battery settings -->
     <string-array name="config_batteryPackageTypeService">
         <item>com.google.android.gms</item>
@@ -489,8 +488,5 @@
 
     <!-- Default number of days to retain for the automatic storage manager. -->
     <integer translatable="false" name="config_storageManagerDaystoRetainDefault">60</integer>
-
-    <!-- Name of a font family to use for headlines. If empty, falls back to platform default -->
-    <string name="config_headlineFontFamily">google-sans</string>
 
 </resources>

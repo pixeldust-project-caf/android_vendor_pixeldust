@@ -70,16 +70,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Launcher3QuickStep
 
-# Google fonts
-PRODUCT_PACKAGES += \
-    fonts_customization.xml \
-    FontArbutusSourceOverlay \
-    FontArvoLatoOverlay \
-    FontRubikRubikOverlay \
-    FontGoogleSansLatoOverlay \
-    FontGoogleSansOverlay \
-    FontNunitoSansOverlay
-
 # Android Beam
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
