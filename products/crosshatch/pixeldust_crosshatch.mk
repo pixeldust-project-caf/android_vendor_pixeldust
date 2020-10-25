@@ -66,6 +66,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.device="crosshatch"
 
 # Allow neverallows, to allow Smart Charging sepolicies
-#ifneq ($(TARGET_BUILD_VARIANT),user)
-#SELINUX_IGNORE_NEVERALLOWS := true
-#endif
+ifneq ($(TARGET_BUILD_VARIANT),user)
+SELINUX_IGNORE_NEVERALLOWS := true
+endif
