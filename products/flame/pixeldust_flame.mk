@@ -29,7 +29,7 @@ TARGET_USES_AOSP := true
 TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 
 # Inherit from those products. Most specific first.
-$(call inherit-product-if-exists, device/google/coral/aosp_flame.mk)
+$(call inherit-product-if-exists, device/google/flame/aosp_flame.mk)
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
@@ -58,10 +58,10 @@ PRODUCT_DEVICE := flame
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="flame" \
-    PRIVATE_BUILD_DESC="flame-user 11 RP1A.201005.004 6782484 release-keys"
+    PRIVATE_BUILD_DESC="flame-user 11 RD1A.200810.020 6792687 release-keys"
 
-BUILD_FINGERPRINT="google/flame/flame:11/RP1A.201005.004/6782484:user/release-keys"
-BUILD_THUMBPRINT="11/RP1A.201005.004/6782484:user/release-keys"
+BUILD_FINGERPRINT="google/flame/flame:11/RD1A.200810.020/6792687:user/release-keys"
+BUILD_THUMBPRINT="11/RD1A.200810.020/6792687:user/release-keys"
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="fKm" \
