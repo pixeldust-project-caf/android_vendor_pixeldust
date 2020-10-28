@@ -64,7 +64,7 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     ThemePicker \
-    DU-Themes \
+    Themes \
     StitchImage \
     PixeldustThemesStub
 
