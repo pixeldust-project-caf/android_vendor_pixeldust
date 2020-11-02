@@ -18,6 +18,7 @@ include vendor/pixeldust/configs/bootanimation.mk
 include vendor/pixeldust/configs/pixeldust_main.mk
 include vendor/pixeldust/configs/pixeldust_optimizations.mk
 include vendor/pixeldust/configs/system_additions.mk
+include vendor/pixeldust/configs/system_sepolicy.mk
 include vendor/pixeldust/configs/version.mk
 include vendor/pixeldust/configs/ota.mk
 include vendor/pixeldust/configs/apex.mk
