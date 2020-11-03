@@ -3,30 +3,18 @@
         "target_path":  "device/google/coral",
         "repository":   "android_device_google_coral",
         "remote":       "pdd",
-        "revision":     "ten"
+        "revision":     "11"
     },
     {
         "target_path":  "kernel/google/floral",
         "repository":   "DirtyUnicorns/android_kernel_google_floral",
         "remote":       "github",
-        "revision":     "q10x"
+        "revision":     "r11x"
     },
     {
         "target_path":  "vendor/google",
         "repository":   "android_vendor_google",
         "remote":       "pdd",
-        "revision":     "ten"
-    },
-    {
-        "target_path":  "vendor/images",
-        "repository":   "Pixeldust-Project-X/android_vendor_images",
-        "remote":       "gitlab",
-        "revision":     "ten"
-    },
-    {
-        "target_path":  "hardware/knowles/athletico/sound_trigger_hal",
-        "repository":   "platform/hardware/knowles/athletico/sound_trigger_hal",
-        "remote":       "aosp",
-        "revision":     "refs/tags/android-10.0.0_r40"
+        "revision":     "11"
     }
 ]

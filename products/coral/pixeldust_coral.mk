@@ -45,10 +45,7 @@ include vendor/pixeldust/configs/system_optional.mk
 TARGET_SUPPORTS_NGA := true
 
 # Google Apps
-$(call inherit-product-if-exists, vendor/gapps/gapps.mk)
-REMOVE_GAPPS_PACKAGES += \
-    PrebuiltGmail \
-    NexusLauncherRelease
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_coral
@@ -69,4 +66,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Vendor
 $(call inherit-product-if-exists, vendor/google/coral/coral-vendor.mk)
-BOARD_PREBUILT_VENDORIMAGE := vendor/images/coral/vendor.img
