@@ -55,13 +55,6 @@ PRODUCT_DEVICE := crosshatch
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel 3 XL
 
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME="crosshatch" \
-    PRIVATE_BUILD_DESC="crosshatch-user 11 RD1A.200810.020 6792687 release-keys"
-
-BUILD_FINGERPRINT="google/crosshatch/crosshatch:11/RD1A.200810.020/6792687:user/release-keys"
-BUILD_THUMBPRINT="11/RD1A.200810.020/6792687:user/release-keys"
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="slothdabski" \
     ro.pixeldust.device="crosshatch"
