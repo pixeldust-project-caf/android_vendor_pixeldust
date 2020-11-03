@@ -68,7 +68,8 @@ PRODUCT_PACKAGES += \
     StitchImage \
     ThemePicker \
     Themes \
-    PixeldustThemesStub
+    PixeldustThemesStub \
+    QuickAccessWallet \
 
 # Android Beam
 PRODUCT_COPY_FILES += \
