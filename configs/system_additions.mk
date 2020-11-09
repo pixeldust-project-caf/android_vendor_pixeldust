@@ -71,6 +71,12 @@ PRODUCT_PACKAGES += \
     PixeldustThemesStub \
     QuickAccessWallet \
 
+# Pixel specific
+ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
+PRODUCT_PACKAGES += \
+    ElmyraService
+endif
+
 # Android Beam
 PRODUCT_COPY_FILES += \
     vendor/pixeldust/config/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
