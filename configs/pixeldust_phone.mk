@@ -33,10 +33,6 @@ PRODUCT_PACKAGES += \
     Stk \
     CellBroadcastReceiver
 
-# Copy APN list
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
-
 # Gboard configuration
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.bs_theme=true \
