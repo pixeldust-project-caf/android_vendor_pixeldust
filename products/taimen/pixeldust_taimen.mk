@@ -16,19 +16,18 @@
 BOOTANIMATION := 1440
 
 # Release name
-PRODUCT_RELEASE_NAME := Pixel2XL
+PRODUCT_RELEASE_NAME := Pixel 2 XL
 export TARGET_DEVICE=taimen
 
-# Use the sepolicies which are being shipped with our device
-TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
-
-# Inherit from those products. Most specific first.
-$(call inherit-product-if-exists, device/google/taimen/aosp_taimen.mk)
-$(call inherit-product-if-exists, device/google/wahoo/device-pixeldust.mk)
-
 # Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+#
+# All components inherited here go to system_ext image
+#
+$(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_system_ext.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
 
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
@@ -36,22 +35,26 @@ include vendor/pixeldust/configs/pixeldust_phone.mk
 # Include optional stuff (e.g. prebuilt apps)
 include vendor/pixeldust/configs/system_optional.mk
 
-# Google Apps
-$(call inherit-product-if-exists, vendor/gapps/gapps.mk)
-REMOVE_GAPPS_PACKAGES += \
-	PrebuiltGmail \
-	MatchmakerPrebuiltPixel4 \
-	NexusLauncherRelease
+#
+# All components inherited here go to vendor image
+#
+# TODO(b/136525499): move *_vendor.mk into the vendor makefile later
+$(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 
-# Device identifier. This must come after all inclusions
+
+# Inherit product speciifc makefiles
+$(call inherit-product, device/google/taimen/device.mk)
+$(call inherit-product, vendor/google/taimen/taimen-vendor.mk)
+
+# Inherit from GMS product config
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+
+PRODUCT_COPY_FILES += \
+    device/google/taimen/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
+
+PRODUCT_MANUFACTURER := Google
+PRODUCT_BRAND := google
 PRODUCT_NAME := pixeldust_taimen
 PRODUCT_DEVICE := taimen
-PRODUCT_BRAND := google
-PRODUCT_MODEL := Pixel 2 XL
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.pixeldust.maintainer="nitin1438" \
-    ro.pixeldust.device="taimen"
-
-# Vendor
-$(call inherit-product-if-exists, vendor/google/taimen/taimen-vendor.mk)
+PRODUCT_MODEL := Pixel 5a
