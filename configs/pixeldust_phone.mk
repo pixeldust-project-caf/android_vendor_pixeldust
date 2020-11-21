@@ -29,6 +29,20 @@ include vendor/pixeldust/config/ProductConfigQcom.mk
 PRODUCT_SOONG_NAMESPACES += $(PATHMAP_SOONG_NAMESPACES)
 endif
 
+ifneq ($(filter blueline crosshatch,$(TARGET_DEVICE)),)
+ifneq ($(TARGET_BUILD_VARIANT),user)
+# Ignore neverallows to allow Smart Charging sepolicies
+SELINUX_IGNORE_NEVERALLOWS := true
+
+# Inherit from our vendor sepolicy config
+$(call inherit-product, vendor/pixeldust/configs/vendor_sepolicy.mk)
+
+# Include Smart Charging overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    vendor/pixeldust/overlay-smartcharging
+endif
+endif
+
 # Telephony packages
 PRODUCT_PACKAGES += \
     Stk \

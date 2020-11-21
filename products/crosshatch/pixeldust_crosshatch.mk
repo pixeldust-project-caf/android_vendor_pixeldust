@@ -65,10 +65,3 @@ PRODUCT_MODEL := Pixel 3 XL
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="slothdabski" \
     ro.pixeldust.device="crosshatch"
-
-# Allow neverallows, to allow Smart Charging sepolicies
-ifneq ($(TARGET_BUILD_VARIANT),user)
-SELINUX_IGNORE_NEVERALLOWS := true
-# Inherit from sepolicy config
-$(call inherit-product, vendor/pixeldust/configs/sepolicy.mk)
-endif
