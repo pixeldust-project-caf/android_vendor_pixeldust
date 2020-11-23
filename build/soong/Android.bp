@@ -1,4 +1,4 @@
-// Pixkeldust soong configs
+// Pixeldust soong configs
 
 bootstrap_go_package {
     name: "soong-pixeldust-generator",
@@ -399,6 +399,25 @@ qti_usb_hal_supported_modes {
         },
         supports_debug_accessory: {
             cppflags: ["-DSUPPORTS_DEBUG_ACCESSORY"],
+        },
+    },
+}
+
+soong_config_module_type {
+    name: "camera_boottime_timestamp",
+    module_type: "cc_defaults",
+    config_namespace: "pixeldustQcomVars",
+    bool_variables: ["needs_camera_boottime_timestamp"],
+    properties: [
+        "cflags",
+    ],
+}
+
+camera_boottime_timestamp {
+    name: "needs_camera_boottime",
+    soong_config_variables: {
+        needs_camera_boottime_timestamp: {
+            cflags: ["-DTARGET_CAMERA_BOOTTIME_TIMESTAMP"],
         },
     },
 }
