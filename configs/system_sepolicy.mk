@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
+    vendor/pixeldust/sepolicy/private
+
 BOARD_SEPOLICY_DIRS += \
 	hardware/google/pixel-sepolicy/flipendo \
 	hardware/google/pixel-sepolicy/googlebattery \
