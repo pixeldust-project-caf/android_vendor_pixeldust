@@ -71,6 +71,14 @@ PRODUCT_PACKAGES += \
     PixeldustThemesStub \
     QuickAccessWallet \
 
+ifeq ($(FORCE_BUILD_LAUNCHER3), true)
+REMOVE_GAPPS_PACKAGES += \
+    NexusLauncherRelease
+else 
+DEVICE_PACKAGE_OVERLAYS += \
+    vendor/pixeldust/overlay-nexuslauncher
+endif
+
 # Pixel specific
 ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
 PRODUCT_PACKAGES += \
