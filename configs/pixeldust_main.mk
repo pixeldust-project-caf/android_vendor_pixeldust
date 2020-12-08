@@ -16,10 +16,8 @@
 DEVICE_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay
 
-# Packages/Overlays
-PRODUCT_PACKAGES += \
-    BuiltInPrintServiceOverlay \
-    PixelDocumentsUIGoogleOverlay
+# Inherit from rro_overlays config
+$(call inherit-product, vendor/pixeldust/configs/rro_overlays.mk)
 
 # Include needed privapp permissions whitelist
 PRODUCT_COPY_FILES += \
