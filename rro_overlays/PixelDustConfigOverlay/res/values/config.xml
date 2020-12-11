@@ -20,9 +20,13 @@
     <!-- Flag indicating whether we should enable the adaptive sleep.-->
     <bool name="config_adaptive_sleep_available">false</bool>
 
+    <!-- Name of a font family to use for body text. -->
+    <string name="config_bodyFontFamily" translatable="false">googlesans</string>
+    <!-- Name of a font family to use for medium body text. -->
+    <string name="config_bodyFontFamilyMedium" translatable="false">googlesans-semi-bold</string>
     <!-- Name of a font family to use for headlines. If empty, falls back to platform default -->
-    <string name="config_headlineFontFamily">sanfrancisco</string>
-
+    <string name="config_headlineFontFamily" translatable="false">googlesans-medium</string>
     <!-- Name of the font family used for system surfaces where the font should use medium weight -->
-    <string name="config_headlineFontFamilyMedium">sanfrancisco-semi-bold</string>
+    <string name="config_headlineFontFamilyMedium" translatable="false">googlesans-bold</string>
+
 </resources>
