@@ -18,5 +18,6 @@ PRODUCT_PACKAGES += \
     FilesOverlay \
     PixelDocumentsUIGoogleOverlay \
     PixelDustConfigOverlay \
+    PixelTetheringOverlay \
     SettingsGoogleOverlayPixelDust
 
