@@ -15,6 +15,7 @@
 # Packages/Overlays
 PRODUCT_PACKAGES += \
     BuiltInPrintServiceOverlay \
+    CellBroadcastServiceOverlay \
     FilesOverlay \
     PixelDocumentsUIGoogleOverlay \
     PixelDustConfigOverlay \
