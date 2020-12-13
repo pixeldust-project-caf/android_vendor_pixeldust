@@ -1,4 +1,4 @@
-# Copyright (C) 2019 The PixelDust Project
+# Copyright (C) 2019-2020 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,16 +14,10 @@
 
 ifneq ($(IS_GENERIC_SYSTEM_IMAGE), true)
 ifeq ($(SIGN_KEY), RELEASE)
-
 PRODUCT_PRODUCT_PROPERTIES += \
-    sys.ota.disable_uncrypt=1 \
     ro.pixeldust.ota.build_type=$(SIGN_KEY)
 
 PRODUCT_PACKAGES += \
     Updates
-
-PRODUCT_COPY_FILES += \
-    vendor/pixeldust/prebuilt/etc/privapp-permissions/com.pixeldust.ota.xml:system/etc/permissions/com.pixeldust.ota.xml
-
 endif
 endif
