@@ -35,4 +35,10 @@
          corresponding launch mode set in AndroidManifest.
          {@see android.view.Display#FLAG_SHOULD_SHOW_SYSTEM_DECORATIONS} -->
     <string name="config_secondaryHomePackage" translatable="false">com.google.android.apps.nexuslauncher</string>
+
+    <!-- Launcher package name for overlaying icons. -->
+    <string name="launcher_overlayable_package">com.google.android.apps.nexuslauncher</string>
+
+    <!-- ThemePicker package name for overlaying icons. -->
+    <string name="themepicker_overlayable_package">com.google.android.apps.wallpaper</string>
 </resources>
