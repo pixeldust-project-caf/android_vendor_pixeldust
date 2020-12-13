@@ -27,4 +27,4 @@ PRODUCT_COPY_FILES += \
 
 # Copy all init rc files
 $(foreach f,$(wildcard vendor/pixeldust/prebuilt/etc/init/*.rc),\
-	$(eval PRODUCT_COPY_FILES += $(f):system/etc/init/$(notdir $f)))
+	$(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
