@@ -75,8 +75,7 @@ ifeq ($(FORCE_BUILD_LAUNCHER3), true)
 REMOVE_GAPPS_PACKAGES += \
     NexusLauncherRelease
 else 
-DEVICE_PACKAGE_OVERLAYS += \
-    vendor/pixeldust/overlay-nexuslauncher
+TARGET_INCLUDE_PIXEL_LAUNCHER := true
 endif
 
 # Pixel specific
