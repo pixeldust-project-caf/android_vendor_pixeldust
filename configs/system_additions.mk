@@ -73,7 +73,8 @@ PRODUCT_PACKAGES += \
 
 ifeq ($(FORCE_BUILD_LAUNCHER3), true)
 REMOVE_GAPPS_PACKAGES += \
-    NexusLauncherRelease
+    NexusLauncherRelease \
+#    WallpaperPickerGoogleRelease
 else 
 DEVICE_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay-nexuslauncher

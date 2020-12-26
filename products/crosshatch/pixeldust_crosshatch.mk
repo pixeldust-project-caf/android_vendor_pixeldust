@@ -35,6 +35,8 @@ $(call inherit-product-if-exists, device/google/crosshatch/aosp_crosshatch.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
+FORCE_BUILD_LAUNCHER3 := true
+
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
 
@@ -63,5 +65,5 @@ PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel 3 XL
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.pixeldust.maintainer="slothdabski" \
+    ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="crosshatch"
