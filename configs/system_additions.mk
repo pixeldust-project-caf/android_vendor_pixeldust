@@ -71,10 +71,15 @@ PRODUCT_PACKAGES += \
     PixeldustThemesStub \
     QuickAccessWallet \
 
+# Give PixelDustLauncher to everyone
+FORCE_BUILD_LAUNCHER3 := true
+
 ifeq ($(FORCE_BUILD_LAUNCHER3), true)
 REMOVE_GAPPS_PACKAGES += \
     NexusLauncherRelease \
 #    WallpaperPickerGoogleRelease
+PRODUCT_PACKAGES += \
+    PixelDustLauncher
 else 
 DEVICE_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay-nexuslauncher
