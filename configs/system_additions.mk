@@ -65,6 +65,7 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     Seedvault \
+    SimpleDeviceConfig \
     StitchImage \
     ThemePicker \
     Themes \
