@@ -50,12 +50,7 @@ $(call inherit-product-if-exists, vendor/google/crosshatch/crosshatch-vendor.mk)
 # Google Apps
 $(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
 REMOVE_GAPPS_PACKAGES += \
-    DevicePersonalizationPrebuiltPixel2020 \
-    Drive \
-    GoogleTTS \
-    Maps \
-    PrebuiltGmail \
-    SCONE
+    PrebuiltGmail
 
 PRODUCT_NAME := pixeldust_crosshatch
 PRODUCT_DEVICE := crosshatch
