@@ -29,7 +29,7 @@ include vendor/pixeldust/config/ProductConfigQcom.mk
 PRODUCT_SOONG_NAMESPACES += $(PATHMAP_SOONG_NAMESPACES)
 endif
 
-ifneq ($(filter blueline crosshatch,$(TARGET_DEVICE)),)
+ifneq ($(filter blueline coral crosshatch flame,$(TARGET_DEVICE)),)
 # Inherit from our vendor sepolicy config
 $(call inherit-product, vendor/pixeldust/configs/vendor_sepolicy.mk)
 
