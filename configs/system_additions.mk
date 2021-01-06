@@ -61,15 +61,15 @@ PRODUCT_PACKAGES += telephony-ext
 
 # Extra Packages
 PRODUCT_PACKAGES += \
+    GoogleWallpaperPickerOverlay \
     Launcher3QuickStep \
     LiveWallpapers \
     LiveWallpapersPicker \
-    SimpleDeviceConfig \
-    StitchImage \
-    ThemePicker \
-    Themes \
     PixeldustThemesStub \
     QuickAccessWallet \
+    SimpleDeviceConfig \
+    ThemePicker \
+    Themes \
 
 # Devices should opt-in to include Seedvault
 ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
