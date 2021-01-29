@@ -17,7 +17,7 @@ CLR_BLD_BLU=$CLR_RST$CLR_BLD$(tput setaf 4) #  blue, bold
 CLR_BLD_CYA=$CLR_RST$CLR_BLD$(tput setaf 6) #  cyan, bold
 
 # Set defaults
-BUILD_TYPE="userdebug"
+BUILD_TYPE="user"
 
 # Output usage help
 function showHelpAndExit {
@@ -29,7 +29,7 @@ function showHelpAndExit {
         echo -e "${CLR_BLD_BLU}  -i, --installclean    Dirty build - Use 'installclean'${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -r, --repo-sync       Sync before building${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -v, --variant         PD variant - dev, alpha, beta or release${CLR_RST}"
-        echo -e "${CLR_BLD_BLU}  -t, --build-type      Specify build type - userdebug (default), user or eng${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -t, --build-type      Specify build type - userdebug, user (default) or eng${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -j, --jobs            Specify jobs/threads to use${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -m, --module          Build a specific module${CLR_RST}"
         exit 1
