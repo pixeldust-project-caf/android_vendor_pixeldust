@@ -17,7 +17,7 @@ BOOTANIMATION := 1440
 
 # Release name
 PRODUCT_RELEASE_NAME := PixelXL
-export TARGET_DEVICE := marlin
+export TARGET_DEVICE=marlin
 
 # We have our own power HAL
 TARGET_USES_DEVICE_SPECIFIC_POWERHAL := true
@@ -43,22 +43,8 @@ $(call inherit-product-if-exists, external/motorola/faceunlock/faceunlock.mk)
 # Google Apps
 $(call inherit-product-if-exists, vendor/googleapps/googleapps.mk)
 
-# Include vendor blobs
-$(call inherit-product-if-exists, vendor/google/marlin/marlin-vendor.mk)
-
 # Setup device specific product configuration.
 PRODUCT_NAME := pixeldust_marlin
-PRODUCT_BRAND := google
-PRODUCT_DEVICE := marlin
-PRODUCT_MODEL := Pixel XL
-PRODUCT_MANUFACTURER := Google
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME=marlin \
-    PRIVATE_BUILD_DESC="marlin-user 8.1.0 OPM1.171019.021 4565141 release-keys"
-
-BUILD_FINGERPRINT := google/marlin/marlin:8.1.0/OPM1.171019.021/4565141:user/release-keys
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="marlin"

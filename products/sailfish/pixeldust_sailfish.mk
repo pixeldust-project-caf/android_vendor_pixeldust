@@ -17,7 +17,7 @@ BOOTANIMATION := 1080
 
 # Release name
 PRODUCT_RELEASE_NAME := Pixel
-export TARGET_DEVICE := sailfish
+export TARGET_DEVICE=sailfish
 
 # We have our own power HAL
 TARGET_USES_DEVICE_SPECIFIC_POWERHAL := true
@@ -43,22 +43,8 @@ $(call inherit-product-if-exists, external/motorola/faceunlock/faceunlock.mk)
 # Google Apps
 $(call inherit-product-if-exists, vendor/googleapps/googleapps.mk)
 
-# Include vendor blobs
-$(call inherit-product-if-exists, vendor/google/sailfish/sailfish-vendor.mk)
-
 # Setup device specific product configuration.
 PRODUCT_NAME := pixeldust_sailfish
-PRODUCT_BRAND := google
-PRODUCT_DEVICE := sailfish
-PRODUCT_MODEL := Pixel
-PRODUCT_MANUFACTURER := Google
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME=sailfish \
-    PRIVATE_BUILD_DESC="sailfish-user 8.1.0 OPM1.171019.021 4565141 release-keys"
-
-BUILD_FINGERPRINT := google/sailfish/sailfish:8.1.0/OPM1.171019.021/4565141:user/release-keys
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="sailfish"
