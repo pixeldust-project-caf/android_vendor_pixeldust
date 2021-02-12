@@ -41,7 +41,13 @@ include vendor/pixeldust/configs/system_optional.mk
 $(call inherit-product-if-exists, external/motorola/faceunlock/faceunlock.mk)
 
 # Google Apps
-$(call inherit-product-if-exists, vendor/googleapps/googleapps.mk)
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+REMOVE_GAPPS_PACKAGES += \
+    PrebuiltGmail \
+    pixel_experience_2019_midyear \
+    pixel_experience_2019 \
+    pixel_experience_2020_midyear \
+    pixel_experience_2020
 
 # Setup device specific product configuration.
 PRODUCT_NAME := pixeldust_marlin
