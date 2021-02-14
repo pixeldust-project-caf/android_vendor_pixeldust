@@ -35,7 +35,7 @@ $(call inherit-product-if-exists, device/google/marlin/aosp_marlin.mk)
 include vendor/pixeldust/configs/pixeldust_phone.mk
 
 # Include optional stuff (e.g. prebuilt apps)
-include vendor/pixeldust/configs/system_optional.mk
+#include vendor/pixeldust/configs/system_optional.mk
 
 # Face Unlock
 $(call inherit-product-if-exists, external/motorola/faceunlock/faceunlock.mk)
@@ -43,11 +43,40 @@ $(call inherit-product-if-exists, external/motorola/faceunlock/faceunlock.mk)
 # Google Apps
 $(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
 REMOVE_GAPPS_PACKAGES += \
-    PrebuiltGmail \
+    CalculatorGooglePrebuilt \
+    CalendarGooglePrebuilt \
+    Chrome \
+    DevicePersonalizationPrebuiltPixel2020 \
+    DevicePolicyPrebuilt \
+    DiagnosticsToolPrebuilt \
+    Drive \
+    FilesPrebuilt \
+    GCS \
+    GoogleContacts \
+    GoogleContactsSyncAdapter \
+    GoogleDialer \
+    GoogleFeedback \
+    GoogleTTS \
+    Maps \
+    NgaResources \
+    PixelLiveWallpaperPrebuilt \
     pixel_experience_2019_midyear \
     pixel_experience_2019 \
     pixel_experience_2020_midyear \
-    pixel_experience_2020
+    pixel_experience_2020 \
+    Photos \
+    PrebuiltBugle \
+    PrebuiltDeskClockGoogle \
+    PrebuiltGmail \
+    RecorderPrebuilt \
+    ScribePrebuilt \
+    SoundAmplifierPrebuilt \
+    SoundPickerPrebuilt \
+    Tycho \
+    YouTube \
+    YouTubeMusicPrebuilt \
+    WellbeingPrebuilt \
+    talkback
 
 # Setup device specific product configuration.
 PRODUCT_NAME := pixeldust_marlin
