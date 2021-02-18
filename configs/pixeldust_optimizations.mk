@@ -44,11 +44,3 @@ EXCLUDE_SYSTEMUI_TESTS := true
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     Launcher3QuickStep
 
-ifneq ($(filter blueline bonito coral crosshatch flame sargo taimen walleye,$(TARGET_DEVICE)),)
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUIGoogle
-else
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUI
-endif
-
