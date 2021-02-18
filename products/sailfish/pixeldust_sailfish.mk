@@ -31,6 +31,9 @@ TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 # Inherit AOSP device configuration for sailfish.
 $(call inherit-product-if-exists, device/google/marlin/aosp_sailfish.mk)
 
+# Don't include Google apex use the AOSP variant instead 
+TARGET_EXCLUDE_GOOGLE_APEX := true
+
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
 

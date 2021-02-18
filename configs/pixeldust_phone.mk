@@ -21,7 +21,9 @@ include vendor/pixeldust/configs/system_additions.mk
 include vendor/pixeldust/configs/system_sepolicy.mk
 include vendor/pixeldust/configs/version.mk
 include vendor/pixeldust/configs/ota.mk
+ifeq ($(TARGET_EXCLUDE_GOOGLE_APEX),false)
 include vendor/pixeldust/configs/apex.mk
+endif
 include vendor/pixeldust/configs/telephony.mk
 
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
