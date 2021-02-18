@@ -14,6 +14,10 @@
 # limitations under the License.
 #
 
+# Include gms overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    vendor/pixeldust/overlay-gms
+
 # Enable Google Play system updates support
 PRODUCT_SOONG_NAMESPACES += \
     vendor/pixeldust/apex
