@@ -42,12 +42,14 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_flame-user \
     pixeldust_marlin-userdebug \
     pixeldust_marlin-user \
+    pixeldust_marlin-eng \
     pixeldust_taimen-userdebug \
     pixeldust_taimen-user \
     pixeldust_tissot-userdebug \
     pixeldust_tissot-user \
     pixeldust_sailfish-userdebug \
     pixeldust_sailfish-user \
+    pixeldust_sailfish-eng \
     pixeldust_walleye-userdebug \
     pixeldust_walleye-user \
     pixeldust_X01BD-userdebug \
