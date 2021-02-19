@@ -72,8 +72,10 @@ PRODUCT_PACKAGES += \
     PixeldustThemesStub \
     QuickAccessWallet \
 
-# Give PixelDustLauncher to everyone
+# Devices should opt-in to include PixelDustLauncher
+ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
 FORCE_BUILD_LAUNCHER3 := true
+endif
 
 ifeq ($(FORCE_BUILD_LAUNCHER3), true)
 REMOVE_GAPPS_PACKAGES += \
