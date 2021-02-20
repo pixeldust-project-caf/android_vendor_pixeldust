@@ -337,4 +337,6 @@
     -->
     <string name="config_wallpaperCropperPackage">com.google.android.apps.wallpaper</string>
 
+    <!-- Turbo -->
+    <string name="config_batterySaverScheduleProvider">com.google.android.apps.turbo</string>
 </resources>

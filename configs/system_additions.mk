@@ -64,13 +64,20 @@ PRODUCT_PACKAGES += \
     Launcher3QuickStep \
     LiveWallpapers \
     LiveWallpapersPicker \
-    Seedvault \
     SimpleDeviceConfig \
     StitchImage \
     ThemePicker \
     Themes \
     PixeldustThemesStub \
     QuickAccessWallet \
+
+# Devices should opt-in to include Seedvault
+ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
+DEVICE_PACKAGE_OVERLAYS += \
+    vendor/pixeldust/overlay-seedvault
+PRODUCT_PACKAGES += \
+    Seedvault
+endif
 
 # Devices should opt-in to include PixelDustLauncher
 ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)

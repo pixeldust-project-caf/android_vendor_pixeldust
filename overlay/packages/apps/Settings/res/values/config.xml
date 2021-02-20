@@ -21,12 +21,6 @@
     <!-- Fully-qualified class name for the styles & wallpaper picker activity. -->
     <string name="config_styles_and_wallpaper_picker_class" translatable="false">com.android.customization.picker.CustomizationPickerActivity</string>
 
-    <!-- Manufacturer backup settings to launch -->
-    <string name="config_backup_settings_intent" translatable="false">settings://com.android.settings.backup.transport</string>
-
-    <!-- Manufacturer backup settings label -->
-    <string name="config_backup_settings_label" translatable="true">@string/backup_transport_setting_label</string>
-
     <!-- Whether to show the Preference for Adaptive connectivity -->
     <bool name="config_show_adaptive_connectivity">true</bool>
 </resources>
