@@ -57,6 +57,8 @@ REMOVE_GAPPS_PACKAGES += \
     NetworkStackGoogle \
     NgaResources \
     PixelLiveWallpaperPrebuilt \
+    pixel_experience_2017 \
+    pixel_2018_exclusive \
     pixel_experience_2019_midyear \
     pixel_experience_2019 \
     pixel_experience_2020_midyear \

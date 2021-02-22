@@ -51,6 +51,7 @@ $(call inherit-product-if-exists, vendor/google/blueline/blueline-vendor.mk)
 $(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
 REMOVE_GAPPS_PACKAGES += \
     PrebuiltGmail \
+    pixel_2016_exclusive \
     pixel_experience_2019_midyear \
     pixel_experience_2019 \
     pixel_experience_2020_midyear \
