@@ -16,25 +16,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Disable stock OTA components if installed -->
-    <string-array name="config_disabledComponents" translatable="false">
-        <item>com.google.android.gms/com.google.android.gms.update.SystemUpdateActivity</item>
-        <item>com.google.android.gms/com.google.android.gms.update.SystemUpdateServiceActiveReceiver</item>
-        <item>com.android.wallpaper/com.android.wallpaper.picker.SetWallpaperAlias</item>
-    </string-array>
-
-    <!-- Force enabling of some services that could have been previously disabled -->
-    <string-array name="config_forceEnabledComponents" translatable="false">
-        <item>com.google.android.gms/com.google.android.gms.update.SystemUpdateService</item>
-        <item>com.android.wallpaper/com.android.customization.picker.CustomizationPickerActivity</item>
-    </string-array>
-
-    <!-- An array of packages that need to be treated as type service in battery settings -->
-    <string-array name="config_batteryPackageTypeService">
-        <item>com.google.android.gms</item>
-        <item>com.google.android.apps.gcs</item>
-    </string-array>
-
     <!-- An array of packages for which notifications cannot be blocked.
          Should only be used for core device functionality that must not be
          rendered inoperative for safety reasons, like the phone dialer and
@@ -130,15 +111,6 @@
     <!-- Apps that are authorized to access shared accounts, overridden by product overlays -->
     <string name="config_appsAuthorizedForSharedAccounts">;com.android.vending;com.android.settings;</string>
 
-    <!-- The component name, flattened to a string, for the default accessibility service to be
-         enabled by the accessibility shortcut. This service must be trusted, as it can be activated
-         without explicit consent of the user. If no accessibility service with the specified name
-         exists on the device, the accessibility shortcut will be disabled by default. -->
-    <string name="config_defaultAccessibilityService">com.google.android.marvin.talkback/.TalkBackService</string>
-
-    <!-- The name of the package that will hold the assistant role by default. -->
-    <string name="config_defaultAssistant">com.google.android.googlequicksearchbox</string>
-
     <!-- The name of the package that will hold the assistant role by default. -->
     <string name="config_defaultAssistantAccessComponent">com.google.android.ext.services/android.ext.services.notification.Assistant</string>
 
@@ -184,73 +156,9 @@
     -->
     <string name="config_servicesExtensionPackage">com.google.android.ext.services</string>
 
-    <!-- The name of the package that will hold the system gallery role. -->
-    <string name="config_systemGallery">com.google.android.apps.photos</string>
-
-    <string name="harmful_app_warning_title">Play Protect warning</string>
-
-    <!-- Package name for default keyguard appwidget [DO NOT TRANSLATE] -->
-    <string name="widget_default_class_name">com.android.alarmclock.DigitalAppWidgetProvider</string>
-
-    <!-- Class name for default keyguard appwidget [DO NOT TRANSLATE] -->
-    <string name="widget_default_package_name">com.google.android.deskclock</string>
-
-    <!-- The app which will handle routine based automatic battery saver, if empty the UI for
-         routine based battery saver will be hidden -->
-    <string name="config_batterySaverScheduleProvider">com.google.android.apps.turbo</string>
-
-    <!-- The package name for the system's app prediction service.
-         This service must be trusted, as it can be activated without explicit consent of the user.
-         Example: "com.android.intelligence/.AppPredictionService"
-    -->
-    <string name="config_defaultAppPredictionService">com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiPredictionService</string>
-
-    <!-- The package name for the system's augmented autofill service.
-         This service must be trusted, as it can be activated without explicit consent of the user.
-         If no service with the specified name exists on the device, augmented autofill wil be
-         disabled.
-         Example: "com.android.augmentedautofill/.AugmentedAutofillService"
-    -->
-    <string name="config_defaultAugmentedAutofillService">com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiAugmentedAutofillService</string>
-
-    <!-- The package name for the default bug report handler app from power menu short press. This app must be whitelisted. -->
-    <string name="config_defaultBugReportHandlerApp">com.google.android.apps.internal.betterbug</string>
-
-    <!-- The package name for the system's content suggestions service.
-         Provides suggestions for text and image selection regions in snapshots of apps and should
-         be able to classify the type of entities in those selections.
-         This service must be trusted, as it can be activated without explicit consent of the user.
-         If no service with the specified name exists on the device, content suggestions wil be
-         disabled.
-         Example: "com.android.contentsuggestions/.ContentSuggestionsService"
-    -->
-    <string name="config_defaultContentSuggestionsService">com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiContentSuggestionsService</string>
-
-    <!-- The package name for the system's content capture service.
-         This service must be trusted, as it can be activated without explicit consent of the user.
-         If no service with the specified name exists on the device, content capture will be
-         disabled.
-         Example: "com.android.contentcapture/.ContentcaptureService"
-    -->
-    <string name="config_defaultContentCaptureService">com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiContentCaptureService</string>
-
-    <!-- Colon separated list of package names that should be granted DND access -->
-    <string name="config_defaultDndAccessPackages">com.google.android.GoogleCamera:com.google.android.gms:com.google.intelligence.sense:com.google.android.settings.intelligence:com.google.android.apps.wellbeing:com.google.android.apps.safetyhub:com.google.android.dialer</string>
-
-    <!-- Colon separated list of package names that should be granted Notification Listener access -->
-    <string name="config_defaultListenerAccessPackages">com.android.launcher3:com.google.android.apps.nexuslauncher:com.google.android.setupwizard:com.google.android.apps.pixelmigrate:com.google.android.as:com.google.android.projection.gearhead</string>
 
     <!-- Component name for the default module metadata provider on this device -->
     <string name="config_defaultModuleMetadataProvider">com.google.android.modulemetadata</string>
-
-    <!-- Set this to true to enable the platform's auto-power-save modes like doze and
-         app standby.  These are not enabled by default because they require a standard
-         cloud-to-device messaging service for apps to interact correctly with the modes
-         (such as to be able to deliver an instant message to the device even when it is
-         dozing).  This should be enabled if you have such services and expect apps to
-         correctly use them when installed on your device.  Otherwise, keep this disabled
-         so that applications can still use their own mechanisms. -->
-    <bool name="config_enableAutoPowerModes">true</bool>
 
     <!-- The component name for the default profile supervisor, which can be set as a profile owner
     even after user setup is complete. The defined component should be used for supervision purposes
@@ -278,16 +186,6 @@
     -->
     <string name="config_defaultTextClassifierPackage">com.google.android.as</string>
 
-    <!-- The package name for the default wellbeing app.
-         This package must be trusted, as it has the permissions to control other applications
-         on the device.
-         Example: "com.android.wellbeing"
-     -->
-    <string name="config_defaultWellbeingPackage">com.google.android.apps.wellbeing</string>
-
-    <!-- Package name that provides Emergency Dialer -->
-    <string name="config_emergency_dialer_package">com.google.android.apps.safetyhub</string>
-
     <!-- Name for the set of keys associating package names -->
     <string name="config_helpPackageNameKey" translatable="false">genie-eng:app_pkg_name</string>
 
@@ -305,38 +203,4 @@
 
     <!-- Intent key for package name values -->
     <string name="config_feedbackIntentNameKey" translatable="false">EXTRA_FEEDBACK_PSD_VALUES</string>
-
-    <!-- The package name for the incident report approver app.
-        This app is usually PermissionController or an app that replaces it.  When
-        a bugreport or incident report with EXPLICT-level sharing flags is going to be
-        shared, this app will be sent the PENDING_INCIDENT_REPORTS_CHANGED broadcast.
-    -->
-    <string name="config_incidentReportApproverPackage">com.google.android.permissioncontroller</string>
-
-    <!-- Package name that will receive an explicit manifest broadcast for
-         android.os.action.POWER_SAVE_MODE_CHANGED. -->
-    <string name="config_powerSaveModeChangedListenerPackage">com.google.android.flipendo</string>
-
-    <!-- The component name for the default system attention service.
-         This service must be trusted, as it can be activated without explicit consent of the user.
-         See android.attention.AttentionManagerService.
-    -->
-    <string name="config_defaultAttentionService">com.google.android.as/com.google.android.apps.miphone.aiai.attention.service.AiAiAttentionService</string>
-
-    <!-- The name of the package that will hold the dialer role by default. -->
-    <string name="config_defaultDialer">com.google.android.dialer</string>
-
-    <string name="config_defaultGallery">com.google.android.apps.photos</string>
-    <string name="config_defaultMusic">com.google.android.music</string>
-
-    <!-- Package name for the device provisioning package. -->
-    <string name="config_deviceProvisioningPackage">com.google.android.apps.work.oobconfig</string>
-
-    <!-- Wallpaper cropper package. Used as the default cropper if the active launcher doesn't
-         handle wallpaper cropping.
-    -->
-    <string name="config_wallpaperCropperPackage">com.google.android.apps.wallpaper</string>
-
-    <!-- Turbo -->
-    <string name="config_batterySaverScheduleProvider">com.google.android.apps.turbo</string>
 </resources>
