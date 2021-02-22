@@ -80,7 +80,7 @@ PRODUCT_PACKAGES += \
 endif
 
 # Devices should opt-in to include PixelDustLauncher
-ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
+ifneq ($(filter marlin sailfish blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
 FORCE_BUILD_LAUNCHER3 := true
 endif
 
