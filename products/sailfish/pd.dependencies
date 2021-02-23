@@ -13,8 +13,8 @@
     },
     {
         "target_path":  "vendor/google/marlin",
-        "repository":   "PixelDevTeam/android_vendor_google_marlin",
-        "remote":       "github",
-        "revision":     "eleven"
+        "repository":   "android_vendor_google_marlin",
+        "remote":       "pdd",
+        "revision":     "11"
     }
 ]
