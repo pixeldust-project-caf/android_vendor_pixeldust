@@ -34,6 +34,9 @@ $(call inherit-product-if-exists, device/google/marlin/aosp_sailfish.mk)
 # Don't include Google apex use the AOSP variant instead 
 TARGET_EXCLUDE_GOOGLE_APEX := true
 
+# Ship the default pixel apns instead of Carrier configs by Google to prevent problems for legacy devices
+TARGET_USE_PIXEL_APNS := true
+
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
 
