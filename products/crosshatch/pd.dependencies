@@ -18,6 +18,12 @@
         "revision":     "11"
     },
     {
+        "target_path":  "hardware/qcom/sdm845/data/ipacfg-mgr",
+        "repository":   "android_hardware_qcom_sdm845_data_ipacfg-mgr",
+        "remote":       "pd11",
+        "revision":     "11"
+    },
+    {
         "target_path":  "vendor/pixelgapps",
         "repository":   "pixeldust-eleven/android_vendor_pixelgapps",
         "remote":       "gitlab",
