@@ -43,6 +43,7 @@ PRODUCT_PACKAGES += \
     btb_gb.pb \
     btc_gb.pb \
     cellcom_us.pb \
+    cellcommno_us.pb \
     cht_tw.pb \
     congstar_de.pb \
     cricket5g_us.pb \
@@ -56,16 +57,20 @@ PRODUCT_PACKAGES += \
     fi_us.pb \
     fido_ca.pb \
     firstnet_us.pb \
+    firstnetpacific2_us.pb \
     firstnetpacific_us.pb \
     fizz_ca.pb \
     freedommobile_ca.pb \
+    gamma_gb.pb \
     h3_at.pb \
     h3_gb.pb \
     h3_se.pb \
+    homobile_it.pb \
     idea_in.pb \
     idmobile_gb.pb \
     kddi_jp.pb \
     kddimvno_jp.pb \
+    kena_it.pb \
     koodo_ca.pb \
     luckymobile_ca.pb \
     movistar_es.pb \
@@ -77,6 +82,7 @@ PRODUCT_PACKAGES += \
     orange_es.pb \
     orange_fr.pb \
     pcmobilebell_ca.pb \
+    povo_jp.pb \
     rakuten_jp.pb \
     rjio_in.pb \
     rogers_ca.pb \
@@ -94,6 +100,7 @@ PRODUCT_PACKAGES += \
     sprintprepaid_us.pb \
     sprintwholesale_us.pb \
     starhub_sg.pb \
+    sunrise_ch.pb \
     swisscom_ch.pb \
     swisscom_li.pb \
     tbaytel_ca.pb \
@@ -109,6 +116,7 @@ PRODUCT_PACKAGES += \
     telus_ca.pb \
     three_dk.pb \
     tim_it.pb \
+    tmobile_cz.pb \
     tmobile_nl.pb \
     tmobile_us.pb \
     tracfonetmo_us.pb \
@@ -117,11 +125,14 @@ PRODUCT_PACKAGES += \
     twm_tw.pb \
     uscc_us.pb \
     verizon_us.pb \
+    verymobile_it.pb \
     videotron_ca.pb \
     virgin_ca.pb \
+    virgin_gb.pb \
     virgin_us.pb \
     visible_us.pb \
     vodafone_au.pb \
+    vodafone_cz.pb \
     vodafone_de.pb \
     vodafone_es.pb \
     vodafone_gb.pb \
@@ -130,6 +141,7 @@ PRODUCT_PACKAGES += \
     vodafone_it.pb \
     vodafone_nl.pb \
     vodafone_tr.pb \
+    windtre_it.pb \
     xfinity_us.pb
 
 # Other countries
