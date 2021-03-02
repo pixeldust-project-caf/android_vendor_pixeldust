@@ -17,6 +17,5 @@ BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
 
 BOARD_SEPOLICY_DIRS += \
 	hardware/google/pixel-sepolicy/flipendo \
-	hardware/google/pixel-sepolicy/googlebattery \
 	hardware/google/pixel-sepolicy/turbo_adapter
 
