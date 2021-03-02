@@ -46,31 +46,8 @@ include vendor/pixeldust/configs/system_optional.mk
 # Face Unlock
 $(call inherit-product-if-exists, external/motorola/faceunlock/faceunlock.mk)
 
-# Google Apps
-$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
-REMOVE_GAPPS_PACKAGES += \
-    CbrsNetworkMonitor \
-    DevicePersonalizationPrebuiltPixel2020 \
-    DevicePolicyPrebuilt \
-    DiagnosticsToolPrebuilt \
-    Drive \
-    MaestroPrebuilt \
-    Maps \
-    NetworkPermissionConfigGoogle \
-    NetworkStackGoogle \
-    NgaResources \
-    PixelLiveWallpaperPrebuilt \
-    pixel_experience_2017 \
-    pixel_2018_exclusive \
-    pixel_experience_2019_midyear \
-    pixel_experience_2019 \
-    pixel_experience_2020_midyear \
-    pixel_experience_2020 \
-    PrebuiltGmail \
-    ScribePrebuilt \
-    Showcase \
-    YouTube \
-    YouTubeMusicPrebuilt
+# Pixel 1 prebuilts
+$(call inherit-product-if-exists, vendor/sailin/pixel1-prebuilts.mk)
 
 # Setup device specific product configuration.
 PRODUCT_NAME := pixeldust_sailfish
