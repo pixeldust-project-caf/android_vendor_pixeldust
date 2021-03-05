@@ -73,7 +73,7 @@ PRODUCT_PACKAGES += \
 
 # Devices should opt-in to include Seedvault
 ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
-DEVICE_PACKAGE_OVERLAYS += \
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     vendor/pixeldust/overlay-seedvault
 PRODUCT_PACKAGES += \
     Seedvault
