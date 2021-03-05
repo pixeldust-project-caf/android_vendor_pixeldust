@@ -15,6 +15,8 @@
 #
 #
 
+ifeq ($(filter marlin sailfish, $(TARGET_DEVICE)),)
+
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -45,3 +47,5 @@ endef
 
 $(foreach _cspb, $(call find-subdir-subdir-files, "configs", "*.pb"), \
  $(eval $(call _add-carrier-settings-protobuf, $(_cspb))))
+
+endif
