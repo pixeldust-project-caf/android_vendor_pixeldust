@@ -15,6 +15,7 @@
 include vendor/pixeldust/configs/aosp_fixes.mk
 include vendor/pixeldust/configs/audio.mk
 include vendor/pixeldust/configs/bootanimation.mk
+include vendor/pixeldust/configs/fu.mk
 include vendor/pixeldust/configs/pixeldust_main.mk
 include vendor/pixeldust/configs/pixeldust_optimizations.mk
 include vendor/pixeldust/configs/system_additions.mk
