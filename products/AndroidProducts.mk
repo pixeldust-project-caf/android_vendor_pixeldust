@@ -19,6 +19,7 @@ PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/crosshatch/pixeldust_crosshatch.mk \
     $(LOCAL_DIR)/flame/pixeldust_flame.mk \
     $(LOCAL_DIR)/marlin/pixeldust_marlin.mk \
+    $(LOCAL_DIR)/redfin/pixeldust_redfin.mk \
     $(LOCAL_DIR)/taimen/pixeldust_taimen.mk \
     $(LOCAL_DIR)/tissot/pixeldust_tissot.mk \
     $(LOCAL_DIR)/sailfish/pixeldust_sailfish.mk \
@@ -43,6 +44,9 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_marlin-userdebug \
     pixeldust_marlin-user \
     pixeldust_marlin-eng \
+    pixeldust_redfin-userdebug \
+    pixeldust_redfin-user \
+    pixeldust_redfin-eng \
     pixeldust_taimen-userdebug \
     pixeldust_taimen-user \
     pixeldust_tissot-userdebug \
