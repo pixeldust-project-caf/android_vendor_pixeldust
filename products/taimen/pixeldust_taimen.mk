@@ -29,6 +29,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_system_ext.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
 
+# Don't include Google apex use the AOSP variant instead 
+TARGET_EXCLUDE_GOOGLE_APEX := true
+
 # Include common PixelDust stuff
 include vendor/pixeldust/configs/pixeldust_phone.mk
 
@@ -42,13 +45,34 @@ include vendor/pixeldust/configs/system_optional.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 
-
-# Inherit product speciifc makefiles
+# Inherit product specific makefiles
 $(call inherit-product, device/google/taimen/device.mk)
 $(call inherit-product, vendor/google/taimen/taimen-vendor.mk)
 
-# Inherit from GMS product config
+# Google Apps
 $(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+REMOVE_GAPPS_PACKAGES += \
+    DevicePersonalizationPrebuiltPixel2020 \
+    DevicePolicyPrebuilt \
+    DiagnosticsToolPrebuilt \
+    Drive \
+    FilesPrebuilt \
+    GCS \
+    GoogleTTS \
+    Maps \
+    NetworkPermissionConfigGoogle \
+    NetworkStackGoogle \
+    NgaResources \
+    pixel_experience_2019_midyear \
+    pixel_experience_2019 \
+    pixel_experience_2020_midyear \
+    pixel_experience_2020 \
+    PrebuiltGmail \
+    RecorderPrebuilt \
+    YouTube \
+    YouTubeMusicPrebuilt \
+    WellbeingPrebuilt \
+    talkback
 
 PRODUCT_COPY_FILES += \
     device/google/taimen/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
