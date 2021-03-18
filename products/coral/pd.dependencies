@@ -6,15 +6,27 @@
         "revision":     "11"
     },
     {
+        "target_path":  "device/google/coral-sepolicy",
+        "repository":   "android_device_google_coral-sepolicy",
+        "remote":       "pdd",
+        "revision":     "11"
+    },
+    {
         "target_path":  "kernel/google/floral",
-        "repository":   "DirtyUnicorns/android_kernel_google_floral",
-        "remote":       "github",
-        "revision":     "r11x"
+        "repository":   "android_kernel_google_floral",
+        "remote":       "pdd",
+        "revision":     "11"
     },
     {
         "target_path":  "vendor/google",
         "repository":   "android_vendor_google",
         "remote":       "pdd",
         "revision":     "11"
+    }
+    {
+        "target_path":  "prebuilts/clang/host/linux-x86/clang-proton",
+        "repository":   "kdrag0n/proton-clang",
+        "remote":       "github",
+        "revision":     "master"
     }
 ]
