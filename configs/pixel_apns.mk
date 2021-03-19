@@ -15,4 +15,4 @@
 
 # Pixel APNs
 PRODUCT_COPY_FILES += \
-	vendor/pixeldust/telephony/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+	vendor/pixeldust/telephony/apns-full-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml
