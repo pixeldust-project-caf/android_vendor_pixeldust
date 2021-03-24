@@ -19,3 +19,8 @@ BOARD_SEPOLICY_DIRS += \
 	hardware/google/pixel-sepolicy/flipendo \
 	hardware/google/pixel-sepolicy/turbo_adapter
 
+# This will prevent a FC on Pixel 4 related to GoogleBatteryService
+ifneq ($(filter coral flame,$(TARGET_DEVICE)),)
+BOARD_SEPOLICY_DIRS += \
+	hardware/google/pixel-sepolicy/googlebattery
+endif
