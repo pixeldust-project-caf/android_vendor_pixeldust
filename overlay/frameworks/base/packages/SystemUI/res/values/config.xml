@@ -47,4 +47,7 @@
     <!-- Enable WLC/NFC conflicts -->
     <bool name="config_nfc_conflict_with_usb_audio">true</bool>
     <bool name="config_nfc_conflict_with_wlc">true</bool>
+
+    <!-- SystemUIFactory component -->
+    <string name="config_systemUIFactoryComponent" translatable="false">com.pixeldust.systemui.CustomSystemUIFactory</string>
 </resources>
