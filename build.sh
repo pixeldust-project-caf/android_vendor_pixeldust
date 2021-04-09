@@ -121,8 +121,8 @@ if [ -z "$JOBS" ]; then
 fi
 
 # Grab the build version
-PD_DISPLAY_VERSION="$(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'ROM_VERSION := *' | sed 's/.*= //') \
-$(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'BUILD_VERSION := *' | sed 's/.*= //')"
+PD_DISPLAY_VERSION="$(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'PD_ROM_MAJ_VERSION := *' | sed 's/.*= //') \
+$(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'BUILD_VERSION_CODE := *' | sed 's/.*= //')"
 
 # Prep for a clean build, if requested so
 if [ "$FLAG_CLEAN_BUILD" = 'y' ]; then
