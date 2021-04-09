@@ -16,6 +16,8 @@
 DEVICE_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay
 
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/pixeldust/overlay
+
 # Inherit from rro_overlays config
 $(call inherit-product, vendor/pixeldust/configs/rro_overlays.mk)
 
