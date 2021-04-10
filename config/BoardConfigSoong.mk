@@ -48,6 +48,8 @@ SOONG_CONFIG_NAMESPACES += pixeldustQcomVars
 SOONG_CONFIG_pixeldustQcomVars += \
     legacy_hw_disk_encryption \
     should_wait_for_qsee \
+    supports_audio_accessory \
+    supports_debug_accessory \
     supports_extended_compress_format \
     supports_hw_fde \
     supports_hw_fde_perf \
@@ -73,6 +75,8 @@ SOONG_CONFIG_pixeldustQcomVars_should_wait_for_qsee := $(TARGET_KEYMASTER_WAIT_F
 SOONG_CONFIG_pixeldustQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
 SOONG_CONFIG_pixeldustQcomVars_supports_hw_fde := $(TARGET_HW_DISK_ENCRYPTION)
 SOONG_CONFIG_pixeldustQcomVars_supports_hw_fde_perf := $(TARGET_HW_DISK_ENCRYPTION_PERF)
+SOONG_CONFIG_pixeldustQcomVars_supports_audio_accessory := $(TARGET_QTI_USB_SUPPORTS_AUDIO_ACCESSORY)
+SOONG_CONFIG_pixeldustQcomVars_supports_debug_accessory := $(TARGET_QTI_USB_SUPPORTS_DEBUG_ACCESSORY)
 SOONG_CONFIG_pixeldustQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
 SOONG_CONFIG_pixeldustQcomVars_uses_qcom_bsp_legacy := $(TARGET_USES_QCOM_BSP_LEGACY)
 SOONG_CONFIG_pixeldustQcomVars_uses_qti_camera_device := $(TARGET_USES_QTI_CAMERA_DEVICE)
