@@ -238,9 +238,11 @@ def fetch_dependencies(repo_path, fallback_branch=None):
 
     for dependency in dependencies:
         if not is_in_manifest(dependency['target_path']):
-            if not dependency.get('branch'):
+            if not dependency.get('revision'):
                 dependency['branch'] = (get_revision()
                                         or custom_default_revision)
+            else:
+                dependency['branch'] = dependency['revision']
 
             fetch_list.append(dependency)
             syncable_repos.append(dependency['target_path'])
