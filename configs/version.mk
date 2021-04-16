@@ -40,13 +40,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 ifeq ($(PRODUCT_OVERRIDE_INFO),true)
 ADDITIONAL_BUILD_PROPERTIES += \
     ro.build.flavor=$(PRODUCT_NAME)-user \
-    ro.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
-    ro.system.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
-    ro.product.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
-    ro.system_ext.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
-    ro.bootimage.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
-    ro.odm.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
-    ro.vendor.build.fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT)
+    ro.build.stock_fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
 
 # Description needs special treatment because it contains spaces
 PRIVATE_BUILD_DESC := $(PRODUCT_OVERRIDE_DESC)
