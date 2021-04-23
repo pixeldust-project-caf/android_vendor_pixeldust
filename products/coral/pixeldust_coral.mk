@@ -19,12 +19,6 @@ BOOTANIMATION := 1440
 PRODUCT_RELEASE_NAME := Pixel 4 XL
 export TARGET_DEVICE := coral
 
-# We have our own power HAL
-TARGET_USES_DEVICE_SPECIFIC_POWERHAL := false
-
-# Use the AOSP stack
-TARGET_USES_AOSP := true
-
 # Use the sepolicies which are being shipped with our device
 TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 

@@ -19,12 +19,6 @@ BOOTANIMATION := 1080
 PRODUCT_RELEASE_NAME := Pixel
 export TARGET_DEVICE=sailfish
 
-# We have our own power HAL
-TARGET_USES_DEVICE_SPECIFIC_POWERHAL := true
-
-# Use the AOSP stack
-TARGET_USES_AOSP := true
-
 # Use the sepolicies which are being shipped with our device
 TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 
