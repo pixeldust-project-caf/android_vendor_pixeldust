@@ -22,6 +22,9 @@ export TARGET_DEVICE=sailfish
 # Use the sepolicies which are being shipped with our device
 TARGET_EXCLUDE_QCOM_VENDOR_SEPOLICY := true
 
+# Opt out from our custom cross-device sepolicy
+TARGET_EXCLUDE_CUSTOM_DEVICE_SEPOLICY := true
+
 # Inherit AOSP device configuration for sailfish.
 $(call inherit-product-if-exists, device/google/marlin/aosp_sailfish.mk)
 
