@@ -7,3 +7,8 @@
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,vendor/pixeldust/prebuilt/pixelsounds/,$(TARGET_COPY_OUT_PRODUCT)/media/audio)
 
+# 2019 Material product sounds (CC-BY 4.0)
+# Source: https://material.io/design/sound/sound-resources.html
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,vendor/pixeldust/prebuilt/materialsounds/,$(TARGET_COPY_OUT_PRODUCT)/media/audio)
+
