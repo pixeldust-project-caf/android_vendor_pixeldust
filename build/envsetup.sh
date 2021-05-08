@@ -602,6 +602,9 @@ function fixup_common_out_dir() {
     fi
 }
 
+# Disable ABI checking
+export SKIP_ABI_CHECKS=true
+
 # Enable SD-LLVM if available
 if [ -d $(gettop)/prebuilts/snapdragon-llvm/toolchains ]; then
     case `uname -s` in
