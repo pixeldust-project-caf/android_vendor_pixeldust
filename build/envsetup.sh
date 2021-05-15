@@ -604,3 +604,7 @@ function fixup_common_out_dir() {
 
 # Disable ABI checking
 export SKIP_ABI_CHECKS=true
+
+# This doesn't increase build time significantly, so enable it for
+# performance.
+export GLOBAL_THINLTO=true
