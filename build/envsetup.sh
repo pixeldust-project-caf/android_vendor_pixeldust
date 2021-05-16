@@ -604,23 +604,3 @@ function fixup_common_out_dir() {
 
 # Disable ABI checking
 export SKIP_ABI_CHECKS=true
-
-# Enable SD-LLVM if available
-if [ -d $(gettop)/prebuilts/snapdragon-llvm/toolchains ]; then
-    case `uname -s` in
-        Darwin)
-            # Darwin is not supported yet
-            ;;
-        *)
-            export SDCLANG=true
-            export SDCLANG_PATH=$(gettop)/prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_4.0/prebuilt/linux-x86_64/bin
-            export SDCLANG_PATH_2=$(gettop)/prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_4.0/prebuilt/linux-x86_64/bin
-            export SDCLANG_LTO_DEFS=$(gettop)/vendor/pixeldust/build/core/sdllvm-lto-defs.mk
-            ;;
-    esac
-fi
-
-# Android specific JACK args
-if [ -n "$JACK_SERVER_VM_ARGUMENTS" ] && [ -z "$ANDROID_JACK_VM_ARGS" ]; then
-    export ANDROID_JACK_VM_ARGS=$JACK_SERVER_VM_ARGUMENTS
-fi
