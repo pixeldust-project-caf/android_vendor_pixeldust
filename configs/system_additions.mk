@@ -76,7 +76,7 @@ PRODUCT_PACKAGES += \
 include packages/apps/PotatoPlugins/plugins.mk
 
 # Devices should opt-in to include Seedvault
-ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
+ifneq ($(filter blueline bonito bramble coral crosshatch miatoll redfin sunfish taimen,$(TARGET_DEVICE)),)
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     vendor/pixeldust/overlay-seedvault
 PRODUCT_PACKAGES += \
@@ -84,7 +84,7 @@ PRODUCT_PACKAGES += \
 endif
 
 # Devices should opt-in to include PixelDustLauncher
-ifneq ($(filter marlin sailfish blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
+ifneq ($(filter marlin sailfish blueline bonito bramble coral crosshatch miatoll redfin sunfish taimen,$(TARGET_DEVICE)),)
 FORCE_BUILD_LAUNCHER3 := true
 endif
 
@@ -94,7 +94,7 @@ REMOVE_GAPPS_PACKAGES += \
 #    WallpaperPickerGoogleRelease
 PRODUCT_PACKAGES += \
     PixelDustLauncher
-else 
+else
 DEVICE_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay-nexuslauncher
 endif

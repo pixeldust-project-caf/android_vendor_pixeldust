@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifneq ($(filter blueline crosshatch marlin redfin sailfish taimen,$(TARGET_DEVICE)),)
+ifneq ($(filter blueline crosshatch marlin miatoll redfin sailfish taimen,$(TARGET_DEVICE)),)
 
 # Face Unlock
 PRODUCT_PACKAGES += \
