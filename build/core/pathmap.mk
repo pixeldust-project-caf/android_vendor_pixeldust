@@ -4,8 +4,7 @@
 # $(2): path
 #
 define project-set-path
-$(eval pathmap_PROJ += $(1):$(2)) \
-$(eval PATHMAP_SOONG_NAMESPACES += $(2))
+$(eval pathmap_PROJ += $(1):$(2))
 endef
 
 # Returns the path to the requested module's include directory,
