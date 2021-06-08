@@ -24,6 +24,7 @@ PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/taimen/pixeldust_taimen.mk \
     $(LOCAL_DIR)/tissot/pixeldust_tissot.mk \
     $(LOCAL_DIR)/sailfish/pixeldust_sailfish.mk \
+    $(LOCAL_DIR)/surya/pixeldust_surya.mk \
     $(LOCAL_DIR)/walleye/pixeldust_walleye.mk \
     $(LOCAL_DIR)/X01BD/pixeldust_X01BD.mk \
     $(LOCAL_DIR)/X00T/pixeldust_X00T.mk
@@ -58,6 +59,9 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_sailfish-userdebug \
     pixeldust_sailfish-user \
     pixeldust_sailfish-eng \
+    pixeldust_surya-userdebug \
+    pixeldust_surya-user \
+    pixeldust_surya-eng \
     pixeldust_walleye-userdebug \
     pixeldust_walleye-user \
     pixeldust_X01BD-userdebug \
