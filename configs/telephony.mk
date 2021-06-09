@@ -14,6 +14,8 @@
 # limitations under the License.
 
 # CarrierSettings, replace CarrierConfig
+
+ifneq ($(filter angler blueline coral crosshatch flame marlin redfin sailfish taimen walleye, $(TARGET_DEVICE)),)
 PRODUCT_PACKAGES += \
     CarrierSettings
 
@@ -159,3 +161,4 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=false
 
+endif

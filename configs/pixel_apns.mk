@@ -13,6 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Pixel APNs
-PRODUCT_COPY_FILES += \
-	vendor/pixeldust/telephony/apns-full-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml
+# World APNs list
+PRODUCT_PACKAGES += \
+    apns-conf.xml

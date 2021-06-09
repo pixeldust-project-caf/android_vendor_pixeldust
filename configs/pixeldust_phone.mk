@@ -22,21 +22,14 @@ include vendor/pixeldust/configs/system_additions.mk
 include vendor/pixeldust/configs/system_sepolicy.mk
 include vendor/pixeldust/configs/version.mk
 include vendor/pixeldust/configs/ota.mk
+include vendor/pixeldust/configs/pixel_apns.mk
+include vendor/pixeldust/configs/telephony.mk
 
 ifndef TARGET_EXCLUDE_GOOGLE_APEX
   TARGET_EXCLUDE_GOOGLE_APEX := false
 endif
 ifeq ($(TARGET_EXCLUDE_GOOGLE_APEX),false)
 include vendor/pixeldust/configs/apex.mk
-endif
-
-ifndef TARGET_USE_PIXEL_APNS
-  TARGET_USE_PIXEL_APNS := false
-endif
-ifeq ($(TARGET_USE_PIXEL_APNS),true)
-include vendor/pixeldust/configs/pixel_apns.mk
-else
-include vendor/pixeldust/configs/telephony.mk
 endif
 
 ifneq ($(filter blueline coral crosshatch flame,$(TARGET_DEVICE)),)
