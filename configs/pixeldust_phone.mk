@@ -19,7 +19,6 @@ include vendor/pixeldust/configs/fu.mk
 include vendor/pixeldust/configs/pixeldust_main.mk
 include vendor/pixeldust/configs/pixeldust_optimizations.mk
 include vendor/pixeldust/configs/system_additions.mk
-include vendor/pixeldust/configs/system_sepolicy.mk
 include vendor/pixeldust/configs/version.mk
 include vendor/pixeldust/configs/ota.mk
 include vendor/pixeldust/configs/pixel_apns.mk
@@ -30,15 +29,6 @@ ifndef TARGET_EXCLUDE_GOOGLE_APEX
 endif
 ifeq ($(TARGET_EXCLUDE_GOOGLE_APEX),false)
 include vendor/pixeldust/configs/apex.mk
-endif
-
-ifneq ($(filter blueline coral crosshatch flame,$(TARGET_DEVICE)),)
-# Inherit from our vendor sepolicy config
-$(call inherit-product, vendor/pixeldust/configs/vendor_sepolicy.mk)
-
-# Include Smart Charging overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    vendor/pixeldust/overlay-smartcharging
 endif
 
 # Telephony packages
