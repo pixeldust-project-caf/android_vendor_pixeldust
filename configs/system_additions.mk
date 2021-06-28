@@ -73,7 +73,7 @@ PRODUCT_PACKAGES += \
     Themes \
 
 # Include Potato volume panels
-include packages/apps/PotatoPlugins/plugins.mk
+-include packages/apps/PotatoPlugins/plugins.mk
 
 # Devices should opt-in to include Seedvault
 ifneq ($(filter blueline bonito bramble coral crosshatch miatoll redfin sunfish surya taimen,$(TARGET_DEVICE)),)
