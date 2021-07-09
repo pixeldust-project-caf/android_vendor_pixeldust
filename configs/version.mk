@@ -39,7 +39,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Override product info for Google Play Services and SafetyNet
 ifeq ($(PRODUCT_OVERRIDE_INFO),true)
 ADDITIONAL_BUILD_PROPERTIES += \
-    ro.build.flavor=$(PRODUCT_NAME)-user \
+    ro.build.flavor=$(PRODUCT_OVERRIDE_NAME)-user \
     ro.build.stock_fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT) \
 
 # Description needs special treatment because it contains spaces
