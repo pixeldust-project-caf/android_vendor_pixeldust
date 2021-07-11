@@ -39,14 +39,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 REMOVE_GAPPS_PACKAGES += \
     AppDirectedSMSService \
     AmbientSensePrebuilt \
-    AndroidAutoStubPrebuilt \
     arcore \
     CbrsNetworkMonitor \
     DevicePolicyPrebuilt \
     DiagnosticsToolPrebuilt \
     DreamlinerPrebuilt \
     DreamlinerUpdater \
-    FilesPrebuilt \
     GCS \
     GoogleCamera \
     GoogleTTS \
