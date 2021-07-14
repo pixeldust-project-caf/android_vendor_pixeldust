@@ -44,7 +44,3 @@ EXCLUDE_SYSTEMUI_TESTS := true
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     Launcher3QuickStep
 
-# IORap app launch prefetching using Perfetto traces and madvise
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.iorapd.enable=true
-
