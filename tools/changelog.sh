@@ -25,7 +25,7 @@ do
     # https://www.cyberciti.biz/faq/unix-linux-bash-script-check-if-variable-is-empty/
     Git_log=`git --git-dir ./${path}/.git log --after=$After_Date --until=$Until_Date --pretty=tformat:"%h  %s  [%an]" --abbrev-commit --abbrev=7`
     if [ ! -z "${Git_log}" ]; then
-        echo "\n* ${path}\n${Git_log}\n" >> $Changelog;
+        printf "\n* ${path}\n${Git_log}\n" >> $Changelog;
     fi
 done < ./.repo/project.list;
 
