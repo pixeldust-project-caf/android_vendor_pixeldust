@@ -40,4 +40,7 @@
 
     <!--Whether help links are defined. -->
     <bool name="config_has_help">true</bool>
+
+    <!--Whether or not the preference for refresh rate should be displayed. -->
+    <bool name="config_show_refresh_rate_controls">true</bool>
 </resources>
