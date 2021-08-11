@@ -42,9 +42,9 @@ include vendor/pixeldust/configs/system_optional.mk
 $(call inherit-product-if-exists, vendor/google/crosshatch/crosshatch-vendor.mk)
 
 # Google Apps
+DEVICE_REQUIRES_CARRIER_APPS := true
 $(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
 REMOVE_GAPPS_PACKAGES += \
-    PrebuiltGmail \
     pixel_2016_exclusive \
     pixel_experience_2019_midyear \
     pixel_experience_2019 \
