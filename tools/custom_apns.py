@@ -24,7 +24,7 @@ def is_apn(line):
 def main(argv):
     reload(sys)
     sys.setdefaultencoding('utf8')
-    original_file = 'vendor/evolution/prebuilt/common/etc/apns-conf.xml'
+    original_file = 'vendor/pixeldust/prebuilt/common/etc/apns-conf.xml'
 
     if len(argv) == 3:
         output_file_path = argv[1]
