@@ -47,6 +47,9 @@ REMOVE_GAPPS_PACKAGES += \
     NetworkPermissionConfigGoogle \
     NetworkStackGoogle \
     NgaResources \
+    pixel_2016_exclusive \
+    pixel_2018_exclusive.xml \
+    pixel_experience_2018 \
     pixel_experience_2019_midyear \
     pixel_experience_2019 \
     pixel_experience_2020_midyear \
