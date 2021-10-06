@@ -63,7 +63,7 @@ ifneq ($(TARGET_KERNEL_CLANG_VERSION),)
         endif
     endif
 else
-    CLANG_PREBUILTS_VERSION := clang-r383902b
+    CLANG_PREBUILTS_VERSION := clang-r416183b
 endif
 
 CLANG_PREBUILTS := $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/$(CLANG_PREBUILTS_VERSION)
