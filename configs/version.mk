@@ -15,8 +15,8 @@
 # Pixel Dust ROM versioning
 BUILD_ID_LC := $(shell echo $(BUILD_ID) | tr '[:upper:]' '[:lower:]')
 
-PD_ROM_MAJ_VERSION := PixelDust-Eleven
-ANDROID_OS_VERSION := 11.0.0
+PD_ROM_MAJ_VERSION := PixelDust-Snowcone
+ANDROID_OS_VERSION := 12.0.0
 BUILD_VERSION_CODE := aosp
 
 ifndef SIGN_KEY
