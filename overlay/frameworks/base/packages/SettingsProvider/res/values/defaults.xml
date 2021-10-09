@@ -15,6 +15,9 @@
     limitations under the License.
 -->
 <resources>
+    <!-- Display -->
+    <bool name="def_one_handed_mode_enabled">true</bool>
+
     <!-- Connectivity -->
     <bool name="def_bluetooth_on">false</bool>
     <bool name="def_wifi_on">true</bool>
