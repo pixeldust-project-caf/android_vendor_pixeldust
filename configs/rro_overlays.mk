@@ -5,5 +5,6 @@
 
 # PixelDust Overlays
 PRODUCT_PACKAGES += \
-    PixelDustConfigOverlay
+    PixelDustConfigOverlay \
+    PixelDustSystemUIOverlay
 
