@@ -85,16 +85,17 @@ endif
 
 # Devices should opt-in to include PixelDustLauncher
 ifneq ($(filter marlin sailfish blueline bonito bramble coral crosshatch miatoll redfin sunfish surya taimen,$(TARGET_DEVICE)),)
-FORCE_BUILD_LAUNCHER3 := true
+INCLUDE_PIXELDUSTLAUNCHER := true
 endif
 
-ifeq ($(FORCE_BUILD_LAUNCHER3), true)
+ifeq ($(INCLUDE_PIXELDUSTLAUNCHER), true)
 REMOVE_GAPPS_PACKAGES += \
     NexusLauncherRelease \
-#    WallpaperPickerGoogleRelease
-PRODUCT_PACKAGES += \
-    PixelDustLauncher
+    WallpaperPickerGoogleRelease
+#PRODUCT_PACKAGES += \
+#    PixelDustLauncher
 else
+INCLUDE_PIXELLAUNCHER := true
 DEVICE_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay-nexuslauncher
 endif
