@@ -45,7 +45,7 @@ DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
 custom_local_manifest = ".repo/local_manifests/pixeldust_manifest.xml"
-custom_default_revision = "11"
+custom_default_revision = "12"
 custom_dependencies = "pd.dependencies"
 org_manifest = "pdd"  # leave empty if org is provided in manifest
 org_display = "PixelDust-Devices"  # needed for displaying
