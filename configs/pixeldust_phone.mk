@@ -14,7 +14,6 @@
 
 include vendor/pixeldust/configs/aosp_fixes.mk
 include vendor/pixeldust/configs/audio.mk
-include vendor/pixeldust/configs/bootanimation.mk
 include vendor/pixeldust/configs/fu.mk
 include vendor/pixeldust/configs/pixeldust_main.mk
 include vendor/pixeldust/configs/pixeldust_optimizations.mk
@@ -23,6 +22,8 @@ include vendor/pixeldust/configs/version.mk
 include vendor/pixeldust/configs/ota.mk
 include vendor/pixeldust/configs/pixel_apns.mk
 include vendor/pixeldust/configs/telephony.mk
+
+$(call inherit-product, vendor/pixeldust/prebuilt/bootanimation/bootanimation.mk)
 
 ifndef TARGET_EXCLUDE_GOOGLE_APEX
   TARGET_EXCLUDE_GOOGLE_APEX := false
