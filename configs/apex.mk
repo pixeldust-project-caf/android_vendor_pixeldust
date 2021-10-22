@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020 The PixelDust Project
+# Copyright (C) 2020-2021 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,9 +14,12 @@
 # limitations under the License.
 #
 
-# Include gms overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    vendor/pixeldust/overlay-gms
+# Networkstack certificate
+PRODUCT_MAINLINE_SEPOLICY_DEV_CERTIFICATES := vendor/pixeldust/apex/NetworkStack
+
+# Prebuilt module SDKs require prebuilt modules to work, and currently
+# prebuilt modules are only provided for com.google.android.xxx.
+MODULE_BUILD_FROM_SOURCE := false
 
 # Enable Google Play system updates support
 PRODUCT_SOONG_NAMESPACES += \
@@ -29,6 +32,8 @@ PRODUCT_PACKAGES += \
 # Google Apexes
 PRODUCT_PACKAGES += \
     com.google.android.adbd \
+	com.google.android.appsearch \
+	com.google.android.art \
 	com.google.android.cellbroadcast \
 	com.google.android.conscrypt \
 	com.google.android.extservices \
@@ -40,8 +45,10 @@ PRODUCT_PACKAGES += \
 	com.google.android.os.statsd \
 	com.google.android.permission \
 	com.google.android.resolv \
+	com.google.android.scheduling \
 	com.google.android.sdkext \
 	com.google.android.telephony \
 	com.google.android.tethering \
-	com.google.android.tzdata2 \
-	com.google.android.wifi
+	com.google.android.tzdata3 \
+	com.google.android.wifi \
+	com.google.mainline.primary.libs

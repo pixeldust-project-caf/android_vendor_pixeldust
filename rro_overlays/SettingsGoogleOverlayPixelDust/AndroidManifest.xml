@@ -1,6 +1,6 @@
 <!--
 /**
- * Copyright (C) 2020 The PixelDust Project
+ * Copyright (c) 2019, The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,7 @@
  */
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.settings.overlay.pixeldust"
-    android:versionCode="1"
-    android:versionName="1.0">
+    package="com.android.settings.overlay.pixeldust">
     <overlay android:isStatic="true" android:priority="10" android:targetPackage="com.android.settings" android:resourcesMap="@xml/overlays"/>
 
     <application android:hasCode="false" android:usesNonSdkApi="true"/>

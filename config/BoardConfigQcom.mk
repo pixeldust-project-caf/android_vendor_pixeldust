@@ -123,3 +123,8 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys/packages/apps/Bluetooth \
     vendor/qcom/opensource/commonsys/system/bt/conf
 endif #TARGET_USE_QTI_BT_STACK
+
+# QCOM HW crypto
+ifeq ($(TARGET_HW_DISK_ENCRYPTION),true)
+    TARGET_CRYPTFS_HW_PATH ?= vendor/qcom/opensource/cryptfs_hw
+endif

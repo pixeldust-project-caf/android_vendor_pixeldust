@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2020 The PixelDust Project
+** Copyright 2020-2021 The PixelDust Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -24,17 +24,27 @@
         <item>com.google.android.apps.chromecast.app</item>
     </string-array>
 
-    <!-- Control whether status bar should distinguish HSPA data icon form UMTS
-    data icon on devices -->
-    <bool name="config_hspa_data_distinguishable">true</bool>
+    <!-- Audio product ID -->
+    <integer-array name="config_nfc_conflict_with_usb_audio_productid">
+        <item>0x00005034</item>
+    </integer-array>
 
-    <!-- Should we vibrate on an icon animation of the shelf. This should only be active if the
-     vibrator is capable of subtle vibrations -->
-    <bool name="config_vibrateOnIconAnimation">true</bool>
+    <!-- Audio vendor ID -->
+    <integer-array name="config_nfc_conflict_with_usb_audio_vendorid">
+        <item>0x000018D1</item>
+    </integer-array>
 
     <!-- SystemUI Plugins that can be loaded on user builds. -->
     <string-array name="config_pluginWhitelist" translatable="false">
         <item>com.android.systemui</item>
         <item>com.android.systemui.plugin.globalactions.wallet</item>
     </string-array>
+
+    <!-- Control whether status bar should distinguish HSPA data icon form UMTS
+    data icon on devices -->
+    <bool name="config_hspa_data_distinguishable">true</bool>
+
+    <!-- Enable WLC/NFC conflicts -->
+    <bool name="config_nfc_conflict_with_usb_audio">true</bool>
+    <bool name="config_nfc_conflict_with_wlc">true</bool>
 </resources>

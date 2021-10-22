@@ -17,8 +17,8 @@
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# Inherit pixeldust common stuff.
-$(call inherit-product, vendor/pixeldust/configs/pixeldust_phone.mk)
+# Inherit pixeldust product configs.
+$(call inherit-product, vendor/pixeldust/configs/telephony.mk)
 
 # Includes all AOSP product packages
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_product.mk)
@@ -27,6 +27,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_product.mk)
 # Additional settings used in all AOSP builds
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.android.dataroaming?=false \
+    ro.carrier=unknown \
+    keyguard.no_require_sim=true \
+    net.tethering.noprovisioning=true
 
 # More AOSP packages
 PRODUCT_PACKAGES += \

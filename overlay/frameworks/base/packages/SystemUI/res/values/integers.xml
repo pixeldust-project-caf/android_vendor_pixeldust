@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2020 The PixelDust Project
+** Copyright 2020-2021 The PixelDust Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -17,9 +17,6 @@
 */
 -->
 <resources>
-    <!-- Vibration duration for GlowPadView used in SearchPanelView -->
-    <integer name="config_search_panel_view_vibration_duration">10</integer>
-
     <!-- Whether to show a warning notification when device's skin temperature is high. -->
     <integer name="config_showTemperatureWarning">1</integer>
 

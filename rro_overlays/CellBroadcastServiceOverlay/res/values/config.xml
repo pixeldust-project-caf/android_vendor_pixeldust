@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2020, Raphielscape LLC. and Haruka LLC.
+** Copyright 2020-2021 The PixelDust Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -17,11 +17,11 @@
 */
 -->
 <resources>
-    <string-array name="additional_cell_broadcast_receiver_packages">
+    <string-array name="additional_cell_broadcast_receiver_packages" translatable="false">
         <item>com.google.android.apps.safetyhub</item>
     </string-array>
 
-    <string-array name="test_cell_broadcast_receiver_packages">
+    <string-array name="test_cell_broadcast_receiver_packages" translatable="false">
         <item>com.googlecode.android_scripting</item>
     </string-array>
 </resources>

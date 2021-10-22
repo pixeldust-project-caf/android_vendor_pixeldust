@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2018-2019 The Pixel3ROM Project
-# Copyright (C) 2020 The PixelDust Project
+# Copyright (C) 2020-2021 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,18 +14,16 @@
 # limitations under the License.
 #
 
-ifdef SIGN_KEY
 SIGNED_TARGET_FILES_PACKAGE := $(PRODUCT_OUT)/$(TARGET_DEVICE)-target_files-$(BUILD_ID_LC).zip
+SIGN_FROM_TARGET_FILES := $(HOST_OUT_EXECUTABLES)/sign_target_files_apks$(HOST_EXECUTABLE_SUFFIX)
 
 $(SIGNED_TARGET_FILES_PACKAGE): $(BUILT_TARGET_FILES_PACKAGE) \
 		build/tools/releasetools/sign_target_files_apks
 	@echo "Signed target files package: $@"
-	    ./build/tools/releasetools/sign_target_files_apks --verbose \
+	    $(SIGN_FROM_TARGET_FILES) --verbose \
 	    -o \
 	    -p $(OUT_DIR)/host/linux-x86 \
 	    -d $(PROD_CERTS) \
-	    $(SIGNING_FLAGS) \
-	    $(APEX_SIGNING_FLAGS) \
 	    $(BUILT_TARGET_FILES_PACKAGE) $@
 
 .PHONY: signed-target-files-package
@@ -41,16 +38,24 @@ $(PD_TARGET_PACKAGE): $(BRO)
 $(PD_TARGET_PACKAGE): $(SIGNED_TARGET_FILES_PACKAGE) \
 		build/tools/releasetools/ota_from_target_files
 	@echo "pixeldust production: $@"
-	    ./build/tools/releasetools/ota_from_target_files --verbose \
+	    $(OTA_FROM_TARGET_FILES) --verbose \
 	    --block \
 	    -p $(OUT_DIR)/host/linux-x86 \
 	    -k $(KEY_CERT_PAIR) \
 	    $(SIGNED_TARGET_FILES_PACKAGE) $@
-else
-PD_TARGET_PACKAGE := $(PRODUCT_OUT)/$(PIXELDUST_VERSION).zip
-endif
 
 MD5 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/md5sum
+
+# Specify system colors
+CL_PFX="\033[33m"
+CL_INS="\033[36m"
+CL_RED="\033[31m"
+CL_GRN="\033[32m"
+CL_YLW="\033[33m"
+CL_BLU="\033[34m"
+CL_MAG="\033[35m"
+CL_CYN="\033[36m"
+CL_RST="\033[0m"
 
 .PHONY: pixeldust
 pixeldust: $(INTERNAL_OTA_PACKAGE_TARGET)
@@ -66,9 +71,7 @@ pixeldust: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ${CL_GRN}" ░▒ ░     ▒ ░░   ░▒ ░░ ░  ░ ░ ▒  ░░ ▒  ▒░░▒░ ░ ░░ ░▒  ░ ░   ░    "${CL_RST}
 	@echo -e ${CL_GRN}" ░░       ▒ ░░    ░    ░    ░ ░   ░ ░  ░ ░░░ ░ ░░  ░  ░   ░      "${CL_RST}
 	@echo ""
-	@echo -e ${CL_GRN}" Build completed successfully. "${CL_RST}
-	@echo ""
-	@echo -e ${CL_GRN}" 〉Enjoy the PixelDust Goodness! // "${CL_RST}
+	@echo -e ${CL_GRN}" Enjoy the PixelDust Goodness! "${CL_RST}
 	@echo ""
 	@echo -e ${CL_CYN}"════════════════════════════════════════════════════════════════════════════════"${CL_RST}
 	@echo -e ${CL_CYN}"Package zip: "${CL_MAG} $(PIXELDUST_VERSION).zip                                 ${CL_RST}
@@ -88,7 +91,7 @@ $(INCREMENTAL_OTA_PACKAGE_TARGET): $(BRO)
 $(INCREMENTAL_OTA_PACKAGE_TARGET): $(SIGNED_TARGET_FILES_PACKAGE) \
 		build/tools/releasetools/ota_from_target_files
 	@echo "pixeldust incremental production: $@"
-	    ./build/tools/releasetools/ota_from_target_files --verbose \
+	    $(OTA_FROM_TARGET_FILES) --verbose \
 	    --block \
 	    -p $(OUT_DIR)/host/linux-x86 \
 	    -k $(KEY_CERT_PAIR) \

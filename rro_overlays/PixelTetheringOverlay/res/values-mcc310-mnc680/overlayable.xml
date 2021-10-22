@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2020, Raphielscape LLC. and Haruka LLC.
+** Copyright 2020-2021 The PixelDust Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -18,13 +18,13 @@
 -->
 <resources>
     <!-- Configuration values for tethering entitlement check -->
-    <string-array name="config_mobile_hotspot_provision_app">
+    <string-array name="config_mobile_hotspot_provision_app" translatable="false">
         <item>com.google.android.tetheringentitlement</item>
         <item>com.google.android.tetheringentitlement.CarrierEntitlementActivity</item>
     </string-array>
 
-    <string name="config_mobile_hotspot_provision_app_no_ui">com.google.android.carrierentitlement.SILENT_ENTITLEMENT_CHECK</string>
-    <string name="config_mobile_hotspot_provision_response">com.google.android.carrierentitlement.SILENT_ENTITLEMENT_CHECK_RESULT</string>
+    <string name="config_mobile_hotspot_provision_app_no_ui" translatable="false">com.google.android.carrierentitlement.SILENT_ENTITLEMENT_CHECK</string>
+    <string name="config_mobile_hotspot_provision_response" translatable="false">com.google.android.carrierentitlement.SILENT_ENTITLEMENT_CHECK_RESULT</string>
     <!-- Params from config.xml that can be overlaid -->
 </resources>
 

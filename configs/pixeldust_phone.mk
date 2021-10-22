@@ -1,4 +1,5 @@
-# Copyright (C) 2018-2020 The PixelDust Project
+#
+# Copyright (C) 2020-2021 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,31 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-include vendor/pixeldust/configs/aosp_fixes.mk
-include vendor/pixeldust/configs/audio.mk
-include vendor/pixeldust/configs/fu.mk
-include vendor/pixeldust/configs/pixeldust_main.mk
-include vendor/pixeldust/configs/pixeldust_optimizations.mk
-include vendor/pixeldust/configs/system_additions.mk
-include vendor/pixeldust/configs/version.mk
-include vendor/pixeldust/configs/ota.mk
-include vendor/pixeldust/configs/pixel_apns.mk
-include vendor/pixeldust/configs/telephony.mk
-
-$(call inherit-product, vendor/pixeldust/prebuilt/bootanimation/bootanimation.mk)
-
-ifndef TARGET_EXCLUDE_GOOGLE_APEX
-  TARGET_EXCLUDE_GOOGLE_APEX := false
-endif
-ifeq ($(TARGET_EXCLUDE_GOOGLE_APEX),false)
-include vendor/pixeldust/configs/apex.mk
-endif
-
-# Telephony packages
-PRODUCT_PACKAGES += \
-    Stk \
-    CellBroadcastReceiver
+#
 
 # Gboard configuration
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -76,6 +53,35 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.carriersetup.vzw_consent_page=true
 
 # Use gestures by default
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.boot.vendor.overlay.theme=com.android.internal.systemui.navbar.gestural
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.boot.vendor.overlay.theme=com.android.internal.systemui.navbar.gestural;com.google.android.systemui.gxoverlay
 
+# Turn off storage manager
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.storage_manager.enabled=false
+
+# DRM Service
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true \
+    media.mediadrmservice.enable=true
+
+# OPA configuration
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.opa.eligible_device=true
+
+PRODUCT_PACKAGE_OVERLAYS += \
+    vendor/pixeldust/overlay
+
+# Inherit from our configs
+$(call inherit-product, vendor/pixeldust/configs/apex.mk)
+$(call inherit-product, vendor/pixeldust/configs/audio.mk)
+$(call inherit-product, vendor/pixeldust/prebuilt/bootanimation/bootanimation.mk)
+$(call inherit-product, vendor/pixeldust/configs/pixeldust_packages.mk)
+$(call inherit-product, vendor/pixeldust/configs/rro_overlays.mk)
+$(call inherit-product, vendor/pixeldust/configs/textclassifier.mk)
+$(call inherit-product, vendor/pixeldust/configs/version.mk)
+
+# Gapps
+ifeq ($(WITH_GMS),true)
+$(call inherit-product, vendor/pixelgapps/pixel-gapps.mk)
+endif

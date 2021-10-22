@@ -1,165 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2020 The PixelDust Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
+/*
+** Copyright 2020-2021 The PixelDust Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
-    <!-- List of packages that can use the Conversation space for their category messages
-    notifications until they target R -->
-    <string-array name="config_notificationMsgPkgsAllowedAsConvos">
-        <item>com.facebook.orca</item>
-        <item>com.instagram.android</item>
-        <item>com.whatsapp</item>
-        <item>com.snapchat.android</item>
-        <item>jp.naver.line.android</item>
-        <item>com.kakao.talk</item>
-        <item>com.discord</item>
-        <item>org.thoughtcrime.securesms</item>
-        <item>com.groupme.android</item>
-        <item>org.telegram.messenger</item>
-        <item>com.twitter.android</item>
-        <item>com.viber.voip</item>
-        <item>com.linkedin.android</item>
-        <item>com.tencent.mm</item>
-        <item>com.Slack</item>
-    </string-array>
-
-    <!-- Additional non-platform defined secure settings exposed to Instant Apps -->
-    <string-array name="config_allowedSecureInstantAppSettings">
-        <item>advertising_id</item>
-        <item>limit_ad_tracking</item>
-    </string-array>
-
-    <!-- Array of values used in Gesture Navigation settings page to reduce/increase the back
-     gesture's inset size. These values will be multiplied into the default width, read from the
-     gesture navigation overlay package, in order to create 4 different sizes which are selectable
-     via a slider component. -->
-    <array name="config_backGestureInsetScales">
-        <item>0.75</item>
-        <item>1.00</item>
-        <item>1.33</item>
-        <item>1.66</item>
-    </array>
-
-    <string-array name="config_nightDisplayColorTemperatureCoefficients">
-        <!-- R a-coefficient --> <item>0.0</item>
-        <!-- R b-coefficient --> <item>0.0</item>
-        <!-- R y-intercept --> <item>1.0</item>
-        <!-- G a-coefficient --> <item>-0.000000014365268757</item>
-        <!-- G b-coefficient --> <item>0.000255092801250106</item>
-        <!-- G y-intercept --> <item>-0.064156942434907716</item>
-        <!-- B a-coefficient --> <item>-0.000000000910931179</item>
-        <!-- B b-coefficient --> <item>0.000207598323269139</item>
-        <!-- B y-intercept --> <item>-0.349361641294833436</item>
-    </string-array>
-
-    <!-- Enable the RingtonePickerActivity in 'com.android.providers.media'. -->
-    <bool name="config_defaultRingtonePickerEnabled">false</bool>
-
+<resources>
     <!-- Flag indicating whether the assist disclosure can be disabled using
          ASSIST_DISCLOSURE_ENABLED. -->
     <bool name="config_allowDisablingAssistDisclosure">true</bool>
 
-    <!-- Whether to enable fused location provider overlay which allows fused
-         location provider to be replaced by an app at run-time. When disabled,
-         only the config_fusedLocationProviderPackageName package will be
-         searched for fused location provider, otherwise packages whose
-         signature matches the signatures of config_locationProviderPackageNames
-         will be searched, and the service with the highest version number will
-         be picked. Anyone who wants to disable the overlay mechanism can set it
-         to false.
-         -->
+    <!-- Whether to enable fused location provider overlay which allows fused location provider to
+         be replaced by an app at run-time. When disabled, only the
+         config_fusedLocationProviderPackageName package will be searched for fused location
+         provider, otherwise any system package is eligible. Anyone who wants to disable the overlay
+         mechanism can set it to false. -->
     <bool name="config_enableFusedLocationOverlay">true</bool>
-
-    <!-- Whether to enable geofence overlay which allows geofence to be replaced
-         by an app at run-time. When disabled, only the
-         config_geofenceProviderPackageName package will be searched for
-         geofence implementation, otherwise packages whose signature matches the
-         signatures of config_locationProviderPackageNames will be searched, and
-         the service with the highest version number will be picked. Anyone who
-         wants to disable the overlay mechanism can set it to false.
-         -->
-    <bool name="config_enableGeofenceOverlay">true</bool>
 
     <!-- Whether to enable geocoder overlay which allows geocoder to be replaced
          by an app at run-time. When disabled, only the
          config_geocoderProviderPackageName package will be searched for
-         geocoder, otherwise packages whose signature matches the signatures of
-         config_locationProviderPackageNames will be searched, and the service
-         with the highest version number will be picked. Anyone who wants to
+         geocoder, otherwise any system package is eligible. Anyone who wants to
          disable the overlay mechanism can set it to false.
          -->
     <bool name="config_enableGeocoderOverlay">true</bool>
 
-    <!-- Whether to enable network location overlay which allows network
-         location provider to be replaced by an app at run-time. When disabled,
-         only the config_networkLocationProviderPackageName package will be
-         searched for network location provider, otherwise packages whose
-         signature matches the signatures of config_locationProviderPackageNames
-         will be searched, and the service with the highest version number will
-         be picked. Anyone who wants to disable the overlay mechanism can set it
-         to false.
+    <!-- Whether to enable geofence overlay which allows geofence to be replaced
+         by an app at run-time. When disabled, only the
+         config_geofenceProviderPackageName package will be searched for
+         geofence implementation, otherwise any system package is eligible. Anyone who
+         wants to disable the overlay mechanism can set it to false.
          -->
+    <bool name="config_enableGeofenceOverlay">true</bool>
+
+    <!-- Whether to enable network location overlay which allows network location provider to be
+         replaced by an app at run-time. When disabled, only the
+         config_networkLocationProviderPackageName package will be searched for network location
+         provider, otherwise any system package is eligible. Anyone who wants to disable the overlay
+         mechanism can set it to false. -->
     <bool name="config_enableNetworkLocationOverlay">true</bool>
-
-    <!-- When true, enables the whitelisted app to handle bug reports from power menu short press. -->
-    <bool name="config_bugReportHandlerEnabled">true</bool>
-
-    <!-- Controls whether system buttons use all caps for text -->
-    <bool name="config_buttonTextAllCaps">false</bool>
-
-    <!-- Whether to send a custom package name with the PSD.-->
-    <bool name="config_sendPackageName">true</bool>
-
-    <!-- Flag indicating whether we should enable smart battery. -->
-    <bool name="config_smart_battery_available">true</bool>
-
-    <!-- Whether or not swipe up gesture's opt-in setting is available on this device -->
-    <bool name="config_swipe_up_gesture_setting_available">true</bool>
 
     <!-- Flag indicating whether round icons should be parsed from the application manifest. -->
     <bool name="config_useRoundIcon">true</bool>
 
-    <!-- Specifies the path that is used by AdaptiveIconDrawable class to crop launcher icons. -->
-    <string name="config_icon_mask">M50 0C77.6 0 100 22.4 100 50C100 77.6 77.6 100 50 100C22.4 100 0 77.6 0 50C0 22.4 22.4 0 50 0Z</string>
+    <!-- Package name for the device provisioning package. -->
+    <string name="config_deviceProvisioningPackage" translatable="false">com.google.android.apps.work.oobconfig</string>
 
-    <!-- Corner radius for bottom sheet system dialogs -->
-    <dimen name="config_bottomDialogCornerRadius">16.0dip</dimen>
+    <!-- Wallpaper cropper package. Used as the default cropper if the active launcher doesn't
+         handle wallpaper cropping.
+    -->
+    <string name="config_wallpaperCropperPackage" translatable="false">com.google.android.apps.wallpaper</string>
 
-    <!-- Corner radius of system buttons -->
-    <dimen name="config_buttonCornerRadius">4.0dip</dimen>
+    <!-- Package name(s) containing location provider support. These packages will be auto-granted
+         several permissions by the system, and should be system packages. -->
+    <string-array name="config_locationProviderPackageNames" translatable="false">
+        <item>com.google.android.gms</item>
+        <item>com.android.location.fused</item>
+    </string-array>
 
-    <!-- Corner radius of system dialogs -->
-    <dimen name="config_dialogCornerRadius">8.0dip</dimen>
-
-    <!-- The amount to scale fullscreen snapshots for Overview and snapshot starting windows. -->
-    <item name="config_highResTaskSnapshotScale" format="float" type="dimen">0.8</item>
-
-    <!-- Corner radius of system progress bars -->
-    <dimen name="config_progressBarCornerRadius">1000.0dip</dimen>
-
-    <!-- Default number of days to retain for the automatic storage manager. -->
-    <integer translatable="false" name="config_storageManagerDaystoRetainDefault">60</integer>
-
-    <!-- Recents text and image selection for Pixel Launcher (not supported by Launcher3) -->
-    <string name="config_defaultContentSuggestionsService" translatable="false">com.google.android.as/com.google.android.apps.miphone.aiai.app.AiAiContentSuggestionsService</string>
-
-    <!-- Flag indicating whether we should enable the automatic brightness.
-         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
-    <bool name="config_automatic_brightness_available">true</bool>
-
-    <!-- Flag indicating which package name can access DeviceConfig table -->
-    <string name="config_deviceConfiguratorPackageName" translatable="false">org.protonaosp.deviceconfig</string>
+    <string-array name="config_locationExtraPackageNames">
+     <item>com.google.android.gms.location.history</item>
+    </string-array>
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright (C) 2020 The PixelDust Project
+** Copyright 2020-2021 The PixelDust Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -18,15 +18,11 @@
 -->
 <resources>
     <!-- Flag indicating whether we should enable the adaptive sleep.-->
-    <bool name="config_adaptive_sleep_available">true</bool>
+    <bool name="config_adaptive_sleep_available">false</bool>
 
     <!-- Name of a font family to use for body text. -->
-    <string name="config_bodyFontFamily" translatable="false">googlesans</string>
-    <!-- Name of a font family to use for medium body text. -->
-    <string name="config_bodyFontFamilyMedium" translatable="false">googlesans-semi-bold</string>
-    <!-- Name of a font family to use for headlines. If empty, falls back to platform default -->
-    <string name="config_headlineFontFamily" translatable="false">googlesans-medium</string>
-    <!-- Name of the font family used for system surfaces where the font should use medium weight -->
-    <string name="config_headlineFontFamilyMedium" translatable="false">googlesans-bold</string>
+    <string name="config_bodyFontFamily" translatable="false">harmonyos-sans</string>
 
+    <!-- Name of a font family to use for medium body text. -->
+    <string name="config_bodyFontFamilyMedium" translatable="false">harmonyos-sans-medium</string>
 </resources>

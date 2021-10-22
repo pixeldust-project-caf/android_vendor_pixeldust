@@ -1,4 +1,4 @@
-# Copyright (C) 2018-2019 The PixelDust Project
+# Copyright (C) 2018-2021 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -88,7 +88,7 @@ endif
 
 ifeq ($(KERNEL_TOOLCHAIN),)
 KERNEL_TOOLCHAIN_PATH := $(KERNEL_TOOLCHAIN_PREFIX)
-else
+else ifneq ($(KERNEL_TOOLCHAIN_PREFIX),)
 KERNEL_TOOLCHAIN_PATH := $(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)
 endif
 

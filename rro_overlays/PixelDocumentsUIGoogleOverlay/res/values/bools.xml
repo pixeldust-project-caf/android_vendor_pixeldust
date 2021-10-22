@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <bool name="config_button_all_caps">false</bool>
-    <bool name="config_default_show_device_root">true</bool>
-    <bool name="feature_job_progress_dialog">true</bool>
-    <bool name="show_search_bar">true</bool>
-</resources>
