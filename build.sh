@@ -105,10 +105,10 @@ echo -e ""
 . build/envsetup.sh
 echo -e ""
 
-# Use the thread count specified by user
-CMD=""
+# Per default use all CPU cores or use the thread count specified by user
+CMD=" -j$(nproc --all)"
 if [ $JOBS ]; then
-  CMD+=" -j$JOBS"
+  CMD=" -j$JOBS"
 fi
 
 # Pick the default thread count (allow overrides from the environment)
