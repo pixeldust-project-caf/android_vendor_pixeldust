@@ -293,7 +293,7 @@ $(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG) $(DEPMOD)
 				$(eval p := $(subst :,$(space),$(s))) \
 				; mv $$(find $$kernel_modules_dir -name $(word 1,$(p))) $$kernel_modules_dir/$(word 2,$(p))); \
 			modules=$$(find $$kernel_modules_dir -type f -name '*.ko'); \
-			($(call build-image-kernel-modules-hentai,$$modules,$(KERNEL_MODULES_OUT),$(KERNEL_MODULE_MOUNTPOINT)/,$(KERNEL_DEPMOD_STAGING_DIR))); \
+			($(call build-image-kernel-modules-lineage,$$modules,$(KERNEL_MODULES_OUT),$(KERNEL_MODULE_MOUNTPOINT)/,$(KERNEL_DEPMOD_STAGING_DIR))); \
 		fi
 
 .PHONY: kerneltags
