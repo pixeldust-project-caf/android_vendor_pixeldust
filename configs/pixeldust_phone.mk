@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020-2021 The PixelDust Project
+# Copyright (C) 2020-2022 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -72,6 +72,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # OPA configuration
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.opa.eligible_device=true
+
+# Blur
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.launcher.blur.appLaunch=false
 
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay
