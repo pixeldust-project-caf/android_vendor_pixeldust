@@ -47,9 +47,9 @@ PRODUCT_PACKAGES += \
 -include packages/apps/PotatoPlugins/plugins.mk
 
 # Devices should opt-in to include PixelDustLauncher
-ifneq ($(filter marlin sailfish blueline bonito bramble coral crosshatch miatoll redfin sunfish surya taimen,$(TARGET_DEVICE)),)
-INCLUDE_PIXELDUSTLAUNCHER := true
-endif
+#ifneq ($(filter marlin sailfish blueline bonito bramble coral crosshatch miatoll redfin sunfish surya taimen,$(TARGET_DEVICE)),)
+#INCLUDE_PIXELDUSTLAUNCHER := true
+#endif
 
 ifeq ($(INCLUDE_PIXELDUSTLAUNCHER), true)
 REMOVE_GAPPS_PACKAGES += \
