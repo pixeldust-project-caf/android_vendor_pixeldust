@@ -37,6 +37,7 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     PixeldustThemesStub \
+    PixelDustWallpapers \
     QuickAccessWallet \
     ThemePicker \
 
