@@ -1,18 +1,20 @@
 AUDIO_PATH := vendor/pixeldust/prebuilt/audio
 
 ALARMS := A_real_hoot Awaken Bounce Bright_morning Cuckoo_clock Drip Early_twilight \
-	Flow Full_of_wonder Gallop Gentle_breeze Icicles Jump_start Loose_change Nudge Orbit \
-	Rise Rolling_fog Spokes Sunshower Sway Wag
+	Flow Fresh_start Full_of_wonder Gallop Gentle_breeze Icicles Jump_start Loose_change Nudge \
+	Orbit Rise Rolling_fog Spokes Sunshower Sway Wag
 
 RINGTONES := Beats Copycat Crackle Dance_party Early_bird Flutterby Hey_hey Hotline \
 	Leaps_and_bounds Lollipop Lost_and_found Mash_up Monkey_around Romance Rrrring Schools_out \
-	Shooting_star Spaceship Summer_night The_big_adventure Zen Zen_too
+	Shooting_star Spaceship Summer_night The_big_adventure Your_new_adventure Zen Zen_too
 
-UI := Dock Effect_Tick InCallNotification KeypressDelete KeypressInvalid KeypressReturn \
-	KeypressSpacebar KeypressStandard Lock Trusted Undock Unlock VideoRecord VideoStop \
-	audio_end audio_initiate camera_click
+UI := AttentionalHaptics ChargingStarted Dock Effect_Tick InCallNotification KeypressDelete \
+	KeypressInvalid KeypressReturn KeypressSpacebar KeypressStandard Lock LowBattery NFCFailure \
+	NFCInitiated NFCSuccess NFCTransferComplete NFCTransferInitiated Trusted Undock Unlock \
+	VideoRecord VideoStop WirelessChargingStarted \
+	audio_end audio_initiate camera_click camera_focus reverse_charging_end reverse_charging_start
 
-NOTIFICATIONS := Beginning Birdsong Chime Clink Coconuts Duet End_note Flick Gentle_gong Hey \
+NOTIFICATIONS := Beginning Birdsong Chime Clink Coconuts Duet End_note Eureka Flick Gentle_gong Hey \
 	Mallet Note Orders_up Ping Pipes Popcorn Shopkeeper Sticks_and_stones Strum Trill Tuneup \
 	Tweeter Twinkle
 
