@@ -56,6 +56,8 @@ REMOVE_GAPPS_PACKAGES += \
     pixel_experience_2019 \
     pixel_experience_2020_midyear \
     pixel_experience_2020 \
+    pixel_experience_2021_midyear \
+    pixel_experience_2021
 
 # Product properties
 PRODUCT_NAME := pixeldust_crosshatch
