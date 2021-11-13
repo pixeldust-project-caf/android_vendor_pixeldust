@@ -21,7 +21,7 @@
 #    This script may be symlinked by a manifest so we need to account for that
 # 2. Get the folder containing the script with dirname
 # 3. Move into the folder that is two folder above that one and print it
-WORKING_DIR=$( cd $( dirname $( readlink -f "${BASH_SOURCE[0]}" ) )/../../.. && pwd )
+WORKING_DIR=$( cd $( dirname $( readlink -f "${BASH_SOURCE[0]}" ) )/../../../.. && pwd )
 
 # The tag you want to merge in goes here
 BRANCH=android-${1}
