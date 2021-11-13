@@ -76,7 +76,9 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/pixeldust/overlay
 
 # Inherit from our configs
+ifeq ($(WITH_GOOGLE_APEX),true)
 $(call inherit-product, vendor/pixeldust/configs/apex.mk)
+endif
 $(call inherit-product, vendor/pixeldust/configs/audio.mk)
 $(call inherit-product, vendor/pixeldust/prebuilt/bootanimation/bootanimation.mk)
 $(call inherit-product, vendor/pixeldust/configs/fonts.mk)
