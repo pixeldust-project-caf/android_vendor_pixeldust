@@ -1528,11 +1528,8 @@ function extract() {
                 python "$PIXELDUST_ROOT"/vendor/pixeldust/build/tools/sdat2img.py "$DUMPDIR"/system.transfer.list "$DUMPDIR"/system.new.dat "$DUMPDIR"/system.img 2>&1
                 rm -rf "$DUMPDIR"/system.new.dat "$DUMPDIR"/system
                 mkdir "$DUMPDIR"/system "$DUMPDIR"/tmp
-                echo "Requesting sudo access to mount the system.img"
-                sudo mount -o loop "$DUMPDIR"/system.img "$DUMPDIR"/tmp
-                cp -r "$DUMPDIR"/tmp/* "$DUMPDIR"/system/
-                sudo umount "$DUMPDIR"/tmp
-                rm -rf "$DUMPDIR"/tmp "$DUMPDIR"/system.img
+                extract_img_data "$DUMPDIR"/"$PARTITION".img "$DUMPDIR"/"$PARTITION"/
+                rm "$DUMPDIR"/"$PARTITION".img
             fi
         fi
 
