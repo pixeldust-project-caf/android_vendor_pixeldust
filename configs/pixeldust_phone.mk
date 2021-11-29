@@ -82,6 +82,9 @@ $(call inherit-product, vendor/pixeldust/configs/apex.mk)
 endif
 $(call inherit-product, vendor/pixeldust/configs/audio.mk)
 $(call inherit-product, vendor/pixeldust/prebuilt/bootanimation/bootanimation.mk)
+ifeq ($(WITH_SMART_CHARGING),true)
+$(call inherit-product, vendor/pixeldust/configs/custom_sepolicy.mk)
+endif
 $(call inherit-product, vendor/pixeldust/configs/fonts.mk)
 $(call inherit-product, vendor/pixeldust/configs/pixeldust_packages.mk)
 $(call inherit-product, vendor/pixeldust/configs/pixel_sepolicy.mk)
