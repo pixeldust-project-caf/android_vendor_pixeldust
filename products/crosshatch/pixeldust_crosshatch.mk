@@ -69,9 +69,6 @@ PRODUCT_BRAND := google
 PRODUCT_MODEL := Pixel 3 XL
 PRODUCT_MANUFACTURER := Google
 
-# Match stock build fingerprint
-PRODUCT_OVERRIDE_FINGERPRINT := google/crosshatch/crosshatch:12/SP1A.210812.015/7679548:user/release-keys
-
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.pixeldust.maintainer="spezi77" \
     ro.pixeldust.device="crosshatch"
