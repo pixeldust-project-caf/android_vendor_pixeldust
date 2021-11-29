@@ -59,6 +59,9 @@ REMOVE_GAPPS_PACKAGES += \
     pixel_experience_2021_midyear \
     pixel_experience_2021
 
+# Smart charging
+WITH_SMART_CHARGING := true
+
 # Product properties
 PRODUCT_NAME := pixeldust_blueline
 PRODUCT_DEVICE := blueline
