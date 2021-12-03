@@ -17,6 +17,9 @@
 # PixelDust Overlays
 PRODUCT_PACKAGES += \
     PixelDustConfigOverlay \
+
+ifeq ($(WITH_GOOGLE_APEX),true)
+PRODUCT_PACKAGES += \
     PixelSetupWizardOverlayPixelDust \
     SettingsGoogleOverlayPixelDust
 
@@ -35,3 +38,4 @@ PRODUCT_PACKAGES += \
     PixelConfigOverlay2019Midyear \
     PixelConfigOverlayCommon \
     PixelTetheringOverlay
+endif
