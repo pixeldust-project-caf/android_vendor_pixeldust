@@ -13,3 +13,5 @@ function cout()
         echo "Couldn't locate out directory.  Try setting OUT."
     fi
 }
+
+export SKIP_ABI_CHECKS="true"
