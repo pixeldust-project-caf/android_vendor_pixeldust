@@ -17,10 +17,6 @@
 */
 -->
 <resources>
-    <!-- Flag indicating whether the assist disclosure can be disabled using
-         ASSIST_DISCLOSURE_ENABLED. -->
-    <bool name="config_allowDisablingAssistDisclosure">true</bool>
-
     <!-- Whether to enable fused location provider overlay which allows fused location provider to
          be replaced by an app at run-time. When disabled, only the
          config_fusedLocationProviderPackageName package will be searched for fused location
@@ -53,25 +49,6 @@
 
     <!-- Flag indicating whether round icons should be parsed from the application manifest. -->
     <bool name="config_useRoundIcon">true</bool>
-
-    <!-- Package name for the device provisioning package. -->
-    <string name="config_deviceProvisioningPackage" translatable="false">com.google.android.apps.work.oobconfig</string>
-
-    <!-- Wallpaper cropper package. Used as the default cropper if the active launcher doesn't
-         handle wallpaper cropping.
-    -->
-    <string name="config_wallpaperCropperPackage" translatable="false">com.google.android.apps.wallpaper</string>
-
-    <!-- Package name(s) containing location provider support. These packages will be auto-granted
-         several permissions by the system, and should be system packages. -->
-    <string-array name="config_locationProviderPackageNames" translatable="false">
-        <item>com.google.android.gms</item>
-        <item>com.android.location.fused</item>
-    </string-array>
-
-    <string-array name="config_locationExtraPackageNames">
-     <item>com.google.android.gms.location.history</item>
-    </string-array>
 
     <!-- the number of the max cached processes in the system. -->
     <integer name="config_customizedMaxCachedProcesses">64</integer>
