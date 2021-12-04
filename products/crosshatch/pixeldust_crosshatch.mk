@@ -52,7 +52,7 @@ WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
 REMOVE_GAPPS_PACKAGES += \
     Maps \
-    pixel_2016_exclusive \
+    pixel_2018_exclusive \
     pixel_experience_2019_midyear \
     pixel_experience_2019 \
     pixel_experience_2020_midyear \
