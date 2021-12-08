@@ -47,6 +47,9 @@ PRODUCT_PACKAGES += \
 # Include Potato volume panels
 -include packages/apps/PotatoPlugins/plugins.mk
 
+# Lawnicons
+-include vendor/lawnicons/overlay.mk
+
 # Devices should opt-in to include PixelDustLauncher
 #ifneq ($(filter marlin sailfish blueline bonito bramble coral crosshatch miatoll redfin sunfish surya taimen,$(TARGET_DEVICE)),)
 #INCLUDE_PIXELDUSTLAUNCHER := true
