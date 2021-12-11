@@ -86,6 +86,7 @@ ifeq ($(WITH_SMART_CHARGING),true)
 $(call inherit-product, vendor/pixeldust/configs/custom_sepolicy.mk)
 endif
 $(call inherit-product, vendor/pixeldust/configs/fonts.mk)
+$(call inherit-product, vendor/pixeldust/configs/pixeldust_caf.mk)
 $(call inherit-product, vendor/pixeldust/configs/pixeldust_packages.mk)
 $(call inherit-product, vendor/pixeldust/configs/pixel_sepolicy.mk)
 $(call inherit-product, vendor/pixeldust/configs/rro_overlays.mk)
