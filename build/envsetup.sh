@@ -15,3 +15,4 @@ function cout()
 }
 
 export SKIP_ABI_CHECKS="true"
+export DISABLE_ARTIFACT_PATH_REQUIREMENTS="true"
