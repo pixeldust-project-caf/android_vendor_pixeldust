@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-# Networkstack certificate
-PRODUCT_MAINLINE_SEPOLICY_DEV_CERTIFICATES := vendor/pixeldust/apex/NetworkStack
-
 # Prebuilt module SDKs require prebuilt modules to work, and currently
 # prebuilt modules are only provided for com.google.android.xxx.
 MODULE_BUILD_FROM_SOURCE := false
@@ -48,7 +45,10 @@ PRODUCT_PACKAGES += \
 	com.google.android.scheduling \
 	com.google.android.sdkext \
 	com.google.android.telephony \
-	com.google.android.tethering \
 	com.google.android.tzdata3 \
-	com.google.android.wifi \
 	com.google.mainline.primary.libs
+
+# CAF builds don't use google's NetworkStack
+REMOVE_GAPPS_PACKAGES += \
+    NetworkPermissionConfigGoogle \
+    NetworkStackGoogle

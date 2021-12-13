@@ -170,29 +170,11 @@ prebuilt_apex {
     prefer: true,
 }
 
-// Google com.google.android.tethering
-prebuilt_apex {
-    name: "com.google.android.tethering",
-    src: "com.google.android.tethering.apex",
-    overrides: ["com.android.tethering"],
-    owner: "google",
-    prefer: true,
-}
-
 // Google com.google.android.tzdata2
 prebuilt_apex {
     name: "com.google.android.tzdata3",
     src: "com.google.android.tzdata3.apex",
     overrides: ["com.android.tzdata"],
-    owner: "google",
-    prefer: true,
-}
-
-// Google com.google.android.wifi
-prebuilt_apex {
-    name: "com.google.android.wifi",
-    src: "com.google.android.wifi.apex",
-    overrides: ["com.android.wifi"],
     owner: "google",
     prefer: true,
 }
