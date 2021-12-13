@@ -17,6 +17,9 @@
 # Disable EAP Proxy because it depends on proprietary headers and breaks WPA Supplicant compilation.
 DISABLE_EAP_PROXY := true
 
+# Move Wi-Fi modules to vendor.
+PRODUCT_VENDOR_MOVE_ENABLED := true
+
 # Skip boot jars check
 SKIP_BOOT_JARS_CHECK := true
 
