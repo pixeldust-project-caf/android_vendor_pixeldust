@@ -15,9 +15,9 @@
 #
 
 # Pixel Dust ROM versioning
-PD_ROM_MAJ_VERSION := PixelDust-Snowcone
+PD_ROM_MAJ_VERSION := PixelDust-SaltedCaramel
 ANDROID_OS_VERSION := 12.0.0
-BUILD_VERSION_CODE := aosp
+BUILD_VERSION_CODE := caf
 
 ifndef SIGN_KEY
   PD_BUILDTYPE := UNOFFICIAL
