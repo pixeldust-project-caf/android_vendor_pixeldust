@@ -23,6 +23,9 @@ SKIP_BOOT_JARS_CHECK := true
 # Include definitions for Snapdragon Clang
 $(call inherit-product, vendor/qcom/sdclang/config/SnapdragonClang.mk)
 
+# Include QTI overlays component 
+include vendor/pixeldust/overlay-caf/qti-overlay.mk
+
 # QTI VNDK Framework Detect
 PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti \
