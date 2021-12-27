@@ -44,7 +44,6 @@ PRODUCT_PACKAGES += \
 	com.google.android.resolv \
 	com.google.android.scheduling \
 	com.google.android.sdkext \
-	com.google.android.telephony \
 	com.google.android.tzdata3 \
 	com.google.mainline.primary.libs
 
