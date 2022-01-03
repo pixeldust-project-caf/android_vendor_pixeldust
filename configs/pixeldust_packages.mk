@@ -50,6 +50,13 @@ PRODUCT_PACKAGES += \
 # Lawnicons
 -include vendor/lawnicons/overlay.mk
 
+# Lawnchair
+ifeq ($(WITH_LAWNCHAIR),true)
+REMOVE_GAPPS_PACKAGES += \
+    NexusLauncherRelease
+$(call inherit-product-if-exists, vendor/lawnchair/lawnchair.mk)
+endif
+
 # Devices should opt-in to include PixelDustLauncher
 #ifneq ($(filter marlin sailfish blueline bonito bramble coral crosshatch miatoll redfin sunfish surya taimen,$(TARGET_DEVICE)),)
 #INCLUDE_PIXELDUSTLAUNCHER := true
