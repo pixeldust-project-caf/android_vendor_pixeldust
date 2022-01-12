@@ -41,6 +41,9 @@ PRODUCT_PACKAGES += \
     QuickAccessWallet \
     ThemePicker \
 
+# Pixel Style
+-include vendor/pixelstyle/common.mk
+
 # Themes
 -include vendor/themes/common.mk
 
