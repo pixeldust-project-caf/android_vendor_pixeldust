@@ -76,4 +76,8 @@ endif
 ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
 PRODUCT_PACKAGES += \
     ElmyraService
+
+# Copy quick tap enable sysconfig
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/etc/sysconfig/quick_tap.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/quick_tap.xml
 endif
