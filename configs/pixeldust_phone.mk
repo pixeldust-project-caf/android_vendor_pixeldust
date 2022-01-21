@@ -93,7 +93,6 @@ $(call inherit-product, vendor/pixeldust/configs/pixel_sepolicy.mk)
 $(call inherit-product, vendor/pixeldust/configs/rro_overlays.mk)
 $(call inherit-product, vendor/pixeldust/configs/textclassifier.mk)
 $(call inherit-product, vendor/pixeldust/configs/version.mk)
-$(call inherit-product, vendor/pixeldust/configs/pixeldust_ota.mk)
 
 # Gapps
 ifeq ($(WITH_GMS),true)

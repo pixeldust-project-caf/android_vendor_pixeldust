@@ -44,3 +44,6 @@ endif
 PRODUCT_HOST_PACKAGES += \
     sign_target_files_apks \
     ota_from_target_files
+
+# Include OTA configuration
+include vendor/pixeldust/configs/pixeldust_ota.mk
