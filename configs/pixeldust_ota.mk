@@ -16,6 +16,10 @@
 
 ifeq ($(SIGN_KEY), RELEASE)
 
+# We modify several neverallows, so let the build proceed
+SELINUX_IGNORE_NEVERALLOWS := true
+SELINUX_IGNORE_NEVERALLOWS_ON_USER := true
+
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.pixeldust.ota.build_type=$(SIGN_KEY)
 
