@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The PixelDust Project
+# Copyright (C) 2021-2022 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,3 +16,7 @@
 
 # Extra privapp permissions whitelist
 PRODUCT_COPY_FILES += vendor/pixeldust/prebuilt/etc/privapp-permissions/pixeldust-permissions.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/pixeldust-permissions.xml
+
+# Extra features
+PRODUCT_COPY_FILES += \
+    vendor/pixeldust/prebuilt/etc/sysconfig/game_overlay.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/game_overlay.xml
