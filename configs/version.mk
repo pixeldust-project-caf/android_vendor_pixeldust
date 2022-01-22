@@ -28,9 +28,11 @@ BUILD_TIMESTAMP := $(shell date -u +%s)
 # Pixel Dust ROM package name 
 PIXELDUST_VERSION := $(PD_ROM_MAJ_VERSION)-$(BUILD_VERSION_CODE)-$(TARGET_DEVICE)-$(TARGET_BUILD_VARIANT)-$(shell date +%Y%m%d-%H%M)
 
-PRODUCT_PRODUCT_PROPERTIES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     com.pixeldust.fingerprint=$(PIXELDUST_VERSION) \
-    ro.pixeldust.version=$(PD_ROM_MAJ_VERSION)-$(BUILD_VERSION_CODE)-$(TARGET_DEVICE)-$(PD_BUILDTYPE) \
+    ro.pixeldust.version=$(PD_ROM_MAJ_VERSION)-$(BUILD_VERSION_CODE)-$(TARGET_DEVICE)-$(PD_BUILDTYPE)
+
+PRODUCT_PRODUCT_PROPERTIES += \
     ro.pixeldust.ota.version=$(ANDROID_OS_VERSION) \
     ro.pixeldust.ota.version_code=$(BUILD_VERSION_CODE) \
     ro.pixeldust.ota.timestamp=$(BUILD_TIMESTAMP)
