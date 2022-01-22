@@ -31,6 +31,8 @@ PIXELDUST_VERSION := $(PD_ROM_MAJ_VERSION)-$(BUILD_VERSION_CODE)-$(TARGET_DEVICE
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     com.pixeldust.fingerprint=$(PIXELDUST_VERSION) \
     ro.pixeldust.version=$(PD_ROM_MAJ_VERSION)-$(BUILD_VERSION_CODE)-$(TARGET_DEVICE)-$(PD_BUILDTYPE)
+    ro.pixeldust.maintainer="nobody" \
+    ro.pixeldust.device=$(TARGET_DEVICE)
 
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.pixeldust.ota.version=$(ANDROID_OS_VERSION) \

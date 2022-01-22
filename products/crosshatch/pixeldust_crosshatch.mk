@@ -68,8 +68,7 @@ PRODUCT_MODEL := Pixel 3 XL
 PRODUCT_MANUFACTURER := Google
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.pixeldust.maintainer="spezi77" \
-    ro.pixeldust.device="crosshatch"
+    ro.pixeldust.maintainer="spezi77"
 
 # Inherit AOSP stuff
 $(call inherit-product, vendor/pixeldust/configs/telephony.mk)
