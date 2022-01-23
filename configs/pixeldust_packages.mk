@@ -45,6 +45,10 @@ PRODUCT_PACKAGES += \
     QuickAccessWallet \
     ThemePicker \
 
+# Repainter integration
+PRODUCT_PACKAGES += \
+    RepainterServicePriv \
+
 # Pixel Style
 -include vendor/pixelstyle/common.mk
 
