@@ -46,3 +46,6 @@ PRODUCT_PACKAGES += \
 # Themes
 -include vendor/themes/common.mk
 
+# Repainter integration
+PRODUCT_PACKAGES += \
+    RepainterServicePriv
