@@ -16,3 +16,7 @@ function cout()
 
 export SKIP_ABI_CHECKS="true"
 export DISABLE_ARTIFACT_PATH_REQUIREMENTS="true"
+
+# Override host metadata to make builds more reproducible and avoid leaking info
+export BUILD_USERNAME=nobody
+export BUILD_HOSTNAME=android-build
