@@ -31,6 +31,7 @@ PRODUCT_PACKAGES += \
     com.google.android.adbd \
 	com.google.android.appsearch \
 	com.google.android.art \
+	com.google.android.cellbroadcast \
 	com.google.android.conscrypt \
 	com.google.android.extservices \
 	com.google.android.ipsec \
