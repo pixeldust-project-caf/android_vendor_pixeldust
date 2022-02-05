@@ -106,9 +106,9 @@ echo -e ""
 echo -e ""
 
 # Per default use all CPU cores or use the thread count specified by user
-CMD=" -j$(nproc --all)"
+CMD="-j$(nproc --all)"
 if [ $JOBS ]; then
-  CMD=" -j$JOBS"
+  CMD="-j$JOBS"
 fi
 
 # Pick the default thread count (allow overrides from the environment)
@@ -128,14 +128,14 @@ $(cat $DIR_ROOT/vendor/pixeldust/configs/version.mk | grep 'BUILD_VERSION_CODE :
 if [ "$FLAG_CLEAN_BUILD" = 'y' ]; then
         echo -e "${CLR_BLD_BLU}Cleaning output files left from old builds${CLR_RST}"
         echo -e ""
-        m clobber"$CMD"
+        m clobber "$CMD"
 fi
 
 # Prep for a installclean build, if requested so
 if [ "$FLAG_INSTALLCLEAN_BUILD" = 'y' ]; then
         echo -e "${CLR_BLD_BLU}Cleaning compiled image files left from old builds${CLR_RST}"
         echo -e ""
-        m installclean"$CMD"
+        m installclean "$CMD"
 fi
 
 # Sync up, if asked to
@@ -163,10 +163,10 @@ echo -e "${CLR_BLD_BLU}Starting compilation${CLR_RST}"
 echo -e ""
 # Build a specific module
 if [ "${MODULE}" ]; then
-    m $MODULE"$CMD"
+    m $MODULE "$CMD"
 # Build rom package
 else
-    m pixeldust"$CMD"
+    m pixeldust "$CMD"
 fi
 RETVAL=$?
 echo -e ""
