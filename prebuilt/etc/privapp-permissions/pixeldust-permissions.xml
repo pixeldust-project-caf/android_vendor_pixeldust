@@ -23,4 +23,8 @@
     <privapp-permissions package="com.android.providers.telephony">
         <permission name="android.permission.WRITE_APN_SETTINGS"/>
     </privapp-permissions>
+
+    <privapp-permissions package="com.android.settings">
+        <permission name="android.permission.MANAGE_APP_LOCK" />
+    </privapp-permissions>
 </permissions>
