@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018-2021 The PixelDust Project
+# Copyright (C) 2018-2022 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 # Pixel Dust ROM versioning
 PD_ROM_MAJ_VERSION := PixelDust-SaltedCaramel
-ANDROID_OS_VERSION := 12.0.0
+ANDROID_OS_VERSION := 12.1.0
 BUILD_VERSION_CODE := caf
 
 ifndef SIGN_KEY
