@@ -183,6 +183,23 @@ surfaceflinger_qcom_extensions {
     },
 }
 
+soong_config_module_type {
+    name: "egl_display_array",
+    module_type: "cc_defaults",
+    config_namespace: "pixeldustQcomVars",
+    bool_variables: ["uses_egl_display_array"],
+    properties: ["cflags"],
+}
+
+egl_display_array {
+    name: "egl_display_array_defaults",
+    soong_config_variables: {
+        uses_egl_display_array: {
+            cflags: ["-DEGL_DISPLAY_ARRAY"],
+        },
+    },
+}
+
 bootstrap_go_package {
     name: "soong-pixeldust-generator",
     pkgPath: "pixeldust/soong/generator",
