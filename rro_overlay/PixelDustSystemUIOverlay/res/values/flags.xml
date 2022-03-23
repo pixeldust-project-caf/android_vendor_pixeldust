@@ -4,7 +4,6 @@
     SPDX-License-Identifier: Apache-2.0
 -->
 <resources>
-    <bool name="flag_monet">true</bool>
     <bool name="flag_conversations">true</bool>
     <bool name="flag_charging_ripple">true</bool>
 </resources>
