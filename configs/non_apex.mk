@@ -18,6 +18,10 @@
 PRODUCT_SOONG_NAMESPACES += \
     vendor/pixeldust/apex
 
+# ModuleMetadata
+PRODUCT_PACKAGES += \
+    ModuleMetadataGoogle
+
 # Google Apexes
 PRODUCT_PACKAGES += \
 	com.google.android.extservices
