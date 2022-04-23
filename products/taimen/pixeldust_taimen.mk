@@ -17,8 +17,10 @@
 #
 # All components inherited here go to system image
 #
+
+# Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 #
 # All components inherited here go to system_ext image
@@ -41,52 +43,25 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 # Release name
 export TARGET_DEVICE=taimen
 
-# Bootanimation
+# Boot animation
 BOOTANIMATION := 1440
-
-# Google Apex
-WITH_GOOGLE_APEX := true
 
 # Google Apps
 WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
 REMOVE_GAPPS_PACKAGES += \
     CalculatorGooglePrebuilt \
-    CalendarGooglePrebuilt \
-    Chrome \
-    DevicePersonalizationPrebuiltPixel2021 \
-    DevicePolicyPrebuilt \
-    DiagnosticsToolPrebuilt \
-    Drive \
-    DocumentsUIGoogle \
-    FilesPrebuilt \
-    GCS \
-    GoogleTTS \
-    LatinIMEGooglePrebuilt \
-    Maps \
-    NgaResources \
     Photos \
-    pixel_2018_exclusive \
+    Maps \
     pixel_experience_2019_midyear \
     pixel_experience_2019 \
     pixel_experience_2020_midyear \
     pixel_experience_2020 \
     pixel_experience_2021_midyear \
-    pixel_experience_2021 \
-    PixelWallpapers2021 \
-    PrebuiltGmail \
-    RecorderPrebuilt \
-    SCONE \
-    SoundAmplifierPrebuilt \
-    talkback \
-    TrichromeLibrary \
-    Tycho \
-    YouTube \
-    YouTubeMusicPrebuilt \
-    WebViewGoogle \
-    WellbeingPrebuilt
+    pixel_experience_2021
 
-# Product properties
+
+# Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_taimen
 PRODUCT_DEVICE := taimen
 PRODUCT_BRAND := google
@@ -94,23 +69,17 @@ PRODUCT_MODEL := Pixel 2 XL
 PRODUCT_MANUFACTURER := Google
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.pixeldust.maintainer="Nitin1438" \
-    ro.pixeldust.device="taimen"
+    ro.pixeldust.maintainer="nitin1438"
 
-# Inherit AOSP stuff
+# Inherit PixelDust telephony package
 $(call inherit-product, vendor/pixeldust/configs/telephony.mk)
+
+# Inherit product specific makefiles
 $(call inherit-product, device/google/taimen/device.mk)
-
-PRODUCT_COPY_FILES += \
-    device/google/taimen/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
-
-PRODUCT_RESTRICT_VENDOR_FILES := false
-
-PRODUCT_PACKAGES += \
-    vndk_package \
-    com.android.vndk.current.on_vendor
-
-# b/189477034: Bypass build time check on uses_libs until vendor fixes all their apps
-PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
-
 $(call inherit-product, vendor/google/taimen/taimen-vendor.mk)
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=taimen \
+    PRIVATE_BUILD_DESC="taimen-user 11 RP1A.201005.004.A1 6934943 release-keys"
+
+BUILD_FINGERPRINT := google/taimen/taimen:11/RP1A.201005.004.A1/6934943:user/release-keys
