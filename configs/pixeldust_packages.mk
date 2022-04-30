@@ -25,6 +25,10 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     ntfs-3g
 
+# curl
+PRODUCT_PACKAGES += \
+    curl
+
 # Telephony packages
 PRODUCT_PACKAGES += \
     Stk \
