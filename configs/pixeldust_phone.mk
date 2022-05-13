@@ -10,10 +10,11 @@ $(call inherit-product, vendor/pixeldust/prebuilt/bootanimation/bootanimation.mk
 $(call inherit-product, vendor/pixeldust/configs/properties.mk)
 
 # Inherit from configs
-$(call inherit-product, vendor/pixeldust/configs/packages.mk)
 $(call inherit-product, vendor/pixeldust/configs/extra_permissions.mk)
+$(call inherit-product, vendor/pixeldust/configs/packages.mk)
 $(call inherit-product, vendor/pixeldust/configs/pixel_sepolicy.mk)
 $(call inherit-product, vendor/pixeldust/configs/rro_overlays.mk)
+$(call inherit-product, vendor/pixeldust/configs/sounds.mk)
 $(call inherit-product, vendor/pixeldust/configs/textclassifier.mk)
 $(call inherit-product, vendor/pixeldust/configs/version.mk)
 
