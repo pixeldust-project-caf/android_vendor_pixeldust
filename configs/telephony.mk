@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020-2021 The PixelDust Project
+# Copyright (C) 2020-2022 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,9 +14,10 @@
 # limitations under the License.
 #
 
-# World APNs list
+# World APNs list and Sensitive phone numbers
 PRODUCT_PACKAGES += \
-    apns-conf.xml
+    apns-conf.xml \
+    sensitive_pn.xml
 
 ifneq ($(filter angler blueline coral crosshatch flame marlin redfin sailfish taimen walleye, $(TARGET_DEVICE)),)
 
