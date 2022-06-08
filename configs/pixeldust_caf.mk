@@ -48,8 +48,6 @@ PRODUCT_PACKAGES += \
     extphonelib_product.xml \
     ims-ext-common \
     ims_ext_common.xml \
-    libjson \
-    Stk \
     tcmiface \
     telephony-ext \
     qti-telephony-hidl-wrapper \
