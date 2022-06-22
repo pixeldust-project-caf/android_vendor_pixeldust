@@ -1,4 +1,4 @@
-# Copyright (C) 2019 The PixelDust Project
+# Copyright (C) 2019-2022 The PixelDust Project
 #
 # Licensed under the Apurityche License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,6 +20,8 @@ PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/flame/pixeldust_flame.mk \
     $(LOCAL_DIR)/marlin/pixeldust_marlin.mk \
     $(LOCAL_DIR)/miatoll/pixeldust_miatoll.mk \
+    $(LOCAL_DIR)/oriole/pixeldust_oriole.mk \
+    $(LOCAL_DIR)/raven/pixeldust_raven.mk \
     $(LOCAL_DIR)/redfin/pixeldust_redfin.mk \
     $(LOCAL_DIR)/taimen/pixeldust_taimen.mk \
     $(LOCAL_DIR)/tissot/pixeldust_tissot.mk \
@@ -49,6 +51,12 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_miatoll-eng \
     pixeldust_miatoll-user \
     pixeldust_miatoll-userdebug \
+    pixeldust_oriole-userdebug \
+    pixeldust_oriole-user \
+    pixeldust_oriole-eng \
+    pixeldust_raven-userdebug \
+    pixeldust_raven-user \
+    pixeldust_raven-eng \
     pixeldust_redfin-userdebug \
     pixeldust_redfin-user \
     pixeldust_redfin-eng \
