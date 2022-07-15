@@ -35,6 +35,7 @@ PRODUCT_PACKAGES += \
     ManagedProvisioningPixelOverlay \
     MediaProviderOverlay \
     NetworkStackOverlay \
+    NetworkStackGoogleOverlay \
     PixelConfigOverlay2018 \
     PixelConfigOverlay2019 \
     PixelConfigOverlay2019Midyear \
