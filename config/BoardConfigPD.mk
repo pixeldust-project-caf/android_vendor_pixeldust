@@ -1,8 +1,3 @@
-# Kernel
-ifeq ($(LOCAL_KERNEL),)
-include vendor/pixeldust/config/BoardConfigKernel.mk
-endif
-
 # Qcom
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
 include vendor/pixeldust/config/BoardConfigQcom.mk
