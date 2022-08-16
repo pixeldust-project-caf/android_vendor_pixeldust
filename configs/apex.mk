@@ -26,6 +26,7 @@ PRODUCT_MAINLINE_SEPOLICY_DEV_CERTIFICATES := vendor/pixeldust/apex/NetworkStack
 # Prebuilt module SDKs require prebuilt modules to work, and currently
 # prebuilt modules are only provided for com.google.android.xxx.
 MODULE_BUILD_FROM_SOURCE := false
+DISABLE_DEXPREOPT_CHECK := true
 
 # Enable Google Play system updates support
 PRODUCT_SOONG_NAMESPACES += \
