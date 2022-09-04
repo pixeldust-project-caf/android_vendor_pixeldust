@@ -45,6 +45,9 @@
          exists on the device, the accessibility shortcut will be disabled by default. -->
     <string name="config_defaultAccessibilityService" translatable="false">com.google.android.marvin.talkback/.TalkBackService</string>
 
+    <!-- Default component for QR code scanner -->
+    <string name="config_defaultQrCodeComponent" translatable="false">com.google.android.gms/.mlkit.barcode.ui.PlatformBarcodeScanningActivityProxy</string>
+
     <!-- Sets the package name for location extra packages -->
     <string-array name="config_locationExtraPackageNames" translatable="false">
          <item>com.google.android.gms.location.history</item>
