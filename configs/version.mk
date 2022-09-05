@@ -15,8 +15,8 @@
 #
 
 # Pixel Dust ROM versioning
-PD_ROM_MAJ_VERSION := PixelDust-SaltedCaramel
-ANDROID_OS_VERSION := 12.1.0
+PD_ROM_MAJ_VERSION := PixelDust-Tartufo
+ANDROID_OS_VERSION := 13.0.0
 BUILD_VERSION_CODE := caf
 
 ifndef SIGN_KEY
