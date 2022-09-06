@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020-2021 The PixelDust Project
+# Copyright (C) 2020-2022 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,14 +14,13 @@
 # limitations under the License.
 #
 
-# Optional ART/BT/UWB/WIFI module
+# Optional ART/BT/UWB/TETH/WIFI module
 MAINLINE_INCLUDE_ART_MODULE ?= true
 MAINLINE_INCLUDE_BT_MODULE ?= true
 MAINLINE_INCLUDE_UWB_MODULE ?= true
-MAINLINE_INCLUDE_WIFI_MODULE ?= true
-
-# Networkstack certificate
-PRODUCT_MAINLINE_SEPOLICY_DEV_CERTIFICATES := vendor/pixeldust/apex/NetworkStack
+# Don't add these modules to your build unless you know what you're doing
+MAINLINE_INCLUDE_TETHERING_MODULE ?= false
+MAINLINE_INCLUDE_WIFI_MODULE ?= false
 
 # Prebuilt module SDKs require prebuilt modules to work, and currently
 # prebuilt modules are only provided for com.google.android.xxx.
@@ -48,6 +47,12 @@ PRODUCT_PACKAGES += \
     com.google.android.bluetooth
 endif
 
+# Tethering Mainline Module
+ifeq ($(MAINLINE_INCLUDE_TETHERING_MODULE),true)
+PRODUCT_PACKAGES += \
+    com.google.android.tethering
+endif
+
 # UWB Mainline Module
 ifeq ($(MAINLINE_INCLUDE_UWB_MODULE),true)
 PRODUCT_PACKAGES += \
@@ -58,6 +63,12 @@ endif
 ifeq ($(MAINLINE_INCLUDE_WIFI_MODULE),true)
 PRODUCT_PACKAGES += \
     com.google.android.wifi
+# Networkstack certificate
+PRODUCT_MAINLINE_SEPOLICY_DEV_CERTIFICATES := vendor/pixeldust/apex/NetworkStack
+else
+REMOVE_GAPPS_PACKAGES += \
+    NetworkPermissionConfigGoogle \
+    NetworkStackGoogle
 endif
 
 # Google Apexes
@@ -79,6 +90,5 @@ PRODUCT_PACKAGES += \
 	com.google.android.resolv \
 	com.google.android.scheduling \
 	com.google.android.sdkext \
-	com.google.android.tethering \
 	com.google.android.tzdata4 \
 	com.google.mainline.primary.libs
