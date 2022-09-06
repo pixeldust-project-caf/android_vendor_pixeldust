@@ -20,6 +20,13 @@ function repopick() {
     $T/vendor/pixeldust/build/tools/repopick.py $@
 }
 
+function clomerge() {
+    target_branch=$1
+    set_stuff_for_environment
+    T=$(gettop)
+    python3 $T/vendor/pixeldust/build/tools/merge-clo.py $target_branch
+}
+
 export SKIP_ABI_CHECKS="true"
 export DISABLE_ARTIFACT_PATH_REQUIREMENTS="true"
 
