@@ -30,6 +30,12 @@ PRODUCT_COPY_FILES += $(foreach f,$(UI),\
 PRODUCT_COPY_FILES += $(foreach f,$(NOTIFICATIONS),\
 	$(AUDIO_PATH)/notifications/$(f).ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/$(f).ogg)
 
+# Change default sounds
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.config.ringtone=Your_new_adventure.ogg \
+    ro.config.notification_sound=Eureka.ogg \
+    ro.config.alarm_alert=Fresh_start.ogg
+
 # Inherit AOSP audio package last so vendor audio overrides AOSP audio
 $(call inherit-product, frameworks/base/data/sounds/AudioPackage14.mk)
 
