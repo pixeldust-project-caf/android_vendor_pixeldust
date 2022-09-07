@@ -19,7 +19,7 @@ PRODUCT_PACKAGES += \
     apns-conf.xml \
     sensitive_pn.xml
 
-ifneq ($(filter angler blueline coral crosshatch flame marlin redfin sailfish taimen walleye, $(TARGET_DEVICE)),)
+ifneq ($(filter walleye taimen blueline crosshatch bonito sargo flame coral sunfish bramble redfin oriole raven bluejay, $(TARGET_DEVICE)),)
 
 # CarrierSettings, replace CarrierConfig
 PRODUCT_PACKAGES += \
