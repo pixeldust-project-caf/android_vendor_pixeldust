@@ -22,6 +22,9 @@ MAINLINE_INCLUDE_UWB_MODULE ?= true
 MAINLINE_INCLUDE_TETHERING_MODULE ?= false
 MAINLINE_INCLUDE_WIFI_MODULE ?= false
 
+# Enable updating of APEXes
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
 # Prebuilt module SDKs require prebuilt modules to work, and currently
 # prebuilt modules are only provided for com.google.android.xxx.
 MODULE_BUILD_FROM_SOURCE := false
