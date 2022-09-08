@@ -51,7 +51,6 @@ WITH_GOOGLE_APEX := true
 WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
 REMOVE_GAPPS_PACKAGES += \
-    ConnectivityThermalPowerManager \
     Maps \
     pixel_experience_2019_midyear \
     pixel_experience_2019 \
