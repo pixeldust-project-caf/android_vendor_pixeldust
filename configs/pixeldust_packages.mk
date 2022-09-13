@@ -50,7 +50,7 @@ PRODUCT_PACKAGES += \
     RepainterServicePriv \
 
 # Pixel Style
--include vendor/pixelstyle/common.mk
+-include vendor/pixelstyle/config.mk
 
 # Themes
 -include vendor/themes/common.mk
