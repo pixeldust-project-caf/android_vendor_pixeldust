@@ -26,19 +26,10 @@ SKIP_BOOT_JARS_CHECK := true
 # Include definitions for Snapdragon Clang
 $(call inherit-product, vendor/qcom/sdclang/config/SnapdragonClang.mk)
 
-# Include QTI overlays component 
-include vendor/pixeldust/overlay-caf/qti-overlay.mk
-
 # QTI VNDK Framework Detect
 PRODUCT_PACKAGES += \
-    libvndfwk_detect_jni.qti \
-    libqti_vndfwk_detect \
-    libqti_vndfwk_detect_system \
-    libqti_vndfwk_detect_vendor \
-    libvndfwk_detect_jni.qti_system \
-    libvndfwk_detect_jni.qti_vendor \
-    libvndfwk_detect_jni.qti.vendor \
-    libqti_vndfwk_detect.vendor
+    libqti_vndfwk_detect.vendor \
+    libvndfwk_detect_jni.qti.vendor
 
 # Telephony - AOSP
 PRODUCT_PACKAGES += \
@@ -52,23 +43,12 @@ PRODUCT_PACKAGES += \
     extphonelib_product.xml \
     ims-ext-common \
     ims_ext_common.xml \
-    tcmiface \
     telephony-ext \
     qti-telephony-hidl-wrapper \
-    qti-telephony-hidl-wrapper-prd \
     qti_telephony_hidl_wrapper.xml \
-    qti_telephony_hidl_wrapper_prd.xml \
     qti-telephony-utils \
-    qti-telephony-utils-prd \
-    qti_telephony_utils.xml \
-    qti_telephony_utils_prd.xml
+    qti_telephony_utils.xml
 
 PRODUCT_BOOT_JARS += \
-    tcmiface \
     telephony-ext
 
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.cdma.xml \
-    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml
