@@ -26,6 +26,9 @@ SKIP_BOOT_JARS_CHECK := true
 # Include definitions for Snapdragon Clang
 $(call inherit-product, vendor/qcom/sdclang/config/SnapdragonClang.mk)
 
+# Include QTI Bluetooth
+$(call inherit-product, vendor/pixeldust/configs/qti-bt.mk)
+
 # QTI VNDK Framework Detect
 PRODUCT_PACKAGES += \
     libqti_vndfwk_detect.vendor \
