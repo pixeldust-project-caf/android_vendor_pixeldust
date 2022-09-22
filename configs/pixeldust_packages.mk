@@ -43,7 +43,7 @@ PRODUCT_PACKAGES += \
     PixeldustThemesStub \
     PixelDustWallpapers \
     QuickAccessWallet \
-    ThemePicker \
+    PixeldustThemePicker \
 
 # Repainter integration
 PRODUCT_PACKAGES += \
