@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020-2021 The PixelDust Project
+# Copyright (C) 2020-2022 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@
 PRODUCT_PACKAGES += \
     PixelDustConfigOverlay \
 
-ifeq ($(WITH_GOOGLE_APEX),true)
 PRODUCT_PACKAGES += \
     PixelSetupWizardOverlayPixelDust \
     SettingsGoogleOverlayPixelDust
@@ -29,7 +28,6 @@ PRODUCT_PACKAGES += \
     CellBroadcastReceiverOverlay \
     CellBroadcastServiceOverlay \
     DMServiceOverlay \
-    GoogleConfigOverlay \
     GooglePermissionControllerOverlay \
     GoogleWebViewOverlay \
     ManagedProvisioningPixelOverlay \
@@ -42,4 +40,11 @@ PRODUCT_PACKAGES += \
     PixelConfigOverlay2021 \
     PixelConfigOverlayCommon \
     PixelTetheringOverlay
+
+ifeq ($(WITH_GOOGLE_APEX),true)
+PRODUCT_PACKAGES += \
+    GoogleConfigOverlayApex
+else
+PRODUCT_PACKAGES += \
+    GoogleConfigOverlay
 endif
