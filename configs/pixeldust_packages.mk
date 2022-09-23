@@ -34,6 +34,10 @@ PRODUCT_PACKAGES += \
     Stk \
     CellBroadcastReceiver
 
+# ModuleMetadata
+PRODUCT_PACKAGES += \
+    ModuleMetadataGoogle
+
 # Extra Packages
 PRODUCT_PACKAGES += \
     GoogleWallpaperPickerOverlay \

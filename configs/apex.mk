@@ -34,10 +34,6 @@ DISABLE_DEXPREOPT_CHECK := true
 PRODUCT_SOONG_NAMESPACES += \
     vendor/pixeldust/apex
 
-# ModuleMetadata
-PRODUCT_PACKAGES += \
-    ModuleMetadataGoogle
-
 # ART Mainline Module
 ifeq ($(MAINLINE_INCLUDE_ART_MODULE),true)
 PRODUCT_PACKAGES += \
