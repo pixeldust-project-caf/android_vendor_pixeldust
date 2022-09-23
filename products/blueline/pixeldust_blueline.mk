@@ -44,11 +44,6 @@ export TARGET_DEVICE=blueline
 # Bootanimation
 BOOTANIMATION := 1080
 
-# Google Apex
-WITH_GOOGLE_APEX := true
-MAINLINE_INCLUDE_BT_MODULE := false
-MAINLINE_INCLUDE_UWB_MODULE := false
-
 # Google Apps
 WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
