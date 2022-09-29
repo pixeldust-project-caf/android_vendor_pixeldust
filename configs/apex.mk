@@ -18,9 +18,8 @@
 MAINLINE_INCLUDE_ART_MODULE ?= true
 MAINLINE_INCLUDE_BT_MODULE ?= true
 MAINLINE_INCLUDE_UWB_MODULE ?= true
-# Don't add these modules to your build unless you know what you're doing
-MAINLINE_INCLUDE_TETHERING_MODULE ?= false
-MAINLINE_INCLUDE_WIFI_MODULE ?= false
+MAINLINE_INCLUDE_TETHERING_MODULE ?= true
+MAINLINE_INCLUDE_WIFI_MODULE ?= true
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
