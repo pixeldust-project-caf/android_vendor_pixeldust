@@ -15,9 +15,9 @@
 #
 
 # Pixel Dust ROM versioning
-PD_ROM_MAJ_VERSION := PixelDust-Tartufo
+PD_ROM_MAJ_VERSION := PixelDust-Tiramisu
 ANDROID_OS_VERSION := 13.0.0
-BUILD_VERSION_CODE := caf
+BUILD_VERSION_CODE := aosp
 
 ifndef SIGN_KEY
   PD_BUILDTYPE := UNOFFICIAL
