@@ -9,3 +9,11 @@ PRODUCT_PACKAGES += \
     PixelDustSettingsProviderOverlay \
     PixelDustSystemUIOverlay
 
+# GMS Overlays
+PRODUCT_PACKAGES += \
+    GmsConfigOverlay \
+    PixelDustTelecommOverlay \
+    PixelDustTelephonyOverlay \
+    PixelSetupWizardOverlay \
+    TelecommConfigOverlay
+
