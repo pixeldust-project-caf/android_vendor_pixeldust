@@ -44,6 +44,9 @@ export TARGET_DEVICE=blueline
 # Bootanimation
 BOOTANIMATION := 1080
 
+# Prebuilt Bluetooth apex
+$(call inherit-product, vendor/pixeldust/configs/bt_apex.mk)
+
 # Google Apps
 WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
