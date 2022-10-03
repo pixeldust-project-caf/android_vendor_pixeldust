@@ -59,6 +59,11 @@ REMOVE_GAPPS_PACKAGES += \
     pixel_experience_2021_midyear \
     pixel_experience_2021
 
+# Don't use google's NetworkStack
+REMOVE_GAPPS_PACKAGES += \
+    NetworkPermissionConfigGoogle \
+    NetworkStackGoogle
+
 # Product properties
 PRODUCT_NAME := pixeldust_crosshatch
 PRODUCT_DEVICE := crosshatch
