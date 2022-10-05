@@ -13,6 +13,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # SetupWizard configuration
 PRODUCT_PRODUCT_PROPERTIES += \
+    ro.com.google.gmsversion=13_202208 \
     ro.setupwizard.enterprise_mode=1 \
     setupwizard.feature.predeferred_enabled=false \
     ro.setupwizard.mode=OPTIONAL \
