@@ -10,7 +10,9 @@ EOF
 function cout()
 {
     if [  "$OUT" ]; then
-        cd $OUT
+        path=$OUT
+        path=${path%"generic"}
+        cd $path
     else
         echo "Couldn't locate out directory.  Try setting OUT."
     fi
