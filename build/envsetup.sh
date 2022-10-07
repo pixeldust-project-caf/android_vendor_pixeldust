@@ -1,6 +1,7 @@
 function __print_pixeldust_functions_help() {
 cat <<EOF
 Additional PixelDust functions:
+- clomerge:        Utility to merge CLO tags.
 - cout:            Changes directory to out.
 - repopick:        Utility to fetch changes from Gerrit.
 EOF
