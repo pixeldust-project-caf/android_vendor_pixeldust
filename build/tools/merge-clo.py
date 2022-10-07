@@ -100,7 +100,7 @@ def read_custom_manifest(default_repos):
             if repo.tag == "remove-project":
                 removed_repos.append(repo.get("name"))
             else:
-                if repo.get("remote") == "pixeldust":
+                if repo.get("remote") == "pdcaf-mergable":
                     project_repos.append(repo.get("path"))
 
         for repo in removed_repos:
