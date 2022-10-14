@@ -50,16 +50,51 @@ BOOTANIMATION := 1440
 WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
 REMOVE_GAPPS_PACKAGES += \
+    arcore \
+    AndroidAutoStubPrebuilt \
     CalculatorGooglePrebuilt \
-    Photos \
+    CbrsNetworkMonitor \
+    Chrome \
+    DevicePersonalizationPrebuiltPixel2020 \
+    DevicePolicyPrebuilt \
+    DiagnosticsToolPrebuilt \
+    DreamlinerPrebuilt \
+    DreamlinerUpdater \
+    Drive \
+    FilesPrebuilt \
+    GoogleTTS \
+    GoogleCamera \
+    LatinIMEGooglePrebuilt \
+    LocationHistoryPrebuilt \
+    MaestroPrebuilt \
     Maps \
+    MarkupGoogle \
+    MicropaperPrebuilt \
+    NetworkPermissionConfigGoogle \
+    NetworkStackGoogle \
+    NgaResources \
+    Ornament \
+    PixelLiveWallpaperPrebuilt \
+    pixel_experience_2017 \
+    pixel_2018_exclusive \
     pixel_experience_2019_midyear \
     pixel_experience_2019 \
     pixel_experience_2020_midyear \
     pixel_experience_2020 \
-    pixel_experience_2021_midyear \
-    pixel_experience_2021
-
+    Photos \
+    PrebuiltBugle \
+    PrebuiltGmail \
+    PixelWallpaper2021 \
+    RecorderPrebuilt \
+    ScribePrebuilt \
+    Showcase \
+    StorageManagerGoogle \
+    TagGoogle \
+    talkback \
+    Tycho \
+    YouTube \
+    YouTubeMusicPrebuilt \
+    WallpapersBReel2020 
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_taimen
