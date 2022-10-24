@@ -54,7 +54,9 @@ REMOVE_GAPPS_PACKAGES += \
     pixel_experience_2020_midyear \
     pixel_experience_2020 \
     pixel_experience_2021_midyear \
-    pixel_experience_2021
+    pixel_experience_2021 \
+    pixel_experience_2022_midyear \
+    pixel_experience_2022
 
 # Don't use google's NetworkStack
 REMOVE_GAPPS_PACKAGES += \
