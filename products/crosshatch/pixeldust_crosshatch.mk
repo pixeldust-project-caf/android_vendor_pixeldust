@@ -44,9 +44,6 @@ export TARGET_DEVICE=crosshatch
 # Bootanimation
 BOOTANIMATION := 1440
 
-# Prebuilt Bluetooth apex
-$(call inherit-product, vendor/pixeldust/configs/bt_apex.mk)
-
 # Google Apps
 WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
