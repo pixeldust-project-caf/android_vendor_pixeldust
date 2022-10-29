@@ -14,11 +14,13 @@
 
 PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/blueline/pixeldust_blueline.mk \
+    $(LOCAL_DIR)/cheetah/pixeldust_cheetah.mk \
     $(LOCAL_DIR)/coral/pixeldust_coral.mk \
     $(LOCAL_DIR)/crosshatch/pixeldust_crosshatch.mk \
     $(LOCAL_DIR)/flame/pixeldust_flame.mk \
     $(LOCAL_DIR)/miatoll/pixeldust_miatoll.mk \
     $(LOCAL_DIR)/oriole/pixeldust_oriole.mk \
+    $(LOCAL_DIR)/panther/pixeldust_panther.mk \
     $(LOCAL_DIR)/raven/pixeldust_raven.mk \
     $(LOCAL_DIR)/redfin/pixeldust_redfin.mk \
     $(LOCAL_DIR)/taimen/pixeldust_taimen.mk \
@@ -35,6 +37,9 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_blueline-eng \
     pixeldust_coral-userdebug \
     pixeldust_coral-user \
+    pixeldust_cheetah-userdebug \
+    pixeldust_cheetah-user \
+    pixeldust_cheetah-eng \
     pixeldust_crosshatch-userdebug \
     pixeldust_crosshatch-user \
     pixeldust_crosshatch-eng \
@@ -46,6 +51,9 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_oriole-userdebug \
     pixeldust_oriole-user \
     pixeldust_oriole-eng \
+    pixeldust_panther-userdebug \
+    pixeldust_panther-user \
+    pixeldust_panther-eng \
     pixeldust_raven-userdebug \
     pixeldust_raven-user \
     pixeldust_raven-eng \
