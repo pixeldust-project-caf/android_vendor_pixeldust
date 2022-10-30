@@ -60,6 +60,8 @@ REMOVE_GAPPS_PACKAGES += \
     pixel_experience_2021_midyear \
     pixel_experience_2021
 
+# Enable legacy IMS patch
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.telephony.block_binder_thread_on_incoming_calls=false
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_taimen
