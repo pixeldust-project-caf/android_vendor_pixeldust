@@ -33,7 +33,6 @@ SOONG_CONFIG_pixeldustGlobalVars += \
     additional_gralloc_10_usage_bits \
     bootloader_message_offset \
     disable_postrender_cleanup \
-    needs_netd_direct_connect_rule \
     target_camera_needs_client_info \
     target_init_vendor_lib \
     target_ld_shim_libs \
@@ -62,7 +61,6 @@ endif
 
 # Soong bool variables
 SOONG_CONFIG_pixeldustGlobalVars_disable_postrender_cleanup := $(TARGET_DISABLE_POSTRENDER_CLEANUP)
-SOONG_CONFIG_pixeldustGlobalVars_needs_netd_direct_connect_rule := $(TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE)
 SOONG_CONFIG_pixeldustGlobalVars_target_camera_needs_client_info := $(TARGET_CAMERA_NEEDS_CLIENT_INFO)
 SOONG_CONFIG_pixeldustGlobalVars_target_uses_prebuilt_dynamic_partitions := $(TARGET_USES_PREBUILT_DYNAMIC_PARTITIONS)
 SOONG_CONFIG_pixeldustNvidiaVars_uses_nv_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
