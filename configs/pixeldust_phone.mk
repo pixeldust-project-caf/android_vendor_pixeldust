@@ -75,7 +75,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Blur
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.launcher.blur.appLaunch=false
+    ro.launcher.blur.appLaunch=0
 
 # Compile SystemUI on device with `speed`.
 PRODUCT_PROPERTY_OVERRIDES += \
