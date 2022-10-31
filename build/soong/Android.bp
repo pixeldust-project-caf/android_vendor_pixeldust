@@ -170,23 +170,6 @@ target_uses_prebuilt_dynamic_partitions {
 }
 
 soong_config_module_type {
-    name: "needs_netd_direct_connect_rule",
-    module_type: "cc_defaults",
-    config_namespace: "pixeldustGlobalVars",
-    bool_variables: ["needs_netd_direct_connect_rule"],
-    properties: ["cppflags"],
-}
-
-needs_netd_direct_connect_rule {
-    name: "needs_netd_direct_connect_rule_defaults",
-    soong_config_variables: {
-        needs_netd_direct_connect_rule: {
-            cppflags: ["-DNEEDS_NETD_DIRECT_CONNECT_RULE"],
-        },
-    },
-}
-
-soong_config_module_type {
     name: "target_camera_needs_client_info",
     module_type: "cc_defaults",
     config_namespace: "pixeldustGlobalVars",
