@@ -35,7 +35,6 @@ SOONG_CONFIG_pixeldustGlobalVars += \
     target_camera_needs_client_info \
     target_init_vendor_lib \
     target_ld_shim_libs \
-    target_process_sdk_version_override \
     target_surfaceflinger_udfps_lib \
     target_uses_prebuilt_dynamic_partitions
 
@@ -80,7 +79,6 @@ SOONG_CONFIG_pixeldustGlobalVars_additional_gralloc_10_usage_bits := $(TARGET_AD
 SOONG_CONFIG_pixeldustGlobalVars_bootloader_message_offset := $(BOOTLOADER_MESSAGE_OFFSET)
 SOONG_CONFIG_pixeldustGlobalVars_target_init_vendor_lib := $(TARGET_INIT_VENDOR_LIB)
 SOONG_CONFIG_pixeldustGlobalVars_target_ld_shim_libs := $(subst $(space),:,$(TARGET_LD_SHIM_LIBS))
-SOONG_CONFIG_pixeldustGlobalVars_target_process_sdk_version_override := $(TARGET_PROCESS_SDK_VERSION_OVERRIDE)
 SOONG_CONFIG_pixeldustGlobalVars_target_surfaceflinger_udfps_lib := $(TARGET_SURFACEFLINGER_FOD_LIB)
 
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
