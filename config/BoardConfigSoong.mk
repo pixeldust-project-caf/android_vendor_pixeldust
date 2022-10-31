@@ -51,13 +51,9 @@ SOONG_CONFIG_pixeldustNvidiaVars += \
 
 SOONG_CONFIG_NAMESPACES += pixeldustQcomVars
 SOONG_CONFIG_pixeldustQcomVars += \
-    legacy_hw_disk_encryption \
-    should_wait_for_qsee \
     supports_audio_accessory \
     supports_debug_accessory \
     supports_extended_compress_format \
-    supports_hw_fde \
-    supports_hw_fde_perf \
     uses_pre_uplink_features_netmgrd \
     uses_qcom_bsp_legacy \
     uses_qti_camera_device \
@@ -78,11 +74,7 @@ SOONG_CONFIG_pixeldustGlobalVars_needs_netd_direct_connect_rule := $(TARGET_NEED
 SOONG_CONFIG_pixeldustGlobalVars_target_camera_needs_client_info := $(TARGET_CAMERA_NEEDS_CLIENT_INFO)
 SOONG_CONFIG_pixeldustGlobalVars_target_uses_prebuilt_dynamic_partitions := $(TARGET_USES_PREBUILT_DYNAMIC_PARTITIONS)
 SOONG_CONFIG_pixeldustNvidiaVars_uses_nv_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
-SOONG_CONFIG_pixeldustQcomVars_legacy_hw_disk_encryption := $(TARGET_LEGACY_HW_DISK_ENCRYPTION)
-SOONG_CONFIG_pixeldustQcomVars_should_wait_for_qsee := $(TARGET_KEYMASTER_WAIT_FOR_QSEE)
 SOONG_CONFIG_pixeldustQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
-SOONG_CONFIG_pixeldustQcomVars_supports_hw_fde := $(TARGET_HW_DISK_ENCRYPTION)
-SOONG_CONFIG_pixeldustQcomVars_supports_hw_fde_perf := $(TARGET_HW_DISK_ENCRYPTION_PERF)
 SOONG_CONFIG_pixeldustQcomVars_supports_audio_accessory := $(TARGET_QTI_USB_SUPPORTS_AUDIO_ACCESSORY)
 SOONG_CONFIG_pixeldustQcomVars_supports_debug_accessory := $(TARGET_QTI_USB_SUPPORTS_DEBUG_ACCESSORY)
 SOONG_CONFIG_pixeldustQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
