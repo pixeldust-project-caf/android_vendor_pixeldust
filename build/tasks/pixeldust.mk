@@ -81,7 +81,7 @@ pixeldust: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ${CL_CYN}"════════════════════════════════════════════════════════════════════════════════"${CL_RST}
 	@echo ""
 	@echo "Creating json OTA..." >&2
-	$(hide) ./vendor/pixeldust/build/tools/createjson.sh $(TARGET_DEVICE) $(PRODUCT_OUT) $(PIXELDUST_VERSION).zip
+	$(hide) ./vendor/pixeldust/build/tools/createjson.sh $(TARGET_DEVICE) $(PRODUCT_OUT) $(PIXELDUST_VERSION).zip $(BUILD_TIMESTAMP) $(ANDROID_OS_VERSION)
 
 ifneq ($(PREVIOUS_TARGET_FILES_PACKAGE),)
 

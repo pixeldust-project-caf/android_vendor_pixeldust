@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Copyright (C) 2019-2022 crDroid Android Project
+# Copyright (C) 2022 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +16,7 @@
 # limitations under the License.
 #
 
-#$1=TARGET_DEVICE, $2=PRODUCT_OUT, $3=FILE_NAME
+#$1=TARGET_DEVICE, $2=PRODUCT_OUT, $3=FILE_NAME, $4=BUILD_TIMESTAMP, $5=ANDROID_OS_VERSION
 existingOTAjson=./vendor/PixeldustOTA/$1.json
 output=$2/$1.json
 
@@ -27,94 +28,47 @@ fi
 if [ -f $existingOTAjson ]; then
 	#get data from already existing device json
 	#there might be a better way to parse json yet here we try without adding more dependencies like jq
-	maintainer=`grep -n "\"maintainer\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
-	oem=`grep -n "\"oem\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
-	device=`grep -n "\"device\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
 	filename=$3
-	version=`echo "$3" | cut -d'-' -f5`
-	v_max=`echo "$version" | cut -d'.' -f1 | cut -d'v' -f2`
-	v_min=`echo "$version" | cut -d'.' -f2`
-	version=`echo $v_max.$v_min`
-	download="https://download.pixeldust-project.com/'$filename'"
-	buildprop=$2/system/build.prop
-	linenr=`grep -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
-	timestamp=`sed -n $linenr'p' < $buildprop | cut -d'=' -f2`
-	md5=`md5sum "$2/$3" | cut -d' ' -f1`
-	sha256=`sha256sum "$2/$3" | cut -d' ' -f1`
+	filehash=`md5sum "$2/$3" | cut -d' ' -f1`
 	size=`stat -c "%s" "$2/$3"`
-	buildtype=`grep -n "\"buildtype\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
-	forum=`grep -n "\"forum\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$forum" ]; then
-		forum="https:"$forum
+	datetime=$4
+	url="https://download.pixeldust-project.com/$filename"
+	version=$5
+	maintainer=`grep -n "\"maintainer\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
+	maintainer_url=`grep -n "\"maintainer_url\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	if [ ! -z "$maintainer_url" ]; then
+		maintainer_url="https:"$maintainer_url
 	fi
-	gapps=`grep -n "\"gapps\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$gapps" ]; then
-		gapps="https:"$gapps
+	donate_url=`grep -n "\"donate_url\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	if [ ! -z "$donate_url" ]; then
+		donate_url="https:"$donate_url
 	fi
-	firmware=`grep -n "\"firmware\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$firmware" ]; then
-		firmware="https:"$firmware
+	forum_url=`grep -n "\"forum_url\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	if [ ! -z "$forum_url" ]; then
+		forum_url="https:"$forum_url
 	fi
-	modem=`grep -n "\"modem\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$modem" ]; then
-		modem="https:"$modem
+	website_url=`grep -n "\"website_url\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	if [ ! -z "$website_url" ]; then
+		website_url="https:"$website_url
 	fi
-	bootloader=`grep -n "\"bootloader\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$bootloader" ]; then
-		bootloader="https:"$bootloader
-	fi
-	recovery=`grep -n "\"recovery\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$recovery" ]; then
-		recovery="https:"$recovery
-	fi
-	paypal=`grep -n "\"paypal\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$paypal" ]; then
-		paypal="https:"$paypal
-	fi
-	telegram=`grep -n "\"telegram\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$telegram" ]; then
-		telegram="https:"$telegram
-	fi
-	dt=`grep -n "\"dt\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$dt" ]; then
-		dt="https:"$dt
-	fi
-	common=`grep -n "\"common-dt\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$common" ]; then
-		common="https:"$common
-	fi
-	kernel=`grep -n "\"kernel\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
-	if [ ! -z "$kernel" ]; then
-		kernel="https:"$kernel
+	news_url=`grep -n "\"news_url\"" $existingOTAjson | cut -d ":" -f 4 | sed 's/"//g' | sed 's/,//g' | xargs`
+	if [ ! -z "$news_url" ]; then
+		news_url="https:"$news_url
 	fi
 
 	echo '{
-	"response": [
-		{
-			"maintainer": "'$maintainer'",
-			"oem": "'$oem'",
-			"device": "'$device'",
-			"filename": "'$filename'",
-			"download": "https://sourceforge.net/projects/crdroid/files/'$1'/'$v_max'.x/'$3'/download",
-			"timestamp": '$timestamp',
-			"md5": "'$md5'",
-			"sha256": "'$sha256'",
-			"size": '$size',
-			"version": "'$version'",
-			"buildtype": "'$buildtype'",
-			"forum": "'$forum'",
-			"gapps": "'$gapps'",
-			"firmware": "'$firmware'",
-			"modem": "'$modem'",
-			"bootloader": "'$bootloader'",
-			"recovery": "'$recovery'",
-			"paypal": "'$paypal'",
-			"telegram": "'$telegram'",
-			"dt": "'$dt'",
-			"common-dt": "'$common'",
-			"kernel": "'$kernel'"
-		}
-	]
+	"filename":"'$filename'",
+	"filehash":"'$filehash'",
+	"size":'$size',
+	"datetime":'$datetime',
+	"url":"'$url'",
+	"version":"'$version'",
+	"maintainer":"'$maintainer'",
+	"maintainer_url":"'$maintainer_url'",
+	"donate_url":"'$donate_url'",
+	"forum_url":"'$forum_url'",
+	"website_url":"'$website_url'",
+	"news_url":"'$news_url'"
 }' >> $output
 
         echo "JSON file data for OTA support:"
