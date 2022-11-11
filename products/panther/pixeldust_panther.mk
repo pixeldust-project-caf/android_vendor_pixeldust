@@ -35,8 +35,9 @@ $(call inherit-product, vendor/pixeldust/build/product/pixeldust_product.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Inherit from the custom device configuration.
+$(call inherit-product, device/google/gs201/common.mk)
+$(call inherit-product, device/google/cheetah/device-custom.mk)
 $(call inherit-product, device/google/cheetah/aosp_panther.mk)
-include device/google/cheetah/device-custom.mk
 
 # Release name
 export TARGET_DEVICE=panther
