@@ -1,5 +1,5 @@
 # Copyright (C) 2012 The CyanogenMod Project
-#           (C) 2017-2020 The LineageOS Project
+#           (C) 2017-2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,12 +21,15 @@
 #
 # These config vars are usually set in BoardConfig.mk:
 #
-#   TARGET_KERNEL_CONFIG               = Kernel defconfig
+#   TARGET_KERNEL_ADDITIONAL_FLAGS     = Additional make flags, optional
+#   TARGET_KERNEL_CONFIG               = List of kernel defconfigs, first one being the base one,
+#                                          while all the others are fragments that will be merged
+#                                          to main one in .config.
+#   TARGET_KERNEL_RECOVERY_CONFIG      = Same as above, but applicable to recovery kernel instead.
 #   TARGET_KERNEL_VARIANT_CONFIG       = Variant defconfig, optional
 #   TARGET_KERNEL_SELINUX_CONFIG       = SELinux defconfig, optional
-#   TARGET_KERNEL_ADDITIONAL_CONFIG    = Additional defconfig, optional
 #
-#   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to false
+#   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to true
 #
 #   TARGET_KERNEL_CLANG_VERSION        = Clang prebuilts version, optional, defaults to clang-stable
 #
@@ -41,15 +44,19 @@
 #                                          For example, for ARM devices,
 #                                          use zImage-dtb instead of zImage.
 #
+#   BOARD_DTBO_CFG                     = Path to a mkdtboimg.py config file
+#
+#   BOARD_CUSTOM_DTBOIMG_MK            = Path to a custom dtboimage makefile
+#
 #   KERNEL_CC                          = The C Compiler used. This is automatically set based
 #                                          on whether the clang version is set, optional.
-#   KERNEL_LD                          = The Linker used. This is automatically set based
-#                                          on whether the clang/gcc version is set, optional.
 #
 #   KERNEL_CLANG_TRIPLE                = Target triple for clang (e.g. aarch64-linux-gnu-)
 #                                          defaults to arm-linux-gnu- for arm
 #                                                      aarch64-linux-gnu- for arm64
 #                                                      x86_64-linux-gnu- for x86
+#
+#   KERNEL_LTO                         = Optional, force LTO to none / thin / full
 #
 #   NEED_KERNEL_MODULE_ROOT            = Optional, if true, install kernel
 #                                          modules in root instead of vendor
@@ -57,21 +64,31 @@
 #                                          modules in system instead of vendor
 #   NEED_KERNEL_MODULE_VENDOR_OVERLAY  = Optional, if true, install kernel
 #                                          modules in vendor_overlay instead of vendor
+#
+#   TARGET_FORCE_PREBUILT_KERNEL       = Optional, use TARGET_PREBUILT_KERNEL even if
+#                                          kernel sources are present
 
 ifneq ($(TARGET_NO_KERNEL),true)
+ifneq ($(TARGET_NO_KERNEL_OVERRIDE),true)
 
 ## Externally influenced variables
 KERNEL_SRC := $(TARGET_KERNEL_SOURCE)
 # kernel configuration - mandatory
 KERNEL_DEFCONFIG := $(TARGET_KERNEL_CONFIG)
+RECOVERY_DEFCONFIG := $(TARGET_KERNEL_RECOVERY_CONFIG)
 VARIANT_DEFCONFIG := $(TARGET_KERNEL_VARIANT_CONFIG)
 SELINUX_DEFCONFIG := $(TARGET_KERNEL_SELINUX_CONFIG)
 
 ## Internal variables
-DTBS_OUT := $(PRODUCT_OUT)/dtbs
+DTC := $(HOST_OUT_EXECUTABLES)/dtc
 KERNEL_OUT := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ
+RECOVERY_KERNEL_OUT := $(TARGET_OUT_INTERMEDIATES)/RECOVERY_KERNEL_OBJ
+DTBO_OUT := $(TARGET_OUT_INTERMEDIATES)/DTBO_OBJ
+DTB_OUT := $(TARGET_OUT_INTERMEDIATES)/DTB_OBJ
 KERNEL_CONFIG := $(KERNEL_OUT)/.config
 KERNEL_RELEASE := $(KERNEL_OUT)/include/config/kernel.release
+RECOVERY_KERNEL_CONFIG := $(RECOVERY_KERNEL_OUT)/.config
+RECOVERY_KERNEL_RELEASE := $(RECOVERY_KERNEL_OUT)/include/config/kernel.release
 
 ifeq ($(KERNEL_ARCH),x86_64)
 KERNEL_DEFCONFIG_ARCH := x86
@@ -79,18 +96,13 @@ else
 KERNEL_DEFCONFIG_ARCH := $(KERNEL_ARCH)
 endif
 KERNEL_DEFCONFIG_DIR := $(KERNEL_SRC)/arch/$(KERNEL_DEFCONFIG_ARCH)/configs
-KERNEL_DEFCONFIG_SRC := $(KERNEL_DEFCONFIG_DIR)/$(KERNEL_DEFCONFIG)
+ALL_KERNEL_DEFCONFIG_SRCS := $(foreach config,$(KERNEL_DEFCONFIG),$(KERNEL_DEFCONFIG_DIR)/$(config))
+ALL_RECOVERY_KERNEL_DEFCONFIG_SRCS := $(foreach config,$(RECOVERY_DEFCONFIG),$(KERNEL_DEFCONFIG_DIR)/$(config))
 
-ifneq ($(TARGET_KERNEL_ADDITIONAL_CONFIG),)
-KERNEL_ADDITIONAL_CONFIG := $(TARGET_KERNEL_ADDITIONAL_CONFIG)
-KERNEL_ADDITIONAL_CONFIG_SRC := $(KERNEL_DEFCONFIG_DIR)/$(KERNEL_ADDITIONAL_CONFIG)
-    ifeq ("$(wildcard $(KERNEL_ADDITIONAL_CONFIG_SRC))","")
-        $(warning TARGET_KERNEL_ADDITIONAL_CONFIG '$(TARGET_KERNEL_ADDITIONAL_CONFIG)' doesn't exist)
-        KERNEL_ADDITIONAL_CONFIG_SRC := /dev/null
-    endif
-else
-    KERNEL_ADDITIONAL_CONFIG_SRC := /dev/null
-endif
+BASE_KERNEL_DEFCONFIG := $(word 1, $(KERNEL_DEFCONFIG))
+BASE_KERNEL_DEFCONFIG_SRC := $(word 1, $(ALL_KERNEL_DEFCONFIG_SRCS))
+BASE_RECOVERY_KERNEL_DEFCONFIG := $(word 1, $(RECOVERY_DEFCONFIG))
+BASE_RECOVERY_KERNEL_DEFCONFIG_SRC := $(word 1, $(ALL_RECOVERY_KERNEL_DEFCONFIG_SRCS))
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
     ifeq ($(BOARD_KERNEL_IMAGE_NAME),)
@@ -98,6 +110,8 @@ ifeq ($(TARGET_PREBUILT_KERNEL),)
     endif
 endif
 TARGET_PREBUILT_INT_KERNEL := $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
+
+TARGET_PREBUILT_INT_RECOVERY_KERNEL := $(RECOVERY_KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
 
 ifeq "$(wildcard $(KERNEL_SRC) )" ""
     ifneq ($(TARGET_PREBUILT_KERNEL),)
@@ -117,6 +131,7 @@ ifeq "$(wildcard $(KERNEL_SRC) )" ""
         $(warning * THIS IS DEPRECATED, AND IS NOT ADVISED.                     *)
         $(warning * Please configure your device to download the kernel         *)
         $(warning * source repository to $(KERNEL_SRC))
+        $(warning * for more information                                        *)
         $(warning ***************************************************************)
         FULL_KERNEL_BUILD := false
         KERNEL_BIN := $(TARGET_PREBUILT_KERNEL)
@@ -145,41 +160,72 @@ else
         $(warning **********************************************************)
         $(error "NO KERNEL CONFIG")
     else
-        FULL_KERNEL_BUILD := true
-        KERNEL_BIN := $(TARGET_PREBUILT_INT_KERNEL)
+        ifneq ($(TARGET_FORCE_PREBUILT_KERNEL),)
+            ifneq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
+                $(error "PREBUILT KERNEL IS NOT ALLOWED ON OFFICIAL BUILDS!")
+            else
+                $(warning **********************************************************)
+                $(warning * Kernel source found and configuration was defined,     *)
+                $(warning * but prebuilt kernel is being forced.                   *)
+                $(warning * While this is likely intentional,                      *)
+                $(warning * it is NOT SUPPORTED WHATSOEVER.                        *)
+                $(warning * Generated kernel headers may not align with            *)
+                $(warning * the ABI of kernel you're including.                    *)
+                $(warning * Please unset TARGET_FORCE_PREBUILT_KERNEL              *)
+                $(warning * to build the kernel from source.                       *)
+                $(warning **********************************************************)
+                FULL_KERNEL_BUILD := false
+                KERNEL_BIN := $(TARGET_PREBUILT_KERNEL)
+            endif
+        else
+            FULL_KERNEL_BUILD := true
+            KERNEL_BIN := $(TARGET_PREBUILT_INT_KERNEL)
+        endif
     endif
 endif
 
-ifeq ($(FULL_KERNEL_BUILD),true)
-
-ifeq ($(NEED_KERNEL_MODULE_ROOT),true)
-KERNEL_MODULES_OUT := $(TARGET_ROOT_OUT)
-KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_recovery)
-KERNEL_MODULE_MOUNTPOINT :=
-else ifeq ($(NEED_KERNEL_MODULE_SYSTEM),true)
-KERNEL_MODULES_OUT := $(TARGET_OUT)
-KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_system)
-KERNEL_MODULE_MOUNTPOINT := system
-$(INSTALLED_SYSTEMIMAGE_TARGET): $(TARGET_PREBUILT_INT_KERNEL)
-else ifeq ($(NEED_KERNEL_MODULE_VENDOR_OVERLAY),true)
-KERNEL_MODULES_OUT := $(TARGET_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)
-KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_product)
-KERNEL_MODULE_MOUNTPOINT := vendor
-$(INSTALLED_PRODUCTIMAGE_TARGET): $(TARGET_PREBUILT_INT_KERNEL)
+ifneq ($(TARGET_KERNEL_RECOVERY_CONFIG),)
+    ifeq "$(wildcard $(KERNEL_SRC) )" ""
+    ifeq ($(TARGET_PREBUILT_RECOVERY_KERNEL),)
+        $(warning ***************************************************************)
+        $(warning *                                                             *)
+        $(warning * No recovery kernel source found, and no fallback prebuilt   *)
+        $(warning * defined. Please make sure your device is properly           *)
+        $(warning * configured to download the kernel repository to $(KERNEL_SRC))
+        $(warning * or remove TARGET_KERNEL_RECOVERY_CONFIG from BoardConfig.mk *)
+        $(warning *                                                             *)
+        $(warning * Or, define the TARGET_PREBUILT_RECOVERY_KERNEL              *)
+        $(warning * variable with the path to the prebuilt recovery kernel image*)
+        $(warning * in your BoardConfig.mk file                                 *)
+        $(warning *                                                             *)
+        $(warning ***************************************************************)
+        $(error "NO RECOVERY KERNEL SOURCE")
+    endif
+    endif
+    ifneq ($(BOARD_USES_RECOVERY_AS_BOOT),)
+        $(warning ********************************************************)
+        $(warning * TARGET_KERNEL_RECOVERY_CONFIG set but device uses    *)
+        $(warning * RECOVERY_AS_BOOT, which uses boot kernel as recovery *)
+        $(warning * kernel, as such it's not possible to use different   *)
+        $(warning * configs                                              *)
+        $(warning ********************************************************)
+        $(error "INVALID CONFIGURATION")
+    else
+        FULL_RECOVERY_KERNEL_BUILD := true
+        RECOVERY_KERNEL_COPY := true
+        RECOVERY_BIN := $(TARGET_PREBUILT_INT_RECOVERY_KERNEL)
+    endif
 else
-KERNEL_MODULES_OUT := $(TARGET_OUT_VENDOR)
-KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_vendor)
-KERNEL_MODULE_MOUNTPOINT := vendor
-$(INSTALLED_VENDORIMAGE_TARGET): $(TARGET_PREBUILT_INT_KERNEL)
+    ifneq ($(TARGET_PREBUILT_RECOVERY_KERNEL),)
+        RECOVERY_BIN := $(TARGET_PREBUILT_RECOVERY_KERNEL)
+        RECOVERY_KERNEL_COPY := true
+    endif
 endif
-MODULES_INTERMEDIATES := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,kernel_modules)
 
-KERNEL_VENDOR_RAMDISK_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_vendor_ramdisk)
-$(INTERNAL_VENDOR_RAMDISK_TARGET): $(TARGET_PREBUILT_INT_KERNEL)
-
-PATH_OVERRIDE :=
-
-ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
+ifeq ($(or $(FULL_RECOVERY_KERNEL_BUILD), $(FULL_KERNEL_BUILD)),true)
+# Add host bin out dir to path
+PATH_OVERRIDE := PATH=$(KERNEL_BUILD_OUT_PREFIX)$(HOST_OUT_EXECUTABLES):$$PATH
+ifneq ($(TARGET_KERNEL_CLANG_COMPILE),false)
     ifneq ($(TARGET_KERNEL_CLANG_VERSION),)
         ifeq ($(TARGET_KERNEL_CLANG_VERSION),proton)
                 KERNEL_CLANG_VERSION := clang-proton
@@ -188,8 +234,7 @@ ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
                 # Set the latest version of clang
                 KERNEL_CLANG_VERSION := $(shell ls -d $(BUILD_TOP)/prebuilts/clang/host/$(HOST_OS)-x86/clang-r* | xargs -n 1 basename | tail -1)
             else
-                # Find the clang-* directory containing the specified version
-                KERNEL_CLANG_VERSION := $(shell find $(BUILD_TOP)/prebuilts/clang/host/$(HOST_OS)-x86/ -name AndroidVersion.txt -exec grep -l $(TARGET_KERNEL_CLANG_VERSION) "{}" \; | sed -e 's|/AndroidVersion.txt$$||g;s|^.*/||g')
+                KERNEL_CLANG_VERSION := clang-$(TARGET_KERNEL_CLANG_VERSION)
             endif
         endif
     else
@@ -208,27 +253,75 @@ ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
     ifeq ($(KERNEL_CC),)
         KERNEL_CC := CC="$(CCACHE_BIN) clang"
     endif
-    ifeq ($(KERNEL_LD),)
-        KERNEL_LD :=
-    endif
 endif
 
 ifneq ($(TARGET_KERNEL_MODULES),)
     $(error TARGET_KERNEL_MODULES is no longer supported!)
 endif
 
-PATH_OVERRIDE += PATH=$(KERNEL_TOOLCHAIN_PATH_gcc)/bin:$$PATH
+PATH_OVERRIDE += PATH=$(KERNEL_TOOLCHAIN_PATH_gcc):$$PATH
 
 # System tools are no longer allowed on 10+
 PATH_OVERRIDE += $(TOOLS_PATH_OVERRIDE)
 
-KERNEL_ADDITIONAL_CONFIG_OUT := $(KERNEL_OUT)/.additional_config
+ifeq (true,$(filter true, $(TARGET_NEEDS_DTBOIMAGE) $(BOARD_KERNEL_SEPARATED_DTBO)))
+    KERNEL_MAKE_FLAGS += DTC_EXT=$(KERNEL_BUILD_OUT_PREFIX)$(DTC)
+endif
+
+ifneq ($(TARGET_KERNEL_ADDITIONAL_FLAGS),)
+    KERNEL_MAKE_FLAGS += $(TARGET_KERNEL_ADDITIONAL_FLAGS)
+endif
 
 # Internal implementation of make-kernel-target
 # $(1): output path (The value passed to O=)
 # $(2): target to build (eg. defconfig, modules, dtbo.img)
 define internal-make-kernel-target
-$(PATH_OVERRIDE) $(KERNEL_MAKE_CMD) $(KERNEL_MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_BUILD_OUT_PREFIX)$(1) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(KERNEL_LD) $(2)
+$(PATH_OVERRIDE) $(KERNEL_MAKE_CMD) $(KERNEL_MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_BUILD_OUT_PREFIX)$(1) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(2)
+endef
+
+# Make an external module target
+# $(1): module name
+# $(2): module root path
+# $(3): target to build (eg. modules_install)
+define make-external-module-target
+$(PATH_OVERRIDE) $(KERNEL_MAKE_CMD) $(KERNEL_MAKE_FLAGS) -C $(TARGET_KERNEL_EXT_MODULE_ROOT)/$(1) M=$(2)/$(1) KERNEL_SRC=$(BUILD_TOP)/$(KERNEL_SRC) OUT_DIR=$(KERNEL_BUILD_OUT_PREFIX)$(KERNEL_OUT) O=$(KERNEL_BUILD_OUT_PREFIX)$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(KERNEL_CLANG_TRIPLE) $(KERNEL_CC) $(3)
+endef
+
+# Generate kernel .config from a given defconfig
+# $(1): Output path (The value passed to O=)
+# $(2): The defconfig to process (just the filename, no need for full path to file)
+define make-kernel-config
+	$(call internal-make-kernel-target,$(1),VARIANT_DEFCONFIG=$(VARIANT_DEFCONFIG) SELINUX_DEFCONFIG=$(SELINUX_DEFCONFIG) $(2))
+	$(hide) if [ "$(KERNEL_LTO)" = "none" ]; then \
+			$(KERNEL_SRC)/scripts/config --file $(1)/.config \
+			-d LTO_CLANG \
+			-e LTO_NONE \
+			-d LTO_CLANG_THIN \
+			-d LTO_CLANG_FULL \
+			-d THINLTO; \
+			$(call make-kernel-target,olddefconfig); \
+		elif [ "$(KERNEL_LTO)" = "thin" ]; then \
+			$(KERNEL_SRC)/scripts/config --file $(1)/.config \
+			-e LTO_CLANG \
+			-d LTO_NONE \
+			-e LTO_CLANG_THIN \
+			-d LTO_CLANG_FULL \
+			-e THINLTO; \
+			$(call make-kernel-target,olddefconfig); \
+		elif [ "$(KERNEL_LTO)" = "full" ]; then \
+			$(KERNEL_SRC)/scripts/config --file $(1)/.config \
+			-e LTO_CLANG \
+			-d LTO_NONE \
+			-d LTO_CLANG_THIN \
+			-e LTO_CLANG_FULL \
+			-d THINLTO; \
+			$(call make-kernel-target,olddefconfig); \
+		fi
+	$(hide) if [ ! -z "$(KERNEL_CONFIG_OVERRIDE)" ]; then \
+			echo "Overriding kernel config with '$(KERNEL_CONFIG_OVERRIDE)'"; \
+			echo $(KERNEL_CONFIG_OVERRIDE) >> $(1)/.config; \
+			$(call make-kernel-target,oldconfig); \
+		fi
 endef
 
 # Make a kernel target
@@ -237,16 +330,22 @@ define make-kernel-target
 $(call internal-make-kernel-target,$(KERNEL_OUT),$(1))
 endef
 
+# Make a recovery kernel target
+# $(1): The kernel target to build (eg. defconfig, modules, modules_install)
+define make-recovery-kernel-target
+$(call internal-make-kernel-target,$(RECOVERY_KERNEL_OUT),$(1))
+endef
+
 # Make a DTBO target
 # $(1): The DTBO target to build (eg. dtbo.img, defconfig)
 define make-dtbo-target
-$(call internal-make-kernel-target,$(PRODUCT_OUT)/dtbo,$(1))
+$(call internal-make-kernel-target,$(DTBO_OUT),$(1))
 endef
 
 # Make a DTB targets
 # $(1): The DTB target to build (eg. dtbs, defconfig)
 define make-dtb-target
-$(call internal-make-kernel-target,$(DTBS_OUT),$(1))
+$(call internal-make-kernel-target,$(DTB_OUT),$(1))
 endef
 
 # $(1): modules list
@@ -271,30 +370,56 @@ define build-image-kernel-modules-lineage
     done
 endef
 
+endif # FULL_RECOVERY_KERNEL_BUILD or FULL_KERNEL_BUILD
+
+ifeq ($(FULL_KERNEL_BUILD),true)
+
+ifeq ($(NEED_KERNEL_MODULE_ROOT),true)
+KERNEL_MODULES_OUT := $(TARGET_ROOT_OUT)
+KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_recovery)
+KERNEL_MODULE_MOUNTPOINT :=
+else ifeq ($(NEED_KERNEL_MODULE_SYSTEM),true)
+KERNEL_MODULES_OUT := $(TARGET_OUT)
+KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_system)
+KERNEL_MODULE_MOUNTPOINT := system
+$(INSTALLED_SYSTEMIMAGE_TARGET): $(TARGET_PREBUILT_INT_KERNEL)
+else ifeq ($(NEED_KERNEL_MODULE_VENDOR_OVERLAY),true)
+KERNEL_MODULES_OUT := $(TARGET_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)
+KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_product)
+KERNEL_MODULE_MOUNTPOINT := vendor
+$(INSTALLED_PRODUCTIMAGE_TARGET): $(TARGET_PREBUILT_INT_KERNEL)
+else ifeq ($(BOARD_USES_VENDOR_DLKMIMAGE),true)
+KERNEL_MODULES_OUT := $(TARGET_OUT_VENDOR_DLKM)
+KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_vendor)
+KERNEL_MODULE_MOUNTPOINT := vendor_dlkm
+$(INSTALLED_VENDOR_DLKMIMAGE_TARGET): $(TARGET_PREBUILT_INT_KERNEL)
+else
+KERNEL_MODULES_OUT := $(TARGET_OUT_VENDOR)
+KERNEL_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_vendor)
+KERNEL_MODULE_MOUNTPOINT := vendor
+$(INSTALLED_VENDORIMAGE_TARGET): $(TARGET_PREBUILT_INT_KERNEL)
+endif
+MODULES_INTERMEDIATES := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,kernel_modules)
+
+ifneq (,$(filter dlkm,$(BOARD_VENDOR_RAMDISK_FRAGMENTS)))
+KERNEL_VENDOR_RAMDISK_MODULES_OUT := $(VENDOR_RAMDISK_FRAGMENT.dlkm.STAGING_DIR)
+KERNEL_VENDOR_RAMDISK_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_vendor_ramdisk_fragment-stage-dlkm)
+$(INTERNAL_VENDOR_RAMDISK_FRAGMENT_TARGETS): $(TARGET_PREBUILT_INT_KERNEL)
+else
+KERNEL_VENDOR_RAMDISK_MODULES_OUT := $(TARGET_VENDOR_RAMDISK_OUT)
+KERNEL_VENDOR_RAMDISK_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_vendor_ramdisk)
+$(INTERNAL_VENDOR_RAMDISK_TARGET): $(TARGET_PREBUILT_INT_KERNEL)
+endif
+
 $(KERNEL_OUT):
 	mkdir -p $(KERNEL_OUT)
 
-$(KERNEL_ADDITIONAL_CONFIG_OUT): $(KERNEL_OUT)
-	$(hide) cmp -s $(KERNEL_ADDITIONAL_CONFIG_SRC) $@ || cp $(KERNEL_ADDITIONAL_CONFIG_SRC) $@;
-
-$(KERNEL_CONFIG): $(KERNEL_DEFCONFIG_SRC) $(KERNEL_ADDITIONAL_CONFIG_OUT)
+$(KERNEL_CONFIG): $(KERNEL_OUT) $(ALL_KERNEL_DEFCONFIG_SRCS)
 	@echo "Building Kernel Config"
-	$(call make-kernel-target,VARIANT_DEFCONFIG=$(VARIANT_DEFCONFIG) SELINUX_DEFCONFIG=$(SELINUX_DEFCONFIG) $(KERNEL_DEFCONFIG))
-	$(hide) if [ ! -z "$(KERNEL_CONFIG_OVERRIDE)" ]; then \
-			echo "Overriding kernel config with '$(KERNEL_CONFIG_OVERRIDE)'"; \
-			echo $(KERNEL_CONFIG_OVERRIDE) >> $(KERNEL_OUT)/.config; \
-			$(call make-kernel-target,oldconfig); \
-		fi
-	# Create defconfig build artifact
-	$(call make-kernel-target,savedefconfig)
-	$(hide) if [ ! -z "$(KERNEL_ADDITIONAL_CONFIG)" ]; then \
-			echo "Using additional config '$(KERNEL_ADDITIONAL_CONFIG)'"; \
-			$(KERNEL_SRC)/scripts/kconfig/merge_config.sh -m -O $(KERNEL_OUT) $(KERNEL_OUT)/.config $(KERNEL_SRC)/arch/$(KERNEL_ARCH)/configs/$(KERNEL_ADDITIONAL_CONFIG); \
-			$(call make-kernel-target,KCONFIG_ALLCONFIG=$(KERNEL_BUILD_OUT_PREFIX)$(KERNEL_OUT)/.config alldefconfig); \
-		fi
+	$(call make-kernel-config,$(KERNEL_OUT),$(KERNEL_DEFCONFIG))
 
-$(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG) $(DEPMOD)
-	@echo "Building Kernel"
+$(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG) $(DEPMOD) $(DTC)
+	@echo "Building Kernel Image ($(BOARD_KERNEL_IMAGE_NAME))"
 	$(call make-kernel-target,$(BOARD_KERNEL_IMAGE_NAME))
 	$(hide) if grep -q '^CONFIG_OF=y' $(KERNEL_CONFIG); then \
 			echo "Building DTBs"; \
@@ -305,6 +430,14 @@ $(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG) $(DEPMOD)
 			$(call make-kernel-target,modules) || exit "$$?"; \
 			echo "Installing Kernel Modules"; \
 			$(call make-kernel-target,INSTALL_MOD_PATH=$(MODULES_INTERMEDIATES) INSTALL_MOD_STRIP=1 modules_install); \
+			$(if $(TARGET_KERNEL_EXT_MODULES),\
+				echo "Building and Installing External Kernel Modules"; \
+				rpath=$$(python3 -c 'import os,sys;print(os.path.relpath(*(sys.argv[1:])))' $(TARGET_KERNEL_EXT_MODULE_ROOT) $(KERNEL_SRC)); \
+				$(foreach p, $(TARGET_KERNEL_EXT_MODULES),\
+					$$pwd; \
+					$(call make-external-module-target,$(p),$$rpath,); \
+					$(call make-external-module-target,$(p),$$rpath,INSTALL_MOD_PATH=$(MODULES_INTERMEDIATES) INSTALL_MOD_STRIP=1 KERNEL_UAPI_HEADERS_DIR=$(KERNEL_OUT) modules_install)); \
+			) \
 			kernel_release=$$(cat $(KERNEL_RELEASE)) \
 			kernel_modules_dir=$(MODULES_INTERMEDIATES)/lib/modules/$$kernel_release \
 			$(foreach s, $(TARGET_MODULE_ALIASES),\
@@ -318,7 +451,7 @@ $(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG) $(DEPMOD)
 					if [ -n "$$p" ]; then echo $$p; else echo "ERROR: $$m from BOOT_KERNEL_MODULES was not found" 1>&2 && exit 1; fi; \
 				done); \
 				[ $$? -ne 0 ] && exit 1; \
-				($(call build-image-kernel-modules-lineage,$$vendor_boot_modules,$(TARGET_VENDOR_RAMDISK_OUT),/,$(KERNEL_VENDOR_RAMDISK_DEPMOD_STAGING_DIR),$(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))); \
+				($(call build-image-kernel-modules-lineage,$$vendor_boot_modules,$(KERNEL_VENDOR_RAMDISK_MODULES_OUT),/,$(KERNEL_VENDOR_RAMDISK_DEPMOD_STAGING_DIR),$(BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD))); \
 			) \
 		fi
 
@@ -329,37 +462,90 @@ kerneltags: $(KERNEL_CONFIG)
 .PHONY: kernelsavedefconfig alldefconfig
 
 kernelsavedefconfig: $(KERNEL_OUT)
-	$(call make-kernel-target,$(KERNEL_DEFCONFIG))
-	env KCONFIG_NOTIMESTAMP=true \
-		 $(call make-kernel-target,savedefconfig)
-	cp $(KERNEL_OUT)/defconfig $(KERNEL_DEFCONFIG_SRC)
+	$(call make-kernel-config,$(KERNEL_OUT),$(BASE_KERNEL_DEFCONFIG))
+	$(call make-kernel-target,savedefconfig)
+	cp $(KERNEL_OUT)/defconfig $(BASE_KERNEL_DEFCONFIG_SRC)
 
 alldefconfig: $(KERNEL_OUT)
 	env KCONFIG_NOTIMESTAMP=true \
 		 $(call make-kernel-target,alldefconfig)
 
-ifeq ($(TARGET_NEEDS_DTBOIMAGE),true)
+ifeq (true,$(filter true, $(TARGET_NEEDS_DTBOIMAGE) $(BOARD_KERNEL_SEPARATED_DTBO)))
+ifneq ($(BOARD_CUSTOM_DTBOIMG_MK),)
+include $(BOARD_CUSTOM_DTBOIMG_MK)
+else
+MKDTIMG := $(HOST_OUT_EXECUTABLES)/mkdtimg$(HOST_EXECUTABLE_SUFFIX)
+MKDTBOIMG := $(HOST_OUT_EXECUTABLES)/mkdtboimg.py$(HOST_EXECUTABLE_SUFFIX)
+
+$(DTBO_OUT):
+	mkdir -p $(DTBO_OUT)
+
+$(BOARD_PREBUILT_DTBOIMAGE): $(DTC) $(MKDTIMG) $(MKDTBOIMG) $(DTBO_OUT)
 $(BOARD_PREBUILT_DTBOIMAGE):
-	echo -e ${CL_GRN}"Building DTBO.img"${CL_RST}
+	@echo "Building dtbo.img"
+	$(hide) find $(DTBO_OUT)/arch/$(KERNEL_ARCH)/boot/dts -type f -name "*.dtbo" | xargs rm -f
 	$(call make-dtbo-target,$(KERNEL_DEFCONFIG))
-	$(call make-dtbo-target,dtbo.img)
-endif # TARGET_NEEDS_DTBOIMAGE
+	$(call make-dtbo-target,$(TARGET_KERNEL_DTB))
+ifeq ($(BOARD_KERNEL_SEPARATED_DTBO),true)
+ifdef BOARD_DTBO_CFG
+	$(MKDTBOIMG) cfg_create $@ $(BOARD_DTBO_CFG) -d $(DTBO_OUT)/arch/$(KERNEL_ARCH)/boot/dts
+else
+	$(MKDTBOIMG) create $@ --page_size=$(BOARD_KERNEL_PAGESIZE) $(shell find $(DTBO_OUT)/arch/$(KERNEL_ARCH)/boot/dts -type f -name "*.dtbo" | sort)
+endif # BOARD_DTBO_CFG
+else
+	$(call make-dtbo-target,$(TARGET_KERNEL_DTBO))
+endif # BOARD_KERNEL_SEPARATED_DTBO
+	$(hide) touch -c $(DTBO_OUT)
+endif # BOARD_CUSTOM_DTBOIMG_MK
+endif # TARGET_NEEDS_DTBOIMAGE/BOARD_KERNEL_SEPARATED_DTBO
+
+ifeq ($(BOARD_INCLUDE_DTB_IN_BOOTIMG),true)
+ifeq ($(BOARD_PREBUILT_DTBIMAGE_DIR),)
+$(DTB_OUT):
+	mkdir -p $(DTB_OUT)
+
+$(INSTALLED_DTBIMAGE_TARGET): $(DTC) $(DTB_OUT)
+	@echo "Building dtb.img"
+	$(hide) find $(DTB_OUT)/arch/$(KERNEL_ARCH)/boot/dts -type f -name "*.dtb" | xargs rm -f
+	$(call make-dtb-target,$(KERNEL_DEFCONFIG))
+	$(call make-dtb-target,$(TARGET_KERNEL_DTB))
+	cat $(shell find $(DTB_OUT)/arch/$(KERNEL_ARCH)/boot/dts -type f -name "*.dtb" | sort) > $@
+	$(hide) touch -c $(DTB_OUT)
+endif # !BOARD_PREBUILT_DTBIMAGE_DIR
+endif # BOARD_INCLUDE_DTB_IN_BOOTIMG
 
 endif # FULL_KERNEL_BUILD
+
+ifeq ($(FULL_RECOVERY_KERNEL_BUILD),true)
+
+$(RECOVERY_KERNEL_OUT):
+	mkdir -p $(RECOVERY_KERNEL_OUT)
+
+$(RECOVERY_KERNEL_CONFIG): $(ALL_RECOVERY_KERNEL_DEFCONFIG_SRCS)
+	@echo "Building Recovery Kernel Config"
+	$(call make-kernel-config,$(RECOVERY_KERNEL_OUT),$(RECOVERY_DEFCONFIG))
+
+$(TARGET_PREBUILT_INT_RECOVERY_KERNEL): $(RECOVERY_KERNEL_CONFIG) $(DEPMOD) $(DTC)
+	@echo "Building Recovery Kernel Image ($(BOARD_KERNEL_IMAGE_NAME))"
+	$(call make-recovery-kernel-target,$(BOARD_KERNEL_IMAGE_NAME))
+
+
+endif
 
 ## Install it
 
 ifeq ($(NEEDS_KERNEL_COPY),true)
-file := $(INSTALLED_KERNEL_TARGET)
-ALL_PREBUILT += $(file)
-$(file) : $(KERNEL_BIN) | $(ACP)
+$(INSTALLED_KERNEL_TARGET): $(KERNEL_BIN)
 	$(transform-prebuilt-to-target)
-
-ALL_PREBUILT += $(INSTALLED_KERNEL_TARGET)
 endif
 
-INSTALLED_DTBOIMAGE_TARGET := $(PRODUCT_OUT)/dtbo.img
-ALL_PREBUILT += $(INSTALLED_DTBOIMAGE_TARGET)
+ifeq ($(RECOVERY_KERNEL_COPY),true)
+$(INSTALLED_RECOVERY_KERNEL_TARGET): $(RECOVERY_BIN)
+	$(transform-prebuilt-to-target)
+endif
+
+.PHONY: recovery-kernel
+recovery-kernel: $(INSTALLED_RECOVERY_KERNEL_TARGET)
 
 .PHONY: kernel
 kernel: $(INSTALLED_KERNEL_TARGET)
@@ -367,16 +553,8 @@ kernel: $(INSTALLED_KERNEL_TARGET)
 .PHONY: dtboimage
 dtboimage: $(INSTALLED_DTBOIMAGE_TARGET)
 
-ifeq ($(BOARD_INCLUDE_DTB_IN_BOOTIMG),true)
-ifeq ($(BOARD_PREBUILT_DTBIMAGE_DIR),)
-$(INSTALLED_DTBIMAGE_TARGET):
-	echo -e ${CL_GRN}"Building DTBs"${CL_RST}
-	$(call make-dtb-target,$(KERNEL_DEFCONFIG))
-	$(call make-dtb-target,dtbs)
-	cat $(shell find $(DTBS_OUT)/arch/$(KERNEL_ARCH)/boot/dts/** -type f -name "*.dtb" | sort) > $@
-endif
 .PHONY: dtbimage
 dtbimage: $(INSTALLED_DTBIMAGE_TARGET)
-endif # BOARD_INCLUDE_DTB_IN_BOOTIMG
 
+endif # TARGET_NO_KERNEL_OVERRIDE
 endif # TARGET_NO_KERNEL

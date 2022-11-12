@@ -1,4 +1,4 @@
-# Copyright (C) 2018-2021 The PixelDust Project
+# Copyright (C) 2018-2022 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,14 +20,28 @@
 #
 #   TARGET_KERNEL_SOURCE               = Kernel source dir, optional, defaults
 #                                          to kernel/$(TARGET_DEVICE_DIR)
-#   TARGET_KERNEL_ADDITIONAL_FLAGS     = Additional make flags, optional
 #   TARGET_KERNEL_ARCH                 = Kernel Arch
 #   TARGET_KERNEL_CROSS_COMPILE_PREFIX = Compiler prefix (e.g. arm-eabi-)
 #                                          defaults to arm-linux-androidkernel- for arm
 #                                                      aarch64-linux-android- for arm64
 #                                                      x86_64-linux-android- for x86
 #
-#   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to false
+#   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to true
+#   TARGET_KERNEL_VERSION              = Reported kernel version in top level kernel
+#                                        makefile. Can be overriden in device trees
+#                                        in the event of prebuilt kernel.
+#
+#   TARGET_KERNEL_DTBO_PREFIX          = Override path prefix of TARGET_KERNEL_DTBO.
+#                                        Defaults to empty
+#   TARGET_KERNEL_DTBO                 = Name of the kernel Makefile target that
+#                                        generates dtbo.img. Defaults to dtbo.img
+#   TARGET_KERNEL_DTB                  = Name of the kernel Makefile target that
+#                                        generates the *.dtb targets. Defaults to dtbs
+#
+#   TARGET_KERNEL_EXT_MODULE_ROOT      = Optional, the external modules root directory
+#                                          Defaults to empty
+#   TARGET_KERNEL_EXT_MODULES          = Optional, the external modules we are
+#                                          building. Defaults to empty
 #
 #   KERNEL_TOOLCHAIN_PREFIX            = Overrides TARGET_KERNEL_CROSS_COMPILE_PREFIX,
 #                                          Set this var in shell to override
@@ -37,13 +51,10 @@
 #                                          is in PATH
 #   USE_CCACHE                         = Enable ccache (global Android flag)
 
-BUILD_TOP := $(shell pwd)
+BUILD_TOP := $(abspath .)
 
 TARGET_AUTO_KDIR := $(shell echo $(TARGET_DEVICE_DIR) | sed -e 's/^device/kernel/g')
 TARGET_KERNEL_SOURCE ?= $(TARGET_AUTO_KDIR)
-ifneq ($(TARGET_PREBUILT_KERNEL),)
-TARGET_KERNEL_SOURCE :=
-endif
 
 TARGET_KERNEL_ARCH := $(strip $(TARGET_KERNEL_ARCH))
 ifeq ($(TARGET_KERNEL_ARCH),)
@@ -51,6 +62,10 @@ KERNEL_ARCH := $(TARGET_ARCH)
 else
 KERNEL_ARCH := $(TARGET_KERNEL_ARCH)
 endif
+
+KERNEL_VERSION := $(shell grep -s "^VERSION = " $(TARGET_KERNEL_SOURCE)/Makefile | awk '{ print $$3 }')
+KERNEL_PATCHLEVEL := $(shell grep -s "^PATCHLEVEL = " $(TARGET_KERNEL_SOURCE)/Makefile | awk '{ print $$3 }')
+TARGET_KERNEL_VERSION ?= $(shell echo $(KERNEL_VERSION)"."$(KERNEL_PATCHLEVEL))
 
 ifneq ($(TARGET_KERNEL_CLANG_VERSION),)
     ifeq ($(TARGET_KERNEL_CLANG_VERSION),proton)
@@ -63,7 +78,7 @@ ifneq ($(TARGET_KERNEL_CLANG_VERSION),)
         endif
     endif
 else
-    CLANG_PREBUILTS_VERSION := clang-r416183b
+    CLANG_PREBUILTS_VERSION := clang-r450784d
 endif
 
 CLANG_PREBUILTS := $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/$(CLANG_PREBUILTS_VERSION)
@@ -88,13 +103,13 @@ endif
 
 ifeq ($(KERNEL_TOOLCHAIN),)
 KERNEL_TOOLCHAIN_PATH := $(KERNEL_TOOLCHAIN_PREFIX)
-else ifneq ($(KERNEL_TOOLCHAIN_PREFIX),)
+else
 KERNEL_TOOLCHAIN_PATH := $(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)
 endif
 
 # We need to add GCC toolchain to the path no matter what
 # for tools like `as`
-KERNEL_TOOLCHAIN_PATH_gcc := $(KERNEL_TOOLCHAIN_$(KERNEL_ARCH))/$(KERNEL_TOOLCHAIN_PREFIX_$(KERNEL_ARCH))
+KERNEL_TOOLCHAIN_PATH_gcc := $(KERNEL_TOOLCHAIN_$(KERNEL_ARCH))
 
 ifneq ($(USE_CCACHE),)
     ifneq ($(CCACHE_EXEC),)
@@ -103,7 +118,7 @@ ifneq ($(USE_CCACHE),)
     endif
 endif
 
-ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
+ifneq ($(TARGET_KERNEL_CLANG_COMPILE),false)
     KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(KERNEL_TOOLCHAIN_PATH)"
 else
     KERNEL_CROSS_COMPILE := CROSS_COMPILE="$(CCACHE_BIN) $(KERNEL_TOOLCHAIN_PATH)"
@@ -121,14 +136,16 @@ KERNEL_MAKE_FLAGS :=
 # Add back threads, ninja cuts this to $(nproc)/2
 KERNEL_MAKE_FLAGS += -j$(shell prebuilts/tools-custom/$(HOST_PREBUILT_TAG)/bin/nproc --all)
 
-ifeq ($(KERNEL_ARCH),arm)
-  # Avoid "Unknown symbol _GLOBAL_OFFSET_TABLE_" errors
-  KERNEL_MAKE_FLAGS += CFLAGS_MODULE="-fno-pic"
-endif
+ifeq ($(TARGET_KERNEL_CLANG_COMPILE),false)
+  ifeq ($(KERNEL_ARCH),arm)
+    # Avoid "Unknown symbol _GLOBAL_OFFSET_TABLE_" errors
+    KERNEL_MAKE_FLAGS += CFLAGS_MODULE="-fno-pic"
+  endif
 
-ifeq ($(KERNEL_ARCH),arm64)
-  # Avoid "unsupported RELA relocation: 311" errors (R_AARCH64_ADR_GOT_PAGE)
-  KERNEL_MAKE_FLAGS += CFLAGS_MODULE="-fno-pic"
+  ifeq ($(KERNEL_ARCH),arm64)
+    # Avoid "unsupported RELA relocation: 311" errors (R_AARCH64_ADR_GOT_PAGE)
+    KERNEL_MAKE_FLAGS += CFLAGS_MODULE="-fno-pic"
+  endif
 endif
 
 ifeq ($(HOST_OS),darwin)
@@ -137,21 +154,30 @@ else
   KERNEL_MAKE_FLAGS += CPATH="/usr/include:/usr/include/x86_64-linux-gnu" HOSTCFLAGS="-fuse-ld=lld" HOSTLDFLAGS="-L/usr/lib/x86_64-linux-gnu -L/usr/lib64 -fuse-ld=lld"
 endif
 
-ifneq ($(TARGET_KERNEL_ADDITIONAL_FLAGS),)
-  KERNEL_MAKE_FLAGS += $(TARGET_KERNEL_ADDITIONAL_FLAGS)
-endif
-
 TOOLS_PATH_OVERRIDE := \
-    PATH=$(BUILD_TOP)/prebuilts/tools-custom/$(HOST_PREBUILT_TAG)/bin:$$PATH \
     LD_LIBRARY_PATH=$(BUILD_TOP)/prebuilts/tools-custom/$(HOST_PREBUILT_TAG)/lib:$$LD_LIBRARY_PATH \
     PERL5LIB=$(BUILD_TOP)/prebuilts/tools-custom/common/perl-base
 
-# Set DTBO image locations so the build system knows to build them
-ifeq ($(TARGET_NEEDS_DTBOIMAGE),true)
-BOARD_PREBUILT_DTBOIMAGE ?= $(PRODUCT_OUT)/dtbo/arch/$(KERNEL_ARCH)/boot/dtbo.img
-else ifeq ($(BOARD_KERNEL_SEPARATED_DTBO),true)
-BOARD_PREBUILT_DTBOIMAGE ?= $(PRODUCT_OUT)/dtbo-pre.img
+ifeq ($(KERNEL_ARCH),arm64)
+  # Add 32-bit GCC to PATH so that arm-linux-androidkernel-as is available for CONFIG_COMPAT_VDSO
+  TOOLS_PATH_OVERRIDE += PATH=$(BUILD_TOP)/prebuilts/tools-custom/$(HOST_PREBUILT_TAG)/bin:$(KERNEL_TOOLCHAIN_arm):$$PATH
+else
+  TOOLS_PATH_OVERRIDE += PATH=$(BUILD_TOP)/prebuilts/tools-custom/$(HOST_PREBUILT_TAG)/bin:$$PATH
 endif
+
+# Set DTBO image locations so the build system knows to build them
+ifeq (true,$(filter true, $(TARGET_NEEDS_DTBOIMAGE) $(BOARD_KERNEL_SEPARATED_DTBO)))
+TARGET_KERNEL_DTBO_PREFIX ?=
+TARGET_KERNEL_DTBO ?= dtbo.img
+BOARD_PREBUILT_DTBOIMAGE ?= $(TARGET_OUT_INTERMEDIATES)/DTBO_OBJ/arch/$(KERNEL_ARCH)/boot/$(TARGET_KERNEL_DTBO_PREFIX)$(TARGET_KERNEL_DTBO)
+endif
+
+# Set the default dtb target
+TARGET_KERNEL_DTB ?= dtbs
+
+# Set no external modules by default
+TARGET_KERNEL_EXT_MODULE_ROOT ?=
+TARGET_KERNEL_EXT_MODULES ?=
 
 # Set use the full path to the make command
 KERNEL_MAKE_CMD := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin/make
@@ -159,6 +185,15 @@ KERNEL_MAKE_CMD := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin/m
 # Set the full path to the clang command
 KERNEL_MAKE_FLAGS += HOSTCC=$(CLANG_PREBUILTS)/bin/clang
 KERNEL_MAKE_FLAGS += HOSTCXX=$(CLANG_PREBUILTS)/bin/clang++
+
+# Use LLVM's substitutes for GNU binutils if compatible kernel version.
+ifneq ($(TARGET_KERNEL_CLANG_COMPILE), false)
+ifneq (,$(filter 5.4 5.10, $(TARGET_KERNEL_VERSION)))
+    KERNEL_MAKE_FLAGS += LLVM=1 LLVM_IAS=1
+    KERNEL_MAKE_FLAGS += LD=$(CLANG_PREBUILTS)/bin/ld.lld
+    KERNEL_MAKE_FLAGS += AR=$(CLANG_PREBUILTS)/bin/llvm-ar
+endif
+endif
 
 # Since Linux 4.16, flex and bison are required
 KERNEL_MAKE_FLAGS += LEX=$(BUILD_TOP)/prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin/flex
