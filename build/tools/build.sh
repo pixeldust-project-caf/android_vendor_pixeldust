@@ -18,6 +18,7 @@ CLR_BLD_CYA=$CLR_RST$CLR_BLD$(tput setaf 6) #  cyan, bold
 
 # Set defaults
 BUILD_TYPE="user"
+PACKAGE="pixeldust"
 
 # Output usage help
 function showHelpAndExit {
@@ -32,11 +33,12 @@ function showHelpAndExit {
         echo -e "${CLR_BLD_BLU}  -t, --build-type      Specify build type - userdebug, user (default) or eng${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -j, --jobs            Specify jobs/threads to use${CLR_RST}"
         echo -e "${CLR_BLD_BLU}  -m, --module          Build a specific module${CLR_RST}"
+        echo -e "${CLR_BLD_BLU}  -p, --package         Package variant - otapackage (default) or updatepackage${CLR_RST}"
         exit 1
 }
 
 # Setup getopt.
-long_opts="help,clean,installclean,repo-sync,variant:,build-type:,jobs:,module:"
+long_opts="help,clean,installclean,repo-sync,variant:,build-type:,jobs:,module:,package:"
 getopt_cmd=$(getopt -o hcirv:t:j:m:s:p:b --long "$long_opts" \
             -n $(basename $0) -- "$@") || \
             { echo -e "${CLR_BLD_RED}\nError: Getopt failed. Extra args\n${CLR_RST}"; showHelpAndExit; exit 1;}
@@ -53,6 +55,7 @@ while true; do
         -t|--build-type|t|build-type) BUILD_TYPE="$2"; shift;;
         -j|--jobs|j|jobs) JOBS="$2"; shift;;
         -m|--module|m|module) MODULE="$2"; shift;;
+        -p|--package|p|package) PACKAGE="$2"; shift;;
         --) shift; break;;
     esac
     shift
@@ -166,7 +169,7 @@ if [ "${MODULE}" ]; then
     m $MODULE "$CMD"
 # Build rom package
 else
-    m pixeldust "$CMD"
+    m ${PACKAGE} "$CMD"
 fi
 RETVAL=$?
 echo -e ""
