@@ -30,6 +30,8 @@ SOONG_CONFIG_NAMESPACES += pixeldustGlobalVars
 SOONG_CONFIG_pixeldustGlobalVars += \
     additional_gralloc_10_usage_bits \
     target_camera_needs_client_info \
+    disable_bluetooth_le_read_buffer_size_v2 \
+    disable_bluetooth_le_set_host_feature \
     gralloc_handle_has_reserved_size \
     target_init_vendor_lib \
     target_ld_shim_libs \
@@ -76,6 +78,8 @@ SOONG_CONFIG_pixeldustGlobalVars_additional_gralloc_10_usage_bits := $(TARGET_AD
 SOONG_CONFIG_pixeldustGlobalVars_target_init_vendor_lib := $(TARGET_INIT_VENDOR_LIB)
 SOONG_CONFIG_pixeldustGlobalVars_target_ld_shim_libs := $(subst $(space),:,$(TARGET_LD_SHIM_LIBS))
 SOONG_CONFIG_pixeldustGlobalVars_target_surfaceflinger_udfps_lib := $(TARGET_SURFACEFLINGER_FOD_LIB)
+SOONG_CONFIG_pixeldustGlobalVars_disable_bluetooth_le_read_buffer_size_v2 := $(TARGET_DISABLE_BLUETOOTH_LE_READ_BUFFER_SIZE_V2)
+SOONG_CONFIG_pixeldustGlobalVars_disable_bluetooth_le_set_host_feature := $(TARGET_DISABLE_BLUETOOTH_LE_SET_HOST_FEATURE)
 
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
 SOONG_CONFIG_pixeldustQcomVars_qcom_display_headers_namespace := vendor/qcom/opensource/commonsys-intf/display
