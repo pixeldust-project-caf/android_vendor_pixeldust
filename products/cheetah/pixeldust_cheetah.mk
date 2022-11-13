@@ -34,10 +34,11 @@ $(call inherit-product, vendor/pixeldust/build/product/pixeldust_product.mk)
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# Inherit from the custom device configuration.
+# Inherit AOSP stuff
 $(call inherit-product, device/google/gs201/common.mk)
-$(call inherit-product, device/google/cheetah/device-custom.mk)
-$(call inherit-product, device/google/cheetah/aosp_cheetah.mk)
+$(call inherit-product, device/google/pantah/device-custom.mk)
+$(call inherit-product, device/google/pantah/aosp_cheetah.mk)
+$(call inherit-product, vendor/pixeldust/configs/telephony.mk)
 
 # Release name
 export TARGET_DEVICE=cheetah
@@ -46,13 +47,7 @@ export TARGET_DEVICE=cheetah
 BOOTANIMATION := 1440
 
 # Google Apps
-WITH_GMS := true
-DEVICE_REQUIRES_CARRIER_APPS := true
-
-# Don't use google's NetworkStack
-REMOVE_GAPPS_PACKAGES += \
-    NetworkPermissionConfigGoogle \
-    NetworkStackGoogle
+$(call inherit-product, vendor/gapps/common/common-vendor.mk)
 
 # Product properties
 PRODUCT_NAME := pixeldust_cheetah
@@ -64,16 +59,12 @@ PRODUCT_MANUFACTURER := Google
 PRODUCT_GMS_CLIENTID_BASE := android-google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_DEVICE=Pixel7Pro \
+    PRODUCT_NAME=cheetah \
     PRIVATE_BUILD_DESC="cheetah-user 13 TD1A.220804.031 9071314 release-keys"
 
-BUILD_FINGERPRINT := google/cheetah/cheetah:13/TD1A.220804.031/9071314:user/release-keys
-
-$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
-
+BUILD_FINGERPRINT := $(PRODUCT_OVERRIDE_FINGEPRINT)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.pixeldust.maintainer="spezi77"
 
-# Inherit AOSP stuff
-$(call inherit-product, vendor/pixeldust/configs/telephony.mk)
+$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
