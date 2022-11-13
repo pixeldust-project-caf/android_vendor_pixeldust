@@ -14,6 +14,7 @@
 
 PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/blueline/pixeldust_blueline.mk \
+    $(LOCAL_DIR)/bonito/pixeldust_bonito.mk \
     $(LOCAL_DIR)/cheetah/pixeldust_cheetah.mk \
     $(LOCAL_DIR)/coral/pixeldust_coral.mk \
     $(LOCAL_DIR)/crosshatch/pixeldust_crosshatch.mk \
@@ -23,6 +24,7 @@ PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/panther/pixeldust_panther.mk \
     $(LOCAL_DIR)/raven/pixeldust_raven.mk \
     $(LOCAL_DIR)/redfin/pixeldust_redfin.mk \
+    $(LOCAL_DIR)/sargo/pixeldust_sargo.mk \
     $(LOCAL_DIR)/taimen/pixeldust_taimen.mk \
     $(LOCAL_DIR)/tissot/pixeldust_tissot.mk \
     $(LOCAL_DIR)/surya/pixeldust_surya.mk \
@@ -35,6 +37,9 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_blueline-userdebug \
     pixeldust_blueline-user \
     pixeldust_blueline-eng \
+    pixeldust_bonito-userdebug \
+    pixeldust_bonito-user \
+    pixeldust_bonito-eng \
     pixeldust_coral-userdebug \
     pixeldust_coral-user \
     pixeldust_cheetah-userdebug \
@@ -60,6 +65,9 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_redfin-userdebug \
     pixeldust_redfin-user \
     pixeldust_redfin-eng \
+    pixeldust_sargo-userdebug \
+    pixeldust_sargo-user \
+    pixeldust_sargo-eng \
     pixeldust_taimen-userdebug \
     pixeldust_taimen-user \
     pixeldust_tissot-userdebug \
