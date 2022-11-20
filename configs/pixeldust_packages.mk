@@ -67,8 +67,8 @@ PRODUCT_PACKAGES += \
 # Include Potato volume panels
 -include packages/apps/PotatoPlugins/plugins.mk
 
-# Lawnicons
--include vendor/lawnicons/overlay.mk
+# PixelLauncher icons
+-include vendor/PixelLauncher/ThemedIconsOverlay.mk
 
 # Lawnchair
 ifeq ($(WITH_LAWNCHAIR),true)
