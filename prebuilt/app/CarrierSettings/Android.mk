@@ -17,6 +17,8 @@
 
 LOCAL_PATH := $(call my-dir)
 
+ifneq ($(filter walleye taimen blueline crosshatch bonito sargo flame coral sunfish bramble redfin oriole raven bluejay, $(TARGET_DEVICE)),)
+
 include $(CLEAR_VARS)
 LOCAL_MODULE := CarrierSettings
 LOCAL_MODULE_TAGS := optional
@@ -45,3 +47,5 @@ endef
 
 $(foreach _cspb, $(call find-subdir-subdir-files, "configs", "*.pb"), \
  $(eval $(call _add-carrier-settings-protobuf, $(_cspb))))
+
+endif
