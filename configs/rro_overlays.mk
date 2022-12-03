@@ -44,7 +44,4 @@ PRODUCT_PACKAGES += \
 ifeq ($(WITH_GOOGLE_APEX),true)
 PRODUCT_PACKAGES += \
     GoogleConfigOverlayApex
-else
-PRODUCT_PACKAGES += \
-    GoogleConfigOverlay
 endif
