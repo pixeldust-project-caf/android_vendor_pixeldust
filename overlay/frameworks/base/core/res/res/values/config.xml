@@ -133,4 +133,7 @@
         <item>com.google.android.gm</item>
         <item>com.google.android.youtube</item>
     </string-array>
+
+    <!-- Name of the font family to use in the default lockscreen clock -->
+    <string name="config_clockFontFamily" translatable="false" />
 </resources>
