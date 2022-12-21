@@ -96,9 +96,6 @@ REMOVE_GAPPS_PACKAGES += \
     YouTubeMusicPrebuilt \
     WallpapersBReel2020 
 
-# Enable legacy IMS patch
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.telephony.block_binder_thread_on_incoming_calls=false
-
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := pixeldust_taimen
 PRODUCT_DEVICE := taimen
