@@ -52,19 +52,9 @@ WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
 REMOVE_GAPPS_PACKAGES += \
     Maps \
-    pixel_experience_2019_midyear \
-    pixel_experience_2019 \
-    pixel_experience_2020_midyear \
-    pixel_experience_2020 \
-    pixel_experience_2021_midyear \
-    pixel_experience_2021 \
-    pixel_experience_2022_midyear \
-    pixel_experience_2022
-
-# Don't use google's NetworkStack
-REMOVE_GAPPS_PACKAGES += \
-    NetworkPermissionConfigGoogle \
-    NetworkStackGoogle
+    StorageManagerGoogle \
+    GoogleTTS \
+    talkback
 
 # Product properties
 PRODUCT_NAME := pixeldust_blueline
