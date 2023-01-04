@@ -83,12 +83,12 @@ endif
 #INCLUDE_PIXELDUSTLAUNCHER := true
 #endif
 
-ifeq ($(INCLUDE_PIXELDUSTLAUNCHER), true)
-REMOVE_GAPPS_PACKAGES += \
-    NexusLauncherRelease
-else
-INCLUDE_PIXELLAUNCHER := true
-endif
+#ifeq ($(INCLUDE_PIXELDUSTLAUNCHER), true)
+#REMOVE_GAPPS_PACKAGES += \
+#    NexusLauncherRelease
+#else
+#INCLUDE_PIXELLAUNCHER := true
+#endif
 
 # Pixel specific
 ifneq ($(filter blueline bonito bramble coral crosshatch redfin sunfish taimen,$(TARGET_DEVICE)),)
