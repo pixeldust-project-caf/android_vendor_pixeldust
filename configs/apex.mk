@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+TARGET_SHIP_PREBUILT_APEX := true
+
 # Optional ART/BT/UWB/TETH/WIFI module
 MAINLINE_INCLUDE_ART_MODULE ?= true
 MAINLINE_INCLUDE_BT_MODULE ?= true
