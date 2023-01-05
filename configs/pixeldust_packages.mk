@@ -70,6 +70,9 @@ PRODUCT_PACKAGES += \
 # PixelLauncher icons
 -include vendor/PixelLauncher/ThemedIconsOverlay.mk
 
+# Ship Pixel Launcher from gapps
+INCLUDE_PIXELLAUNCHER := true
+
 # Lawnchair
 ifeq ($(WITH_LAWNCHAIR),true)
 REMOVE_GAPPS_PACKAGES += \
