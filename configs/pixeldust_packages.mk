@@ -67,9 +67,11 @@ PRODUCT_PACKAGES += \
 # Include Potato volume panels
 -include packages/apps/PotatoPlugins/plugins.mk
 
-# PixelLauncher full
-$(call inherit-product, vendor/PixelLauncher/PixelLauncher.mk)
-ICONS_VARIANT := true
+# PixelLauncher icons
+-include vendor/PixelLauncher/ThemedIconsOverlay.mk
+
+# Ship Pixel Launcher from gapps
+INCLUDE_PIXELLAUNCHER := true
 
 # Lawnchair
 ifeq ($(WITH_LAWNCHAIR),true)
