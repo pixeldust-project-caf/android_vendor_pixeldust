@@ -51,9 +51,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.telephony.block_binder_thread_on_incomin
 WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
 REMOVE_GAPPS_PACKAGES += \
+    DocumentsUIGoogle \
+    GoogleTTS \
     Maps \
     StorageManagerGoogle \
-    GoogleTTS \
     talkback
 
 # Product properties
