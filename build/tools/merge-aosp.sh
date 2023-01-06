@@ -62,8 +62,8 @@ function get_repos() {
   for i in ${repos[@]}
   do
     if grep -q "$i" /tmp/rebase.tmp; then # If Google has it and
-      if grep -q "$i" $WORKING_DIR/manifest/manifests/$MANIFEST; then # If we have it in our manifest and
-        if grep "$i" $WORKING_DIR/manifest/manifests/$MANIFEST | grep -q "remote="; then # If we track our own copy of it
+      if grep -q "$i" $WORKING_DIR/manifest/$MANIFEST; then # If we have it in our manifest and
+        if grep "$i" $WORKING_DIR/manifest/$MANIFEST | grep -q "remote="; then # If we track our own copy of it
           if ! is_in_blacklist $i; then # If it's not in our blacklist
             upstream+=("$i") # Then we need to update it
           else
