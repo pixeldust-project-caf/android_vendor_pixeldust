@@ -103,5 +103,5 @@ $(call inherit-product, vendor/pixeldust/configs/version.mk)
 
 # Gapps
 ifeq ($(WITH_GMS),true)
-$(call inherit-product, vendor/pixelgapps/pixel-gapps.mk)
+$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
 endif
