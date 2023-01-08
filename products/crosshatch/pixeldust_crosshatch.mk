@@ -44,9 +44,6 @@ export TARGET_DEVICE=crosshatch
 # Bootanimation
 BOOTANIMATION := 1440
 
-# Enable legacy IMS patch
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.telephony.block_binder_thread_on_incoming_calls=false
-
 # Google Apps
 WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
