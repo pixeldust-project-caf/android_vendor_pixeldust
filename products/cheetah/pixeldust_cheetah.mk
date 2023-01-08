@@ -15,18 +15,6 @@
 #
 
 #
-# All components inherited here go to system image
-#
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system.mk)
-
-#
-# All components inherited here go to system_ext image
-#
-$(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_system_ext.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system_ext.mk)
-
-#
 # All components inherited here go to product image
 #
 $(call inherit-product, vendor/pixeldust/build/product/pixeldust_product.mk)
@@ -35,7 +23,7 @@ $(call inherit-product, vendor/pixeldust/build/product/pixeldust_product.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Inherit AOSP stuff
-$(call inherit-product, device/google/gs201/common.mk)
+$(call inherit-product, device/google/gs201/custom_common.mk)
 $(call inherit-product, device/google/pantah/device-custom.mk)
 $(call inherit-product, device/google/pantah/aosp_cheetah.mk)
 $(call inherit-product, vendor/pixeldust/configs/telephony.mk)
@@ -47,7 +35,8 @@ export TARGET_DEVICE=cheetah
 BOOTANIMATION := 1440
 
 # Google Apps
-$(call inherit-product, vendor/gapps/common/common-vendor.mk)
+WITH_GMS := true
+DEVICE_REQUIRES_CARRIER_APPS := true
 
 # Product properties
 PRODUCT_NAME := pixeldust_cheetah
@@ -60,11 +49,13 @@ PRODUCT_GMS_CLIENTID_BASE := android-google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=cheetah \
-    PRIVATE_BUILD_DESC="cheetah-user 13 TD1A.221105.001 9104446 release-keys"
+    PRIVATE_BUILD_DESC="cheetah-user 13 TQ1A.230105.002 9325679 release-keys"
 
-BUILD_FINGERPRINT := $(PRODUCT_OVERRIDE_FINGEPRINT)
+BUILD_FINGERPRINT := google/cheetah/cheetah:13/TQ1A.230105.002/9325679:user/release-keys
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.pixeldust.maintainer="spezi77"
+
+PRODUCT_RESTRICT_VENDOR_FILES := false
 
 $(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
