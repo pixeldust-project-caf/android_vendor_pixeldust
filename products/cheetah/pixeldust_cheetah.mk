@@ -34,9 +34,13 @@ export TARGET_DEVICE=cheetah
 # Bootanimation
 BOOTANIMATION := 1440
 
+# Google vendor
+PRODUCT_RESTRICT_VENDOR_FILES := false
+$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
+
 # Google Apps
 WITH_GMS := true
-DEVICE_REQUIRES_CARRIER_APPS := true
+#DEVICE_REQUIRES_CARRIER_APPS := true
 
 # Product properties
 PRODUCT_NAME := pixeldust_cheetah
@@ -55,7 +59,3 @@ BUILD_FINGERPRINT := google/cheetah/cheetah:13/TQ1A.230105.002/9325679:user/rele
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.pixeldust.maintainer="spezi77"
-
-PRODUCT_RESTRICT_VENDOR_FILES := false
-
-$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)

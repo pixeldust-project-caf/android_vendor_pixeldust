@@ -34,9 +34,13 @@ export TARGET_DEVICE=panther
 # Bootanimation
 BOOTANIMATION := 1080
 
+# Google vendor
+PRODUCT_RESTRICT_VENDOR_FILES := false
+$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
+
 # Google Apps
 WITH_GMS := true
-DEVICE_REQUIRES_CARRIER_APPS := true
+#DEVICE_REQUIRES_CARRIER_APPS := true
 
 # Product properties
 PRODUCT_NAME := pixeldust_panther
@@ -55,7 +59,3 @@ BUILD_FINGERPRINT := google/panther/panther:13/TQ1A.230105.001.A2/9325585:user/r
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.pixeldust.maintainer="spezi77"
-
-PRODUCT_RESTRICT_VENDOR_FILES := false
-
-$(call inherit-product, vendor/google/panther/panther-vendor.mk)
