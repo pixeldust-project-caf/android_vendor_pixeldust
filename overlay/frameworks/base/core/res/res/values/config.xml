@@ -134,8 +134,5 @@
         <item>com.google.android.youtube</item>
     </string-array>
 
-    <!-- Name of the font family to use in the default lockscreen clock -->
-    <string name="config_clockFontFamily" translatable="false" />
-
     <string name="config_certifiedFingerprint" translatable="false">google/cheetah/cheetah:13/TQ1A.230105.002/9325679:user/release-keys</string>
 </resources>
