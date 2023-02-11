@@ -133,6 +133,4 @@
         <item>com.google.android.gm</item>
         <item>com.google.android.youtube</item>
     </string-array>
-
-    <string name="config_certifiedFingerprint" translatable="false">google/cheetah/cheetah:13/TQ1A.230105.002/9325679:user/release-keys</string>
 </resources>
