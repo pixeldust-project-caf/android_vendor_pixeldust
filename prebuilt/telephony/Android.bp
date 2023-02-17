@@ -1,0 +1,11 @@
+prebuilt_etc_xml {
+    name: "apns-conf.xml",
+    product_specific: true,
+    src: "apns-conf.xml",
+}
+
+prebuilt_etc_xml {
+    name: "sensitive_pn.xml",
+    product_specific: true,
+    src: "sensitive_pn.xml",
+}
