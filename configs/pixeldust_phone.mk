@@ -12,6 +12,7 @@ $(call inherit-product, vendor/pixeldust/configs/properties.mk)
 # Inherit from configs
 $(call inherit-product, vendor/pixeldust/configs/extra_permissions.mk)
 $(call inherit-product, vendor/pixeldust/configs/packages.mk)
+$(call inherit-product, vendor/pixeldust/configs/pixeldust_clo.mk)
 $(call inherit-product, vendor/pixeldust/configs/pixel_sepolicy.mk)
 $(call inherit-product, vendor/pixeldust/configs/rro_overlays.mk)
 $(call inherit-product, vendor/pixeldust/configs/sounds.mk)
