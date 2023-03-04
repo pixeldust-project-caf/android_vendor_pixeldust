@@ -1,11 +1,7 @@
 package vendor.qti.hardware.btconfigstore@1.0;
 
 enum Result : int32_t {
-    FAILED,
     SUCCESS,
-    INTERNAL_ERROR,
-    INVALID_ARGUMENTS,
-    NOT_SUPPORTED,
     UNKNOWN_ERROR,
 };
 
