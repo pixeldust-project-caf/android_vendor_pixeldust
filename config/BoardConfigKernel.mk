@@ -69,14 +69,10 @@ KERNEL_PATCHLEVEL := $(shell grep -s "^PATCHLEVEL = " $(TARGET_KERNEL_SOURCE)/Ma
 TARGET_KERNEL_VERSION ?= $(shell echo $(KERNEL_VERSION)"."$(KERNEL_PATCHLEVEL))
 
 ifneq ($(TARGET_KERNEL_CLANG_VERSION),)
-    ifeq ($(TARGET_KERNEL_CLANG_VERSION),proton)
-            CLANG_PREBUILTS_VERSION := clang-proton
+    ifeq ($(TARGET_KERNEL_CLANG_VERSION),latest)
+        CLANG_PREBUILTS_VERSION := $(shell ls -d $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/clang-r* | xargs -n 1 basename | tail -1)
     else
-        ifeq ($(TARGET_KERNEL_CLANG_VERSION),latest)
-            CLANG_PREBUILTS_VERSION := $(shell ls -d $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/clang-r* | xargs -n 1 basename | tail -1)
-        else
-            CLANG_PREBUILTS_VERSION := $(shell find $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/ -name AndroidVersion.txt -exec grep -l $(TARGET_KERNEL_CLANG_VERSION) "{}" \; | sed -e 's|/AndroidVersion.txt$$||g;s|^.*/||g')
-        endif
+        CLANG_PREBUILTS_VERSION := $(shell find $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/ -name AndroidVersion.txt -exec grep -l $(TARGET_KERNEL_CLANG_VERSION) "{}" \; | sed -e 's|/AndroidVersion.txt$$||g;s|^.*/||g')
     endif
 else
     CLANG_PREBUILTS_VERSION := clang-r450784d
