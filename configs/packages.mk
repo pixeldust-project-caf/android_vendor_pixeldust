@@ -49,3 +49,7 @@ PRODUCT_PACKAGES += \
 # Repainter integration
 PRODUCT_PACKAGES += \
     RepainterServicePriv
+
+# SystemUIFlagFlipper
+PRODUCT_PACKAGES += \
+    SystemUIFlagFlipper
