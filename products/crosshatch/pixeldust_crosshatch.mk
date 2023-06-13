@@ -47,6 +47,24 @@ BOOTANIMATION := 1440
 # Enable legacy IMS patch
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.telephony.block_binder_thread_on_incoming_calls=false
 
+# Force apex to build from AOSP sources
+MODULE_BUILD_FROM_SOURCE := true
+
+# Overlay packages for APK-type modules
+PRODUCT_PACKAGES += \
+    GoogleDocumentsUIOverlay \
+    ModuleMetadataGoogleOverlay \
+    GooglePermissionControllerOverlay \
+    GooglePermissionControllerFrameworkOverlay \
+    GoogleExtServicesConfigOverlay \
+    CaptivePortalLoginFrameworkOverlay
+
+# Mainline modules - APK type
+PRODUCT_PACKAGES += \
+    com.google.android.modulemetadata \
+    DocumentsUIGoogle \
+    CaptivePortalLoginGoogle
+
 # Google Apps
 WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
