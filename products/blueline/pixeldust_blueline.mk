@@ -65,6 +65,13 @@ PRODUCT_PACKAGES += \
     DocumentsUIGoogle \
     CaptivePortalLoginGoogle
 
+# GoogleExtServicesConfig
+PRODUCT_PACKAGES += \
+    com.google.android.extservices
+
+PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+    system/apex/com.google.android.extservices.apex
+
 # Google Apps
 WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
