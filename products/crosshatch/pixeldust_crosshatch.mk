@@ -77,6 +77,7 @@ WITH_GMS := true
 DEVICE_REQUIRES_CARRIER_APPS := true
 REMOVE_GAPPS_PACKAGES += \
     DocumentsUIGoogle \
+    GoogleCamera \
     GoogleTTS \
     Maps \
     StorageManagerGoogle \
