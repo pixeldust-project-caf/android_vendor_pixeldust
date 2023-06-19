@@ -31,12 +31,14 @@ $(call inherit-product, vendor/pixeldust/configs/telephony.mk)
 # Release name
 export TARGET_DEVICE=panther
 
+LOCAL_KERNEL := true
+
 # Bootanimation
 BOOTANIMATION := 1080
 
 # Google vendor
 PRODUCT_RESTRICT_VENDOR_FILES := false
-$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
+$(call inherit-product, vendor/google/panther/panther-vendor.mk)
 
 # Google Apps
 WITH_GMS := true
