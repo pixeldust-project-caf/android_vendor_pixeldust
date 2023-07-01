@@ -83,6 +83,10 @@ REMOVE_GAPPS_PACKAGES += \
     StorageManagerGoogle \
     talkback
 
+# ElmyraService
+PRODUCT_PACKAGES += \
+    ElmyraService
+
 # Product properties
 PRODUCT_NAME := pixeldust_crosshatch
 PRODUCT_DEVICE := crosshatch
