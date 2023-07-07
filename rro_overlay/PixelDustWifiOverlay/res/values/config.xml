@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2023 The PixelDust Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Indicate ssid coding from unquoted hexadecimal to gbk character is supported on this device. -->
+    <bool translatable="false" name="config_vendor_wifi_gbk_ssid_supported">false</bool>
+</resources>

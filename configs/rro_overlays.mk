@@ -14,6 +14,7 @@ PRODUCT_PACKAGES += \
     GmsConfigOverlay \
     PixelDustTelecommOverlay \
     PixelDustTelephonyOverlay \
+    PixelDustWifiOverlay \
     PixelSetupWizardOverlay \
     TelecommConfigOverlay
 
