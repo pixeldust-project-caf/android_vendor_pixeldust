@@ -38,7 +38,8 @@ BOOTANIMATION := 1440
 
 # Google vendor
 PRODUCT_RESTRICT_VENDOR_FILES := false
-$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
+#$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
+$(call inherit-product, vendor/google_devices/cheetah/proprietary/device-vendor.mk)
 
 # Google Apps
 WITH_GMS := true
@@ -55,7 +56,8 @@ REMOVE_GAPPS_PACKAGES += \
     pixel_experience_2020_midyear \
     pixel_experience_2020 \
     pixel_experience_2021_midyear \
-    pixel_experience_2021
+    pixel_experience_2021 \
+    GoogleCamera
 
 # Product properties
 PRODUCT_NAME := pixeldust_cheetah
