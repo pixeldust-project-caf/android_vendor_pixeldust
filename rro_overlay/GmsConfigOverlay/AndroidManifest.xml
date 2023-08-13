@@ -24,5 +24,5 @@
         android:isStatic="true"
     />
     
-    <application android:hasCode="false"/>
+    <application android:hasCode="false" android:allowBackup="false"/>
 </manifest>
