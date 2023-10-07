@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2022 The PixelDust Project
+# Copyright (C) 2022-2023 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,8 +23,6 @@ $(call inherit-product, vendor/pixeldust/build/product/pixeldust_product.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Inherit AOSP stuff
-$(call inherit-product, device/google/gs201/custom_common.mk)
-$(call inherit-product, device/google/pantah/device-custom.mk)
 $(call inherit-product, device/google/pantah/aosp_cheetah.mk)
 $(call inherit-product, vendor/pixeldust/configs/telephony.mk)
 
@@ -38,24 +36,10 @@ BOOTANIMATION := 1440
 
 # Google vendor
 PRODUCT_RESTRICT_VENDOR_FILES := false
-$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
+#$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
 
 # Google Apps
-WITH_GMS := true
-#DEVICE_REQUIRES_CARRIER_APPS := true
-
-# Remove experience configs from older devices
-REMOVE_GAPPS_PACKAGES += \
-    pixel_2016_exclusive \
-    pixel_experience_2017 \
-    pixel_experience_2018 \
-    pixel_2018_exclusive \
-    pixel_experience_2019 \
-    pixel_experience_2019_midyear \
-    pixel_experience_2020_midyear \
-    pixel_experience_2020 \
-    pixel_experience_2021_midyear \
-    pixel_experience_2021
+#WITH_GMS := true
 
 # Product properties
 PRODUCT_NAME := pixeldust_cheetah
@@ -68,7 +52,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-google
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=cheetah \
-    PRIVATE_BUILD_DESC="cheetah-user 13 TQ1A.230205.002 9471150 release-keys"
+    PRIVATE_BUILD_DESC="cheetah-user 14 UP1A.231005.007 10754064 release-keys"
 
 BUILD_FINGERPRINT := $(PRODUCT_OVERRIDE_FINGEPRINT)
 
