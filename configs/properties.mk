@@ -85,3 +85,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Tethering - allow without requiring a provisioning app (for devices that check this)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     net.tethering.noprovisioning=true
+
+# Enable lockscreen live wallpaper
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.wm.debug.lockscreen_live_wallpaper=true
