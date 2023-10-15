@@ -39,7 +39,7 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 #$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
 
 # Google Apps
-#WITH_GMS := true
+WITH_GMS := true
 
 # Product properties
 PRODUCT_NAME := pixeldust_cheetah
