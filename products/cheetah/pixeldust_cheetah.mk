@@ -32,7 +32,7 @@ export TARGET_DEVICE=cheetah
 LOCAL_KERNEL := true
 
 # Bootanimation
-BOOTANIMATION := 1440
+BOOTANIMATION := 1080
 
 # Google vendor
 PRODUCT_RESTRICT_VENDOR_FILES := false
