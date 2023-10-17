@@ -57,8 +57,9 @@ PRODUCT_PACKAGES += \
 # StatixSystemUI
 PRODUCT_PACKAGES += \
     StatixSystemUI \
-    StatixSettings \
     StatixThemePicker
+
+#    StatixSettings \
 
 # Preopt StatixSystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
