@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2023 The PixelDust Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- ThemePicker builds also WallpaperPicker2 source -->
+    <string name="config_wallpaper_picker_package">com.android.wallpaper</string>
+    <string name="config_wallpaper_picker_class">com.android.wallpaper.picker.CategoryPickerActivity</string>
+    <!-- Fully-qualified class name for the styles & wallpaper picker activity. -->
+    <string name="config_styles_and_wallpaper_picker_class">com.android.customization.picker.CustomizationPickerActivity</string>
+
+</resources>
