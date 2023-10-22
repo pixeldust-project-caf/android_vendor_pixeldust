@@ -46,6 +46,9 @@ PRODUCT_PACKAGES += \
 # Themes
 -include vendor/themes/common.mk
 
+# SystemUI Clocks
+-include vendor/SystemUIClocks/product.mk
+
 # Repainter integration
 PRODUCT_PACKAGES += \
     RepainterServicePriv
