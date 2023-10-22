@@ -58,14 +58,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SystemUIFlagFlipper
 
-# StatixSystemUI
+# StatixThemePicker
 PRODUCT_PACKAGES += \
-    StatixSystemUI \
     StatixThemePicker
-
-#    StatixSettings \
-
-# Preopt StatixSystemUI
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    StatixSystemUI
-
