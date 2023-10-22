@@ -32,6 +32,7 @@ PRODUCT_PACKAGES += \
     Launcher3QuickStep \
     LiveWallpapers \
     LiveWallpapersPicker \
+    PixeldustLauncher \
     PixelDustWallpapers \
     QuickAccessWallet \
 
