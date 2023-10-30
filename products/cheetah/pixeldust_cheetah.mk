@@ -38,6 +38,8 @@ BOOTANIMATION := 1080
 PRODUCT_RESTRICT_VENDOR_FILES := false
 #$(call inherit-product, vendor/google/cheetah/cheetah-vendor.mk)
 
+$(call inherit-product, vendor/pixeldust/configs/pixel_overlay.mk)
+
 # Google Apps
 WITH_GMS := true
 
