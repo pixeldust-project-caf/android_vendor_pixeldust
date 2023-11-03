@@ -8,6 +8,7 @@ PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/bonito/pixeldust_bonito.mk \
     $(LOCAL_DIR)/cheetah/pixeldust_cheetah.mk \
     $(LOCAL_DIR)/crosshatch/pixeldust_crosshatch.mk \
+    $(LOCAL_DIR)/felix/pixeldust_felix.mk \
     $(LOCAL_DIR)/husky/pixeldust_husky.mk \
     $(LOCAL_DIR)/lynx/pixeldust_lynx.mk \
     $(LOCAL_DIR)/oriole/pixeldust_oriole.mk \
@@ -31,6 +32,9 @@ COMMON_LUNCH_CHOICES += \
     pixeldust_crosshatch-userdebug \
     pixeldust_crosshatch-user \
     pixeldust_crosshatch-eng \
+    pixeldust_felix-userdebug \
+    pixeldust_felix-user \
+    pixeldust_felix-eng \
     pixeldust_husky-userdebug \
     pixeldust_husky-user \
     pixeldust_husky-eng \
