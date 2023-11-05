@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2019-2021 The PixelDust Project
+# Copyright (C) 2019-2023 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,11 @@
 #
 # All components inherited here go to system image
 #
+ifeq (,$(filter %_64,$(TARGET_PRODUCT)))
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+else
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+endif
 $(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system.mk)
 
 #
@@ -37,6 +41,12 @@ $(call inherit-product, vendor/pixeldust/build/product/pixeldust_product.mk)
 # TODO(b/136525499): move *_vendor.mk into the vendor makefile later
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
+$(call inherit-product, device/google/crosshatch/device-blueline.mk)
+
+PRODUCT_COPY_FILES += device/google/crosshatch/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
+
+# b/189477034: Bypass build time check on uses_libs until vendor fixes all their apps
+PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 
 # Release name
 export TARGET_DEVICE=blueline
@@ -44,44 +54,8 @@ export TARGET_DEVICE=blueline
 # Bootanimation
 BOOTANIMATION := 1080
 
-# Enable legacy IMS patch
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.telephony.block_binder_thread_on_incoming_calls=false
-
-# Force apex to build from AOSP sources
-MODULE_BUILD_FROM_SOURCE := true
-
-# Overlay packages for APK-type modules
-PRODUCT_PACKAGES += \
-    GoogleDocumentsUIOverlay \
-    ModuleMetadataGoogleOverlay \
-    GooglePermissionControllerOverlay \
-    GooglePermissionControllerFrameworkOverlay \
-    GoogleExtServicesConfigOverlay \
-    CaptivePortalLoginFrameworkOverlay
-
-# Mainline modules - APK type
-PRODUCT_PACKAGES += \
-    com.google.android.modulemetadata \
-    DocumentsUIGoogle \
-    CaptivePortalLoginGoogle
-
-# GoogleExtServicesConfig
-PRODUCT_PACKAGES += \
-    com.google.android.extservices
-
-PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
-    system/apex/com.google.android.extservices.apex
-
 # Google Apps
 WITH_GMS := true
-DEVICE_REQUIRES_CARRIER_APPS := true
-REMOVE_GAPPS_PACKAGES += \
-    DocumentsUIGoogle \
-    GoogleCamera \
-    GoogleTTS \
-    Maps \
-    StorageManagerGoogle \
-    talkback
 
 # ElmyraService
 PRODUCT_PACKAGES += \
@@ -97,13 +71,7 @@ PRODUCT_MANUFACTURER := Google
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.pixeldust.maintainer="spezi77"
 
-# Inherit AOSP stuff
-$(call inherit-product, vendor/pixeldust/configs/telephony.mk)
-$(call inherit-product, device/google/crosshatch/device-blueline.mk)
-
-PRODUCT_COPY_FILES += device/google/crosshatch/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
-
-# b/189477034: Bypass build time check on uses_libs until vendor fixes all their apps
-PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
-
+# Google vendor
+PRODUCT_RESTRICT_VENDOR_FILES := false
+$(call inherit-product, device/google/crosshatch/BoardConfig-vendor.mk)
 $(call inherit-product, vendor/google/blueline/blueline-vendor.mk)
