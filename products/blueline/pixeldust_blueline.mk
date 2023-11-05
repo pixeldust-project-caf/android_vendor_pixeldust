@@ -56,6 +56,13 @@ BOOTANIMATION := 1080
 
 # Google Apps
 WITH_GMS := true
+REMOVE_GAPPS_PACKAGES += \
+    DocumentsUIGoogle \
+    GoogleCamera \
+    GoogleTTS \
+    Maps \
+    StorageManagerGoogle \
+    talkback
 
 # ElmyraService
 PRODUCT_PACKAGES += \
