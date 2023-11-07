@@ -24,7 +24,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     setupwizard.feature.show_pixel_tos=true \
     setupwizard.feature.show_support_link_in_deferred_setup=false \
     setupwizard.feature.skip_button_use_mobile_data.carrier1839=true \
-    setupwizard.theme=glif_v3_light
+    setupwizard.theme=glif_v4_light
 
 # Indicate that we don't support Rescue Party
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
