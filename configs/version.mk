@@ -4,9 +4,9 @@
 #
 
 # Pixel Dust ROM versioning
-PD_ROM_MAJ_VERSION := PixelDust-Uglipie
+PD_ROM_MAJ_VERSION := PixelDust-Universe
 ANDROID_OS_VERSION := 14.0.0
-BUILD_VERSION_CODE := aosp
+BUILD_VERSION_CODE := clo
 
 ifndef SIGN_KEY
   PD_BUILDTYPE := UNOFFICIAL
