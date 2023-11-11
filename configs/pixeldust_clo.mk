@@ -40,3 +40,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
+
+# Enable CLO silky scroll and boost gesture flings
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.vendor.perf.ss=true \
+    vendor.perf.gestureflingboost.enable=true
